@@ -1,4 +1,4 @@
-import { css } from 'styled-components/macro';
+import { css } from 'styled-components';
 
 const sizes = {
     bp2400: 2400, // Huge monitor

@@ -1,5 +1,7 @@
-import { css } from 'styled-components/macro';
+import { css } from 'styled-components';
 import Color from 'color';
+
+import { theme } from '@styles';
 
 const mixins = {
     darken: (colorValue, amount = '0.05') => Color(colorValue).darken(amount).string(),
@@ -107,6 +109,54 @@ const mixins = {
     `,
     hardwareAccelerate: css`
         transform: translateZ(0);
+    `,
+    link: css`
+        display: inline-block;
+        text-decoration: none;
+        text-decoration-skip-ink: auto;
+        color: inherit;
+        position: relative;
+        transition: ${theme.transition};
+        cursor: pointer;
+        &:hover,
+        &:active,
+        &:focus {
+            color: ${theme.colors.link};
+            outline: 0;
+        }
+    `,
+    inlineLink: css`
+        display: inline-block;
+        text-decoration: none;
+        text-decoration-skip-ink: auto;
+        position: relative;
+        transition: ${theme.transition};
+        cursor: pointer;
+        color: ${theme.colors.link};
+        &:hover,
+        &:focus,
+        &:active {
+            color: ${theme.colors.link};
+            outline: 0;
+            &:after {
+                width: 100%;
+            }
+            & > * {
+                color: ${theme.colors.link} !important;
+                transition: ${theme.transition};
+            }
+        }
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            position: relative;
+            bottom: 0.37em;
+            background-color: ${theme.colors.link};
+            transition: ${theme.transition};
+            opacity: 0.5;
+        }
     `,
 };
 

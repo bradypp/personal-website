@@ -1,4 +1,4 @@
 export { default as theme } from './theme';
-export { default as GlobalStyle } from './GlobalStyle';
+export { default as GlobalStyles } from './GlobalStyles';
 export { default as mixins } from './mixins';
 export { default as media } from './media';

@@ -1,4 +1,4 @@
-import { css } from 'styled-components/macro';
+import { css } from 'styled-components';
 
 import CalibreLightTTF from '@fonts/Calibre/Calibre-Light.ttf';
 import CalibreLightWOFF from '@fonts/Calibre/Calibre-Light.woff';

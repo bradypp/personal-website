@@ -1,13 +1,16 @@
-import { createGlobalStyle } from 'styled-components/macro';
-import theme from './theme';
+import { createGlobalStyle } from 'styled-components';
+
 import media from './media';
+import theme from './theme';
 import mixins from './mixins';
 import fontFaces from './fonts';
 import normalizeStyles from './normalizeStyles';
+import transitionStyles from './transitionStyles';
+import prismStyles from './prismStyles';
 
 const { colors, fontSizes, fonts } = theme;
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   ${fontFaces};
   ${normalizeStyles};
 
@@ -47,10 +50,10 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: ${fonts.Calibre};
-    font-size: 1.6rem;
+    font-size: ${fontSizes.md};
     font-weight: 400;
     line-height: 1.3;
-    color: #ccc;
+    color: ${colors.greyDark1};
     background: #f7f7f7;
     min-height: 100vh;
 
@@ -112,6 +115,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     fill: currentColor;
     vertical-align: middle;
+    display: inline-block;
 
     &:before{
         speak: none;
@@ -171,7 +175,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: ${colors.link};
+      color: ${colors.lightBlue}
     }
   }
 
@@ -179,7 +183,6 @@ const GlobalStyle = createGlobalStyle`
     &::placeholder {
       opacity: 0.5;
       font-style: italic;
-      font-size: 0.9em;
     }
 
     &:focus,
@@ -193,19 +196,17 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0 0 1.5rem 0;
 
-    ${'' /* & > a {
+    & > a {
       ${mixins.inlineLink};
-    } */}
+    }
 
-    ${
-        '' /* & > code {
-      background-color: ${colors.lightNavy};
-      color: ${colors.offWhite};
+    & > code {
+      background-color: ${colors.greyLight1};
+      color: ${colors.greyDark4};
       font-size: ${fontSizes.sm};
       border-radius: ${theme.borderRadius};
       padding: 0.3em 0.5em;
-    } */
-    }
+    }  
   }
 
   ul {
@@ -218,22 +219,23 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
         padding-left: 3rem;
         margin-bottom: 1rem;
-        font-size: 1.8rem;
+        font-size: ${fontSizes.lg};
         &:before {
           content: '▹';
           position: absolute;
           left: 0;
+          color: ${colors.blueLight};
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: #ccc;
+    border-left-color: ${colors.blueLight};
     border-left-style: solid;
-    border-left-width: 1px;
-    margin-left: 0px;
-    margin-right: 0px;
+    border-left-width: 0.01rem;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 1.5rem;
 
     p {
@@ -243,9 +245,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   hr {
-    background-color: #ccc;
+    background-color: ${colors.greyLight2};
     height: 0.1rem;
-    border-width: 0px;
+    border-width: 0;
     border-style: initial;
     border-color: initial;
     border-image: initial;
@@ -254,11 +256,18 @@ const GlobalStyle = createGlobalStyle`
 
   code {
     font-family: ${fonts.SFMono};
-    font-size: 1.5rem;
+    font-size: ${fontSizes.md};
+  }
+
+  .overline {
+    color: ${colors.greyDark2};
+    font-family: ${fonts.SFMono};
+    font-size: ${fontSizes.md};
+    font-weight: normal;
   }
 
   .subtitle {
-    color: #ddd;
+    color: ${colors.greyDark2};
     margin: 0 0 2rem 0;
     font-size: 1.5rem;
     font-family: ${fonts.SFMono};
@@ -269,6 +278,9 @@ const GlobalStyle = createGlobalStyle`
   .gatsby-image-outer-wrapper {
     height: 100%;
   }
+
+  ${transitionStyles};
+  ${prismStyles};
 `;
 
-export default GlobalStyle;
+export default GlobalStyles;
