@@ -50,11 +50,11 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: ${fonts.Calibre};
-    font-size: ${fontSizes.md};
+    font-size: ${fontSizes.xl};
     font-weight: 400;
     line-height: 1.3;
     color: ${colors.greyDark1};
-    background: #f7f7f7;
+    background: ${colors.white1};
     min-height: 100vh;
 
     &.hidden {
@@ -213,21 +213,6 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     list-style: none;
-
-    &.fancy-list {
-      li {
-        position: relative;
-        padding-left: 3rem;
-        margin-bottom: 1rem;
-        font-size: ${fontSizes.lg};
-        &:before {
-          content: '▹';
-          position: absolute;
-          left: 0;
-          color: ${colors.blueLight};
-        }
-      }
-    }
   }
 
   blockquote {
@@ -257,22 +242,6 @@ const GlobalStyles = createGlobalStyle`
   code {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.md};
-  }
-
-  .overline {
-    color: ${colors.greyDark2};
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.md};
-    font-weight: normal;
-  }
-
-  .subtitle {
-    color: ${colors.greyDark2};
-    margin: 0 0 2rem 0;
-    font-size: 1.5rem;
-    font-family: ${fonts.SFMono};
-    font-weight: normal;
-    line-height: 1.5;
   }
 
   .gatsby-image-outer-wrapper {

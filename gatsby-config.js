@@ -95,10 +95,9 @@ module.exports = {
                         // https://www.gatsbyjs.org/packages/gatsby-remark-images
                         resolve: 'gatsby-remark-images',
                         options: {
-                            maxWidth: 750,
+                            maxWidth: 1000,
                             linkImagesToOriginal: false,
                             quality: 90,
-                            // tracedSVG: { color: '' }, // TODO
                         },
                     },
                 ],

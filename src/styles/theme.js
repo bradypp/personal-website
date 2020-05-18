@@ -5,7 +5,7 @@ const theme = {
         white3: '#e2e4e9',
         white4: '#d3d7df',
         white5: '#c4c9d4',
-        greyDark1: '#333',
+        greyDark1: '#373737',
         greyDark2: '#555',
         greyDark3: '#777',
         greyDark4: '#8993a4',

@@ -20,6 +20,11 @@ const Main = styled.main`
     ${media.bp440`
         padding: 0 ${theme.pagePaddingMobile};
     `}
+
+    section {
+        padding: 15rem 0;
+        width: 100%;
+    }
 `;
 
 const Layout = ({ children, meta }) => (
