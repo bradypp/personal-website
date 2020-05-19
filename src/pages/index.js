@@ -40,8 +40,8 @@ export const pageQuery = graphql`
                     frontmatter {
                         title
                         subtitle
-                        contactText
-                        projectsText
+                        contact
+                        projects
                     }
                     html
                 }

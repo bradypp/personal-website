@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 
 const useHover = () => {
     const [value, setValue] = useState(false);
-    const $ref = useRef(null);
+    const $ref = useRef();
 
     const handleMouseOver = () => setValue(true);
     const handleMouseOut = () => setValue(false);
@@ -13,6 +13,7 @@ const useHover = () => {
         if (node) {
             node.addEventListener('mouseover', handleMouseOver);
             node.addEventListener('mouseout', handleMouseOut);
+            console.log(node);
 
             return () => {
                 node.removeEventListener('mouseover', handleMouseOver);

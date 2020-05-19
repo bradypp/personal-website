@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { browser } from 'shared/utils';
+import { browser } from '@utils';
 
 const useCopyText = textToCopy => {
     const [isCopied, setCopied] = useState(false);

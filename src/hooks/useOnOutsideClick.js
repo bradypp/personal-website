@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import useDeepCompareMemoize from 'shared/hooks/useDeepCompareMemoize';
+import useDeepCompareMemoize from './useDeepCompareMemoize';
 
 // Hook that alerts clicks outside of the passed ref
 const useOnOutsideClick = (

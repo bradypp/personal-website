@@ -52,8 +52,8 @@ const GlobalStyles = createGlobalStyle`
     font-size: var(--font-size-xl);
     font-weight: 400;
     line-height: 1.3;
-    color: var(--color-text-primary);
-    background: var(--color-background-primary);
+    color: var(--color-text-primary-1);
+    background: var(--color-background-1);
     min-height: 100vh;
 
     &.hidden {
@@ -210,7 +210,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   blockquote {
-    border-left-color: var(--color-primary-light);
+    border-left-color: var(--color-primary);
     border-left-style: solid;
     border-left-width: 0.01rem;
     margin-left: 0;
@@ -221,16 +221,6 @@ const GlobalStyles = createGlobalStyle`
       font-style: italic;
       font-size: 2.4rem;
     }
-  }
-
-  hr {
-    background-color: var(--color-background-secondary);
-    height: 0.1rem;
-    border-width: 0;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    margin: 1rem;
   }
 
   code {

@@ -93,6 +93,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                 '@pages': path.resolve(__dirname, 'src/pages'),
                 '@styles': path.resolve(__dirname, 'src/styles'),
                 '@utils': path.resolve(__dirname, 'src/utils'),
+                '@hooks': path.resolve(__dirname, 'src/hooks'),
             },
         },
     });
