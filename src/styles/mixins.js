@@ -1,8 +1,6 @@
 import { css } from 'styled-components';
 import Color from 'color';
 
-import { theme } from '@styles';
-
 const mixins = {
     darken: (colorValue, amount = '0.05') => Color(colorValue).darken(amount).string(),
     lighten: (colorValue, amount = '0.05') => Color(colorValue).lighten(amount).string(),
@@ -116,12 +114,12 @@ const mixins = {
         text-decoration-skip-ink: auto;
         color: inherit;
         position: relative;
-        transition: ${theme.transition};
+        transition: var(--color-transition);
         cursor: pointer;
         &:hover,
         &:active,
         &:focus {
-            color: ${theme.colors.link};
+            color: var(--color-text-link);
             outline: 0;
         }
     `,
@@ -130,20 +128,20 @@ const mixins = {
         text-decoration: none;
         text-decoration-skip-ink: auto;
         position: relative;
-        transition: ${theme.transition};
+        transition: var(--color-transition);
         cursor: pointer;
-        color: ${theme.colors.link};
+        color: var(--color-text-link);
         &:hover,
         &:focus,
         &:active {
-            color: ${theme.colors.link};
+            color: var(--color-text-link);
             outline: 0;
             &:after {
                 width: 100%;
             }
             & > * {
-                color: ${theme.colors.link} !important;
-                transition: ${theme.transition};
+                color: var(--color-text-link) !important;
+                transition: var(--color-transition);
             }
         }
         &:after {
@@ -153,8 +151,8 @@ const mixins = {
             height: 1px;
             position: relative;
             bottom: 0.37em;
-            background-color: ${theme.colors.link};
-            transition: ${theme.transition};
+            background-color: var(--color-text-link);
+            transition: var(--color-transition);
             opacity: 0.5;
         }
     `,

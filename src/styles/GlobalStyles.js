@@ -8,11 +8,10 @@ import normalizeStyles from './normalizeStyles';
 import transitionStyles from './transitionStyles';
 import prismStyles from './prismStyles';
 
-const { colors, fontSizes, fonts } = theme;
-
 const GlobalStyles = createGlobalStyle`
   ${fontFaces};
   ${normalizeStyles};
+  ${theme};
 
   *,
   *:before,
@@ -49,12 +48,12 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    font-family: ${fonts.Calibre};
-    font-size: ${fontSizes.xl};
+    font-family: var(--fonts-primary);
+    font-size: var(--font-size-xl);
     font-weight: 400;
     line-height: 1.3;
-    color: ${colors.greyDark1};
-    background: ${colors.white1};
+    color: var(--color-text-primary);
+    background: var(--color-background-primary);
     min-height: 100vh;
 
     &.hidden {
@@ -64,7 +63,7 @@ const GlobalStyles = createGlobalStyle`
       overflow: hidden;
       #root > #content > * {
         filter: blur(5px) brightness(0.7);
-        transition: ${theme.transition};
+        transition: var(--transition);
         pointer-events: none;
         user-select: none;
       }
@@ -72,7 +71,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background-color: ${colors.highlight};
+    background-color:  var(--color-text-highlight);
   }
 
   #root {
@@ -133,7 +132,7 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
     border: 0;
     border-radius: 0;
-    transition: ${theme.transition};
+    transition: var(--transition);
 
     &:focus,
     &:active {
@@ -170,13 +169,8 @@ const GlobalStyles = createGlobalStyle`
     display: inline-block;
     text-decoration: none;
     text-decoration-skip-ink: auto;
-    color: inherit;
+    color:  var(--color-text-link);
     position: relative;
-
-    &:hover,
-    &:focus {
-      color: ${colors.lightBlue}
-    }
   }
 
   input, textarea {
@@ -201,10 +195,10 @@ const GlobalStyles = createGlobalStyle`
     }
 
     & > code {
-      background-color: ${colors.greyLight1};
-      color: ${colors.greyDark4};
-      font-size: ${fontSizes.sm};
-      border-radius: ${theme.borderRadius};
+      background-color:  var(--color-code-background);
+      color: var(--color-code-text);
+      font-size: var(--font-size-sm);
+      border-radius: var(--border-radius);
       padding: 0.3em 0.5em;
     }  
   }
@@ -216,7 +210,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   blockquote {
-    border-left-color: ${colors.blueLight};
+    border-left-color: var(--color-primary-light);
     border-left-style: solid;
     border-left-width: 0.01rem;
     margin-left: 0;
@@ -230,7 +224,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   hr {
-    background-color: ${colors.greyLight2};
+    background-color: var(--color-background-secondary);
     height: 0.1rem;
     border-width: 0;
     border-style: initial;
@@ -240,8 +234,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   code {
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.md};
+    font-family: var(--fonts-mono);
+    font-size: var(--font-size-md);
   }
 
   .gatsby-image-outer-wrapper {
