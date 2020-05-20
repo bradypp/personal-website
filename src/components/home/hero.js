@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
 
+import { github } from '@config';
 import { mixins } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
@@ -26,11 +27,12 @@ const Title = styled.h2`
     font-weight: 300;
     margin: 0;
 `;
-const Name = styled.span`
+const Name = styled.a`
     font-weight: 500;
     position: relative;
     transition: var(--transition);
     padding: 0.2rem;
+    color: var(--color-text-primary-1);
 
     &:after {
         content: '';
@@ -62,13 +64,13 @@ const WaveEmojiContainer = styled.div`
     width: 4rem;
     height: 100%;
     margin: 0 0 1.2rem 2.4rem;
+    ${mixins.clickable}
 
-    &.animate,
-    &:hover {
-        animation: 1s wave 300ms;
-    }
-
-    ${props => props.isMounted && css``}
+    ${props =>
+        props.isAnimated &&
+        css`
+            animation: 1s wave;
+        `}
 
     @keyframes wave {
         from {
@@ -97,16 +99,33 @@ const WaveEmojiContainer = styled.div`
 
 const Hero = ({ data }) => {
     const isMounted = useIsMounted(1000);
+    const [isWaveAnimated, setIsWaveAnimated] = useState(false);
 
     const { frontmatter } = data[0].node;
     const { title, name, wave, subtitle, contact } = frontmatter;
 
+    useEffect(() => {
+        if (!isMounted) return;
+        const timeout = setTimeout(() => setIsWaveAnimated(true), 500);
+        return () => clearTimeout(timeout);
+    }, [isMounted]);
+    useEffect(() => {
+        if (!isWaveAnimated) return;
+        const timeout = setTimeout(() => setIsWaveAnimated(false), 1000);
+        return () => clearTimeout(timeout);
+    }, [isWaveAnimated]);
+
     const items = [
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
-                {`${title} `} <Name>{name}</Name>
+                {`${title} `}{' '}
+                <Name href={github} target="_blank" rel="noopener noreferrer nofollow">
+                    {name}
+                </Name>
             </Title>
-            <WaveEmojiContainer isMounted={isMounted} className="animate">
+            <WaveEmojiContainer
+                isAnimated={isWaveAnimated}
+                onHover={() => !isWaveAnimated && setIsWaveAnimated(true)}>
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,

@@ -7,10 +7,8 @@ const useIsMounted = (interval = 0, ...conditions) => {
         if (conditions.length > 0 && !conditions.reduce((acc, el) => el, false)) return;
         const timeout = setTimeout(() => setIsMounted(true), interval);
 
-        return () => {
-            clearTimeout(timeout);
-            setIsMounted(false);
-        };
+        return () => clearTimeout(timeout);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return isMounted;

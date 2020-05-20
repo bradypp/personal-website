@@ -8,10 +8,10 @@ const StyledOutboundLink = styled.a`
     ${mixins.inlineLink}
 `;
 
-const OutboundLink = ({ children, href, ...props }) => {
+const OutboundLink = ({ children, className, href, ...props }) => {
     const link = href && href.startsWith('http') ? href : `//${href}`;
     return (
-        <StyledOutboundLink href={link} {...props}>
+        <StyledOutboundLink className={className} href={link} {...props}>
             {children}
         </StyledOutboundLink>
     );
@@ -29,7 +29,7 @@ OutboundLink.propTypes = {
 OutboundLink.defaultProps = {
     className: undefined,
     target: '_blank',
-    rel: 'noopener noreferrer',
+    rel: 'noopener noreferrer nofollow',
     style: undefined,
 };
 

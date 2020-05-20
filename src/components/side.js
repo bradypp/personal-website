@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useIsMounted } from '@hooks';
 import { media } from '@styles';
 
+// TODO: media queries to hide on tablets/phones
 const SideContainer = styled.div`
     width: 4rem;
     position: fixed;

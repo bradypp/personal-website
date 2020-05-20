@@ -1,5 +1,7 @@
 import { css } from 'styled-components/macro';
 
+import { mixins } from '@styles';
+
 const primaryButton = css`
     color: var(--color-primary);
     background-color: transparent;
@@ -21,41 +23,7 @@ const primaryButton = css`
 `;
 
 const inlineLink = css`
-    display: inline-block;
-    text-decoration: none;
-    text-decoration-skip-ink: auto;
-    position: relative;
-    transition: var(--color-transition);
-    cursor: pointer;
-    color: var(--color-text-link);
-
-    &:hover,
-    &:focus,
-    &:active {
-        color: var(--color-text-link);
-        outline: 0;
-
-        &:after {
-            width: 100%;
-        }
-
-        & > * {
-            color: var(--color-text-link) !important;
-            transition: var(--transition);
-        }
-    }
-
-    &:after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 1px;
-        position: relative;
-        bottom: 0.37em;
-        background-color: var(--color-text-link);
-        transition: var(--transition);
-        opacity: 0.5;
-    }
+    ${mixins.inlineLink}
 `;
 
 const buttonStyles = css`

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
 
 import { Side, OutboundLink, Icon } from '@components';
 import { socialMedia, email } from '@config';
@@ -52,6 +51,7 @@ const Social = ({ isHome, ...otherProps }) => (
             </StyledLink>
             {socialMedia &&
                 socialMedia.map(({ url, name }, i) => (
+                    // eslint-disable-next-line react/no-array-index-key
                     <li key={`socials-${i}`}>
                         <StyledLink href={url} aria-label={name} variant={null}>
                             <Icon name={name} />

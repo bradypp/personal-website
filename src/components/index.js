@@ -1,5 +1,6 @@
 // Home Page
 export { default as Hero } from './home/hero';
+export { default as About } from './home/about';
 
 // Other Components
 export { default as Icon } from './icons/icon';
@@ -13,3 +14,4 @@ export { default as Header } from './header';
 export { default as Footer } from './footer';
 export { default as FancyList } from './fancyList';
 export { default as Layout } from './layout';
+export { default as Heading } from './heading';

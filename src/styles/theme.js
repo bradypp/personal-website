@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const theme = css`
     :root {
         --color-primary: #007bff;
-        --color-secondary: #6f74dd;
+        --color-secondary: #ffdc00;
 
         --color-white-1: #f4f5f7;
         --color-white-2: #e2e4e9;
@@ -24,13 +24,14 @@ const theme = css`
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
         --color-text-secondary-1: var(--color-white-1);
-        --color-text-highlight: var(--color-grey-light-3);
+        --color-text-highlight: var(--color-secondary);
         --color-text-link: var(--color-primary);
 
         --color-code-text: var(--color-grey-dark-2);
         --color-code-background: var(--color-grey-light-2);
 
         --color-side: var(--color-grey-dark-2);
+        --color-border: var(--color-grey-dark-2);
 
         --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,
             monospace;
