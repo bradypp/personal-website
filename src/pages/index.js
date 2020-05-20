@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, Hero } from '@components';
+import { Layout, Hero, About } from '@components';
 
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
@@ -21,6 +21,7 @@ const IndexPage = ({ location, data }) => {
     return (
         <Layout location={location}>
             <Hero data={data.hero.edges} />
+            <About data={data.about.edges} />
         </Layout>
     );
 };
@@ -50,6 +51,23 @@ export const pageQuery = graphql`
                             }
                         }
                     }
+                }
+            }
+        }
+        about: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about/" } }) {
+            edges {
+                node {
+                    frontmatter {
+                        title
+                        avatar {
+                            childImageSharp {
+                                fluid(maxWidth: 700, quality: 90) {
+                                    ...GatsbyImageSharpFluid_withWebp
+                                }
+                            }
+                        }
+                    }
+                    html
                 }
             }
         }

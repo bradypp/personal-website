@@ -10,7 +10,7 @@ module.exports = {
     name: 'Paul Brady',
     location: 'Manchester, UK',
     email: 'bradypp44@gmail.com', // TODO: update to custom url
-    github: 'bradypp',
+    github: 'https://github.com/bradypp',
     twitterHandle: 'bradypp',
     socialMedia: [
         {
@@ -44,7 +44,7 @@ module.exports = {
             url: '/#contact',
         },
     ],
-    srConfig: (delay = 200) => ({
+    scrollRevealConfig: (delay = 200) => ({
         origin: 'bottom',
         distance: '20px',
         duration: 500,

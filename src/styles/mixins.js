@@ -24,6 +24,15 @@ const mixins = {
         background-size: cover;
         background: #fff;
     `,
+    boxShadow: css`
+        box-shadow: 0 1rem 3rem -1.5rem var(--color-background-2);
+        transition: var(--transition);
+
+        &:hover,
+        &:focus {
+            box-shadow: 0 2rem 3rem -1.5rem var(--color-background-2);
+        }
+    `,
     placeholderColor: colorValue => css`
         ::-webkit-input-placeholder {
             color: ${colorValue} !important;
@@ -61,6 +70,11 @@ const mixins = {
     flexCenter: css`
         display: flex;
         justify-content: center;
+        align-items: center;
+    `,
+    flexBetween: css`
+        display: flex;
+        justify-content: space-between;
         align-items: center;
     `,
     flexColumnCenter: css`
@@ -107,6 +121,43 @@ const mixins = {
     `,
     hardwareAccelerate: css`
         transform: translateZ(0);
+    `,
+    inlineLink: css`
+        display: inline-block;
+        text-decoration: none;
+        text-decoration-skip-ink: auto;
+        position: relative;
+        transition: var(--color-transition);
+        cursor: pointer;
+        color: var(--color-text-link);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: var(--color-text-link);
+            outline: 0;
+
+            &:after {
+                width: 100%;
+            }
+
+            & > * {
+                color: var(--color-text-link) !important;
+                transition: var(--transition);
+            }
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            position: relative;
+            bottom: 0.37em;
+            background-color: var(--color-text-link);
+            transition: var(--transition);
+            opacity: 0.5;
+        }
     `,
 };
 
