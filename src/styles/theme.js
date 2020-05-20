@@ -12,7 +12,6 @@ const theme = css`
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
-        --color-grey-dark-4: #8993a4;
 
         --color-grey-light-1: #e7e4e4;
         --color-grey-light-2: #ddd;
@@ -20,6 +19,7 @@ const theme = css`
 
         --color-background-1: var(--color-white-1);
         --color-background-2: var(--color-white-2);
+        --color-background-3: var(--color-white-3);
 
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
@@ -29,6 +29,8 @@ const theme = css`
 
         --color-code-text: var(--color-grey-dark-2);
         --color-code-background: var(--color-grey-light-2);
+
+        --color-side: var(--color-grey-dark-2);
 
         --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,
             monospace;

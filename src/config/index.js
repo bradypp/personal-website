@@ -7,11 +7,11 @@ module.exports = {
     siteLanguage: 'en',
     googleAnalyticsID: '',
     googleVerification: '',
-    name: '',
-    location: '',
-    email: '',
-    github: '',
-    twitterHandle: '',
+    name: 'Paul Brady',
+    location: 'Manchester, UK',
+    email: 'bradypp44@gmail.com', // TODO: update to custom url
+    github: 'bradypp',
+    twitterHandle: 'bradypp',
     socialMedia: [
         {
             name: 'GitHub',
@@ -30,7 +30,6 @@ module.exports = {
             url: 'https://twitter.com/bradypp',
         },
     ],
-
     navLinks: [
         {
             name: 'About',
@@ -45,7 +44,6 @@ module.exports = {
             url: '/#contact',
         },
     ],
-
     srConfig: (delay = 200) => ({
         origin: 'bottom',
         distance: '20px',

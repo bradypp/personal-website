@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 
-const useIsMounted = (interval = 0) => {
+const useIsMounted = (interval = 0, ...conditions) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        if (conditions.length > 0 && !conditions.reduce((acc, el) => el, false)) return;
         const timeout = setTimeout(() => setIsMounted(true), interval);
-        console.log(isMounted);
+
         return () => {
             clearTimeout(timeout);
             setIsMounted(false);
         };
-    }, [interval]);
+    }, []);
 
     return isMounted;
 };

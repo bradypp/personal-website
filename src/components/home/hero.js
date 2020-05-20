@@ -97,7 +97,7 @@ const WaveEmojiContainer = styled.div`
 `;
 
 const Hero = ({ data }) => {
-    const isMounted = useIsMounted(1000, true, true);
+    const isMounted = useIsMounted(1000);
 
     const { frontmatter } = data[0].node;
     const { title, name, wave, subtitle, contact } = frontmatter;
@@ -125,7 +125,7 @@ const Hero = ({ data }) => {
             <TransitionGroup component={null}>
                 {isMounted &&
                     items.map(item => (
-                        <CSSTransition key={uniqueId('hero-')} classNames="fadeup" timeout={3000}>
+                        <CSSTransition key={uniqueId()} classNames="fadeup" timeout={3000}>
                             {item}
                         </CSSTransition>
                     ))}
