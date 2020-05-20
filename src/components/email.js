@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { uniqueId } from 'lodash';
 
-import { Side, CustomLink, Icon } from '@components';
-import { socialMedia, email } from '@config';
+import { Side, OutboundLink } from '@components';
+import { email } from '@config';
 
 const EmailContainer = styled.div`
     display: flex;
@@ -25,7 +24,7 @@ const EmailContainer = styled.div`
         margin-bottom: 2rem;
     }
 `;
-const StyledLink = styled(CustomLink)`
+const StyledLink = styled(OutboundLink)`
     font-family: var(--fonts-mono);
     font-size: var(--font-size-xs);
     letter-spacing: 0.1em;

@@ -5,25 +5,25 @@ import { css } from 'styled-components';
 const TransitionStyles = css`
     .fadeup-enter {
         opacity: 0.01;
-        transform: translateY(20px);
+        transform: translateY(2rem);
         transition: opacity 300ms var(--easing), transform 300ms var(--easing);
     }
 
     .fadeup-enter-active {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
         transition: opacity 300ms var(--easing), transform 300ms var(--easing);
     }
 
     .fadedown-enter {
         opacity: 0.01;
-        transform: translateY(-20px);
+        transform: translateY(-2rem);
         transition: opacity 300ms var(--easing), transform 300ms var(--easing);
     }
 
     .fadedown-enter-active {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
         transition: opacity 300ms var(--easing), transform 300ms var(--easing);
     }
 

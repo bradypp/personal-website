@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { uniqueId } from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
-import { Side, CustomLink, Icon } from '@components';
+import { Side, OutboundLink, Icon } from '@components';
 import { socialMedia, email } from '@config';
 
 const StyledList = styled.ul`
@@ -27,7 +27,7 @@ const StyledList = styled.ul`
         margin-bottom: 2rem;
     }
 `;
-const StyledLink = styled(CustomLink)`
+const StyledLink = styled(OutboundLink)`
     padding: 1rem;
     &:hover,
     &:focus {
@@ -51,8 +51,8 @@ const Social = ({ isHome, ...otherProps }) => (
                 <Icon name="Email" />
             </StyledLink>
             {socialMedia &&
-                socialMedia.map(({ url, name }) => (
-                    <li key={uniqueId()}>
+                socialMedia.map(({ url, name }, i) => (
+                    <li key={`socials-${i}`}>
                         <StyledLink href={url} aria-label={name} variant={null}>
                             <Icon name={name} />
                         </StyledLink>

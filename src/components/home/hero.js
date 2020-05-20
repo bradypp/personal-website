@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
-import { uniqueId } from 'lodash';
 
 import { mixins } from '@styles';
 import { CustomLink } from '@components';
@@ -102,8 +101,6 @@ const Hero = ({ data }) => {
     const { frontmatter } = data[0].node;
     const { title, name, wave, subtitle, contact } = frontmatter;
 
-    useEffect(() => {}, []);
-
     const items = [
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
@@ -124,8 +121,9 @@ const Hero = ({ data }) => {
         <Section>
             <TransitionGroup component={null}>
                 {isMounted &&
-                    items.map(item => (
-                        <CSSTransition key={uniqueId()} classNames="fadeup" timeout={3000}>
+                    items.map((item, i) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
                             {item}
                         </CSSTransition>
                     ))}

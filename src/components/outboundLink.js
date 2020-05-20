@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const OutboundLink = ({ className, children, href, target, style, rel }) => {
+import { mixins } from '@styles';
+
+const StyledOutboundLink = styled.a`
+    ${mixins.inlineLink}
+`;
+
+const OutboundLink = ({ children, href, ...props }) => {
     const link = href && href.startsWith('http') ? href : `//${href}`;
     return (
-        <a className={className} href={link} target={target} rel={rel} style={style}>
+        <StyledOutboundLink href={link} {...props}>
             {children}
-        </a>
+        </StyledOutboundLink>
     );
 };
 
