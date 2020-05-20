@@ -11,7 +11,7 @@ module.exports = {
     location: 'Manchester, UK',
     email: 'bradypp44@gmail.com', // TODO: update to custom url
     github: 'https://github.com/bradypp',
-    twitterHandle: 'bradypp',
+    twitter: 'https://twitter.com/bradypp',
     socialMedia: [
         {
             name: 'GitHub',

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, OutboundLink } from '@components';
+import { Heading } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
@@ -29,17 +29,11 @@ const AvatarLinkContainer = styled.div`
     width: 40%;
     max-width: 30rem;
     margin-left: 6rem;
-
-    a {
-        &:focus {
-            outline: 0;
-        }
-    }
 `;
 const Avatar = styled(Img)`
     position: relative;
     mix-blend-mode: multiply;
-    filter: grayscale(100%) contrast(1);
+    filter: grayscale(100%) contrast(120%);
     border-radius: var(--border-radius);
     transition: var(--transition);
 `;

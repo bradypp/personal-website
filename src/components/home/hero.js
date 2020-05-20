@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
 
-import { github } from '@config';
+import { twitter } from '@config';
 import { mixins } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
@@ -119,7 +119,7 @@ const Hero = ({ data }) => {
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
                 {`${title} `}{' '}
-                <Name href={github} target="_blank" rel="noopener noreferrer nofollow">
+                <Name href={twitter} target="_blank" rel="noopener noreferrer nofollow">
                     {name}
                 </Name>
             </Title>

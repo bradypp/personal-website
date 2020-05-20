@@ -16,7 +16,7 @@ const SideContainer = styled.div`
     z-index: var(--z-index-side);
     color: var(--color-text-primary-2);
     ${media.bp1280`right: 2.5rem;`};
-    ${media.bp800`display: none;`};
+    ${media.bp1040`display: none;`};
 `;
 
 const Side = ({ children, isHome, orientation }) => {
