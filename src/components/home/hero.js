@@ -64,10 +64,6 @@ const WaveEmojiContainer = styled.div`
     height: 100%;
     margin: 0 0 1.2rem 2.4rem;
 
-    &:hover {
-        animation: 1s wave;
-    }
-
     ${props =>
         props.isMounted &&
         css`
@@ -100,7 +96,8 @@ const WaveEmojiContainer = styled.div`
 `;
 
 const Hero = ({ data }) => {
-    const isMounted = useIsMounted('1000');
+    const isMounted = useIsMounted(1000);
+
     const { frontmatter } = data[0].node;
     const { title, name, wave, subtitle, contact } = frontmatter;
 
