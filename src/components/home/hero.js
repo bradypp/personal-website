@@ -1,8 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Img from 'gatsby-image';
+import { uniqueId } from 'lodash';
 
+import { mixins } from '@styles';
 import { CustomLink } from '@components';
+import { useIsMounted } from '@hooks';
+
+const margin = '8vh';
 
 const Section = styled.section`
     display: flex;
@@ -11,66 +18,124 @@ const Section = styled.section`
     flex-direction: column;
     min-height: 100vh;
 `;
-const Title = styled.h2`
-    margin-left: 0.3rem;
-    font-size: var(--font-size-h3);
-    font-weight: 400;
+const TitleContainer = styled.div`
+    ${mixins.flexCenter};
+    margin-bottom: ${margin};
 `;
-const Subtitle = styled.h3`
-    text-align: center;
-    font-size: 12rem;
-    line-height: 1.1;
+const Title = styled.h2`
+    font-size: 5rem;
+    font-weight: 300;
+    margin: 0;
+`;
+const Name = styled.span`
+    font-weight: 500;
     position: relative;
     transition: var(--transition);
-    perspective: 500rem;
-    padding: 0 0.3rem;
+    padding: 0.2rem;
 
     &:after {
         content: '';
         display: block;
         width: 100%;
-        height: 1.8rem;
+        height: 0.3rem;
         position: absolute;
-        bottom: 0.33em;
+        bottom: 0.28em;
         left: 0;
         z-index: -1;
-        background: linear-gradient(45deg, var(--color-primary-light), var(--color-primary));
+        background: linear-gradient(45deg, var(--color-primary), var(--color-primary));
         transition: var(--transition);
     }
 
     &:hover {
         color: var(--color-text-secondary-1);
         &:after {
-            bottom: 0.16em;
-            height: 12rem;
+            bottom: 0.1em;
+            height: 100%;
         }
     }
 `;
-const Description = styled.div`
-    width: 50%;
-    max-width: 50rem;
-    margin-bottom: 5rem;
+const Subtitle = styled.h3`
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: ${margin};
+`;
+const WaveEmojiContainer = styled.div`
+    width: 4rem;
+    height: 100%;
+    margin: 0 0 1.2rem 2.4rem;
+
+    &:hover {
+        animation: 1s wave;
+    }
+
+    ${props =>
+        props.isMounted &&
+        css`
+            animation: 1s wave 300ms;
+        `}
+
+    @keyframes wave {
+        from {
+            transform: none;
+        }
+        15% {
+            transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+        }
+        30% {
+            transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg);
+        }
+        45% {
+            transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg);
+        }
+        60% {
+            transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+        }
+        75% {
+            transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg);
+        }
+        to {
+            transform: none;
+        }
+    }
 `;
 
 const Hero = ({ data }) => {
-    const { frontmatter, html } = data[0].node;
+    const isMounted = useIsMounted('1000');
+    const { frontmatter } = data[0].node;
+    const { title, name, wave, subtitle, contact } = frontmatter;
+
+    const items = [
+        <TitleContainer style={{ transitionDelay: '100ms' }}>
+            <Title>
+                {`${title} `} <Name>{name}</Name>
+            </Title>
+            <WaveEmojiContainer isMounted={isMounted}>
+                <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
+            </WaveEmojiContainer>
+        </TitleContainer>,
+        <Subtitle style={{ transitionDelay: '200ms' }}>{subtitle}</Subtitle>,
+        <div style={{ transitionDelay: '300ms' }}>
+            <CustomLink variant="primary-button" to="/">
+                {contact}
+            </CustomLink>
+        </div>,
+    ];
     return (
         <Section>
-            <Title>{frontmatter.title}</Title>
-            <Subtitle>{frontmatter.subtitle}</Subtitle>
-            <Description dangerouslySetInnerHTML={{ __html: html }} />
-            <CustomLink variant="primary-button" to="/">
-                {frontmatter.contact}
-            </CustomLink>
-            {/* <CustomLink variant="primary-button" to="/">
-                {frontmatter.projects}
-            </CustomLink> */}
+            <TransitionGroup component={null}>
+                {isMounted &&
+                    items.map(item => (
+                        <CSSTransition key={uniqueId('hero-')} classNames="fadeup" timeout={3000}>
+                            {item}
+                        </CSSTransition>
+                    ))}
+            </TransitionGroup>
         </Section>
     );
 };
 
 Hero.propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired,
 };
 
 export default Hero;

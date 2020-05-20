@@ -6,9 +6,9 @@ const primaryButton = css`
     border: 1.5px solid var(--color-primary);
     border-radius: var(--border-radius);
     padding: 1.8rem 2.25rem;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     font-family: var(--fonts-mono);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;

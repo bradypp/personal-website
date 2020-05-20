@@ -6,13 +6,17 @@ import { buttonStyles } from '@styles';
 import OutboundLink from './outboundLink';
 import LinkWrapper from './linkWrapper';
 
-const styleLink = Link => styled(Link)`
+const StyledLinkWrapper = styled(LinkWrapper)`
+    ${buttonStyles}
+`;
+
+const StyledOutboundLink = styled(OutboundLink)`
     ${buttonStyles}
 `;
 
 const CustomLink = forwardRef(({ children, href, to, ...props }, ref) => {
-    const RenderedLink = styleLink(href ? OutboundLink : LinkWrapper);
-
+    const RenderedLink = href && !to ? StyledOutboundLink : StyledLinkWrapper;
+    console.log(props);
     return (
         <RenderedLink ref={ref} href={href} to={href ? null : to} {...props}>
             {children}

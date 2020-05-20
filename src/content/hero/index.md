@@ -1,8 +1,7 @@
 ---
-title: 'Hi, my name is'
-subtitle: 'Paul Brady'
-contact: 'Get In Touch'
-projects: 'My Projects'
+title: Hi! I'm
+name: Paul Brady
+wave: './wave.png'
+subtitle: I'm a full-stack web developer based in Manchester, UK with a passion for building beautiful websites and complex applications.
+contact: Get In Touch
 ---
-
-I'm a full-stack web developer based in Manchester, UK and I love building beautiful websites and complex applications.

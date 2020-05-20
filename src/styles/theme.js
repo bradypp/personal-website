@@ -2,16 +2,14 @@ import { css } from 'styled-components';
 
 const theme = css`
     :root {
-        --color-primary: #3949ab;
-        --color-primary-light: #6f74dd;
-        --color-primary-dark: #00227b;
+        --color-primary: #007bff;
         --color-secondary: #6f74dd;
 
         --color-white-1: #f4f5f7;
         --color-white-2: #e2e4e9;
         --color-white-3: #d5d7dc;
 
-        --color-grey-dark-1: #292929;
+        --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
         --color-grey-dark-4: #8993a4;

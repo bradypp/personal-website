@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
 import { Layout, Hero } from '@components';
 
@@ -39,11 +39,17 @@ export const pageQuery = graphql`
                 node {
                     frontmatter {
                         title
+                        name
                         subtitle
                         contact
-                        projects
+                        wave {
+                            childImageSharp {
+                                fluid(maxWidth: 200, quality: 90) {
+                                    ...GatsbyImageSharpFluid_withWebp
+                                }
+                            }
+                        }
                     }
-                    html
                 }
             }
         }
