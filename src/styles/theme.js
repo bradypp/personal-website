@@ -45,6 +45,7 @@ const theme = css`
 
         --z-index-header: 50;
         --z-index-dropdown: 100;
+        --z-index-side: 125;
         --z-index-modal: 150;
 
         --max-width: 120rem;

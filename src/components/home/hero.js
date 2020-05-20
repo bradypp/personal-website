@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -64,11 +64,12 @@ const WaveEmojiContainer = styled.div`
     height: 100%;
     margin: 0 0 1.2rem 2.4rem;
 
-    ${props =>
-        props.isMounted &&
-        css`
-            animation: 1s wave 300ms;
-        `}
+    &.animate,
+    &:hover {
+        animation: 1s wave 300ms;
+    }
+
+    ${props => props.isMounted && css``}
 
     @keyframes wave {
         from {
@@ -96,23 +97,25 @@ const WaveEmojiContainer = styled.div`
 `;
 
 const Hero = ({ data }) => {
-    const isMounted = useIsMounted(1000);
+    const isMounted = useIsMounted(1000, true, true);
 
     const { frontmatter } = data[0].node;
     const { title, name, wave, subtitle, contact } = frontmatter;
+
+    useEffect(() => {}, []);
 
     const items = [
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
                 {`${title} `} <Name>{name}</Name>
             </Title>
-            <WaveEmojiContainer isMounted={isMounted}>
+            <WaveEmojiContainer isMounted={isMounted} className="animate">
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,
         <Subtitle style={{ transitionDelay: '200ms' }}>{subtitle}</Subtitle>,
         <div style={{ transitionDelay: '300ms' }}>
-            <CustomLink variant="primary-button" to="/">
+            <CustomLink variant="primary-button" to="/#">
                 {contact}
             </CustomLink>
         </div>,

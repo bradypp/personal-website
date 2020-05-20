@@ -27,15 +27,19 @@ const Main = styled.main`
     }
 `;
 
-const Layout = ({ children, meta }) => (
-    <div id="root">
-        <Head meta={meta} />
-        <GlobalStyles />
-        <Header />
-        <Main>{children}</Main>
-        <Footer />
-    </div>
-);
+const Layout = ({ children, meta, location }) => {
+    const isHome = location && location.pathname === '/';
+
+    return (
+        <div id="root">
+            <Head meta={meta} />
+            <GlobalStyles />
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+        </div>
+    );
+};
 
 Layout.propTypes = {
     children: PropTypes.node.isRequired,
@@ -43,10 +47,12 @@ Layout.propTypes = {
         title: PropTypes.string,
         description: PropTypes.string,
     }),
+    location: PropTypes.object,
 };
 
 Layout.defaultProps = {
     meta: undefined,
+    location: undefined,
 };
 
 export default Layout;

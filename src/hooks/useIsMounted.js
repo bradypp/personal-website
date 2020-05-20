@@ -5,7 +5,7 @@ const useIsMounted = (interval = 0) => {
 
     useEffect(() => {
         const timeout = setTimeout(() => setIsMounted(true), interval);
-
+        console.log(isMounted);
         return () => {
             clearTimeout(timeout);
             setIsMounted(false);

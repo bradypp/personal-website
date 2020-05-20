@@ -16,7 +16,7 @@ const StyledOutboundLink = styled(OutboundLink)`
 
 const CustomLink = forwardRef(({ children, href, to, ...props }, ref) => {
     const RenderedLink = href && !to ? StyledOutboundLink : StyledLinkWrapper;
-    console.log(props);
+
     return (
         <RenderedLink ref={ref} href={href} to={href ? null : to} {...props}>
             {children}

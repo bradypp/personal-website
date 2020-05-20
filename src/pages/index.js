@@ -19,7 +19,7 @@ const IndexPage = ({ location, data }) => {
     }, [location.hash]);
 
     return (
-        <Layout>
+        <Layout location={location}>
             <Hero data={data.hero.edges} />
         </Layout>
     );

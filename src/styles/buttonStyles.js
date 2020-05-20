@@ -14,15 +14,9 @@ const primaryButton = css`
     cursor: pointer;
     transition: var(--transition);
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:hover {
         color: var(--color-white-1);
         background-color: var(--color-primary);
-    }
-
-    &:after {
-        display: none !important;
     }
 `;
 
