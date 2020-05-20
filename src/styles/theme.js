@@ -2,8 +2,10 @@ import { css } from 'styled-components';
 
 const theme = css`
     :root {
-        --color-primary: #4391e3;
-        --color-secondary: #62eccf;
+        --color-primary: #3949ab;
+        --color-primary-light: #6f74dd;
+        --color-primary-dark: #00227b;
+        --color-secondary: #6f74dd;
 
         --color-white-1: #f4f5f7;
         --color-white-2: #e2e4e9;
@@ -24,7 +26,7 @@ const theme = css`
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
         --color-text-secondary-1: var(--color-white-1);
-        --color-text-highlight: var(--color-primary);
+        --color-text-highlight: var(--color-grey-light-3);
         --color-text-link: var(--color-primary);
 
         --color-code-text: var(--color-grey-dark-2);

@@ -34,7 +34,7 @@ const Subtitle = styled.h3`
         bottom: 0.33em;
         left: 0;
         z-index: -1;
-        background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+        background: linear-gradient(45deg, var(--color-primary-light), var(--color-primary));
         transition: var(--transition);
     }
 

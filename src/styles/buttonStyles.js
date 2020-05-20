@@ -8,17 +8,19 @@ const primaryButton = css`
     padding: 1.8rem 2.25rem;
     font-size: var(--font-size-sm);
     font-family: var(--fonts-mono);
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
     transition: var(--transition);
+
     &:hover,
     &:focus,
     &:active {
         color: var(--color-white-1);
         background-color: var(--color-primary);
     }
+
     &:after {
         display: none !important;
     }
@@ -32,19 +34,23 @@ const inlineLink = css`
     transition: var(--color-transition);
     cursor: pointer;
     color: var(--color-text-link);
+
     &:hover,
     &:focus,
     &:active {
         color: var(--color-text-link);
         outline: 0;
+
         &:after {
             width: 100%;
         }
+
         & > * {
             color: var(--color-text-link) !important;
             transition: var(--transition);
         }
     }
+
     &:after {
         content: '';
         display: block;
