@@ -131,6 +131,19 @@ const mixins = {
         cursor: pointer;
         color: var(--color-text-link);
 
+        &:after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 0;
+            position: absolute;
+            bottom: 0.24em;
+            background-color: var(--color-text-link);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(-0.5rem);
+        }
+
         &:hover,
         &:focus,
         &:active {
@@ -138,25 +151,16 @@ const mixins = {
             outline: 0;
 
             &:after {
+                opacity: 1;
                 width: 100%;
+                transform: translateY(0);
+                height: 2px;
             }
 
             & > * {
                 color: var(--color-text-link) !important;
                 transition: var(--transition);
             }
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px;
-            position: relative;
-            bottom: 0.37em;
-            background-color: var(--color-text-link);
-            transition: var(--transition);
-            opacity: 0.5;
         }
     `,
 };

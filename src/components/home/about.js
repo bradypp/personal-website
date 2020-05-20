@@ -33,7 +33,7 @@ const AvatarLinkContainer = styled.div`
 const Avatar = styled(Img)`
     position: relative;
     mix-blend-mode: multiply;
-    filter: grayscale(100%) contrast(120%);
+    filter: grayscale(100%) contrast(115%);
     border-radius: var(--border-radius);
     transition: var(--transition);
 `;

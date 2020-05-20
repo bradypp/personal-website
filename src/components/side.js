@@ -17,6 +17,12 @@ const SideContainer = styled.div`
     color: var(--color-text-primary-2);
     ${media.bp1280`right: 2.5rem;`};
     ${media.bp1040`display: none;`};
+
+    a {
+        &:after {
+            display: none;
+        }
+    }
 `;
 
 const Side = ({ children, isHome, orientation }) => {
