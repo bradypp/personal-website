@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, Hero, About } from '@components';
+import { Layout, Hero, About, Projects } from '@components';
 
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
@@ -22,6 +22,7 @@ const IndexPage = ({ location, data }) => {
         <Layout location={location}>
             <Hero data={data.hero.edges} />
             <About data={data.about.edges} />
+            <Projects data={data.projects.edges} />
         </Layout>
     );
 };
@@ -67,6 +68,33 @@ export const pageQuery = graphql`
                                 }
                             }
                         }
+                    }
+                    html
+                }
+            }
+        }
+        projects: allMarkdownRemark(
+            filter: { fileAbsolutePath: { regex: "/projects/" } }
+            sort: { fields: [frontmatter___sort], order: DESC }
+        ) {
+            edges {
+                node {
+                    frontmatter {
+                        overline
+                        title
+                        images {
+                            image {
+                                childImageSharp {
+                                    fluid(maxWidth: 700, quality: 90, cropFocus: CENTER) {
+                                        ...GatsbyImageSharpFluid_withWebp
+                                    }
+                                }
+                            }
+                            alt
+                        }
+                        tech
+                        github
+                        external
                     }
                     html
                 }

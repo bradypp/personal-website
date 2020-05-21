@@ -10,8 +10,10 @@ import { Heading } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
+    ${mixins.homeSection}
     position: relative;
     height: 70rem;
+    margin-top: 0;
 `;
 const FlexContainer = styled.div`
     ${mixins.flexBetween};
@@ -28,23 +30,23 @@ const StyledContent = styled.div`
 const AvatarLinkContainer = styled.div`
     position: relative;
     width: 40%;
-    max-width: 30rem;
+    max-width: 34rem;
     margin-left: 6rem;
 `;
 const Avatar = styled(Img)`
     position: relative;
     mix-blend-mode: multiply;
-    filter: grayscale(100%) contrast(115%);
-    border-radius: var(--border-radius);
+    /* filter: grayscale(100%) contrast(115%); */
+    border-radius: 50%;
     transition: var(--transition);
 `;
 const AvatarLink = styled.a`
     ${mixins.boxShadow};
     width: 100%;
     position: relative;
-    border-radius: var(--border-radius);
+    border-radius: 50%;
     margin-left: -2rem;
-
+/* 
     &:before,
     &:after {
         content: '';
@@ -70,9 +72,9 @@ const AvatarLink = styled.a`
         top: 0.5rem;
         left: 0.5rem;
         z-index: -1;
-    }
+    } */
 
-    &:hover {
+    /* &:hover {
         background: transparent;
         margin-top: -0.4rem;
         margin-left: -2.4rem;
@@ -84,7 +86,7 @@ const AvatarLink = styled.a`
             filter: none;
             mix-blend-mode: normal;
         }
-    }
+    } */
 `;
 const SkillsContainer = styled.ul`
     display: grid;

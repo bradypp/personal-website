@@ -65,15 +65,15 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `posts`,
-                path: `${__dirname}/src/content/posts`,
+                name: `contact`,
+                path: `${__dirname}/src/content/contact`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `contact`,
-                path: `${__dirname}/src/content/contact`,
+                name: `posts`,
+                path: `${__dirname}/src/content/posts`,
             },
         },
         {
@@ -88,7 +88,7 @@ module.exports = {
                             rel: 'nofollow noopener noreferrer',
                         },
                     },
-                    //  IMPORTANT: this must be ahead of gatsby-remark-relative-images
+                    //  IMPORTANT: this must be ahead of gatsby-remark-images
                     {
                         resolve: `gatsby-remark-relative-images`,
                     },

@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import { mixins } from '@styles';
 
 const StyledOutboundLink = styled.a`
-    ${mixins.inlineLink}
+    ${props => props.variant === 'inline' && mixins.inlineLink}
 `;
 
-const OutboundLink = ({ children, className, href, ...props }) => {
+const OutboundLink = ({ children, className, href, variant, ...props }) => {
     const link = href && href.startsWith('http') ? href : `//${href}`;
     return (
         <StyledOutboundLink className={className} href={link} {...props}>
@@ -23,14 +23,14 @@ OutboundLink.propTypes = {
     className: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
-    style: PropTypes.object,
+    variant: PropTypes.oneOf(['inline']),
 };
 
 OutboundLink.defaultProps = {
     className: undefined,
     target: '_blank',
     rel: 'noopener noreferrer nofollow',
-    style: undefined,
+    variant: 'inline',
 };
 
 export default OutboundLink;

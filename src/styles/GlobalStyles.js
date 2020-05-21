@@ -103,11 +103,6 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  section {
-        padding: 120px 0;
-        width: 100%;
-    }
-
   img {
     width: 100%;
     max-width: 100%;

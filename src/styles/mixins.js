@@ -54,12 +54,12 @@ const mixins = {
         grid-gap: ${gridGap || '1.6rem'};
     `,
     boxShadow: css`
-        box-shadow: 0 0.5rem 3rem -1rem var(--color-grey-dark-3);
+        box-shadow: var(--box-shadow);
         transition: var(--transition);
 
         &:hover,
         &:focus {
-            box-shadow: 0 0.8rem 3rem -1rem var(--color-grey-dark-3);
+            box-shadow: 0 1rem 3.2rem -1.2rem var(--color-box-shadow);
         }
     `,
     containAndCenter: css`
@@ -174,6 +174,10 @@ const mixins = {
             left: 0;
             color: var(--color-primary);
         }
+    `,
+    homeSection: css`
+        padding: 12rem 0;
+        width: 100%;
     `,
 };
 

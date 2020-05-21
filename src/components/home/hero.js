@@ -11,12 +11,14 @@ import { useIsMounted } from '@hooks';
 
 const margin = '10vh';
 
-const Section = styled.section`
+const HeroContainer = styled.section`
+    ${mixins.homeSection}
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
+    padding-bottom: 0;
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -140,7 +142,7 @@ const Hero = ({ data }) => {
         </div>,
     ];
     return (
-        <Section>
+        <HeroContainer>
             <TransitionGroup component={null}>
                 {isMounted &&
                     items.map((item, i) => (
@@ -150,7 +152,7 @@ const Hero = ({ data }) => {
                         </CSSTransition>
                     ))}
             </TransitionGroup>
-        </Section>
+        </HeroContainer>
     );
 };
 

@@ -9,6 +9,8 @@ const theme = css`
         --color-white-2: #e2e4e9;
         --color-white-3: #d5d7dc;
 
+        --color-box-shadow: #747a8b;
+
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
@@ -62,6 +64,7 @@ const theme = css`
         --easing: cubic-bezier(0.3, 0, 0.4, 1);
 
         --border-radius: 3px;
+        --box-shadow: 0 0.5rem 3rem -1rem var(--color-box-shadow);
 
         --hamburger-width: 30px;
         --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;

@@ -1,6 +1,7 @@
 // Home Page
 export { default as Hero } from './home/hero';
 export { default as About } from './home/about';
+export { default as Projects } from './home/projects';
 
 // Other Components
 export { default as Icon } from './icons/icon';

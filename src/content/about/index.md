@@ -1,5 +1,5 @@
 ---
-title: Background
+title: About Me
 avatar: './me.jpg'
 skills:
     - JavaScript (ES6+)
