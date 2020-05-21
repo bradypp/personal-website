@@ -64,6 +64,7 @@ const WaveEmojiContainer = styled.div`
     width: 4rem;
     height: 100%;
     margin: 0 0 1.2rem 2.4rem;
+    ${mixins.clickable}
 
     ${props =>
         props.isAnimated &&
@@ -114,6 +115,8 @@ const Hero = ({ data }) => {
         return () => clearTimeout(timeout);
     }, [isWaveAnimated]);
 
+    const handleAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
+
     const items = [
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
@@ -124,7 +127,8 @@ const Hero = ({ data }) => {
             </Title>
             <WaveEmojiContainer
                 isAnimated={isWaveAnimated}
-                onMouseEnter={() => !isWaveAnimated && setIsWaveAnimated(true)}>
+                onMouseEnter={handleAnimation}
+                onClick={handleAnimation}>
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
@@ -111,7 +112,7 @@ const About = ({ data }) => {
                 <StyledContent>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
                     <SkillsContainer>
-                        {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+                        {skills && skills.map(skill => <li key={uuidv4()}>{skill}</li>)}
                     </SkillsContainer>
                 </StyledContent>
                 <AvatarLinkContainer>
