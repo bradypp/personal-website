@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, FancyList } from '@components';
+import { Heading } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`

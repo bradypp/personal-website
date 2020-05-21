@@ -12,6 +12,5 @@ export { default as Email } from './email';
 export { default as Head } from './head';
 export { default as Header } from './header';
 export { default as Footer } from './footer';
-export { default as FancyList } from './fancyList';
 export { default as Layout } from './layout';
 export { default as Heading } from './heading';
