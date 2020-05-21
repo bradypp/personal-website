@@ -59,6 +59,7 @@ export const pageQuery = graphql`
                 node {
                     frontmatter {
                         title
+                        skills
                         avatar {
                             childImageSharp {
                                 fluid(maxWidth: 700, quality: 90) {

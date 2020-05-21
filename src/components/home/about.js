@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading } from '@components';
+import { Heading, FancyList } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
@@ -18,7 +18,7 @@ const FlexContainer = styled.div`
 `;
 const StyledContent = styled.div`
     width: 60%;
-    max-width: 48rem;
+    max-width: 58rem;
 
     a {
         ${mixins.inlineLink};
@@ -44,20 +44,6 @@ const AvatarLink = styled.a`
     border-radius: var(--border-radius);
     margin-left: -2rem;
 
-    &:hover {
-        background: transparent;
-        margin-left: -2.25rem;
-        margin-top: -0.25rem;
-        &:after {
-            top: 0.65rem;
-            left: 0.65rem;
-        }
-        ${Avatar} {
-            filter: none;
-            mix-blend-mode: normal;
-        }
-    }
-
     &:before,
     &:after {
         content: '';
@@ -68,6 +54,7 @@ const AvatarLink = styled.a`
         border-radius: var(--border-radius);
         transition: var(--transition);
     }
+
     &:before {
         top: 0;
         left: 0;
@@ -76,19 +63,44 @@ const AvatarLink = styled.a`
         background-color: var(--color-background-1);
         mix-blend-mode: screen;
     }
+
     &:after {
-        border: 10px solid var(--color-primary);
-        top: 0.4rem;
-        left: 0.4rem;
+        border: 3px solid var(--color-primary);
+        top: 1.2rem;
+        left: 1.2rem;
         z-index: -1;
+    }
+
+    &:hover {
+        background: transparent;
+        &:after {
+            top: 0.7rem;
+            left: 0.7rem;
+        }
+        ${Avatar} {
+            filter: none;
+            mix-blend-mode: normal;
+        }
+    }
+`;
+const SkillsContainer = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: hidden;
+    padding: 0;
+    margin: 2rem 0 0 0;
+    list-style: none;
+
+    li {
+        ${mixins.fancyList}
     }
 `;
 
 const About = ({ data }) => {
-    const revealContainer = useRef(null);
+    const revealContainer = useRef();
 
     const { frontmatter, html } = data[0].node;
-    const { title, avatar } = frontmatter;
+    const { title, avatar, skills } = frontmatter;
 
     useEffect(() => scrollReveal.reveal(revealContainer.current, scrollRevealConfig()), []);
 
@@ -98,6 +110,9 @@ const About = ({ data }) => {
             <FlexContainer>
                 <StyledContent>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <SkillsContainer>
+                        {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+                    </SkillsContainer>
                 </StyledContent>
                 <AvatarLinkContainer>
                     <AvatarLink href={github} target="_blank" rel="noopener noreferrer nofollow">

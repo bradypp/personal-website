@@ -24,15 +24,6 @@ const mixins = {
         background-size: cover;
         background: #fff;
     `,
-    boxShadow: css`
-        box-shadow: 0 1rem 3rem -1.5rem var(--color-background-2);
-        transition: var(--transition);
-
-        &:hover,
-        &:focus {
-            box-shadow: 0 2rem 3rem -1.5rem var(--color-background-2);
-        }
-    `,
     placeholderColor: colorValue => css`
         ::-webkit-input-placeholder {
             color: ${colorValue} !important;
@@ -61,6 +52,15 @@ const mixins = {
             ${columnWidth || 'minmax(min-content, 1fr)'}
         );
         grid-gap: ${gridGap || '1.6rem'};
+    `,
+    boxShadow: css`
+        box-shadow: 0 0.5rem 3rem -1rem var(--color-grey-dark-3);
+        transition: var(--transition);
+
+        &:hover,
+        &:focus {
+            box-shadow: 0 0.8rem 3rem -1rem var(--color-grey-dark-3);
+        }
     `,
     containAndCenter: css`
         max-width: 1100px;
@@ -154,13 +154,25 @@ const mixins = {
                 opacity: 1;
                 width: 100%;
                 transform: translateY(0);
-                height: 2px;
+                height: 1.5px;
             }
 
             & > * {
                 color: var(--color-text-link) !important;
                 transition: var(--transition);
             }
+        }
+    `,
+    fancyList: css`
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 1rem;
+        font-size: var(--font-size-lg);
+        &:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
         }
     `,
 };
