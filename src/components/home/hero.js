@@ -9,7 +9,7 @@ import { mixins } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
 
-const margin = '8vh';
+const margin = '10vh';
 
 const Section = styled.section`
     display: flex;

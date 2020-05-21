@@ -63,7 +63,7 @@ const mixins = {
         }
     `,
     containAndCenter: css`
-        max-width: 1100px;
+        max-width: 110rem;
         margin: 0 auto;
         width: 100%;
     `,

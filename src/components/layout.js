@@ -6,8 +6,6 @@ import { Head, Footer, Header, Social, Email } from '@components';
 import { GlobalStyles, mixins, media } from '@styles';
 
 const Main = styled.main`
-    ${mixins.containAndCenter};
-    ${mixins.flexColumnCenter};
     padding: 0 var(--page-padding);
     width: 100%;
     min-height: 100vh;
@@ -16,8 +14,12 @@ const Main = styled.main`
         padding: 0 var(--page-padding-tablet);
     `}
     ${media.bp440`
-        padding: 0 $var(--page-padding-mobile);
+        padding: 0 var(--page-padding-mobile);
     `}
+`;
+const ContentContainer = styled.div`
+    ${mixins.containAndCenter};
+    ${mixins.flexColumnCenter};
 `;
 
 const Layout = ({ children, meta, location }) => {
@@ -30,7 +32,9 @@ const Layout = ({ children, meta, location }) => {
             <Social isHome={isHome} orientation="left" />
             <Email isHome={isHome} orientation="right" />
             <Header />
-            <Main>{children}</Main>
+            <Main>
+                <ContentContainer>{children}</ContentContainer>
+            </Main>
             <Footer />
         </div>
     );

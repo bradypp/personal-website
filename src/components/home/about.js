@@ -19,7 +19,7 @@ const FlexContainer = styled.div`
 `;
 const StyledContent = styled.div`
     width: 60%;
-    max-width: 58rem;
+    max-width: 60rem;
 
     a {
         ${mixins.inlineLink};
@@ -66,17 +66,19 @@ const AvatarLink = styled.a`
     }
 
     &:after {
-        border: 3px solid var(--color-primary);
-        top: 1.2rem;
-        left: 1.2rem;
+        border: 10px solid var(--color-primary);
+        top: 0.5rem;
+        left: 0.5rem;
         z-index: -1;
     }
 
     &:hover {
         background: transparent;
+        margin-top: -0.4rem;
+        margin-left: -2.4rem;
         &:after {
-            top: 0.7rem;
-            left: 0.7rem;
+            top: 0.9rem;
+            left: 0.9rem;
         }
         ${Avatar} {
             filter: none;
