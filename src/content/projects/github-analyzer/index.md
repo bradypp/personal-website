@@ -1,14 +1,10 @@
 ---
-sort: 1
-overline: 'Modern Web Application'
+sort: 2
+overline: 'Front-End Web Application'
 title: 'Github Analyzer'
 images:
     - image: './image-1.png'
-      alt: 'Front page'
-    - image: './image-2.png'
-      alt: 'Showing charts'
-    - image: './image-3.png'
-      alt: 'Showing repos'
+      alt: 'Profile analysis for Facebook'
 github: 'https://github.com/bradypp/github-analyzer'
 external: 'https://githubanalyzer.onrender.com/'
 tech:

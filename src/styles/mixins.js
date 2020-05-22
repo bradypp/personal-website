@@ -53,15 +53,6 @@ const mixins = {
         );
         grid-gap: ${gridGap || '1.6rem'};
     `,
-    boxShadow: css`
-        box-shadow: var(--box-shadow);
-        transition: var(--transition);
-
-        &:hover,
-        &:focus {
-            box-shadow: 0 1rem 3.2rem -1.2rem var(--color-box-shadow);
-        }
-    `,
     containAndCenter: css`
         max-width: 110rem;
         margin: 0 auto;

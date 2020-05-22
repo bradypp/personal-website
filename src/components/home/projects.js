@@ -49,7 +49,7 @@ const StyledDescription = styled.div`
     padding: 2.5rem;
     font-size: var(--font-size-lg);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-primary);
     z-index:5;
     background-color: var(--color-background-1);
     /* TODO
@@ -112,13 +112,13 @@ const LinksContainer = styled.div`
     }
 `;
 const StyledImg = styled(Img)`
-    ${mixins.boxShadow};
     width: 100%;
     max-width: 100%;
     vertical-align: middle;
     border-radius: var(--border-radius);
     position: relative;
     mix-blend-mode: multiply;
+    box-shadow: var(--box-shadow-primary);
     /* TODO
     ${media.tablet`
     object-fit: cover;
@@ -261,18 +261,9 @@ const Projects = ({ data }) => {
                                 href={external || github || '#'}
                                 target="_blank"
                                 rel="nofollow noopener noreferrer">
-                                {/* {images.map((imageObj, i) => (
-                                        <div>
-                                            <StyledImg
-                                                key={`${title}-image-${i}`}
-                                                fluid={imageObj.image.childImageSharp.fluid}
-                                                alt={imageObj.alt || `${title}-image-${i}`}
-                                            />
-                                        </div>
-                                    ))} */}
                                 <StyledImg
-                                    fluid={images[1].image.childImageSharp.fluid}
-                                    alt={images[1].alt || `${title}-image-${i}`}
+                                    fluid={images[0].image.childImageSharp.fluid}
+                                    alt={images[0].alt || `${title}-image-${i}`}
                                 />
                             </StyledImgContainer>
                         </ProjectContainer>

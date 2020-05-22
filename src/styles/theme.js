@@ -6,10 +6,10 @@ const theme = css`
         --color-secondary: #ffdc00;
 
         --color-white-1: #f4f5f7;
-        --color-white-2: #e2e4e9;
-        --color-white-3: #d5d7dc;
-
-        --color-box-shadow: #747a8b;
+        --color-white-2: #f0f1f4;
+        --color-white-3: #e2e4e9;
+        --color-white-4: #d3d6de;
+        --color-white-5: #c5c9d3;
 
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
@@ -34,6 +34,8 @@ const theme = css`
 
         --color-side: var(--color-grey-dark-2);
         --color-border: var(--color-grey-dark-2);
+
+        --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 
         --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,
             monospace;
@@ -64,7 +66,6 @@ const theme = css`
         --easing: cubic-bezier(0.3, 0, 0.4, 1);
 
         --border-radius: 3px;
-        --box-shadow: 0 0.5rem 3rem -1rem var(--color-box-shadow);
 
         --hamburger-width: 30px;
         --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;

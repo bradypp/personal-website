@@ -63,7 +63,7 @@ export const pageQuery = graphql`
                         skills
                         avatar {
                             childImageSharp {
-                                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#007bff" }) {
+                                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#ccc" }) {
                                     ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
@@ -75,7 +75,7 @@ export const pageQuery = graphql`
         }
         projects: allMarkdownRemark(
             filter: { fileAbsolutePath: { regex: "/projects/" } }
-            sort: { fields: [frontmatter___sort], order: DESC }
+            sort: { fields: [frontmatter___sort], order: ASC }
         ) {
             edges {
                 node {
@@ -85,12 +85,7 @@ export const pageQuery = graphql`
                         images {
                             image {
                                 childImageSharp {
-                                    fluid(
-                                        maxWidth: 500
-                                        quality: 90
-                                        cropFocus: CENTER
-                                        traceSVG: { color: "#007bff" }
-                                    ) {
+                                    fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#ccc" }) {
                                         ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                     }
                                 }

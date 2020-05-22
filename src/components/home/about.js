@@ -39,52 +39,11 @@ const Avatar = styled(Img)`
     transition: var(--transition);
 `;
 const AvatarLink = styled.a`
-    ${mixins.boxShadow};
     width: 100%;
     position: relative;
     border-radius: 50%;
     margin-left: -2rem;
-/* 
-    &:before,
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: var(--border-radius);
-        transition: var(--transition);
-    }
-
-    &:before {
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: var(--color-background-1);
-        mix-blend-mode: screen;
-    }
-
-    &:after {
-        border: 10px solid var(--color-primary);
-        top: 0.5rem;
-        left: 0.5rem;
-        z-index: -1;
-    } */
-
-    /* &:hover {
-        background: transparent;
-        margin-top: -0.4rem;
-        margin-left: -2.4rem;
-        &:after {
-            top: 0.9rem;
-            left: 0.9rem;
-        }
-        ${Avatar} {
-            filter: none;
-            mix-blend-mode: normal;
-        }
-    } */
+    box-shadow: var(--box-shadow-primary);
 `;
 const SkillsContainer = styled.ul`
     display: grid;

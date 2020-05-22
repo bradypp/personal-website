@@ -22,12 +22,16 @@ module.exports = {
             url: '', // TODO
         },
         {
+            name: 'Twitter',
+            url: 'https://twitter.com/bradypp',
+        },
+        {
             name: 'Codepen',
             url: '', // TODO
         },
         {
-            name: 'Twitter',
-            url: 'https://twitter.com/bradypp',
+            name: 'Devto',
+            url: '', // TODO
         },
     ],
     navLinks: [

@@ -49,9 +49,9 @@ const StyledLink = styled(OutboundLink)`
 const Social = ({ isHome, ...otherProps }) => (
     <Side isHome={isHome} {...otherProps}>
         <StyledList>
-            <StyledLink variant={null} href={`mailto:${email}`}>
+            {/* <StyledLink variant={null} href={`mailto:${email}`}>
                 <Icon name="Email" />
-            </StyledLink>
+            </StyledLink> */}
             {socialMedia &&
                 socialMedia.map(({ url, name }, i) => (
                     // eslint-disable-next-line react/no-array-index-key
