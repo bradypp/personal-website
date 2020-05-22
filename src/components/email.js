@@ -34,8 +34,7 @@ const StyledLink = styled(OutboundLink)`
     color: var(--color-side);
     transition: var(--transition);
 
-    &:hover,
-    &:focus {
+    &:hover {
         transform: translateY(-0.3rem);
         color: var(--color-primary);
     }

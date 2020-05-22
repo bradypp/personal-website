@@ -11,8 +11,8 @@ const SideContainer = styled.div`
     width: 4rem;
     position: fixed;
     bottom: 0;
-    left: ${props => (props.orientation === 'left' ? '4rem' : 'auto')};
-    right: ${props => (props.orientation === 'left' ? 'auto' : '4rem')};
+    left: ${props => (props.orientation === 'left' ? '3rem' : 'auto')};
+    right: ${props => (props.orientation === 'left' ? 'auto' : '3rem')};
     z-index: var(--z-index-side);
     color: var(--color-text-primary-2);
     ${media.bp1280`right: 2.5rem;`};

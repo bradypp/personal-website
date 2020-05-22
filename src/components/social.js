@@ -41,8 +41,7 @@ const StyledLink = styled(OutboundLink)`
         color: var(--color-side);
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
         transform: translateY(-0.3rem);
         svg {
             transition: var(--transition);
@@ -68,6 +67,11 @@ const Social = ({ isHome, ...otherProps }) => (
                         </StyledLink>
                     </li>
                 ))}
+            <li>
+                <StyledLink variant={null} href="#">
+                    <Icon name="CV" className="social__cv-icon" />
+                </StyledLink>
+            </li>
         </List>
     </Side>
 );

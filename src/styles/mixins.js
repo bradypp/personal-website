@@ -135,9 +135,7 @@ const mixins = {
             transform: translateY(-0.5rem);
         }
 
-        &:hover,
-        &:focus,
-        &:active {
+        &:hover {
             color: var(--color-text-link);
             outline: 0;
 

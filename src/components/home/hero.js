@@ -49,8 +49,7 @@ const Name = styled.a`
         transition: var(--transition);
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
         color: var(--color-text-secondary-1);
         &:after {
             bottom: 0.1em;

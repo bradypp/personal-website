@@ -50,6 +50,7 @@
     "uuid": "^8.0.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^5.4.0",
     "env-cmd": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",

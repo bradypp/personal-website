@@ -4,6 +4,7 @@ import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
 import { BsDiamond } from 'react-icons/bs';
 
+import IconCV from './cv';
 import IconCodepen from './codepen';
 import IconExternal from './external';
 import IconFolder from './folder';
@@ -17,6 +18,8 @@ import IconSun from './sun';
 
 const Icon = ({ name }) => {
     switch (name) {
+        case 'CV':
+            return <IconCV />;
         case 'Diamond':
             return <BsDiamond />;
         case 'Medium':

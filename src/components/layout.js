@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Head, Footer, Header, Social, Email } from '@components';
+import { Head, Footer, Header, Social } from '@components';
 import { GlobalStyles, mixins, media } from '@styles';
 
 const Main = styled.main`
@@ -30,7 +30,6 @@ const Layout = ({ children, meta, location }) => {
             <Head meta={meta} />
             <GlobalStyles />
             <Social isHome={isHome} orientation="left" />
-            {/* <Email isHome={isHome} orientation="right" /> */}
             <Header />
             <Main>
                 <ContentContainer>{children}</ContentContainer>

@@ -100,8 +100,7 @@ const LinksContainer = styled.div`
             height: 2.2rem;
         }
 
-        &:hover,
-        &:focus {
+        &:hover {
             svg {
                 transition: var(--transition);
                 color: var(--color-primary);
