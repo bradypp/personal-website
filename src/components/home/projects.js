@@ -57,9 +57,6 @@ const StyledDescription = styled.div`
     background-color: transparent;
     padding: 20px 0;
     box-shadow: none;
-    &:hover {
-      box-shadow: none;
-    }
   `}; */
     p {
         margin: 0;
@@ -103,7 +100,8 @@ const LinksContainer = styled.div`
             height: 2.2rem;
         }
 
-        &:hover {
+        &:hover,
+        &:focus {
             svg {
                 transition: var(--transition);
                 color: var(--color-primary);

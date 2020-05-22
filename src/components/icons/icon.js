@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
+import { BsDiamond } from 'react-icons/bs';
 
 import IconCodepen from './codepen';
 import IconExternal from './external';
@@ -16,6 +17,8 @@ import IconSun from './sun';
 
 const Icon = ({ name }) => {
     switch (name) {
+        case 'Diamond':
+            return <BsDiamond />;
         case 'Medium':
             return <FaMediumM />;
         case 'Devto':

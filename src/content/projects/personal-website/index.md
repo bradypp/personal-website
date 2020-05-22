@@ -11,6 +11,7 @@ tech:
     - React
     - Gatsby.js
     - Styled Components
+    - Markdown
 ---
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure vel nam repellat, libero accusantium enim labore voluptas dolores consectetur consequatur architecto laboriosam, provident earum omnis. Corporis exercitationem facere illum ratione.

@@ -154,18 +154,6 @@ const mixins = {
             }
         }
     `,
-    fancyList: css`
-        position: relative;
-        padding-left: 3rem;
-        margin-bottom: 1rem;
-        font-size: var(--font-size-lg);
-        &:before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--color-primary);
-        }
-    `,
     homeSection: css`
         width: 100%;
         margin-bottom: 10rem;

@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading } from '@components';
+import { Heading, Icon } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
@@ -48,13 +48,30 @@ const AvatarLink = styled.a`
 const SkillsContainer = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 2rem;
     overflow: hidden;
     padding: 0;
     margin: 2rem 0 0 0;
     list-style: none;
 
     li {
-        ${mixins.fancyList}
+        display: flex;
+        align-items: center;
+
+        svg {
+            color: var(--color-primary);
+            min-width: 1rem;
+            min-height: 1rem;
+            width: 1rem;
+            height: 1rem;
+            margin: 0 1.8rem 0.5rem 0;
+        }
+
+        span {
+            height: min-content;
+            line-height: 1;
+            font-size: var(--font-size-lg);
+        }
     }
 `;
 
@@ -75,7 +92,13 @@ const About = ({ data }) => {
                 <StyledContent>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
                     <SkillsContainer>
-                        {skills && skills.map(skill => <li key={uuidv4()}>{skill}</li>)}
+                        {skills &&
+                            skills.map(skill => (
+                                <li key={uuidv4()}>
+                                    <Icon name="Diamond" />
+                                    <span>{skill}</span>
+                                </li>
+                            ))}
                     </SkillsContainer>
                 </StyledContent>
                 <AvatarLinkContainer>
