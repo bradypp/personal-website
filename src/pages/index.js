@@ -63,8 +63,8 @@ export const pageQuery = graphql`
                         skills
                         avatar {
                             childImageSharp {
-                                fluid(maxWidth: 700, quality: 90) {
-                                    ...GatsbyImageSharpFluid_withWebp
+                                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#007bff" }) {
+                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
                         }
@@ -85,8 +85,13 @@ export const pageQuery = graphql`
                         images {
                             image {
                                 childImageSharp {
-                                    fluid(maxWidth: 700, quality: 90, cropFocus: CENTER) {
-                                        ...GatsbyImageSharpFluid_withWebp
+                                    fluid(
+                                        maxWidth: 500
+                                        quality: 90
+                                        cropFocus: CENTER
+                                        traceSVG: { color: "#007bff" }
+                                    ) {
+                                        ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                     }
                                 }
                             }

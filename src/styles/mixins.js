@@ -176,8 +176,8 @@ const mixins = {
         }
     `,
     homeSection: css`
-        padding: 12rem 0;
         width: 100%;
+        margin-bottom: 10rem;
     `,
 };
 

@@ -19,11 +19,11 @@ module.exports = {
         },
         {
             name: 'Linkedin',
-            url: '',
+            url: '', // TODO
         },
         {
             name: 'Codepen',
-            url: '',
+            url: '', // TODO
         },
         {
             name: 'Twitter',

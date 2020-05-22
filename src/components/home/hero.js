@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
 
-import { twitter } from '@config';
+import { github } from '@config';
 import { mixins } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
@@ -18,7 +18,7 @@ const HeroContainer = styled.section`
     align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
-    padding-bottom: 0;
+    margin: 0;
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -123,7 +123,7 @@ const Hero = ({ data }) => {
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
                 {`${title} `}{' '}
-                <Name href={twitter} target="_blank" rel="noopener noreferrer nofollow">
+                <Name href={github} target="_blank" rel="noopener noreferrer nofollow">
                     {name}
                 </Name>
             </Title>

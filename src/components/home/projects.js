@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { scrollRevealConfig } from '@config';
 import { scrollReveal } from '@utils';
-import { Icon, OutboundLink, Heading, ImageTransition } from '@components';
+import { Icon, OutboundLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
 const tagMargin = '1.5rem';
@@ -261,9 +261,18 @@ const Projects = ({ data }) => {
                                 href={external || github || '#'}
                                 target="_blank"
                                 rel="nofollow noopener noreferrer">
+                                {/* {images.map((imageObj, i) => (
+                                        <div>
+                                            <StyledImg
+                                                key={`${title}-image-${i}`}
+                                                fluid={imageObj.image.childImageSharp.fluid}
+                                                alt={imageObj.alt || `${title}-image-${i}`}
+                                            />
+                                        </div>
+                                    ))} */}
                                 <StyledImg
-                                    fluid={images[2].image.childImageSharp.fluid}
-                                    alt={images[2].alt}
+                                    fluid={images[1].image.childImageSharp.fluid}
+                                    alt={images[1].alt || `${title}-image-${i}`}
                                 />
                             </StyledImgContainer>
                         </ProjectContainer>

@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import { scrollReveal } from '@utils';
@@ -13,7 +13,6 @@ const AboutContainer = styled.section`
     ${mixins.homeSection}
     position: relative;
     height: 70rem;
-    margin-top: 0;
 `;
 const FlexContainer = styled.div`
     ${mixins.flexBetween};
@@ -36,7 +35,6 @@ const AvatarLinkContainer = styled.div`
 const Avatar = styled(Img)`
     position: relative;
     mix-blend-mode: multiply;
-    /* filter: grayscale(100%) contrast(115%); */
     border-radius: 50%;
     transition: var(--transition);
 `;
@@ -107,7 +105,9 @@ const About = ({ data }) => {
     const { frontmatter, html } = data[0].node;
     const { title, avatar, skills } = frontmatter;
 
-    useEffect(() => scrollReveal.reveal(revealContainer.current, scrollRevealConfig()), []);
+    useEffect(() => {
+        scrollReveal.reveal(revealContainer.current, scrollRevealConfig());
+    }, []);
 
     return (
         <AboutContainer id="about" ref={revealContainer}>
