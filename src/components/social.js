@@ -4,15 +4,16 @@ import styled from 'styled-components';
 
 import { Side, OutboundLink, Icon } from '@components';
 import { socialMedia, email } from '@config';
+import { mixins } from '@styles';
 
-const StyledList = styled.ul`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+const List = styled.ul`
+    ${mixins.flexColumnCenter}
+    height: 100vh;
     padding: 0;
     margin: 0;
     list-style: none;
 
+    &:before,
     &:after {
         content: '';
         display: block;
@@ -20,6 +21,10 @@ const StyledList = styled.ul`
         height: 9rem;
         margin: 0 auto;
         background-color: var(--color-side);
+    }
+
+    li:first-of-type {
+        margin-top: 2rem;
     }
 
     li:last-of-type {
@@ -40,7 +45,7 @@ const StyledLink = styled(OutboundLink)`
     &:focus {
         transform: translateY(-0.3rem);
         svg {
-            /* transition: var(--transition); */
+            transition: var(--transition);
             color: var(--color-primary);
         }
     }
@@ -48,10 +53,12 @@ const StyledLink = styled(OutboundLink)`
 
 const Social = ({ isHome, ...otherProps }) => (
     <Side isHome={isHome} {...otherProps}>
-        <StyledList>
-            {/* <StyledLink variant={null} href={`mailto:${email}`}>
-                <Icon name="Email" />
-            </StyledLink> */}
+        <List>
+            <li>
+                <StyledLink variant={null} href={`mailto:${email}`}>
+                    <Icon name="Email" />
+                </StyledLink>
+            </li>
             {socialMedia &&
                 socialMedia.map(({ url, name }, i) => (
                     // eslint-disable-next-line react/no-array-index-key
@@ -61,7 +68,7 @@ const Social = ({ isHome, ...otherProps }) => (
                         </StyledLink>
                     </li>
                 ))}
-        </StyledList>
+        </List>
     </Side>
 );
 

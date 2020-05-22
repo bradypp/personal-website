@@ -6,10 +6,8 @@ const theme = css`
         --color-secondary: #ffdc00;
 
         --color-white-1: #f4f5f7;
-        --color-white-2: #f0f1f4;
-        --color-white-3: #e2e4e9;
-        --color-white-4: #d3d6de;
-        --color-white-5: #c5c9d3;
+        --color-white-2: #e2e4e9;
+        --color-white-3: #d3d6de;
 
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
