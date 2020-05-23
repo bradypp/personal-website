@@ -8,13 +8,13 @@ const IconCV = () => (
             x={26.303}
             style={{
                 lineHeight: 1.25,
-                InkscapeFontSpecification: "'Fira Code, Semi-Bold'",
+                InkscapeFontSpecification: "'Fira Code, Bold'",
                 fontVariantLigatures: 'normal',
                 fontVariantCaps: 'normal',
                 fontVariantNumeric: 'normal',
                 fontVariantEastAsian: 'normal',
             }}
-            fontWeight={600}
+            fontWeight={700}
             fontSize={33.285}
             fontFamily="Fira Code"
             letterSpacing={0}
@@ -23,14 +23,15 @@ const IconCV = () => (
             transform="translate(-27.822 -28.265)">
             <tspan
                 style={{
-                    InkscapeFontSpecification: "'Fira Code, Semi-Bold'",
+                    InkscapeFontSpecification: "'Fira Code, Bold'",
                     fontVariantLigatures: 'normal',
                     fontVariantCaps: 'normal',
                     fontVariantNumeric: 'normal',
                     fontVariantEastAsian: 'normal',
                 }}
                 y={52.384}
-                x={26.303}>
+                x={26.303}
+                fontSize={33.284}>
                 CV
             </tspan>
         </text>

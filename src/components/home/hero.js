@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
 
-import { github } from '@config';
+import { twitter } from '@config';
 import { mixins } from '@styles';
-import { CustomLink } from '@components';
+import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
 
 const margin = '10vh';
@@ -29,7 +29,7 @@ const Title = styled.h2`
     font-weight: 300;
     margin: 0;
 `;
-const Name = styled.a`
+const Name = styled.div`
     font-weight: 500;
     position: relative;
     transition: var(--transition);
@@ -123,9 +123,9 @@ const Hero = ({ data }) => {
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
                 {`${title} `}{' '}
-                <Name href={github} target="_blank" rel="noopener noreferrer nofollow">
-                    {name}
-                </Name>
+                <OutboundLink variant={null}>
+                    <Name>{name}</Name>
+                </OutboundLink>
             </Title>
             <WaveEmojiContainer
                 isAnimated={isWaveAnimated}
@@ -136,9 +136,13 @@ const Hero = ({ data }) => {
         </TitleContainer>,
         <Subtitle style={{ transitionDelay: '200ms' }}>{subtitle}</Subtitle>,
         <div style={{ transitionDelay: '300ms' }}>
-            <CustomLink variant="primary-button" to="/#">
+            <Button
+                as="link"
+                variant="primary-button"
+                to="/#contact"
+                style={{ transitionDelay: '300ms' }}>
                 {contact}
-            </CustomLink>
+            </Button>
         </div>,
     ];
     return (

@@ -8,10 +8,10 @@ import { scrollReveal } from '@utils';
 import { Icon, OutboundLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
-const tagMargin = '1.5rem';
+const tagMargin = '1.6rem';
 
 const ProjectsContainer = styled.section`
-    ${mixins.homeSection}
+    ${mixins.homeSection};
     ${mixins.flexCenter};
     flex-direction: column;
     align-items: flex-start;
@@ -123,7 +123,7 @@ const StyledImg = styled(Img)`
     height: 100%;
   `}; */
 `;
-const StyledImgContainer = styled.a`
+const StyledImgContainer = styled.div`
     grid-column: 2 / -1;
     grid-row: 1 / -1;
     position: relative;
@@ -254,15 +254,14 @@ const Projects = ({ data }) => {
                                     )}
                                 </LinksContainer>
                             </ContentContainer>
-                            <StyledImgContainer
-                                href={external || github || '#'}
-                                target="_blank"
-                                rel="nofollow noopener noreferrer">
-                                <StyledImg
-                                    fluid={images[0].image.childImageSharp.fluid}
-                                    alt={images[0].alt || `${title}-image-${i}`}
-                                />
-                            </StyledImgContainer>
+                            <OutboundLink href={external || github || '#'}>
+                                <StyledImgContainer>
+                                    <StyledImg
+                                        fluid={images[0].image.childImageSharp.fluid}
+                                        alt={images[0].alt || `${title}-image-${i}`}
+                                    />
+                                </StyledImgContainer>
+                            </OutboundLink>
                         </ProjectContainer>
                     );
                 })}

@@ -67,11 +67,6 @@ const Social = ({ isHome, ...otherProps }) => (
                         </StyledLink>
                     </li>
                 ))}
-            <li>
-                <StyledLink variant={null} href="#">
-                    <Icon name="CV" className="social__cv-icon" />
-                </StyledLink>
-            </li>
         </List>
     </Side>
 );

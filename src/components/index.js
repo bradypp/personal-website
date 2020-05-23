@@ -2,10 +2,14 @@
 export { default as Hero } from './home/hero';
 export { default as About } from './home/about';
 export { default as Projects } from './home/projects';
+export { default as Contact } from './home/contact';
 
 // Other Components
+export { default as Form } from './form/form';
+export { default as Input } from './form/input';
+export { default as TextArea } from './form/textArea';
 export { default as Icon } from './icons/icon';
-export { default as CustomLink } from './customLink';
+export { default as Button } from './button';
 export { default as OutboundLink } from './outboundLink';
 export { default as Side } from './side';
 export { default as Social } from './social';

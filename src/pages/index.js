@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, Hero, About, Projects } from '@components';
+import { Layout, Hero, About, Projects, Contact } from '@components';
 
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
@@ -23,6 +23,7 @@ const IndexPage = ({ location, data }) => {
             <Hero data={data.hero.edges} />
             <About data={data.about.edges} />
             <Projects data={data.projects.edges} />
+            <Contact data={data.contact.edges} />
         </Layout>
     );
 };
@@ -95,6 +96,17 @@ export const pageQuery = graphql`
                         tech
                         github
                         external
+                    }
+                    html
+                }
+            }
+        }
+        contact: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/contact/" } }) {
+            edges {
+                node {
+                    frontmatter {
+                        title
+                        emailText
                     }
                     html
                 }

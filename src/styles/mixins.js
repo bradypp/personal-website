@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
 import Color from 'color';
 
+import media from './media';
+
 const mixins = {
     darken: (colorValue, amount = '0.05') => Color(colorValue).darken(amount).string(),
     lighten: (colorValue, amount = '0.05') => Color(colorValue).lighten(amount).string(),
@@ -155,6 +157,48 @@ const mixins = {
     homeSection: css`
         width: 100%;
         margin-bottom: 10rem;
+
+        h3 {
+            &:after {
+                width: 0;
+                transition: all 1s var(--ease-in-expo);
+            }
+        }
+        &:hover {
+            transition: var(--transition);
+            h3 {
+                &:after {
+                    transition: all 1s var(--ease-in-expo);
+                    width: 30%;
+                    ${media.bp800`width: 100%;`};
+                }
+            }
+        }
+    `,
+    formField: css`
+        border-radius: var(--border-radius);
+        color: var(--color-text-primary-1);
+        background-color: var(--color-background-2);
+        border: 1.5px solid var(--color-background-4);
+
+        &:hover {
+            border: 1.5px solid var(--color-background-5);
+        }
+
+        &:focus,
+        &:active {
+            border: 1.5px solid var(--color-primary);
+        }
+
+        ${props =>
+            props.invalid &&
+            css`
+                &,
+                &:invalid,
+                &:focus {
+                    border: 1.5px solid var(--color-danger) !important;
+                }
+            `};
     `,
 };
 

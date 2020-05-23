@@ -172,13 +172,12 @@ module.exports = {
                 },
             },
         },
-        // TODO: uncomment and add id to config
-        // {
-        //   resolve: `gatsby-plugin-google-analytics`,
-        //   options: {
-        //     trackingId: config.googleAnalyticsID,
-        //     cookieExpires: 63072000, // two years
-        //   },
-        // },
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                trackingId: config.googleAnalyticsID,
+                cookieExpires: 63072000,
+            },
+        },
     ],
 };

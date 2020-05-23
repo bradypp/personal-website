@@ -1,69 +1,116 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import * as Yup from 'yup';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, email } from '@config';
-import { mixins, media, Section, Heading } from '@styles';
+import { Heading, OutboundLink, Form } from '@components';
+import { mixins } from '@styles';
 
-const StyledContainer = styled(Section)`
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 100px;
-    a {
-        ${mixins.inlineLink};
+const ContactContainer = styled.section`
+    ${mixins.homeSection};
+    ${mixins.flexCenter};
+    flex-direction: column;
+    align-items: flex-start;
+`;
+const HTMLContainer = styled.div`
+    & > *:last-child {
+        margin-bottom: 2.4rem;
     }
 `;
-const StyledHeading = styled(Heading)`
-    display: block;
-    color: ${colors.green};
-    font-size: ${fontSizes.md};
-    font-family: ${fonts.SFMono};
-    font-weight: normal;
-    margin-bottom: 20px;
-    justify-content: center;
-    ${media.desktop`font-size: ${fontSizes.sm};`};
-    &:before {
-        bottom: 0;
-        font-size: ${fontSizes.sm};
-        ${media.desktop`font-size: ${fontSizes.smish};`};
-    }
-    &:after {
-        display: none;
-    }
+const FlexContainer = styled.div`
+    ${mixins.flexCenter};
+    width: 100%;
 `;
-const StyledTitle = styled.h4`
-    margin: 0 0 20px;
-    font-size: 60px;
-    ${media.desktop`font-size: 50px;`};
-    ${media.tablet`font-size: 40px;`};
+const FormContainer = styled.div`
+    flex: 3;
 `;
-const StyledEmailLink = styled.a`
-    ${mixins.bigButton};
-    margin-top: 50px;
+const Socials = styled.div`
+    flex: 2;
+    margin-bottom: 5%;
+`;
+const MiddleText = styled.span`
+    padding: 12rem;
+    font-weight: 500;
+    color: var(--color-text-primary-2);
+    margin-bottom: 5%;
 `;
 
 const Contact = ({ data }) => {
     const { frontmatter, html } = data[0].node;
-    const { title } = frontmatter;
+    const { title, emailText } = frontmatter;
 
-    const $contactRef = useRef(null);
+    const $contactRef = useRef();
 
     useEffect(() => {
         scrollReveal.reveal($contactRef.current, scrollRevealConfig());
     }, []);
 
+    const validation = Yup.object().shape({
+        name: Yup.string()
+            .trim()
+            .min(2, 'Name is too short!')
+            .max(50, 'Name is too long!')
+            .required('Name is required'),
+        email: Yup.string()
+            .trim()
+            .email('Please enter a valid email address')
+            .required('Email is required')
+            .lowercase(),
+        subject: Yup.string().trim().required('Subject is required'),
+        message: Yup.string()
+            .trim()
+            .email('Please enter a valid email address')
+            .required('Message is required')
+            .lowercase(),
+    });
+
     return (
-        <StyledContainer id="contact" ref={$contactRef}>
-            <StyledTitle>{title}</StyledTitle>
-            <div dangerouslySetInnerHTML={{ __html: html }} />
-            <StyledEmailLink
-                href={`mailto:${email}`}
-                target="_blank"
-                rel="nofollow noopener noreferrer">
-                Say Hello
-            </StyledEmailLink>
-        </StyledContainer>
+        <ContactContainer id="contact" ref={$contactRef}>
+            <Heading>{title}</Heading>
+            <HTMLContainer dangerouslySetInnerHTML={{ __html: html }} />
+            <FlexContainer>
+                <FormContainer>
+                    <Form
+                        validateOnChange={false}
+                        initialValues={{
+                            name: '',
+                            email: '',
+                            subject: '',
+                            message: '',
+                        }}
+                        validationSchema={validation}
+                        onSubmit={async (values, form) => {
+                            // Done using Netlify lambda functions
+                            // See https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
+                            try {
+                                await fetch('./netlify/functions/sendEmail', {
+                                    method: 'POST',
+                                    body: JSON.stringify(values),
+                                });
+                                form.resetForm();
+                            } catch (err) {
+                                console.error(err);
+                            }
+                        }}>
+                        <Form.Element>
+                            <Form.Field.Input label="Name *" name="name" />
+                            <Form.Field.Input label="Email *" name="email" />
+                            <Form.Field.Input label="Subject *" name="subject" />
+                            <Form.Field.TextArea label="Message *" name="message" />
+                            <Form.Buttons withReset />
+                        </Form.Element>
+                    </Form>
+                </FormContainer>
+                <MiddleText>or</MiddleText>
+                <Socials>
+                    <OutboundLink href={`mailto:${email}`} variant="primary-button">
+                        {emailText}
+                    </OutboundLink>
+                </Socials>
+            </FlexContainer>
+        </ContactContainer>
     );
 };
 

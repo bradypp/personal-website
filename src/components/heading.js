@@ -15,14 +15,14 @@ const Heading = styled.h3`
         content: '';
         display: block;
         height: 1px;
-        width: 30rem;
         background-color: var(--color-background-3);
         position: relative;
         top: -0.5rem;
         margin-left: 2rem;
+        /* width: 30rem; 
         ${media.bp2400`width: 20rem`};
         ${media.bp1040`width: 100%;`};
-        ${media.bp600`margin-left: 1rem;`};
+        ${media.bp600`margin-left: 1rem;`}; */
     }
 `;
 

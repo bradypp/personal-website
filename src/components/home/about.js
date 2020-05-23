@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { useSpring, animated } from 'react-spring';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, Icon } from '@components';
+import { Heading, Icon, OutboundLink } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
@@ -26,28 +27,29 @@ const StyledContent = styled.div`
         ${mixins.inlineLink};
     }
 `;
-const AvatarLinkContainer = styled.div`
+const AvatarContainer = styled.div`
     position: relative;
     width: 40%;
-    max-width: 34rem;
-    margin-left: 6rem;
+    max-width: 37rem;
+    border-radius: 50%;
+    margin-left: -4rem;
 `;
 const Avatar = styled(Img)`
     position: relative;
     mix-blend-mode: multiply;
     border-radius: 50%;
     transition: var(--transition);
-`;
-const AvatarLink = styled.a`
-    width: 100%;
-    position: relative;
-    border-radius: 50%;
-    margin-left: -2rem;
     box-shadow: var(--box-shadow-primary);
+    filter: grayscale(100%) contrast(130%);
+
+    &:hover {
+        filter: grayscale(0) contrast(110%);
+    }
 `;
 const SkillsContainer = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1.6rem;
     grid-row-gap: 2rem;
     overflow: hidden;
     padding: 0;
@@ -78,6 +80,13 @@ const SkillsContainer = styled.ul`
 const About = ({ data }) => {
     const revealContainer = useRef();
 
+    const [animateProps, setPosition] = useSpring(() => ({
+        xy: [0, 0],
+        config: { mass: 10, tension: 550, friction: 140 },
+    }));
+    const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
+    const transition = (x, y) => `translate3d(${x / 25}px,${y / 25}px,0)`;
+
     const { frontmatter, html } = data[0].node;
     const { title, avatar, skills } = frontmatter;
 
@@ -86,7 +95,10 @@ const About = ({ data }) => {
     }, []);
 
     return (
-        <AboutContainer id="about" ref={revealContainer}>
+        <AboutContainer
+            id="about"
+            ref={revealContainer}
+            onMouseMove={({ clientX: x, clientY: y }) => setPosition({ xy: calc(x, y) })}>
             <Heading>{title}</Heading>
             <FlexContainer>
                 <StyledContent>
@@ -101,11 +113,13 @@ const About = ({ data }) => {
                             ))}
                     </SkillsContainer>
                 </StyledContent>
-                <AvatarLinkContainer>
-                    <AvatarLink href={github} target="_blank" rel="noopener noreferrer nofollow">
-                        <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-                    </AvatarLink>
-                </AvatarLinkContainer>
+                <AvatarContainer>
+                    <animated.div style={{ transform: animateProps.xy.interpolate(transition) }}>
+                        <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
+                            <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+                        </OutboundLink>
+                    </animated.div>
+                </AvatarContainer>
             </FlexContainer>
         </AboutContainer>
     );
