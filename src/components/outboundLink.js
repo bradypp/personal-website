@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { OutboundLink as GatsbyOutboundLink } from 'gatsby-plugin-google-analytics';
 
-import { mixins } from '@styles';
+import { buttonStyles } from '@styles';
 
-const StyledOutboundLink = styled.a`
-    ${props => props.variant === 'inline' && mixins.inlineLink}
+const StyledOutboundLink = styled(GatsbyOutboundLink)`
+    ${buttonStyles}
 `;
 
-const OutboundLink = ({ children, className, href, variant, ...props }) => {
+const OutboundLink = ({ children, href, ...props }) => {
     const link = href && href.startsWith('http') ? href : `//${href}`;
     return (
-        <StyledOutboundLink className={className} href={link} {...props}>
+        <StyledOutboundLink href={link} {...props}>
             {children}
         </StyledOutboundLink>
     );
@@ -23,14 +24,14 @@ OutboundLink.propTypes = {
     className: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
-    variant: PropTypes.oneOf(['inline']),
+    variant: PropTypes.oneOf(['inline-link', 'primary-button']),
 };
 
 OutboundLink.defaultProps = {
     className: undefined,
     target: '_blank',
     rel: 'noopener noreferrer nofollow',
-    variant: 'inline',
+    variant: 'inline-link',
 };
 
 export default OutboundLink;
