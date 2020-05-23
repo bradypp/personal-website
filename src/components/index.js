@@ -19,3 +19,4 @@ export { default as Header } from './header';
 export { default as Footer } from './footer';
 export { default as Layout } from './layout';
 export { default as Heading } from './heading';
+export { default as Menu } from './menu';

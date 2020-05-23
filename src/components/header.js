@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { js, constants } from '@utils';
@@ -60,6 +60,7 @@ const Hamburger = styled.div`
     background-color: transparent;
     display: none;
     ${media.bp800`display: flex;`};
+    z-index: calc(var(--z-index-header) + 1);
 `;
 const HamburgerBox = styled.div`
     position: relative;
@@ -253,6 +254,7 @@ class Header extends Component {
                         </TransitionGroup>
                     </LinksList>
                 </NavContainer>
+                <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
             </HeaderContainer>
         );
     }
@@ -263,126 +265,3 @@ Header.propTypes = {
 };
 
 export default Header;
-
-// const Header = ({ isHome }) => {
-//     const [isMounted, setIsMounted] = useState(!isHome);
-//     const [isMenuOpen, setIsMenuOpen] = useState(false);
-//     const [scrollDirection, setScrollDirection] = useState('none');
-//     const [lastDistanceFromTop, setLastDistanceFromTop] = useState(0);
-//     const distanceFromTopRequired = 5;
-//     const timeout = isHome ? 3000 : 0;
-//     const fadeClass = isHome ? 'fade' : '';
-//     const fadeDownClass = isHome ? 'fadedown' : '';
-
-//     const toggleMenu = () => setIsMenuOpen(isMenuOpen);
-
-//     const handleScroll = () => {
-//         const distanceFromTop = window.scrollY;
-//         // console.log({ distanceFromTop, lastDistanceFromTop, distanceFromTopRequired });
-
-//         if (
-//             !isMounted ||
-//             Math.abs(lastDistanceFromTop - distanceFromTop) <= distanceFromTopRequired ||
-//             isMenuOpen
-//         ) {
-//             return;
-//         }
-
-//         if (distanceFromTop < distanceFromTopRequired) {
-//             setScrollDirection('none');
-//         }
-
-//         if (distanceFromTop > lastDistanceFromTop && distanceFromTop > navHeight) {
-//             if (scrollDirection !== 'down') {
-//                 setScrollDirection('down');
-//             }
-//         } else if (distanceFromTop + window.innerHeight < document.body.scrollHeight) {
-//             if (scrollDirection !== 'up') {
-//                 setScrollDirection('up');
-//             }
-//         }
-
-//         setLastDistanceFromTop(distanceFromTop);
-//     }
-
-//     const handleResize = () => {
-//         if (window.innerWidth > 800 && isMenuOpen) {
-//             toggleMenu();
-//         }
-//     };
-
-//     const handleKeydown = e => {
-//         if (isMenuOpen && e.keyCode === constants.keyCodes.ESCAPE) {
-//             toggleMenu();
-//         }
-//     };
-
-//     useEffect(() => {
-//         setTimeout(() => {
-//             setIsMounted(true);
-//             window.addEventListener('scroll', () => js.throttle(handleScroll(), 100));
-//             window.addEventListener('resize', () => js.throttle(handleResize(), 100));
-//             window.addEventListener('keydown', e => handleKeydown(e));
-//         }, 100);
-//         return () => {
-//             window.removeEventListener('scroll', () => handleScroll());
-//             window.removeEventListener('resize', () => handleResize());
-//             window.removeEventListener('keydown', e => handleKeydown(e));
-//         };
-//         // eslint-disable-next-line react-hooks/exhaustive-deps
-//     }, []);
-
-//     useEffect(() => {
-//         if (isMenuOpen) {
-//             document.body.classList.add('blur');
-//         } else {
-//             document.body.classList.remove('blur');
-//         }
-//         // eslint-disable-next-line react-hooks/exhaustive-deps
-//     }, [isMounted]);
-
-//     return (
-//         <HeaderContainer>
-//             <NavContainer>
-//                 <TransitionGroup component={null}>
-//                     {isMounted && (
-//                         <CSSTransition classNames={fadeClass} timeout={timeout}>
-//                             <Hamburger onClick={toggleMenu}>
-//                                 <HamburgerBox>
-//                                     <HamburgerContent isMenuOpen={isMenuOpen} />
-//                                 </HamburgerBox>
-//                             </Hamburger>
-//                         </CSSTransition>
-//                     )}
-//                 </TransitionGroup>
-
-//                 <LinksList>
-//                     <TransitionGroup component={null}>
-//                         {isMounted &&
-//                             navLinks &&
-//                             navLinks.map(({ url, name }, i) => (
-//                                 <CSSTransition
-//                                     key={`header-link-${i}`}
-//                                     classNames={fadeDownClass}
-//                                     timeout={timeout}>
-//                                     <ListItem
-//                                         key={i}
-//                                         style={{
-//                                             transitionDelay: `${isHome ? i * 100 : 0}ms`,
-//                                         }}>
-//                                         <StyledLink to={url}>{name}</StyledLink>
-//                                     </ListItem>
-//                                 </CSSTransition>
-//                             ))}
-//                     </TransitionGroup>
-//                 </LinksList>
-//             </NavContainer>
-//         </HeaderContainer>
-//     );
-// };
-
-// Header.propTypes = {
-//     isHome: PropTypes.bool.isRequired,
-// };
-
-// export default Header;

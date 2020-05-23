@@ -136,11 +136,7 @@ const Hero = ({ data }) => {
         </TitleContainer>,
         <Subtitle style={{ transitionDelay: '200ms' }}>{subtitle}</Subtitle>,
         <div style={{ transitionDelay: '300ms' }}>
-            <Button
-                as="link"
-                variant="primary-button"
-                to="/#contact"
-                style={{ transitionDelay: '300ms' }}>
+            <Button as="link" variant="primary-button" to="/#contact">
                 {contact}
             </Button>
         </div>,

@@ -3,6 +3,7 @@ import { css } from 'styled-components/macro';
 import { mixins } from '@styles';
 
 const commonStyles = css`
+    ${mixins.clickable}
     border-radius: var(--border-radius);
     font-size: var(--font-size-md);
     font-family: var(--fonts-mono);
@@ -43,10 +44,12 @@ const secondary = css`
 const empty = css`
     ${commonStyles}
     padding: 1.2rem 1.8rem;
+    border: 1px solid var(--color-background-1);
     background-color: var(--color-background-1);
 
     &:hover,
     &:active {
+        border: 1px solid var(--color-background-3);
         background-color: var(--color-background-3);
     }
 `;

@@ -73,7 +73,7 @@ Input.defaultProps = {
     type: 'text',
     icon: undefined,
     iconLocation: 'left',
-    height: 3.6,
+    height: 3.2,
     fontSize: undefined,
     invalid: false,
     onChange: () => {},
