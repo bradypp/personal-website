@@ -26,7 +26,7 @@ const sortByNewest = (items, sortField) =>
 
 const throttle = (func, wait = 100) => {
     let timer = null;
-    return function (...args) {
+    return (...args) => {
         if (timer === null) {
             timer = setTimeout(() => {
                 func.apply(this, args);

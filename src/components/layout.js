@@ -6,16 +6,9 @@ import { Head, Footer, Header, Social } from '@components';
 import { GlobalStyles, mixins, media } from '@styles';
 
 const Main = styled.main`
-    padding: 0 var(--page-padding);
     width: 100%;
     min-height: 100vh;
-
-    ${media.bp800`
-        padding: 0 var(--page-padding-tablet);
-    `}
-    ${media.bp440`
-        padding: 0 var(--page-padding-mobile);
-    `}
+    ${mixins.pagePadding}
 `;
 const ContentContainer = styled.div`
     ${mixins.containAndCenter};
@@ -30,9 +23,9 @@ const Layout = ({ children, meta, location }) => {
             <Head meta={meta} />
             <GlobalStyles />
             <Social isHome={isHome} orientation="left" />
-            <Header />
+            <Header isHome={isHome} />
             <Main>
-                <ContentContainer>{children}</ContentContainer>
+                <ContentContainer id="content">{children}</ContentContainer>
             </Main>
             <Footer />
         </div>

@@ -200,6 +200,15 @@ const mixins = {
                 }
             `};
     `,
+    pagePadding: css`
+        padding: 0 var(--page-padding);
+        ${media.bp800`
+            padding: 0 var(--page-padding-tablet);
+        `}
+        ${media.bp440`
+            padding: 0 var(--page-padding-mobile);
+        `}
+    `,
 };
 
 export default mixins;
