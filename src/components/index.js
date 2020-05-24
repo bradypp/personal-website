@@ -1,3 +1,5 @@
+export { default as App } from './app';
+
 // Home Page
 export { default as Hero } from './home/hero';
 export { default as About } from './home/about';

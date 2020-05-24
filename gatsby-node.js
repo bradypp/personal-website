@@ -78,6 +78,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                         test: /scrollreveal/,
                         use: loaders.null(),
                     },
+                    {
+                        test: /miniraf/,
+                        use: loaders.null(),
+                    },
                 ],
             },
         });
@@ -95,6 +99,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                 '@utils': path.resolve(__dirname, 'src/utils'),
                 '@hooks': path.resolve(__dirname, 'src/hooks'),
                 '@content': path.resolve(__dirname, 'src/content'),
+                '@context': path.resolve(__dirname, 'src/context'),
             },
         },
     });

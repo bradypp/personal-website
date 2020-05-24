@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-import media from './media';
+import media from '../media';
 import theme from './theme';
-import mixins from './mixins';
+import mixins from '../mixins';
 import fontFaces from './fonts';
 import normalizeStyles from './normalize-styles';
 import transitionStyles from './transition-styles';

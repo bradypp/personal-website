@@ -26,6 +26,7 @@ module.exports = {
                 // icon: `src/images/logo.png`, // TODO
             },
         },
+        //  IMPORTANT: this must be ahead of gatsby-plugin-manifest
         `gatsby-plugin-offline`,
         {
             resolve: `gatsby-source-filesystem`,

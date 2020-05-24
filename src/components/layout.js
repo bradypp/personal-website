@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Head, Footer, Header, Social } from '@components';
-import { GlobalStyles, mixins } from '@styles';
+import { mixins } from '@styles';
 
 const Main = styled.main`
     width: 100%;
     min-height: 100vh;
     ${mixins.pagePadding}
 `;
-const ContentContainer = styled.div`
+const Content = styled.div`
     ${mixins.containAndCenter};
     ${mixins.flexColumnCenter};
 `;
@@ -21,11 +21,10 @@ const Layout = ({ children, meta, location }) => {
     return (
         <div id="root">
             <Head meta={meta} />
-            <GlobalStyles />
             <Social isHome={isHome} orientation="left" />
             <Header isHome={isHome} />
             <Main>
-                <ContentContainer id="content">{children}</ContentContainer>
+                <Content id="content">{children}</Content>
             </Main>
             <Footer />
         </div>
