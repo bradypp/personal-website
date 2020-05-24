@@ -4,9 +4,9 @@ import media from './media';
 import theme from './theme';
 import mixins from './mixins';
 import fontFaces from './fonts';
-import normalizeStyles from './normalizeStyles';
-import transitionStyles from './transitionStyles';
-import prismStyles from './prismStyles';
+import normalizeStyles from './normalize-styles';
+import transitionStyles from './transition-styles';
+import prismStyles from './prism-styles';
 
 const GlobalStyles = createGlobalStyle`
   ${fontFaces};

@@ -17,7 +17,7 @@ const EmailContainer = styled.div`
         width: 1px;
         height: 9rem;
         margin: 0 auto;
-        background-color: var(--color-side);
+        background-color: var(--color-socials);
     }
 
     li:last-of-type {
@@ -31,7 +31,7 @@ const StyledLink = styled(OutboundLink)`
     writing-mode: vertical-rl;
     margin: 2rem auto;
     padding: 1rem;
-    color: var(--color-side);
+    color: var(--color-socials);
     transition: var(--transition);
 
     &:hover {

@@ -7,17 +7,16 @@ import { Layout, Hero, About, Projects, Contact } from '@components';
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
         if (location.hash) {
-            const id = location.hash.substring(1); // remove the '#'
-            setTimeout(() => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.scrollIntoView();
-                    el.focus();
-                }
-            }, 0);
+            const id = location.hash.substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView();
+                el.focus();
+            }
         }
     }, [location.hash]);
 
+    useEffect(() => {});
     return (
         <Layout location={location}>
             <Hero data={data.hero.edges} />

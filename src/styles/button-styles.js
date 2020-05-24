@@ -5,9 +5,9 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-family: var(--fonts-mono);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;
@@ -18,7 +18,7 @@ const primary = css`
     ${commonStyles}
     color: var(--color-primary);
     background-color: transparent;
-    padding: 1.8rem 2.25rem;
+    padding: 2rem 2.2rem;
     border: 1px solid var(--color-primary);
 
     &:hover,

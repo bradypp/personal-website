@@ -15,8 +15,13 @@ const SideContainer = styled.div`
     right: ${props => (props.orientation === 'left' ? 'auto' : '3rem')};
     z-index: var(--z-index-side);
     color: var(--color-text-primary-2);
-    ${media.bp1280`right: 2.5rem;`};
-    ${media.bp1040`display: none;`};
+    ${media.bp1280`
+        left: ${props => (props.orientation === 'left' ? '2rem' : 'auto')};
+        right: ${props => (props.orientation === 'left' ? 'auto' : '2rem')};
+    `};
+    ${media.bp1140`
+    display: none;
+    `};
 
     a {
         &:after {
@@ -26,8 +31,7 @@ const SideContainer = styled.div`
 `;
 
 const Side = ({ children, isHome, orientation }) => {
-    const isMounted = useIsMounted(2000, isHome);
-
+    const isMounted = useIsMounted(3000, isHome);
     return (
         <SideContainer orientation={orientation}>
             <TransitionGroup component={null}>

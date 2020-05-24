@@ -65,6 +65,16 @@ const mixins = {
         justify-content: center;
         align-items: center;
     `,
+    flexCenterRight: css`
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    `,
+    flexCenterLeft: css`
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    `,
     flexBetween: css`
         display: flex;
         justify-content: space-between;
@@ -156,7 +166,8 @@ const mixins = {
     `,
     homeSection: css`
         width: 100%;
-        margin-bottom: 10rem;
+        height: fit-content;
+        padding-bottom: 20rem;
 
         h3 {
             &:after {
@@ -164,7 +175,10 @@ const mixins = {
                 transition: all 1s var(--ease-in-expo);
             }
         }
-        &:hover {
+
+        &:hover,
+        &:focus,
+        & > *:focus {
             transition: var(--transition);
             h3 {
                 &:after {
@@ -179,15 +193,18 @@ const mixins = {
         border-radius: var(--border-radius);
         color: var(--color-text-primary-1);
         background-color: var(--color-background-2);
-        border: 1.5px solid var(--color-background-4);
+        border: 1px solid var(--color-background-4);
+        font-family: -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif, monospace;
+        font-size: var(--font-size-lg);
 
         &:hover {
-            border: 1.5px solid var(--color-background-5);
+            border: 1px solid var(--color-background-5);
         }
 
         &:focus,
         &:active {
-            border: 1.5px solid var(--color-primary);
+            background-color: var(--color-background-1);
+            border: 1px solid var(--color-primary);
         }
 
         ${props =>

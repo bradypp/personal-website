@@ -9,7 +9,7 @@ import { mixins } from '@styles';
 import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
 
-const margin = '10vh';
+const margin = '12vh';
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
@@ -19,6 +19,7 @@ const HeroContainer = styled.section`
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+    padding: 0;
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -123,7 +124,7 @@ const Hero = ({ data }) => {
         <TitleContainer style={{ transitionDelay: '100ms' }}>
             <Title>
                 {`${title} `}{' '}
-                <OutboundLink variant={null}>
+                <OutboundLink variant={null} href={twitter}>
                     <Name>{name}</Name>
                 </OutboundLink>
             </Title>

@@ -20,7 +20,7 @@ const List = styled.ul`
         width: 1px;
         height: 9rem;
         margin: 0 auto;
-        background-color: var(--color-side);
+        background-color: var(--color-border);
     }
 
     li:first-of-type {
@@ -38,7 +38,7 @@ const StyledLink = styled(OutboundLink)`
     svg {
         width: 1.8rem;
         height: 1.8rem;
-        color: var(--color-side);
+        color: var(--color-socials);
     }
 
     &:hover {

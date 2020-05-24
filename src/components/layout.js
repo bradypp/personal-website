@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Head, Footer, Header, Social } from '@components';
-import { GlobalStyles, mixins, media } from '@styles';
+import { GlobalStyles, mixins } from '@styles';
 
 const Main = styled.main`
     width: 100%;

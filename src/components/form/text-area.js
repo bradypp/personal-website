@@ -11,7 +11,7 @@ export const TextAreaContainer = styled.div`
 
     textarea {
         overflow-y: hidden;
-        padding: 0.8rem 0.6rem 0.9rem;
+        padding: 0.8rem 0.6rem;
         min-height: ${props => `${props.height}rem !important`};
         width: 100%;
         ${mixins.formField};
@@ -39,7 +39,7 @@ TextArea.propTypes = {
 TextArea.defaultProps = {
     className: undefined,
     invalid: false,
-    height: 15,
+    height: 4,
     value: undefined,
     onChange: () => {},
 };

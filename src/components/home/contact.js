@@ -31,7 +31,7 @@ const Socials = styled.div`
     margin-bottom: 5%;
 `;
 const MiddleText = styled.span`
-    padding: 12rem;
+    padding: 8rem;
     font-weight: 500;
     color: var(--color-text-primary-2);
     margin-bottom: 5%;
@@ -48,11 +48,7 @@ const Contact = ({ data }) => {
     }, []);
 
     const validation = Yup.object().shape({
-        name: Yup.string()
-            .trim()
-            .min(2, 'Name is too short!')
-            .max(50, 'Name is too long!')
-            .required('Name is required'),
+        name: Yup.string().trim().required('Name is required'),
         email: Yup.string()
             .trim()
             .email('Please enter a valid email address')
@@ -67,8 +63,8 @@ const Contact = ({ data }) => {
     });
 
     return (
-        <ContactContainer id="contact" ref={$contactRef}>
-            <Heading>{title}</Heading>
+        <ContactContainer ref={$contactRef}>
+            <Heading id="contact">{title}</Heading>
             <HTMLContainer dangerouslySetInnerHTML={{ __html: html }} />
             <FlexContainer>
                 <FormContainer>
@@ -98,8 +94,8 @@ const Contact = ({ data }) => {
                             <Form.Field.Input label="Name *" name="name" />
                             <Form.Field.Input label="Email *" name="email" />
                             <Form.Field.Input label="Subject *" name="subject" />
-                            <Form.Field.TextArea label="Message *" name="message" />
-                            <Form.Buttons withReset />
+                            <Form.Field.TextArea height={18} label="Message *" name="message" />
+                            <Form.Buttons withReset submitText="Send Message" />
                         </Form.Element>
                     </Form>
                 </FormContainer>

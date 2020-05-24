@@ -3,7 +3,8 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { navLinks } from '@config';
+import { Icon, OutboundLink } from '@components';
+import { navLinks, socialMedia } from '@config';
 import { mixins, media } from '@styles';
 
 // TODO: change background color and text color to dark mode version
@@ -24,8 +25,7 @@ const MenuContainer = styled.div`
     ${media.bp800`display: block;`};
 `;
 const SidebarContainer = styled.aside`
-    ${mixins.flexCenter};
-    flex-direction: column;
+    ${mixins.flexColumnCenter};
     background-color: var(--color-background-2);
     padding: 5rem;
     width: 50vw;
@@ -33,9 +33,11 @@ const SidebarContainer = styled.aside`
     position: relative;
     right: 0;
     margin-left: auto;
-    font-family: var(--fonts-mono);
     box-shadow: -1rem 0 3rem -1.5rem var(--header-shadow);
-    ${media.bp600`padding: 2.5rem;`};
+    ${media.bp600`
+    width: 60vw;
+    padding: 2.5rem;
+    `};
     ${media.bp440`width: 75vw;`};
     ${media.bp384`padding: 1.5rem;`};
 `;
@@ -55,19 +57,46 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
     margin: 0 auto 3rem;
     position: relative;
-    font-size: var(--font-size-lg);
-    ${media.bp600`
-      margin: 0 auto 1rem;
+    font-size: var(--font-size-xl);
+    ${media.bp440`
+      margin: 0 auto 2.4rem;
+    `};
+    ${media.bp384`
+      margin: 0 auto 1.8rem;
     `};
 `;
 const StyledLink = styled(Link)`
     padding: 0.3rem 2rem 2rem;
-    font-weight: 600;
-    color: var(--color-text-primary-2);
+    font-weight: 400;
+    color: var(--color-text-primary-1);
     width: 100%;
 
     &:hover {
         color: var(--color-primary);
+    }
+`;
+const SocialsContainer = styled.ul`
+    ${mixins.flexCenter};
+    list-style: none;
+    position: absolute;
+    bottom: 2rem;
+`;
+const SocialsLink = styled(OutboundLink)`
+    padding: 1rem;
+    transition: var(--transition);
+
+    svg {
+        width: 2.2rem;
+        height: 2.2rem;
+        color: var(--color-socials);
+    }
+
+    &:hover {
+        transform: translateY(-0.3rem);
+        svg {
+            transition: var(--transition);
+            color: var(--color-primary);
+        }
     }
 `;
 const Menu = ({ isMenuOpen, toggleMenu }) => {
@@ -98,6 +127,17 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                             ))}
                     </NavList>
                 </NavContainer>
+                <SocialsContainer>
+                    {socialMedia &&
+                        socialMedia.map(({ url, name }, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <li key={`socials-${i}`}>
+                                <SocialsLink href={url} aria-label={name}>
+                                    <Icon name={name} />
+                                </SocialsLink>
+                            </li>
+                        ))}
+                </SocialsContainer>
             </SidebarContainer>
         </MenuContainer>
     );

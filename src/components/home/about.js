@@ -13,13 +13,12 @@ import { mixins } from '@styles';
 const AboutContainer = styled.section`
     ${mixins.homeSection}
     position: relative;
-    height: 70rem;
 `;
 const FlexContainer = styled.div`
     ${mixins.flexBetween};
     align-items: flex-start;
 `;
-const StyledContent = styled.div`
+const ContentContainer = styled.div`
     width: 60%;
     max-width: 60rem;
 
@@ -32,7 +31,6 @@ const AvatarContainer = styled.div`
     width: 40%;
     max-width: 37rem;
     border-radius: 50%;
-    margin-left: -4rem;
 `;
 const Avatar = styled(Img)`
     position: relative;
@@ -96,12 +94,11 @@ const About = ({ data }) => {
 
     return (
         <AboutContainer
-            id="about"
             ref={revealContainer}
             onMouseMove={({ clientX: x, clientY: y }) => setPosition({ xy: calc(x, y) })}>
-            <Heading>{title}</Heading>
+            <Heading id="about">{title}</Heading>
             <FlexContainer>
-                <StyledContent>
+                <ContentContainer>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
                     <SkillsContainer>
                         {skills &&
@@ -112,7 +109,7 @@ const About = ({ data }) => {
                                 </li>
                             ))}
                     </SkillsContainer>
-                </StyledContent>
+                </ContentContainer>
                 <AvatarContainer>
                     <animated.div style={{ transform: animateProps.xy.interpolate(transition) }}>
                         <OutboundLink href={github} variant={null} style={{ width: '100%' }}>

@@ -198,8 +198,10 @@ const Projects = ({ data }) => {
     }, []);
 
     return (
-        <ProjectsContainer id="projects">
-            <Heading ref={$headingRef}>Projects</Heading>
+        <ProjectsContainer>
+            <Heading id="projects" ref={$headingRef}>
+                Projects
+            </Heading>
             {data &&
                 data.map(({ node }, i) => {
                     const { frontmatter, html } = node;

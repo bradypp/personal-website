@@ -34,10 +34,10 @@ const InputElement = styled.input`
     padding: ${({ hasIcon, iconLocation, height }) =>
         hasIcon
             ? css`
-                  ${(iconLocation === 'left' && `1rem 0.6rem 0.6rem ${height}rem`) ||
-                  (iconLocation === 'right' && `1rem ${height}rem 0.6rem 0.6rem`)};
+                  ${(iconLocation === 'left' && `0.8rem 0.6rem 0.8rem ${height}rem`) ||
+                  (iconLocation === 'right' && `0.8rem  ${height}rem 0.8rem  0.6rem `)};
               `
-            : '1rem 0.6rem 0.6rem'};
+            : '0.8rem 0.6rem'};
     ${mixins.formField};
 `;
 

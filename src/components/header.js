@@ -11,8 +11,8 @@ import { Menu } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
-const navScrollHeight = 70;
-const hamburgerWidth = '30px';
+const navScrollHeight = 60;
+const hamburgerWidth = '3rem';
 
 const HeaderContainer = styled.header`
     ${mixins.flexBetween};
@@ -33,16 +33,15 @@ const HeaderContainer = styled.header`
     transform: translateY(
         ${props => (props.scrollDirection === 'down' ? `-${navScrollHeight}px` : '0px')}
     );
-    ${media.bp1040`padding: 0 4rem;`};
-    ${media.bp800`padding: 0 2.5rem;`};
+    ${media.bp800`flex-direction: row-reverse;`};
 `;
 const NavContainer = styled.nav`
-    ${mixins.flexBetween};
+    ${mixins.flexCenterRight}
     position: relative;
     width: 100%;
     color: var(--color-text-primary-2);
     font-family: var(--fonts-mono);
-    ${media.bp800`justify-content: flex-end;`};
+    ${media.bp800`display: none;`};
 `;
 
 const Hamburger = styled.div`
@@ -66,7 +65,7 @@ const HamburgerBox = styled.div`
     position: relative;
     display: inline-block;
     width: ${hamburgerWidth};
-    height: 24px;
+    height: 2.4rem;
 `;
 const HamburgerContent = styled.div`
     background-color: var(--color-primary);
@@ -77,12 +76,11 @@ const HamburgerContent = styled.div`
     top: 50%;
     left: 0;
     right: 0;
-    transform: rotate(${props => (props.isMenuOpen ? `225deg` : `0deg`)});
-    transition: transform 0.22s
+    transform: rotate(${props => (props.isMenuOpen ? `45deg` : `0deg`)});
+    transition: transform 0.15s
         cubic-bezier(
             ${props => (props.isMenuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
-        )
-        ${props => (props.isMenuOpen ? `0.12s` : `0s`)};
+        );
 
     &:before,
     &:after {
@@ -101,14 +99,14 @@ const HamburgerContent = styled.div`
     }
     &:before {
         width: ${props => (props.isMenuOpen ? `100%` : `120%`)};
-        top: ${props => (props.isMenuOpen ? `0` : `-10px`)};
+        top: ${props => (props.isMenuOpen ? `0` : `-1rem`)};
         opacity: ${props => (props.isMenuOpen ? 0 : 1)};
         transition: ${props =>
             props.isMenuOpen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
     }
     &:after {
         width: ${props => (props.isMenuOpen ? `100%` : `80%`)};
-        bottom: ${props => (props.isMenuOpen ? `0` : `-10px`)};
+        bottom: ${props => (props.isMenuOpen ? `0` : `-1rem`)};
         transform: rotate(${props => (props.isMenuOpen ? `-90deg` : `0`)});
         transition: ${props => (props.isMenuOpen ? 'var(--ham-after-active)' : 'var(--ham-after)')};
     }
@@ -118,17 +116,17 @@ const LinksList = styled.ul`
     padding: 0;
     margin: 0;
     list-style: none;
-    ${media.bp800`display: none;`};
 `;
 const ListItem = styled.li`
     margin-right: 2rem;
     position: relative;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-lg);
+    font-family: var(--fonts-primary);
 `;
 const StyledLink = styled(Link)`
     padding: 1.2rem 1rem;
-    font-weight: 600;
-    color: var(--color-text-primary-2);
+    font-weight: 500;
+    color: var(--color-text-primary-1);
 
     &:hover {
         color: var(--color-primary);
@@ -145,15 +143,19 @@ class Header extends Component {
     };
 
     componentDidMount() {
-        setTimeout(
-            () =>
-                this.setState({ isMounted: true }, () => {
+        setTimeout(() => {
+            this.setState(
+                {
+                    isMounted: true,
+                    scrollDirection: window && window.pageYOffset > 0 ? 'down' : 'none',
+                },
+                () => {
                     window.addEventListener('scroll', () => js.throttle(this.handleScroll()));
                     window.addEventListener('resize', () => js.throttle(this.handleResize()));
                     window.addEventListener('keydown', e => this.handleKeydown(e));
-                }),
-            100,
-        );
+                },
+            );
+        }, 100);
     }
 
     componentWillUnmount() {
@@ -171,7 +173,6 @@ class Header extends Component {
         const { isMounted, isMenuOpen, scrollDirection, lastDistanceFromTop } = this.state;
         const distanceFromTopRequired = 5;
         const distanceFromTop = window.scrollY;
-
         if (
             !isMounted ||
             Math.abs(lastDistanceFromTop - distanceFromTop) <= distanceFromTopRequired ||
@@ -220,19 +221,18 @@ class Header extends Component {
                 <Helmet>
                     <body className={isMenuOpen ? 'blur' : ''} />
                 </Helmet>
+                <TransitionGroup component={null}>
+                    {isMounted && (
+                        <CSSTransition classNames={fadeClass} timeout={timeout}>
+                            <Hamburger onClick={this.toggleMenu}>
+                                <HamburgerBox>
+                                    <HamburgerContent isMenuOpen={isMenuOpen} />
+                                </HamburgerBox>
+                            </Hamburger>
+                        </CSSTransition>
+                    )}
+                </TransitionGroup>
                 <NavContainer>
-                    <TransitionGroup component={null}>
-                        {isMounted && (
-                            <CSSTransition classNames={fadeClass} timeout={timeout}>
-                                <Hamburger onClick={this.toggleMenu}>
-                                    <HamburgerBox>
-                                        <HamburgerContent isMenuOpen={isMenuOpen} />
-                                    </HamburgerBox>
-                                </Hamburger>
-                            </CSSTransition>
-                        )}
-                    </TransitionGroup>
-
                     <LinksList>
                         <TransitionGroup component={null}>
                             {isMounted &&
@@ -247,13 +247,22 @@ class Header extends Component {
                                             style={{
                                                 transitionDelay: `${isHome ? i * 100 : 0}ms`,
                                             }}>
-                                            <StyledLink to={url}>{name}</StyledLink>
+                                            <StyledLink
+                                                onClick={() =>
+                                                    setTimeout(() => {
+                                                        this.setState({ scrollDirection: 'down' });
+                                                    }, 100)
+                                                }
+                                                to={url}>
+                                                {name}
+                                            </StyledLink>
                                         </ListItem>
                                     </CSSTransition>
                                 ))}
                         </TransitionGroup>
                     </LinksList>
                 </NavContainer>
+                <div>toggle</div>
                 <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
             </HeaderContainer>
         );

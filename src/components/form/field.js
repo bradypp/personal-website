@@ -4,8 +4,8 @@ import { uniqueId } from 'lodash';
 import { Field, getIn } from 'formik';
 
 import Input from './input';
-import TextArea from './textArea';
-import FieldContainer from './fieldContainer';
+import TextArea from './text-area';
+import FieldContainer from './field-container';
 
 const generateField = FormComponent => {
     const FieldComponent = ({

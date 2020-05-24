@@ -28,6 +28,13 @@ const theme = css`
         --color-background-3: var(--color-white-3);
         --color-background-4: var(--color-white-4);
         --color-background-5: var(--color-white-5);
+        .dark-theme {
+            --color-background-1: var(--color-grey-dark-1);
+            --color-background-2: var(--color-grey-dark-1);
+            --color-background-3: var(--color-grey-dark-1);
+            --color-background-4: var(--color-grey-dark-1);
+            --color-background-5: var(--color-grey-dark-1);
+        }
 
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
@@ -38,7 +45,8 @@ const theme = css`
         --color-code-text: var(--color-grey-dark-2);
         --color-code-background: var(--color-grey-light-2);
 
-        --color-side: var(--color-grey-dark-2);
+        --color-socials: var(--color-grey-dark-2);
+        --color-border: var(--color-background-5);
 
         --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 
@@ -55,16 +63,15 @@ const theme = css`
         --font-size-xxl: 2.2rem;
         --font-size-h3: 3.2rem;
 
+        --z-index-side: 25;
         --z-index-header: 50;
         --z-index-dropdown: 100;
-        --z-index-side: 125;
         --z-index-modal: 150;
 
         --max-width: 120rem;
         --page-padding: 4.8rem;
         --page-padding-tablet: 3.2rem;
         --page-padding-mobile: 1.6rem;
-        --header-height: 6rem;
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -84,13 +91,12 @@ const theme = css`
 
         --header-shadow: rgba(0, 0, 0, 0.25);
 
-        --hamburger-width: 30px;
-        --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
-        --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
-        --ham-after: bottom 0.1s ease-in 0.25s,
+        --ham-before: top 0.1s ease-in 0.15s, opacity 0.1s ease-in;
+        --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out;
+        --ham-after: bottom 0.1s ease-in 0.15s,
             transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         --ham-after-active: bottom 0.1s ease-out,
-            transform 0.22s cubic - bezier(0.215, 0.61, 0.355, 1) 0.12s;
+            transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 `;
 

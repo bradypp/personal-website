@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Formik, Form as FormikForm } from 'formik';
 
 import Field from './field';
-import FormButtons from './formButtons';
+import FormButtons from './form-buttons';
 
 const StyledFormikForm = styled(FormikForm)`
     width: 100%;
