@@ -56,7 +56,7 @@ const mixins = {
         grid-gap: ${gridGap || '1.6rem'};
     `,
     containAndCenter: css`
-        max-width: 110rem;
+        max-width: var(--max-width);
         margin: 0 auto;
         width: 100%;
     `,
@@ -216,15 +216,6 @@ const mixins = {
                     border: 1.5px solid var(--color-danger) !important;
                 }
             `};
-    `,
-    pagePadding: css`
-        padding: 0 var(--page-padding);
-        ${media.bp800`
-            padding: 0 var(--page-padding-tablet);
-        `}
-        ${media.bp440`
-            padding: 0 var(--page-padding-mobile);
-        `}
     `,
 };
 

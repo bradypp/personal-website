@@ -8,7 +8,7 @@ import { mixins } from '@styles';
 const Main = styled.main`
     width: 100%;
     min-height: 100vh;
-    ${mixins.pagePadding}
+    padding: 0 var(--page-padding);
 `;
 const Content = styled.div`
     ${mixins.containAndCenter};

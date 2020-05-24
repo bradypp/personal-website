@@ -16,7 +16,6 @@ const hamburgerWidth = '3rem';
 
 const HeaderContainer = styled.header`
     ${mixins.flexBetween};
-    ${mixins.pagePadding}
     position: fixed;
     top: 0;
     background-color: var(--color-background-1);
@@ -25,6 +24,7 @@ const HeaderContainer = styled.header`
     filter: none !important;
     pointer-events: auto !important;
     user-select: auto !important;
+    padding: 0 var(--page-padding);
     width: 100%;
     height: ${props =>
         props.scrollDirection === 'none' ? `${navHeight}px` : `${navScrollHeight}px`};
@@ -156,6 +156,7 @@ class Header extends Component {
                 },
             );
         }, 100);
+        console.log(this.isMounted);
     }
 
     componentWillUnmount() {
@@ -205,7 +206,7 @@ class Header extends Component {
 
     handleKeydown = e => {
         const { isMenuOpen } = this.state;
-        if (isMenuOpen && e.keyCode === constants.keyCodes.ESCAPE) {
+        if (isMenuOpen && e.keyCode === constants.KEY_CODES.ESCAPE) {
             this.toggleMenu();
         }
     };

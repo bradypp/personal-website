@@ -67,7 +67,7 @@ const NavListItem = styled.li`
 `;
 const StyledLink = styled(Link)`
     padding: 0.3rem 2rem 2rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--color-text-primary-1);
     width: 100%;
 

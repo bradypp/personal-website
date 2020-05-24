@@ -51,7 +51,7 @@ const Name = styled.div`
     }
 
     &:hover {
-        color: var(--color-text-secondary-1);
+        color: var(--color-white-1);
         &:after {
             bottom: 0.1em;
             height: 100%;

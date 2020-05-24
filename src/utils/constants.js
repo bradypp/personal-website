@@ -1,4 +1,4 @@
-const keyCodes = {
+const KEY_CODES = {
     TAB: 9,
     ENTER: 13,
     ESCAPE: 27,
@@ -11,5 +11,5 @@ const keyCodes = {
 };
 
 export default {
-    keyCodes,
+    KEY_CODES,
 };

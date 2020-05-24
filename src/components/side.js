@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -31,12 +31,20 @@ const SideContainer = styled.div`
 `;
 
 const Side = ({ children, isHome, orientation }) => {
-    const isMounted = useIsMounted(3000, isHome);
+    const isMounted = useIsMounted(2000, isHome);
+    // const [shouldDisplay, setShouldDisplay] = useState
+
+    // useEffect(() => {
+    //     effect
+    //     return () => {
+    //         cleanup
+    //     }
+    // }, [input])
     return (
         <SideContainer orientation={orientation}>
             <TransitionGroup component={null}>
                 {isMounted && (
-                    <CSSTransition classNames={isHome ? 'fade' : ''} timeout={isHome ? 3000 : 0}>
+                    <CSSTransition classNames={isHome ? '' : ''} timeout={isHome ? 3000 : 0}>
                         {children}
                     </CSSTransition>
                 )}

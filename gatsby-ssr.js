@@ -9,25 +9,27 @@ import Terser from 'terser';
 
 import { App } from '@components';
 
-import { COLOR_MODE_KEY, COLORS, INITIAL_COLOR_MODE_CSS_PROP } from '@styles/colors';
+import { constants } from '@styles';
+
+const { THEME_COLORS, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } = constants;
 
 const setColorsByTheme = () => {
     const colors = '🌈';
     const colorModeKey = '🔑';
     const colorModeCssProp = '⚡️';
 
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const prefersDarkFromMQ = mql.matches;
+    const mql = window.matchMedia('(prefers-color-scheme: light)');
+    const prefersLightFromMQ = mql.matches;
     const persistedPreference = localStorage.getItem(colorModeKey);
 
-    let colorMode = 'light';
+    let colorMode = 'dark';
 
     const hasUsedToggle = typeof persistedPreference === 'string';
 
     if (hasUsedToggle) {
         colorMode = persistedPreference;
     } else {
-        colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+        colorMode = prefersLightFromMQ ? 'light' : 'dark';
     }
 
     const root = document.documentElement;
@@ -41,9 +43,9 @@ const setColorsByTheme = () => {
     });
 };
 
-const MagicScriptTag = () => {
+const PreBodyScript = () => {
     const boundFn = String(setColorsByTheme)
-        .replace("'🌈'", JSON.stringify(COLORS))
+        .replace("'🌈'", JSON.stringify(THEME_COLORS))
         .replace('🔑', COLOR_MODE_KEY)
         .replace('⚡️', INITIAL_COLOR_MODE_CSS_PROP);
 
@@ -59,25 +61,23 @@ const MagicScriptTag = () => {
   If the user has JS disabled, the injected script will never fire! Inject a `<style>` tag into the head of the document to set default values for all color CSS properties.
 */
 const FallbackStyles = () => {
-    // TODO
-    // Create a string holding each CSS variable:
-    /*
-    `--color-text: black;
-    --color-background: white;`
-  */
+    const themeCssColorVariables = Object.entries(THEME_COLORS).reduce(
+        (acc, [name, colorByTheme]) => {
+            return `${acc}\n--color-${name}: ${colorByTheme.dark};`;
+        },
+        '',
+    );
 
-    const cssVariableString = Object.entries(COLORS).reduce((acc, [name, colorByTheme]) => {
-        return `${acc}\n--color-${name}: ${colorByTheme.light};`;
-    }, '');
-
-    const wrappedInSelector = `html { ${cssVariableString} }`;
+    const wrappedInSelector = `html { 
+        ${themeCssColorVariables} 
+    }`;
 
     return <style>{wrappedInSelector}</style>;
 };
 
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
     setHeadComponents(<FallbackStyles />);
-    setPreBodyComponents(<MagicScriptTag />);
+    setPreBodyComponents(<PreBodyScript />);
 };
 
 export const wrapPageElement = ({ element }) => {

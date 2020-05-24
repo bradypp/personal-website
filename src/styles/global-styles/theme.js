@@ -1,52 +1,35 @@
 import { css } from 'styled-components';
 
+import media from '../media';
+
 const theme = css`
     :root {
-        --color-primary: #007bff;
-        --color-primary-light: #1a88ff;
-        --color-primary-dark: #006fe6;
-        --color-secondary: #ff0a78;
-        --color-tertiary: #ffdc00;
-        --color-danger: #e13c3c;
-
+        --color-blue: #007bff;
+        --color-blue-light: #1a88ff;
+        --color-blue-dark: #006fe6;
+        --color-pink: #ff0a78;
+        --color-yellow: #ffdc00;
         --color-white-1: #f4f5f7;
-        --color-white-2: #f0f2f4;
-        --color-white-3: #e6e8ea;
-        --color-white-4: #d3d9de;
-        --color-white-5: #c4ccd4;
-
+        --color-white-2: #eaebed;
+        --color-white-3: #e0e1e3;
+        --color-white-4: #d5d6d8;
+        --color-white-5: #cbccce;
+        --color-navy-1: #f4f5f7;
+        --color-navy-2: #eaebed;
+        --color-navy-3: #e0e1e3;
+        --color-navy-4: #d5d6d8;
+        --color-navy-5: #cbccce;
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
-
         --color-grey-light-1: #e7e4e4;
         --color-grey-light-2: #ddd;
         --color-grey-light-3: #ccc;
-
-        --color-background-1: var(--color-white-1);
-        --color-background-2: var(--color-white-2);
-        --color-background-3: var(--color-white-3);
-        --color-background-4: var(--color-white-4);
-        --color-background-5: var(--color-white-5);
-        .dark-theme {
-            --color-background-1: var(--color-grey-dark-1);
-            --color-background-2: var(--color-grey-dark-1);
-            --color-background-3: var(--color-grey-dark-1);
-            --color-background-4: var(--color-grey-dark-1);
-            --color-background-5: var(--color-grey-dark-1);
-        }
-
-        --color-text-primary-1: var(--color-grey-dark-1);
-        --color-text-primary-2: var(--color-grey-dark-2);
-        --color-text-secondary-1: var(--color-white-1);
-        --color-text-highlight: var(--color-tertiary);
-        --color-text-link: var(--color-primary);
-
-        --color-code-text: var(--color-grey-dark-2);
-        --color-code-background: var(--color-grey-light-2);
-
-        --color-socials: var(--color-grey-dark-2);
+        --color-code-text: var(--color-text-primary-2);
+        --color-code-background: var(--color-background-2);
+        --color-socials: var(--color-text-primary-2);
         --color-border: var(--color-background-5);
+        --color-text-highlight: var(--color-tertiary);
 
         --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 
@@ -70,8 +53,8 @@ const theme = css`
 
         --max-width: 120rem;
         --page-padding: 4.8rem;
-        --page-padding-tablet: 3.2rem;
-        --page-padding-mobile: 1.6rem;
+        ${media.bp800`--page-padding: 3.2rem;`}
+        ${media.bp440`--page-padding: 1.6rem;`}
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

@@ -4,7 +4,7 @@ import { constants } from '@utils';
 const useOnEscapeKeyDown = (isListening, onEscapeKeyDown) => {
     useEffect(() => {
         const handleKeyDown = event => {
-            if (event.keyCode === constants.keyCodes.ESCAPE) {
+            if (event.keyCode === constants.KEY_CODES.ESCAPE) {
                 onEscapeKeyDown();
             }
         };

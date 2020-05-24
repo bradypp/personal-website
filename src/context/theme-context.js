@@ -1,10 +1,12 @@
 import React, { createContext, useState, useEffect, useMemo } from 'react';
 
-import { COLORS, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } from '@styles/colors';
+import { constants } from '@styles';
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+    const { THEME_COLORS, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } = constants;
+
     const [colorMode, rawSetColorMode] = useState(undefined);
 
     useEffect(() => {
@@ -22,7 +24,7 @@ export const ThemeProvider = ({ children }) => {
 
             localStorage.setItem(COLOR_MODE_KEY, newValue);
 
-            Object.entries(COLORS).forEach(([name, colorByTheme]) => {
+            Object.entries(THEME_COLORS).forEach(([name, colorByTheme]) => {
                 const cssVarName = `--color-${name}`;
 
                 root.style.setProperty(cssVarName, colorByTheme[newValue]);

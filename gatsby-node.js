@@ -78,10 +78,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                         test: /scrollreveal/,
                         use: loaders.null(),
                     },
-                    {
-                        test: /miniraf/,
-                        use: loaders.null(),
-                    },
                 ],
             },
         });
