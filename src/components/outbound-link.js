@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { OutboundLink as GatsbyOutboundLink } from 'gatsby-plugin-google-analytics';
-import normalize from 'normalize-url';
 
 import { buttonStyles } from '@styles';
 
@@ -11,12 +10,7 @@ const StyledOutboundLink = styled(GatsbyOutboundLink)`
 `;
 
 const OutboundLink = ({ children, href, ...props }) => {
-    const link =
-        href && typeof href === 'string'
-            ? href.startsWith('mailto')
-                ? href
-                : normalize(href)
-            : '#';
+    const link = href.startsWith('mailto') || href.startsWith('http') ? href : `//${href}`;
     return (
         <StyledOutboundLink href={link} {...props}>
             {children}

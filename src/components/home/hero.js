@@ -121,7 +121,7 @@ const Hero = ({ data }) => {
     const handleAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
 
     const items = [
-        <TitleContainer style={{ transitionDelay: '100ms' }}>
+        <TitleContainer>
             <Title>
                 {`${title} `}{' '}
                 <OutboundLink variant={null} href={twitter}>
@@ -135,8 +135,8 @@ const Hero = ({ data }) => {
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,
-        <Subtitle style={{ transitionDelay: '200ms' }}>{subtitle}</Subtitle>,
-        <div style={{ transitionDelay: '300ms' }}>
+        <Subtitle>{subtitle}</Subtitle>,
+        <div>
             <Button as="link" variant="primary-button" to="/#contact">
                 {contact}
             </Button>
@@ -148,7 +148,10 @@ const Hero = ({ data }) => {
                 {isMounted &&
                     items.map((item, i) => (
                         // eslint-disable-next-line react/no-array-index-key
-                        <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
+                        <CSSTransition
+                            key={`hero-${i}`}
+                            classNames={`fadeup-${(i + 1) * 100}msdelay`}
+                            timeout={3000}>
                             {item}
                         </CSSTransition>
                     ))}

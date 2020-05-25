@@ -73,25 +73,25 @@ const SkillsContainer = styled.ul`
 `;
 
 const About = ({ data }) => {
-    const revealContainer = useRef();
+    const aboutRef = useRef();
 
     const [animateProps, setPosition] = useSpring(() => ({
         xy: [0, 0],
         config: { mass: 10, tension: 550, friction: 140 },
     }));
     const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
-    const transition = (x, y) => `translate3d(${x / 25}px,${y / 25}px,0)`;
+    const transition = (x, y) => `translate3d(${x / 50}px,${y / 50}px,0)`;
 
     const { frontmatter, html } = data[0].node;
     const { title, avatar, skills } = frontmatter;
 
     useEffect(() => {
-        scrollReveal.reveal(revealContainer.current, scrollRevealConfig());
+        scrollReveal.reveal(aboutRef.current, scrollRevealConfig());
     }, []);
 
     return (
         <AboutContainer
-            ref={revealContainer}
+            ref={aboutRef}
             onMouseMove={({ clientX: x, clientY: y }) => setPosition({ xy: calc(x, y) })}>
             <Heading id="about">{title}</Heading>
             <FlexContainer>

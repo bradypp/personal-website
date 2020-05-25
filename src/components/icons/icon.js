@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
 import { BsDiamond } from 'react-icons/bs';
+import { FiMoon } from 'react-icons/fi';
 
 import IconCV from './cv';
 import IconCodepen from './codepen';
@@ -13,7 +14,6 @@ import IconLinkedin from './linkedin';
 import IconLocation from './location';
 import IconStar from './star';
 import IconTwitter from './twitter';
-import IconMoon from './moon';
 import IconSun from './sun';
 
 const Icon = ({ name }) => {
@@ -39,7 +39,7 @@ const Icon = ({ name }) => {
         case 'GitHub':
             return <IconGitHub />;
         case 'Moon':
-            return <IconMoon />;
+            return <FiMoon />;
         case 'Linkedin':
             return <IconLinkedin />;
         case 'Location':

@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 
-const useIsMounted = (interval = 0, ...conditions) => {
+const useIsMounted = (delay = 0, shouldMountConditions = []) => {
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
-        if (conditions.length > 0 && !conditions.reduce((acc, el) => el, false)) return;
-        const timeout = setTimeout(() => setIsMounted(true), interval);
+        const shouldMountConditionsArr = [shouldMountConditions].flat();
+
+        if (
+            shouldMountConditionsArr.length > 0 &&
+            !shouldMountConditionsArr.reduce((acc, el) => el, false)
+        )
+            return;
+        const timeout = setTimeout(() => setIsMounted(true), delay);
 
         return () => clearTimeout(timeout);
         // eslint-disable-next-line react-hooks/exhaustive-deps

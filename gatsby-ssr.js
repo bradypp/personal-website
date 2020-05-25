@@ -7,7 +7,7 @@
 import React from 'react';
 import Terser from 'terser';
 
-// import App from './src/components/app';
+import App from './src/components/app';
 
 const setColorTheme = () => {
     const colorModeKey = 'color-mode';
@@ -17,19 +17,19 @@ const setColorTheme = () => {
     const prefersDarkFromMQ = mql.matches;
     const persistedPreference = localStorage.getItem(colorModeKey);
 
-    let colorMode = 'light';
+    let colorMode = 'light-mode';
 
     const hasUsedToggle = typeof persistedPreference === 'string';
 
     if (hasUsedToggle) {
         colorMode = persistedPreference;
     } else {
-        colorMode = prefersDarkFromMQ ? 'dark' : 'light';
+        colorMode = prefersDarkFromMQ ? 'dark-mode' : 'light-mode';
     }
 
     const root = document.documentElement;
-
     root.style.setProperty(colorModeCssProp, colorMode);
+    root.classList.add(colorMode);
 };
 
 const PreBodyScript = () => {
@@ -48,6 +48,6 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
     setPreBodyComponents(<PreBodyScript />);
 };
 
-// export const wrapPageElement = ({ element }) => {
-//     return <App>{element}</App>;
-// };
+export const wrapPageElement = ({ element }) => {
+    return <App>{element}</App>;
+};

@@ -34,19 +34,17 @@ const List = styled.ul`
 const StyledLink = styled(OutboundLink)`
     padding: 1rem;
     transition: var(--transition);
+    color: var(--color-socials);
 
     svg {
         width: 1.8rem;
         height: 1.8rem;
-        color: var(--color-socials);
     }
 
     &:hover {
         transform: translateY(-0.3rem);
-        svg {
-            transition: var(--transition);
-            color: var(--color-primary);
-        }
+        color: var(--color-primary);
+        transition: var(--transition);
     }
 `;
 
@@ -62,7 +60,7 @@ const Social = ({ isHome, ...otherProps }) => (
                 socialMedia.map(({ url, name }, i) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <li key={`socials-${i}`}>
-                        <StyledLink href={url} aria-label={name}>
+                        <StyledLink href={url} aria-label={name} variant="none">
                             <Icon name={name} />
                         </StyledLink>
                     </li>

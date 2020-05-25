@@ -46,6 +46,7 @@ const empty = css`
     padding: 1.2rem 1.8rem;
     border: 1px solid var(--color-background-1);
     background-color: var(--color-background-1);
+    color: var(--color-text-primary-1);
 
     &:hover,
     &:active {
@@ -59,6 +60,10 @@ const inlineLink = css`
 `;
 
 const buttonStyles = css`
+    svg {
+        color: currentColor;
+        fill: currentColor;
+    }
     ${props => {
         switch (props.variant) {
             case 'primary-button':

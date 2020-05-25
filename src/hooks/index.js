@@ -6,3 +6,4 @@ export { default as useIsFirstRender } from './useIsFirstRender';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useCopyText } from './useCopyText';
 export { default as useHover } from './useHover';
+export { default as useFocus } from './useFocus';

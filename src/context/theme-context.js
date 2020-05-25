@@ -14,6 +14,9 @@ export const ThemeProvider = ({ children }) => {
 
     const contextValue = useMemo(() => {
         const setColorMode = newValue => {
+            const root = document.documentElement;
+            root.classList.remove(colorMode);
+            root.classList.add(newValue);
             localStorage.setItem('color-mode', newValue);
             rawSetColorMode(newValue);
         };

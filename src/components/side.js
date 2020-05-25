@@ -32,19 +32,12 @@ const SideContainer = styled.div`
 
 const Side = ({ children, isHome, orientation }) => {
     const isMounted = useIsMounted(2000, isHome);
-    // const [shouldDisplay, setShouldDisplay] = useState
 
-    // useEffect(() => {
-    //     effect
-    //     return () => {
-    //         cleanup
-    //     }
-    // }, [input])
     return (
         <SideContainer orientation={orientation}>
             <TransitionGroup component={null}>
                 {isMounted && (
-                    <CSSTransition classNames={isHome ? '' : ''} timeout={isHome ? 3000 : 0}>
+                    <CSSTransition classNames={isHome ? 'fade' : ''} timeout={isHome ? 3000 : 0}>
                         {children}
                     </CSSTransition>
                 )}

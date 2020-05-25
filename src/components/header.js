@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu } from '@components';
+import { Menu, ThemeToggle } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -19,7 +19,7 @@ const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
     background-color: var(--color-background-1);
-    transition: var(--transition);
+    transition: transform 0.25s var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;
@@ -129,6 +129,7 @@ const StyledLink = styled(Link)`
     color: var(--color-text-primary-1);
 
     &:hover {
+        transition: var(--transition);
         color: var(--color-primary);
     }
 `;
@@ -242,11 +243,7 @@ class Header extends Component {
                                         key={`header-link-${i}`}
                                         classNames={fadeDownClass}
                                         timeout={timeout}>
-                                        <ListItem
-                                            key={i}
-                                            style={{
-                                                transitionDelay: `${isHome ? i * 100 : 0}ms`,
-                                            }}>
+                                        <ListItem style={{ transitionDelay: `${i * 100}ms` }}>
                                             <StyledLink
                                                 onClick={() =>
                                                     setTimeout(() => {
@@ -262,7 +259,7 @@ class Header extends Component {
                         </TransitionGroup>
                     </LinksList>
                 </NavContainer>
-                <div>toggle</div>
+                <ThemeToggle />
                 <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
             </HeaderContainer>
         );

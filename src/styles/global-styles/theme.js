@@ -4,10 +4,13 @@ import media from '../media';
 
 const theme = css`
     :root {
-        --color-blue: #007bff;
-        --color-blue-light: #1a88ff;
-        --color-blue-dark: #006fe6;
-        --color-pink: #ff0a78;
+        --color-blue: #4433ff;
+        --color-blue-light: #301feb;
+        --color-blue-dark: #5847ff;
+        --color-blue-trans: rgba(68, 51, 255, 0.5);
+        --color-pink: #ffa7c4;
+        --color-pink-light: #ffa7c4;
+        --color-pink-dark: #ffa7c4;
         --color-yellow: #ffdc00;
         --color-danger: #e13c3c;
         --color-white-1: #f4f5f7;
@@ -15,11 +18,11 @@ const theme = css`
         --color-white-3: #e0e1e3;
         --color-white-4: #d5d6d8;
         --color-white-5: #cbccce;
-        --color-navy-1: #0a192f;
-        --color-navy-2: #172a45;
-        --color-navy-3: #e0e1e3;
-        --color-navy-4: #d5d6d8;
-        --color-navy-5: #cbccce;
+        --color-navy-1: #09162a;
+        --color-navy-2: #132034;
+        --color-navy-3: #172a45;
+        --color-navy-4: #21344f;
+        --color-navy-5: #2b3e59;
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
@@ -46,20 +49,21 @@ const theme = css`
         --color-field-border-hover: var(--color-white-5);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
+        --color-theme-toggle: var(--color-blue-light);
 
-        .dark-mode {
-            --color-primary: var(--color-blue);
-            --color-primary-light: var(--color-blue-light);
-            --color-primary-dark: var(--color-blue-dark);
-            --color-secondary: var(--color-pink);
+        &.dark-mode {
+            --color-primary: var(--color-pink);
+            --color-primary-light: var(--color-pink-light);
+            --color-primary-dark: var(--color-pink-dark);
+            --color-secondary: var(--color-blue);
             --color-tertiary: var(--color-yellow);
-            --color-background-1: var(--color-navy-1);
+            --color-background-1: hsl(210deg, 30%, 8%);
             --color-background-2: var(--color-navy-3);
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-white-2);
-            --color-text-link: var(--color-secondary);
             --color-border-primary: var(--color-white-5);
-            --color-socials: var(--color-primary);
+            --color-socials: var(--color-text-primary-2);
+            --color-theme-toggle: var(--color-pink);
         }
 
         --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,

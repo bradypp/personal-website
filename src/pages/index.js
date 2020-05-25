@@ -16,7 +16,6 @@ const IndexPage = ({ location, data }) => {
         }
     }, [location.hash]);
 
-    useEffect(() => {});
     return (
         <Layout location={location}>
             <Hero data={data.hero.edges} />

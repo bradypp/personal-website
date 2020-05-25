@@ -25,3 +25,4 @@ export { default as Menu } from './menu';
 export { default as Anchor } from './anchor';
 export { default as Section } from './section';
 export { default as ClientOnly } from './client-only';
+export { default as ThemeToggle } from './theme-toggle';

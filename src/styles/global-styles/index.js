@@ -112,7 +112,6 @@ const GlobalStyles = createGlobalStyle`
   svg {
     width: 100%;
     height: 100%;
-    fill: currentColor;
     vertical-align: middle;
     display: inline-block;
 
@@ -171,6 +170,8 @@ const GlobalStyles = createGlobalStyle`
     text-decoration-skip-ink: auto;
     color:  var(--color-text-link);
     position: relative;
+    transition: var(--color-transition);
+    cursor: pointer;
   }
 
   input, textarea {

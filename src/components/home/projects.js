@@ -44,14 +44,14 @@ const ProjectName = styled.h5`
         color: var(--color-text-primary-1);
     }
 `;
-const StyledDescription = styled.div`
+const Description = styled.div`
     position: relative;
     padding: 2.5rem;
     font-size: var(--font-size-lg);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-primary);
     z-index:5;
-    background-color: var(--color-background-1);
+    background-color: var(--color-background-2);
     /* TODO
     ${media.thone`
     background-color: transparent;
@@ -187,19 +187,19 @@ const ProjectContainer = styled.div`
 `;
 
 const Projects = ({ data }) => {
-    const $headingRef = useRef(null);
-    const $projectRef = useRef([]);
+    const headingRef = useRef(null);
+    const projectRef = useRef([]);
 
     useEffect(() => {
-        scrollReveal.reveal($headingRef.current, scrollRevealConfig());
-        $projectRef.current.forEach((ref, i) =>
+        scrollReveal.reveal(headingRef.current, scrollRevealConfig());
+        projectRef.current.forEach((ref, i) =>
             scrollReveal.reveal(ref, scrollRevealConfig(i * 100)),
         );
     }, []);
 
     return (
         <ProjectsContainer>
-            <Heading id="projects" ref={$headingRef}>
+            <Heading id="projects" ref={headingRef}>
                 Projects
             </Heading>
             {data &&
@@ -211,7 +211,7 @@ const Projects = ({ data }) => {
                         <ProjectContainer
                             key={`project-${i}`}
                             ref={el => {
-                                $projectRef.current[i] = el;
+                                projectRef.current[i] = el;
                             }}>
                             <ContentContainer>
                                 <Overline>{overline}</Overline>
@@ -227,7 +227,7 @@ const Projects = ({ data }) => {
                                         title
                                     )}
                                 </ProjectName>
-                                <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+                                <Description dangerouslySetInnerHTML={{ __html: html }} />
                                 {tech && (
                                     <TechList>
                                         {tech.map((tech, i) => (

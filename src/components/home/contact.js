@@ -41,10 +41,10 @@ const Contact = ({ data }) => {
     const { frontmatter, html } = data[0].node;
     const { title, emailText } = frontmatter;
 
-    const $contactRef = useRef();
+    const contactRef = useRef();
 
     useEffect(() => {
-        scrollReveal.reveal($contactRef.current, scrollRevealConfig());
+        scrollReveal.reveal(contactRef.current, scrollRevealConfig());
     }, []);
 
     const validation = Yup.object().shape({
@@ -63,7 +63,7 @@ const Contact = ({ data }) => {
     });
 
     return (
-        <ContactContainer ref={$contactRef}>
+        <ContactContainer ref={contactRef}>
             <Heading id="contact">{title}</Heading>
             <HTMLContainer dangerouslySetInnerHTML={{ __html: html }} />
             <FlexContainer>

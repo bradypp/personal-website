@@ -126,14 +126,6 @@ const mixins = {
         transform: translateZ(0);
     `,
     inlineLink: css`
-        display: inline-block;
-        text-decoration: none;
-        text-decoration-skip-ink: auto;
-        position: relative;
-        transition: var(--color-transition);
-        cursor: pointer;
-        color: var(--color-text-link);
-
         &:after {
             content: '';
             display: block;
@@ -171,21 +163,8 @@ const mixins = {
 
         h3 {
             &:after {
-                width: 0;
-                transition: all 1s var(--ease-in-expo);
-            }
-        }
-
-        &:hover,
-        &:focus,
-        & > *:focus {
-            transition: var(--transition);
-            h3 {
-                &:after {
-                    transition: all 1s var(--ease-in-expo);
-                    width: 30%;
-                    ${media.bp800`width: 100%;`};
-                }
+                width: 30%;
+                ${media.bp800`width: 100%;`};
             }
         }
     `,
@@ -217,6 +196,12 @@ const mixins = {
                     border: 1px solid var(--color-danger) !important;
                 }
             `};
+    `,
+    hideElement: css`
+        position: absolute;
+        pointer-events: none;
+        visibility: hidden;
+        opacity: 0;
     `,
 };
 
