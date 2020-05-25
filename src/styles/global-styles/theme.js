@@ -9,13 +9,14 @@ const theme = css`
         --color-blue-dark: #006fe6;
         --color-pink: #ff0a78;
         --color-yellow: #ffdc00;
+        --color-danger: #e13c3c;
         --color-white-1: #f4f5f7;
         --color-white-2: #eaebed;
         --color-white-3: #e0e1e3;
         --color-white-4: #d5d6d8;
         --color-white-5: #cbccce;
-        --color-navy-1: #f4f5f7;
-        --color-navy-2: #eaebed;
+        --color-navy-1: #0a192f;
+        --color-navy-2: #172a45;
         --color-navy-3: #e0e1e3;
         --color-navy-4: #d5d6d8;
         --color-navy-5: #cbccce;
@@ -27,15 +28,45 @@ const theme = css`
         --color-grey-light-3: #ccc;
         --color-code-text: var(--color-text-primary-2);
         --color-code-background: var(--color-background-2);
-        --color-socials: var(--color-text-primary-2);
-        --color-border: var(--color-background-5);
         --color-text-highlight: var(--color-tertiary);
+        --color-primary: var(--color-blue);
+        --color-primary-light: var(--color-blue-light);
+        --color-primary-dark: var(--color-blue-dark);
+        --color-secondary: var(--color-pink);
+        --color-tertiary: var(--color-yellow);
+        --color-background-1: var(--color-white-1);
+        --color-background-2: var(--color-white-3);
+        --color-text-primary-1: var(--color-grey-dark-1);
+        --color-text-primary-2: var(--color-grey-dark-2);
+        --color-text-link: var(--color-primary);
+        --color-field-background: var(--color-white-2);
+        --color-field-background-hover: var(--color-white-3);
+        --color-field-background-active: var(--color-white-1);
+        --color-field-border: var(--color-white-4);
+        --color-field-border-hover: var(--color-white-5);
+        --color-border-primary: var(--color-white-5);
+        --color-socials: var(--color-text-primary-2);
 
-        --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
+        .dark-mode {
+            --color-primary: var(--color-blue);
+            --color-primary-light: var(--color-blue-light);
+            --color-primary-dark: var(--color-blue-dark);
+            --color-secondary: var(--color-pink);
+            --color-tertiary: var(--color-yellow);
+            --color-background-1: var(--color-navy-1);
+            --color-background-2: var(--color-navy-3);
+            --color-text-primary-1: var(--color-white-1);
+            --color-text-primary-2: var(--color-white-2);
+            --color-text-link: var(--color-secondary);
+            --color-border-primary: var(--color-white-5);
+            --color-socials: var(--color-primary);
+        }
 
         --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,
             monospace;
         --fonts-mono: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace;
+
+        --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 
         --font-size-xxs: 1.2rem;
         --font-size-xs: 1.3rem;

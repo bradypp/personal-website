@@ -49,8 +49,8 @@ const empty = css`
 
     &:hover,
     &:active {
-        border: 1px solid var(--color-background-3);
-        background-color: var(--color-background-3);
+        border: 1px solid var(--color-background-2);
+        background-color: var(--color-background-2);
     }
 `;
 

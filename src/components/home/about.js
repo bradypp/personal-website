@@ -29,8 +29,9 @@ const ContentContainer = styled.div`
 const AvatarContainer = styled.div`
     position: relative;
     width: 40%;
-    max-width: 37rem;
+    max-width: 38rem;
     border-radius: 50%;
+    transform: translate(-6rem);
 `;
 const Avatar = styled(Img)`
     position: relative;
@@ -38,11 +39,7 @@ const Avatar = styled(Img)`
     border-radius: 50%;
     transition: var(--transition);
     box-shadow: var(--box-shadow-primary);
-    filter: grayscale(100%) contrast(130%);
-
-    &:hover {
-        filter: grayscale(0) contrast(110%);
-    }
+    margin-left: -5rem;
 `;
 const SkillsContainer = styled.ul`
     display: grid;

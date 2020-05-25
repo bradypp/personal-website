@@ -17,7 +17,7 @@ const StyledHeading = styled.h3`
         content: '';
         display: block;
         height: 1px;
-        background-color: var(--color-border);
+        background-color: var(--color-border-primary);
         position: relative;
         top: -0.5rem;
         margin-left: 2rem;

@@ -20,7 +20,7 @@ const List = styled.ul`
         width: 1px;
         height: 9rem;
         margin: 0 auto;
-        background-color: var(--color-border);
+        background-color: var(--color-border-primary);
     }
 
     li:first-of-type {

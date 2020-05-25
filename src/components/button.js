@@ -13,11 +13,17 @@ const StyledLink = styled(GatsbyLink)`
     ${buttonStyles}
 `;
 
-const Button = ({ children, variant, type: propsType, as, ...props }) => {
-    const Component = as === 'link' ? StyledLink : StyledButton;
-    const type = propsType || variant === 'button' ? 'button' : null;
+const Button = ({ children, type: propsType, as, ...props }) => {
+    const Component = as === 'button' ? StyledButton : StyledLink;
+    let type;
+    if (propsType) {
+        type = propsType;
+    } else {
+        type = as === 'button' ? 'button' : null;
+    }
+
     return (
-        <Component variant={variant} type={type} {...props}>
+        <Component type={type} {...props}>
             {children}
         </Component>
     );

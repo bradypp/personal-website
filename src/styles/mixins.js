@@ -167,7 +167,7 @@ const mixins = {
     homeSection: css`
         width: 100%;
         height: fit-content;
-        padding-bottom: 20rem;
+        padding: 10rem 0;
 
         h3 {
             &:after {
@@ -192,18 +192,19 @@ const mixins = {
     formField: css`
         border-radius: var(--border-radius);
         color: var(--color-text-primary-1);
-        background-color: var(--color-background-2);
-        border: 1px solid var(--color-background-4);
+        background-color: var(--color-field-background);
+        border: 1px solid var(--color-field-border);
         font-family: -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif, monospace;
         font-size: var(--font-size-lg);
 
         &:hover {
-            border: 1px solid var(--color-background-5);
+            background-color: var(--color-field-background-hover);
+            border: 1px solid var(--color-field-border-hover);
         }
 
         &:focus,
         &:active {
-            background-color: var(--color-background-1);
+            background-color: var(--color-field-background-active);
             border: 1px solid var(--color-primary);
         }
 
@@ -213,7 +214,7 @@ const mixins = {
                 &,
                 &:invalid,
                 &:focus {
-                    border: 1.5px solid var(--color-danger) !important;
+                    border: 1px solid var(--color-danger) !important;
                 }
             `};
     `,

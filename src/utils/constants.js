@@ -10,6 +10,12 @@ const KEY_CODES = {
     M: 77,
 };
 
+const THEME = {
+    COLOR_MODE_KEY: 'color-mode',
+    INITIAL_COLOR_MODE_PROP: '--initial-color-mode',
+};
+
 export default {
     KEY_CODES,
+    THEME,
 };

@@ -68,8 +68,8 @@ FieldContainer.propTypes = {
     width: PropTypes.string,
     htmlFor: PropTypes.string,
     tipLocation: PropTypes.string,
-    touched: PropTypes.string,
-    error: PropTypes.string,
+    touched: PropTypes.bool,
+    error: PropTypes.bool,
 };
 
 FieldContainer.defaultProps = {

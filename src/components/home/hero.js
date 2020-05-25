@@ -18,7 +18,7 @@ const HeroContainer = styled.section`
     align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
+    margin-bottom: -10rem;
     padding: 0;
 `;
 const TitleContainer = styled.div`

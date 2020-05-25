@@ -156,7 +156,6 @@ class Header extends Component {
                 },
             );
         }, 100);
-        console.log(this.isMounted);
     }
 
     componentWillUnmount() {

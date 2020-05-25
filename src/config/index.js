@@ -12,6 +12,7 @@ module.exports = {
     email: 'bradypp44@gmail.com', // TODO: update to custom url
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
+    twitterHandle: '@bradypp',
     socialMedia: [
         {
             name: 'GitHub',
