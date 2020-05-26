@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
 import { Menu, ThemeToggle } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 import Media from 'react-media';
 
 const navHeight = 100;
@@ -34,6 +34,10 @@ const HeaderContainer = styled.header`
     transform: translateY(
         ${props => (props.scrollDirection === 'down' ? `-${navScrollHeight}px` : '0px')}
     );
+
+    ${media.bp600`
+        padding: 0 var(--page-padding);
+    `}
 `;
 const NavContainer = styled.nav`
     ${mixins.flexCenterRight}
