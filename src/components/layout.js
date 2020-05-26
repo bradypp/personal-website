@@ -6,13 +6,13 @@ import { Head, Footer, Header, Social } from '@components';
 import { mixins } from '@styles';
 
 const Main = styled.main`
-    width: 100%;
-    min-height: 100vh;
-    padding: 0 var(--page-padding);
-`;
-const Content = styled.div`
     ${mixins.containAndCenter};
     ${mixins.flexColumnCenter};
+    min-height: 100vh;
+`;
+const Content = styled.div`
+    width: 100%;
+    padding: 0 var(--page-padding);
 `;
 
 const Layout = ({ children, meta, location }) => {
@@ -23,9 +23,9 @@ const Layout = ({ children, meta, location }) => {
             <Head meta={meta} />
             <Social isHome={isHome} orientation="left" />
             <Header isHome={isHome} />
-            <Main>
-                <Content id="content">{children}</Content>
-            </Main>
+            <Content id="content">
+                <Main>{children}</Main>
+            </Content>
             <Footer />
         </div>
     );

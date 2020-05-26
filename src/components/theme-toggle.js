@@ -25,8 +25,8 @@ const StyledLabel = styled.label`
     user-select: none;
 `;
 const ToggleTrack = styled.div`
-    width: 50px;
-    height: 24px;
+    width: 52px;
+    height: 26px;
     padding: 0;
     border-radius: 30px;
     background-color: var(--color-navy-5);
@@ -35,8 +35,8 @@ const ToggleTrack = styled.div`
 
 const sharedSectionStyles = css`
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     top: 4px;
     margin-top: auto;
     margin-bottom: auto;
@@ -45,7 +45,7 @@ const sharedSectionStyles = css`
 `;
 const ToggleLeft = styled.div`
     ${sharedSectionStyles}
-    left: 6px;
+    left: 5px;
     opacity: 0;
 
     ${props =>
@@ -56,7 +56,7 @@ const ToggleLeft = styled.div`
 `;
 const ToggleRight = styled.div`
     ${sharedSectionStyles}
-    right: 6px;
+    right: 5px;
     opacity: 1;
 
     ${props =>
@@ -70,8 +70,8 @@ const ToggleButton = styled.div`
     top: 1px;
     left: 1px;
     right: 0;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background-color: var(--color-white-1);
     box-sizing: border-box;
@@ -85,13 +85,13 @@ const ToggleButton = styled.div`
         `}
 
     &:focus, 
-    &.toggle-focus,
+    &.theme-toggle--focus,
     &:active {
         border: 1px solid var(--color-theme-toggle);
     }
 
     &:focus,
-    &.toggle-focus {
+    &.theme-toggle--focus {
         box-shadow: 0 0 2px 3px var(--color-theme-toggle);
     }
 
@@ -131,7 +131,10 @@ const ThemeToggle = () => {
                         <Icon name="Sun" />
                     </ToggleRight>
                 </ToggleTrack>
-                <ToggleButton className={toggleFocus ? 'toggle-focus' : ''} checked={isChecked} />
+                <ToggleButton
+                    className={toggleFocus ? 'theme-toggle--focus' : ''}
+                    checked={isChecked}
+                />
             </StyledLabel>
         </ToggleContainer>
     );

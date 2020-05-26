@@ -23,14 +23,14 @@ const primary = css`
 
     &:hover,
     &:active {
-        color: var(--color-white-1);
+        color: var(--color-text-secondary-1);
         background-color: var(--color-primary);
     }
 `;
 
 const secondary = css`
     ${commonStyles}
-    color: var(--color-white-1);
+    color: var(--color-text-secondary-1);
     background-color: var(--color-primary);
     padding: 1.2rem 1.8rem;
     border: 1px solid var(--color-primary);
@@ -38,6 +38,7 @@ const secondary = css`
     &:hover,
     &:active {
         background-color: var(--color-primary-dark);
+        border: 1px solid var(--color-primary-dark);
     }
 `;
 

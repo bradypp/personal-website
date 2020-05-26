@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle } from '@components';
+import { Menu, ThemeToggle, ClientOnly } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -25,7 +24,7 @@ const HeaderContainer = styled.header`
     filter: none !important;
     pointer-events: auto !important;
     user-select: auto !important;
-    padding: 0 var(--page-padding);
+    padding: 0 3.2rem;
     width: 100%;
     height: ${props =>
         props.scrollDirection === 'none' ? `${navHeight}px` : `${navScrollHeight}px`};
@@ -220,9 +219,6 @@ class Header extends Component {
         const fadeDownClass = isHome ? 'fadedown' : '';
         return (
             <HeaderContainer scrollDirection={scrollDirection}>
-                <Helmet>
-                    <body className={isMenuOpen ? 'blur' : ''} />
-                </Helmet>
                 <TransitionGroup component={null}>
                     {isMounted && (
                         <CSSTransition classNames={fadeClass} timeout={timeout}>
@@ -264,7 +260,9 @@ class Header extends Component {
                         </TransitionGroup>
                     </LinksList>
                 </NavContainer>
-                <ThemeToggle />
+                <ClientOnly delay={isHome ? navLinks.length * 100 + 500 : 100}>
+                    <ThemeToggle />
+                </ClientOnly>
                 <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
             </HeaderContainer>
         );

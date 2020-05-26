@@ -19,7 +19,7 @@ const ButtonsContainer = styled.div`
 
 const StyledButton = styled(Button)`
     font-size: var(--font-size-sm);
-    padding: 1.2rem 1.6rem;
+    padding: 1.3rem 1.6rem;
 `;
 
 const FormButtons = ({

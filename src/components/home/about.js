@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
 import { useSpring, animated } from 'react-spring';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, Icon, OutboundLink } from '@components';
+import { Heading, OutboundLink, CustomList } from '@components';
 import { mixins } from '@styles';
 
 const AboutContainer = styled.section`
@@ -41,35 +40,8 @@ const Avatar = styled(Img)`
     transition: var(--transition);
     box-shadow: var(--box-shadow-primary);
 `;
-const SkillsContainer = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 1.6rem;
-    grid-row-gap: 2rem;
-    overflow: hidden;
-    padding: 0;
+const SkillsContainer = styled(props => <CustomList {...props} />)`
     margin: 2rem 0 0 0;
-    list-style: none;
-
-    li {
-        display: flex;
-        align-items: center;
-
-        svg {
-            color: var(--color-primary);
-            min-width: 1rem;
-            min-height: 1rem;
-            width: 1rem;
-            height: 1rem;
-            margin: 0 1.8rem 0 0;
-        }
-
-        span {
-            height: min-content;
-            line-height: 1;
-            font-size: var(--font-size-sm);
-        }
-    }
 `;
 
 const About = ({ data }) => {
@@ -106,15 +78,7 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
-                    <SkillsContainer>
-                        {skills &&
-                            skills.map(skill => (
-                                <li key={uuidv4()}>
-                                    <Icon name="Diamond" />
-                                    <span>{skill}</span>
-                                </li>
-                            ))}
-                    </SkillsContainer>
+                    <SkillsContainer items={skills} columns={3} />
                 </ContentContainer>
                 <AvatarContainer>
                     <animated.div style={{ transform: transition }}>

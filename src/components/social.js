@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Side, OutboundLink, Icon } from '@components';
 import { socialMedia, email } from '@config';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const List = styled.ul`
     ${mixins.flexColumnCenter}
@@ -21,6 +21,10 @@ const List = styled.ul`
         height: 9rem;
         margin: 0 auto;
         background-color: var(--color-border-primary);
+
+        ${media.bp1040`
+        height: 8rem;
+        `}
     }
 
     li:first-of-type {
@@ -43,7 +47,7 @@ const StyledLink = styled(OutboundLink)`
 
     &:hover {
         transform: translateY(-0.3rem);
-        color: var(--color-primary);
+        color: var(--color-socials-hover);
         transition: var(--transition);
     }
 `;

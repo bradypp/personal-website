@@ -9,7 +9,7 @@ const mixins = {
     rgba: (colorValue, opacity = '0.05') => Color(colorValue).alpha(opacity).string(),
     customScrollbar: (config = {}) => css`
         &::-webkit-scrollbar {
-            width: ${config.width || 8}px;
+            width: ${config.width || '8px'};
         }
         &::-webkit-scrollbar-track {
             background: none;
@@ -17,6 +17,10 @@ const mixins = {
         &::-webkit-scrollbar-thumb {
             border-radius: 10rem;
             background-color: ${config.color || '#eee'};
+
+            &:active {
+                background-color: ${config.activeColor || config.color || '#eee'};
+            }
         }
     `,
     backgroundImage: imageURL => css`
@@ -130,7 +134,7 @@ const mixins = {
             content: '';
             display: block;
             width: 25%;
-            height: 0;
+            height: 1px;
             position: absolute;
             bottom: 0;
             right: 50%;
@@ -202,6 +206,35 @@ const mixins = {
         pointer-events: none;
         visibility: hidden;
         opacity: 0;
+    `,
+    customList: (columns = 1) => css`
+        display: grid;
+        grid-template-columns: repeat(${columns}, 1fr);
+        grid-column-gap: 1.6rem;
+        grid-row-gap: 1.8rem;
+        overflow: hidden;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+
+            svg {
+                color: var(--color-secondary);
+                min-width: 1rem;
+                min-height: 1rem;
+                width: 1.6rem;
+                height: 1.6rem;
+                margin: 0 1.6rem 0 0;
+            }
+
+            span {
+                height: min-content;
+                line-height: 1;
+                font-size: var(--font-size-sm);
+            }
+        }
     `,
 };
 

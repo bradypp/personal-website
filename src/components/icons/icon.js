@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
-import { BsDiamond } from 'react-icons/bs';
+import { IoMdArrowRoundForward } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
 
 import IconCV from './cv';
@@ -20,8 +20,8 @@ const Icon = ({ name }) => {
     switch (name) {
         case 'CV':
             return <IconCV />;
-        case 'Diamond':
-            return <BsDiamond />;
+        case 'ArrowRight':
+            return <IoMdArrowRoundForward />;
         case 'Medium':
             return <FaMediumM />;
         case 'Devto':

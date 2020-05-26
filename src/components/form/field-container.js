@@ -10,13 +10,13 @@ const FieldLabel = styled.label`
     display: block;
     padding-bottom: 0.6rem;
     color: var(--color-text-primary-1);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-weight: 500;
     width: max-content;
 `;
 
 const fieldSubtitle = css`
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     line-height: 1;
     font-weight: 400;
 `;

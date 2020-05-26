@@ -48,18 +48,14 @@ const Contact = ({ data }) => {
     }, []);
 
     const validation = Yup.object().shape({
-        name: Yup.string().trim().required('Name is required'),
+        name: Yup.string().trim().required('Please enter your name'),
         email: Yup.string()
             .trim()
             .email('Please enter a valid email address')
-            .required('Email is required')
+            .required('Please enter your email')
             .lowercase(),
-        subject: Yup.string().trim().required('Subject is required'),
-        message: Yup.string()
-            .trim()
-            .email('Please enter a valid email address')
-            .required('Message is required')
-            .lowercase(),
+        subject: Yup.string().trim().required('Please enter a subject'),
+        message: Yup.string().trim().required('Please enter your message').lowercase(),
     });
 
     return (
@@ -91,10 +87,10 @@ const Contact = ({ data }) => {
                             }
                         }}>
                         <Form.Element>
-                            <Form.Field.Input label="Name *" name="name" />
-                            <Form.Field.Input label="Email *" name="email" />
-                            <Form.Field.Input label="Subject *" name="subject" />
-                            <Form.Field.TextArea height={18} label="Message *" name="message" />
+                            <Form.Field.Input label="Name" name="name" />
+                            <Form.Field.Input label="Email" name="email" />
+                            <Form.Field.Input label="Subject" name="subject" />
+                            <Form.Field.TextArea height={18} label="Message" name="message" />
                             <Form.Buttons withReset submitText="Send Message" />
                         </Form.Element>
                     </Form>

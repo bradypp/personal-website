@@ -36,6 +36,7 @@ const Name = styled.div`
     transition: var(--transition);
     padding: 0.2rem;
     color: var(--color-text-primary-1);
+    overflow: visible;
 
     &:after {
         content: '';
@@ -47,7 +48,8 @@ const Name = styled.div`
         left: 0;
         z-index: -1;
         background: linear-gradient(45deg, var(--color-primary), var(--color-primary));
-        transition: var(--transition);
+        transition: all 0.2s ease-in-out;
+        overflow: visible;
     }
 
     &:hover {

@@ -7,7 +7,7 @@ import { Icon, OutboundLink } from '@components';
 import { navLinks, socialMedia } from '@config';
 import { mixins, media } from '@styles';
 
-// TODO: change background color and text color to dark mode version
+const Overlay = styled.div``;
 
 const MenuContainer = styled.div`
     position: fixed;
@@ -82,7 +82,7 @@ const SocialsContainer = styled.ul`
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 1rem;
+    padding: 1.2rem;
     transition: var(--transition);
 
     svg {
@@ -132,7 +132,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                         socialMedia.map(({ url, name }, i) => (
                             // eslint-disable-next-line react/no-array-index-key
                             <li key={`socials-${i}`}>
-                                <SocialsLink href={url} aria-label={name}>
+                                <SocialsLink href={url} aria-label={name} variant={null}>
                                     <Icon name={name} />
                                 </SocialsLink>
                             </li>

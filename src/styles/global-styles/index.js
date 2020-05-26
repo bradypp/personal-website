@@ -55,7 +55,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-md);
     font-weight: 400;
-    line-height: 1.3;
+    line-height: 1.5;
     color: var(--color-text-primary-1);
     background: var(--color-background-1);
     min-height: 100vh;
@@ -73,6 +73,12 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  ${mixins.customScrollbar({
+      color: 'var(--color-scrollbar)',
+      width: '12px',
+      activeColor: 'var(--color-scrollbar-active)',
+  })}
 
   ::selection {
     background-color:  var(--color-text-highlight);

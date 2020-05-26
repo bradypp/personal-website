@@ -35,6 +35,7 @@ const Overline = styled.h4`
     font-weight: normal;
     color: var(--color-primary);
     padding-top: 0;
+    letter-spacing: -0.2px;
 `;
 const ProjectName = styled.h5`
     font-size: 2.8rem;
@@ -93,17 +94,15 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
     a {
         padding: 1rem;
+        color: var(--color-socials);
         svg {
-            color: var(--color-text-primary-2);
             width: 2.2rem;
             height: 2.2rem;
         }
 
         &:hover {
-            svg {
-                transition: var(--transition);
-                color: var(--color-primary);
-            }
+            transition: var(--transition);
+            color: var(--color-socials-hover);
         }
     }
 `;
@@ -247,22 +246,20 @@ const Projects = ({ data }) => {
                                 )}
                                 <LinksContainer>
                                     {github && (
-                                        <a
+                                        <OutboundLink
+                                            variant={null}
                                             href={github}
-                                            target="_blank"
-                                            rel="nofollow noopener noreferrer"
                                             aria-label="GitHub Link">
                                             <Icon name="GitHub" />
-                                        </a>
+                                        </OutboundLink>
                                     )}
                                     {external && (
-                                        <a
+                                        <OutboundLink
+                                            variant={null}
                                             href={external}
-                                            target="_blank"
-                                            rel="nofollow noopener noreferrer"
                                             aria-label="External Link">
                                             <Icon name="External" />
-                                        </a>
+                                        </OutboundLink>
                                     )}
                                 </LinksContainer>
                             </ContentContainer>
