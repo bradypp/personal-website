@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -13,6 +13,7 @@ import { mixins } from '@styles';
 const AboutContainer = styled.section`
     ${mixins.homeSection}
     position: relative;
+    transform-origin: center;
 `;
 const FlexContainer = styled.div`
     ${mixins.flexBetween};
@@ -29,9 +30,9 @@ const ContentContainer = styled.div`
 const AvatarContainer = styled.div`
     position: relative;
     width: 40%;
-    max-width: 38rem;
+    max-width: 36rem;
     border-radius: 50%;
-    transform: translate(-6rem);
+    margin: 1rem 8rem 0 0;
 `;
 const Avatar = styled(Img)`
     position: relative;
@@ -39,7 +40,6 @@ const Avatar = styled(Img)`
     border-radius: 50%;
     transition: var(--transition);
     box-shadow: var(--box-shadow-primary);
-    margin-left: -5rem;
 `;
 const SkillsContainer = styled.ul`
     display: grid;
@@ -74,25 +74,34 @@ const SkillsContainer = styled.ul`
 
 const About = ({ data }) => {
     const aboutRef = useRef();
+    const { frontmatter, html } = data[0].node;
+    const { title, avatar, skills } = frontmatter;
 
-    const [animateProps, setPosition] = useSpring(() => ({
+    const [{ xy }, setPosition] = useSpring(() => ({
+        st: 0,
         xy: [0, 0],
         config: { mass: 10, tension: 550, friction: 140 },
     }));
-    const calc = (x, y) => [x - window.innerWidth / 2, y - window.innerHeight / 2];
-    const transition = (x, y) => `translate3d(${x / 50}px,${y / 50}px,0)`;
+    const transition = xy.interpolate(
+        (x, y) => `perspective(400px) rotateY(${x / 135}deg) rotateX(${-y / 135}deg)  `,
+    );
 
-    const { frontmatter, html } = data[0].node;
-    const { title, avatar, skills } = frontmatter;
+    useEffect(() => {
+        const homePage = document.getElementById('content');
+        homePage.addEventListener('mousemove', ({ clientX: x, clientY: y }) =>
+            setPosition({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }),
+        );
+        return homePage.removeEventListener('mousemove', ({ clientX: x, clientY: y }) =>
+            setPosition({ xy: [x - window.innerWidth / 2, y - window.innerHeight / 2] }),
+        );
+    }, [setPosition]);
 
     useEffect(() => {
         scrollReveal.reveal(aboutRef.current, scrollRevealConfig());
     }, []);
 
     return (
-        <AboutContainer
-            ref={aboutRef}
-            onMouseMove={({ clientX: x, clientY: y }) => setPosition({ xy: calc(x, y) })}>
+        <AboutContainer ref={aboutRef}>
             <Heading id="about">{title}</Heading>
             <FlexContainer>
                 <ContentContainer>
@@ -108,7 +117,7 @@ const About = ({ data }) => {
                     </SkillsContainer>
                 </ContentContainer>
                 <AvatarContainer>
-                    <animated.div style={{ transform: animateProps.xy.interpolate(transition) }}>
+                    <animated.div style={{ transform: transition }}>
                         <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
                             <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
                         </OutboundLink>
