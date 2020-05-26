@@ -114,21 +114,30 @@ const StyledImg = styled(Img)`
     border-radius: var(--border-radius);
     position: relative;
     mix-blend-mode: multiply;
-    box-shadow: var(--box-shadow-primary);
     /* TODO
     ${media.tablet`
     object-fit: cover;
     width: auto;
     height: 100%;
-  `}; */
-`;
-const StyledImgContainer = styled.div`
+    `}; */
+    `;
+const CarouselContainer = styled.div`
+    width: 60rem;
+    max-width: calc(100vw - 2 * var(--page-padding));
+    overflow: hidden;
+    max-height: ${props => props.maxHeight};
     grid-column: 2 / -1;
     grid-row: 1 / -1;
     position: relative;
-    z-index: 1;
+    box-shadow: var(--box-shadow-primary);
+
+    .slick-slider {
+        line-height: 0;
+    }
+`;
+const StyledImgContainer = styled.div`
+    position: relative;
     border-radius: var(--border-radius);
-    width: 60rem;
     /* TODO
     ${media.tablet`height: 100%;`}; */
     /* ${media.thone`
@@ -174,7 +183,7 @@ const ProjectContainer = styled.div`
             margin-left: 0;
             margin-right: -1rem;
         }
-        ${StyledImgContainer} {
+        ${CarouselContainer} {
             grid-column: 1 / 2;
             /* TODO
             ${media.tablet`height: 100%;`};
@@ -187,8 +196,9 @@ const ProjectContainer = styled.div`
 `;
 
 const Projects = ({ data }) => {
-    const headingRef = useRef(null);
+    const headingRef = useRef();
     const projectRef = useRef([]);
+    const imageRef = useRef();
 
     useEffect(() => {
         scrollReveal.reveal(headingRef.current, scrollRevealConfig());
@@ -257,28 +267,29 @@ const Projects = ({ data }) => {
                                 </LinksContainer>
                             </ContentContainer>
                             <OutboundLink href={external || github || '#'} variant={null}>
-                                <StyledImgContainer>
+                                <CarouselContainer>
                                     <Slider
                                         {...{
                                             arrows: false,
                                             dots: false,
                                             infinite: true,
-                                            speed: 500,
+                                            speed: 800,
                                             autoplay: true,
-                                            autoplaySpeed: 4000,
+                                            autoplaySpeed: 5000,
                                             fade: true,
                                             cssEase: 'ease',
-                                            pauseOnHover: false,
-                                            pauseOnFocus: false,
                                         }}>
                                         {images.map(({ image, alt }) => (
-                                            <StyledImg
-                                                fluid={image.childImageSharp.fluid}
-                                                alt={alt || `${title}-image-${i}`}
-                                            />
+                                            <StyledImgContainer>
+                                                <StyledImg
+                                                    ref={imageRef}
+                                                    fluid={image.childImageSharp.fluid}
+                                                    alt={alt || `${title}-image-${i}`}
+                                                />
+                                            </StyledImgContainer>
                                         ))}
                                     </Slider>
-                                </StyledImgContainer>
+                                </CarouselContainer>
                             </OutboundLink>
                         </ProjectContainer>
                     );
