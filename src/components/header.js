@@ -260,6 +260,16 @@ class Header extends Component {
 
         return (
             <HeaderContainer scrollDirection={scrollDirection}>
+                <span
+                    style={{
+                        fontFamily: 'Fira Code',
+                        fontWeight: 600,
+                        fontSize: 'var(--font-size-xl)',
+                        width: '200px',
+                        color: 'var(--color-secondary)',
+                    }}>
+                    Paul Brady
+                </span>
                 <Media
                     query="(min-width: 801px)"
                     render={() => (
