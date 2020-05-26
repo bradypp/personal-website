@@ -10,7 +10,8 @@ const StyledOutboundLink = styled(GatsbyOutboundLink)`
 `;
 
 const OutboundLink = ({ children, href, ...props }) => {
-    const link = href.startsWith('mailto') || href.startsWith('http') ? href : `//${href}`;
+    const link =
+        href && (href.startsWith('mailto') || href.startsWith('http')) ? href : `//${href}`;
     return (
         <StyledOutboundLink href={link} {...props}>
             {children}
@@ -24,7 +25,7 @@ OutboundLink.propTypes = {
     className: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
-    variant: PropTypes.oneOf(['inline-link', 'primary-button']),
+    variant: PropTypes.oneOf(['inline-link', 'styled-link', 'primary-button']),
 };
 
 OutboundLink.defaultProps = {

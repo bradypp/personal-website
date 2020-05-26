@@ -104,24 +104,6 @@ const LinksContainer = styled.div`
     align-items: center;
     position: relative;
     margin-left: -1rem;
-    a {
-        padding: 1rem;
-        color: var(--color-socials);
-        svg {
-            width: 22px;
-            height: 22px;
-
-            ${media.bp800`
-                width: 20px;
-                height: 20px;
-            `}
-        }
-
-        &:hover {
-            transition: var(--transition);
-            color: var(--color-socials-hover);
-        }
-    }
 `;
 const StyledImg = styled(Img)`
     width: 100%;
@@ -283,7 +265,7 @@ const Projects = ({ data }) => {
                                             <LinksContainer>
                                                 {github && (
                                                     <OutboundLink
-                                                        variant={null}
+                                                        variant="styled-link"
                                                         href={github}
                                                         aria-label="GitHub Link">
                                                         <Icon name="GitHub" />
@@ -291,7 +273,7 @@ const Projects = ({ data }) => {
                                                 )}
                                                 {external && (
                                                     <OutboundLink
-                                                        variant={null}
+                                                        variant="styled-link"
                                                         href={external}
                                                         aria-label="External Link">
                                                         <Icon name="External" />

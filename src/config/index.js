@@ -1,4 +1,3 @@
-// TODO: update site config
 module.exports = {
     siteTitle: 'Paul Brady',
     siteDescription: 'Personal website',
@@ -9,7 +8,8 @@ module.exports = {
     googleVerification: '',
     name: 'Paul Brady',
     location: 'Manchester, UK',
-    email: 'bradypp44@gmail.com', // TODO: update to custom url
+    email: 'bradypp44@gmail.com', // TODO: update
+    repo: 'https://github.com/bradypp/personal-website',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
     twitterHandle: '@bradypp',
@@ -19,20 +19,20 @@ module.exports = {
             url: 'https://github.com/bradypp',
         },
         {
-            name: 'Linkedin',
-            url: '', // TODO
+            name: 'LinkedIn',
+            url: 'https://www.linkedin.com/in/paul-brady-pb/',
         },
         {
             name: 'Twitter',
             url: 'https://twitter.com/bradypp',
         },
         {
-            name: 'Codepen',
-            url: '', // TODO
+            name: 'CodePen',
+            url: 'https://codepen.io/bradypp',
         },
         {
-            name: 'Devto',
-            url: '', // TODO
+            name: 'DevTo',
+            url: 'https://dev.to/bradypp',
         },
     ],
     navLinks: [

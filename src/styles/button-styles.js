@@ -60,6 +60,10 @@ const inlineLink = css`
     ${mixins.inlineLink}
 `;
 
+const styledLink = css`
+    ${mixins.styledLink}
+`;
+
 const buttonStyles = css`
     svg {
         color: currentColor;
@@ -75,6 +79,8 @@ const buttonStyles = css`
                 return empty;
             case 'inline-link':
                 return inlineLink;
+            case 'styled-link':
+                return styledLink;
             default:
                 return null;
         }

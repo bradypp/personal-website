@@ -35,38 +35,22 @@ const List = styled.ul`
         margin-bottom: 2rem;
     }
 `;
-const StyledLink = styled(OutboundLink)`
-    padding: 1rem;
-    transition: var(--transition);
-    color: var(--color-socials);
-
-    svg {
-        width: 1.8rem;
-        height: 1.8rem;
-    }
-
-    &:hover {
-        transform: translateY(-0.3rem);
-        color: var(--color-socials-hover);
-        transition: var(--transition);
-    }
-`;
 
 const Social = ({ isHome, ...otherProps }) => (
     <Side isHome={isHome} {...otherProps}>
         <List>
             <li>
-                <StyledLink variant={null} href={`mailto:${email}`}>
+                <OutboundLink variant="styled-link" href={`mailto:${email}`}>
                     <Icon name="Email" />
-                </StyledLink>
+                </OutboundLink>
             </li>
             {socialMedia &&
                 socialMedia.map(({ url, name }, i) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <li key={`socials-${i}`}>
-                        <StyledLink href={url} aria-label={name} variant={null}>
+                        <OutboundLink href={url} aria-label={name} variant="styled-link">
                             <Icon name={name} />
-                        </StyledLink>
+                        </OutboundLink>
                     </li>
                 ))}
         </List>

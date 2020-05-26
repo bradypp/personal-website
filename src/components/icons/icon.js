@@ -6,11 +6,11 @@ import { IoMdArrowRoundForward } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
 
 import IconCV from './cv';
-import IconCodepen from './codepen';
+import IconCodePen from './codepen';
 import IconExternal from './external';
 import IconFolder from './folder';
 import IconGitHub from './github';
-import IconLinkedin from './linkedin';
+import IconLinkedIn from './linkedin';
 import IconLocation from './location';
 import IconStar from './star';
 import IconTwitter from './twitter';
@@ -24,14 +24,14 @@ const Icon = ({ name }) => {
             return <IoMdArrowRoundForward />;
         case 'Medium':
             return <FaMediumM />;
-        case 'Devto':
+        case 'DevTo':
             return <FaDev />;
         case 'Email':
             return <MdEmail />;
         case 'Sun':
             return <IconSun />;
-        case 'Codepen':
-            return <IconCodepen />;
+        case 'CodePen':
+            return <IconCodePen />;
         case 'External':
             return <IconExternal />;
         case 'Folder':
@@ -40,8 +40,8 @@ const Icon = ({ name }) => {
             return <IconGitHub />;
         case 'Moon':
             return <FiMoon />;
-        case 'Linkedin':
-            return <IconLinkedin />;
+        case 'LinkedIn':
+            return <IconLinkedIn />;
         case 'Location':
             return <IconLocation />;
         case 'Star':

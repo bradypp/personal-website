@@ -160,6 +160,22 @@ const mixins = {
             }
         }
     `,
+    styledLink: css`
+        padding: 1rem;
+        transition: var(--transition);
+        color: var(--color-socials);
+
+        svg {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+
+        &:hover {
+            transform: translateY(-0.3rem);
+            color: var(--color-socials-hover);
+            transition: var(--transition);
+        }
+    `,
     homeSection: css`
         width: 100%;
         height: fit-content;

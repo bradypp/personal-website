@@ -12,7 +12,7 @@ images:
     - image: './image-4.png'
       alt: 'My website contact section'
 github: 'https://github.com/bradypp/personal-website'
-external: ''
+external: 'https://www.paulbrady.dev'
 tech:
     - React
     - Gatsby.js

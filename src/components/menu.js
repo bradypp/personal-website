@@ -53,7 +53,7 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
     margin: 0 auto 3rem;
     position: relative;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-lg);
     ${media.bp440`
       margin: 0 auto 2.4rem;
     `};

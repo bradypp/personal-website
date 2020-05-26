@@ -247,8 +247,8 @@ class Header extends Component {
                 classNames={fadeDownClass}
                 timeout={timeout}
                 onEntered={() => {
-                    document.getElementById('toggle-animation-container').style.transitionDelay =
-                        '0s';
+                    const el = document.getElementById('toggle-animation-container');
+                    if (el) el.style.transitionDelay = '0s';
                 }}>
                 <div
                     id="toggle-animation-container"
