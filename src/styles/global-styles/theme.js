@@ -57,6 +57,7 @@ const theme = css`
         --color-field-background-active: var(--color-white-1);
         --color-field-border: var(--color-white-4);
         --color-field-border-hover: var(--color-white-5);
+        --color-field-border-active: var(--color-primary);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-blue);
@@ -85,6 +86,11 @@ const theme = css`
             --color-danger: var(--color-red-light);
             --color-scrollbar: var(--color-navy-4);
             --color-scrollbar-active: var(--color-navy-5);
+            --color-field-background: var(--color-navy-4);
+            --color-field-background-hover: var(--color-navy-3);
+            --color-field-background-active: var(--color-navy-4);
+            --color-field-border: var(--color-navy-3);
+            --color-field-border-hover: var(--color-navy-2);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
