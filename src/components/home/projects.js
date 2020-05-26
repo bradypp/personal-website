@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Slider from 'react-slick';
 
 import { scrollRevealConfig } from '@config';
 import { scrollReveal } from '@utils';
@@ -127,6 +128,7 @@ const StyledImgContainer = styled.div`
     position: relative;
     z-index: 1;
     border-radius: var(--border-radius);
+    width: 60rem;
     /* TODO
     ${media.tablet`height: 100%;`}; */
     /* ${media.thone`
@@ -254,12 +256,28 @@ const Projects = ({ data }) => {
                                     )}
                                 </LinksContainer>
                             </ContentContainer>
-                            <OutboundLink href={external || github || '#'}>
+                            <OutboundLink href={external || github || '#'} variant={null}>
                                 <StyledImgContainer>
-                                    <StyledImg
-                                        fluid={images[0].image.childImageSharp.fluid}
-                                        alt={images[0].alt || `${title}-image-${i}`}
-                                    />
+                                    <Slider
+                                        {...{
+                                            arrows: false,
+                                            dots: false,
+                                            infinite: true,
+                                            speed: 500,
+                                            autoplay: true,
+                                            autoplaySpeed: 4000,
+                                            fade: true,
+                                            cssEase: 'ease',
+                                            pauseOnHover: false,
+                                            pauseOnFocus: false,
+                                        }}>
+                                        {images.map(({ image, alt }) => (
+                                            <StyledImg
+                                                fluid={image.childImageSharp.fluid}
+                                                alt={alt || `${title}-image-${i}`}
+                                            />
+                                        ))}
+                                    </Slider>
                                 </StyledImgContainer>
                             </OutboundLink>
                         </ProjectContainer>

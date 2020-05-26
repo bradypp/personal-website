@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import slick from 'slick-carousel/slick/slick.css';
+import slickTheme from 'slick-carousel/slick/slick-theme.css';
 
 import media from '../media';
 import theme from './theme';
@@ -12,6 +14,8 @@ const GlobalStyles = createGlobalStyle`
   ${fontFaces};
   ${normalizeStyles};
   ${theme};
+  ${slick}
+  ${slickTheme}
 
   *,
   *:before,
