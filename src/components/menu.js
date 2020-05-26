@@ -7,8 +7,6 @@ import { Icon, OutboundLink } from '@components';
 import { navLinks, socialMedia } from '@config';
 import { mixins, media } from '@styles';
 
-const Overlay = styled.div``;
-
 const MenuContainer = styled.div`
     position: fixed;
     top: 0;
@@ -21,8 +19,6 @@ const MenuContainer = styled.div`
     transition: var(--transition);
     transform: translateX(${props => (props.isMenuOpen ? 0 : 100)}vw);
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
-    display: none;
-    ${media.bp800`display: block;`};
 `;
 const SidebarContainer = styled.aside`
     ${mixins.flexColumnCenter};
@@ -82,7 +78,7 @@ const SocialsContainer = styled.ul`
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 1.2rem;
+    padding: 1.8rem;
     transition: var(--transition);
 
     svg {

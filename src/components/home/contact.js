@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, email } from '@config';
 import { Heading, OutboundLink, Form } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const ContactContainer = styled.section`
     ${mixins.homeSection};
@@ -21,20 +21,51 @@ const HTMLContainer = styled.div`
 `;
 const FlexContainer = styled.div`
     ${mixins.flexCenter};
+    justify-content: space-between;
     width: 100%;
+
+    ${media.bp440`
+        flex-direction: column;
+        align-items:flex-start;
+    `}
 `;
 const FormContainer = styled.div`
-    flex: 3;
+    flex: 5;
+    margin-top: 2rem;
+    ${media.bp600`
+        flex:3;
+    `}
+    ${media.bp440`
+        width:100%;
+    `}
 `;
 const Socials = styled.div`
-    flex: 2;
+    flex: 3;
     margin-bottom: 5%;
+
+    ${media.bp1040`
+        flex: 2;
+    `}
+    ${media.bp600`
+        flex: 0;
+        min-width: 12rem;
+        margin:0;
+    `}
 `;
 const MiddleText = styled.span`
-    padding: 8rem;
-    font-weight: 500;
+    flex: 1;
+    font-weight: 600;
     color: var(--color-text-primary-2);
     margin-bottom: 5%;
+    text-align: center;
+    ${media.bp600`
+        padding: 2rem;
+        flex:0;
+    `}
+    ${media.bp440`
+        padding: 4rem;
+        margin:0;
+    `}
 `;
 
 const Contact = ({ data }) => {
@@ -90,7 +121,7 @@ const Contact = ({ data }) => {
                             <Form.Field.Input label="Name" name="name" />
                             <Form.Field.Input label="Email" name="email" />
                             <Form.Field.Input label="Subject" name="subject" />
-                            <Form.Field.TextArea height={18} label="Message" name="message" />
+                            <Form.Field.TextArea height={20} label="Message" name="message" />
                             <Form.Buttons withReset submitText="Send Message" />
                         </Form.Element>
                     </Form>

@@ -133,15 +133,14 @@ const mixins = {
         &:after {
             content: '';
             display: block;
-            width: 25%;
+            width: 0;
             height: 1px;
             position: absolute;
-            bottom: 0;
+            bottom: 2px;
             right: 50%;
             background-color: var(--color-text-link);
             transition: all 0.3s var(--ease);
             opacity: 0;
-            transform: translateY(-0.3rem);
         }
 
         &:hover {
@@ -152,7 +151,6 @@ const mixins = {
                 opacity: 1;
                 right: 0;
                 width: 100%;
-                transform: translateY(0);
                 height: 1px;
             }
 
@@ -173,6 +171,16 @@ const mixins = {
                 ${media.bp800`width: 100%;`};
             }
         }
+
+        ${media.bp1040`
+            padding: 8rem 0;
+        `}
+        ${media.bp800`
+            padding: 6rem 0;
+        `}
+        ${media.bp440`
+            padding: 4rem 0;
+        `}
     `,
     formField: css`
         border-radius: var(--border-radius);

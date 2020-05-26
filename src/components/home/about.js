@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
@@ -7,7 +8,7 @@ import { useSpring, animated } from 'react-spring';
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
 import { Heading, OutboundLink, CustomList } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const AboutContainer = styled.section`
     ${mixins.homeSection}
@@ -17,6 +18,11 @@ const AboutContainer = styled.section`
 const FlexContainer = styled.div`
     ${mixins.flexBetween};
     align-items: flex-start;
+
+    ${media.bp800`
+        align-items: center;
+        flex-direction: column;
+    `}
 `;
 const ContentContainer = styled.div`
     width: 60%;
@@ -25,6 +31,11 @@ const ContentContainer = styled.div`
     a {
         ${mixins.inlineLink};
     }
+
+    ${media.bp800`
+        width: 100%;
+        max-width: 100%;
+    `}
 `;
 const AvatarContainer = styled.div`
     position: relative;
@@ -32,6 +43,14 @@ const AvatarContainer = styled.div`
     max-width: 36rem;
     border-radius: 50%;
     margin: 1rem 8rem 0 0;
+
+    ${media.bp1280`
+        margin-right: 0rem; 
+    `}
+    ${media.bp800`
+        width: 90%;
+        max-width: 50rem;
+    `}
 `;
 const Avatar = styled(Img)`
     position: relative;
@@ -39,9 +58,17 @@ const Avatar = styled(Img)`
     border-radius: 50%;
     transition: var(--transition);
     box-shadow: var(--box-shadow-primary);
+    filter: contrast(110%);
 `;
 const SkillsContainer = styled(props => <CustomList {...props} />)`
-    margin: 2rem 0 0 0;
+    margin-top: 2rem;
+
+    ${media.bp800`
+       margin-bottom: 4rem;
+    `}
+    ${media.bp440`
+       margin-bottom: 2rem;
+    `}
 `;
 
 const About = ({ data }) => {
@@ -55,7 +82,9 @@ const About = ({ data }) => {
         config: { mass: 10, tension: 550, friction: 140 },
     }));
     const transition = xy.interpolate(
-        (x, y) => `perspective(400px) rotateY(${x / 135}deg) rotateX(${-y / 135}deg)  `,
+        (x, y) =>
+            `perspective(600px) rotateY(${x / 90}deg) rotateX(${-y / 90}deg) 
+            `,
     );
 
     useEffect(() => {

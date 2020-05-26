@@ -74,6 +74,10 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .slick-slider {
+      line-height: 0;
+  }
+
   ${mixins.customScrollbar({
       color: 'var(--color-scrollbar)',
       width: '12px',

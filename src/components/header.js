@@ -6,8 +6,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, ClientOnly } from '@components';
-import { mixins, media } from '@styles';
+import { Menu, ThemeToggle } from '@components';
+import { mixins } from '@styles';
+import Media from 'react-media';
 
 const navHeight = 100;
 const navScrollHeight = 60;
@@ -33,7 +34,6 @@ const HeaderContainer = styled.header`
     transform: translateY(
         ${props => (props.scrollDirection === 'down' ? `-${navScrollHeight}px` : '0px')}
     );
-    ${media.bp800`flex-direction: row-reverse;`};
 `;
 const NavContainer = styled.nav`
     ${mixins.flexCenterRight}
@@ -41,7 +41,6 @@ const NavContainer = styled.nav`
     width: 100%;
     color: var(--color-text-primary-2);
     font-family: var(--fonts-mono);
-    ${media.bp800`display: none;`};
 `;
 
 const Hamburger = styled.div`
@@ -57,8 +56,6 @@ const Hamburger = styled.div`
     color: inherit;
     border: 0;
     background-color: transparent;
-    display: none;
-    ${media.bp800`display: flex;`};
     z-index: calc(var(--z-index-header) + 1);
 `;
 const HamburgerBox = styled.div`
@@ -217,53 +214,86 @@ class Header extends Component {
         const timeout = isHome ? 3000 : 0;
         const fadeClass = isHome ? 'fade' : '';
         const fadeDownClass = isHome ? 'fadedown' : '';
+
+        const desktopLinks = [
+            ...navLinks.map(({ url, name }, i) => (
+                <CSSTransition
+                    key={`header-link-${i}`}
+                    classNames={fadeDownClass}
+                    timeout={timeout}>
+                    <ListItem style={{ transitionDelay: `${i * 100}ms` }}>
+                        <StyledLink
+                            onClick={() =>
+                                setTimeout(() => {
+                                    const { scrollDirection } = this.state;
+                                    if (scrollDirection !== 'none')
+                                        this.setState({
+                                            scrollDirection: 'down',
+                                        });
+                                }, 100)
+                            }
+                            to={url}>
+                            {name}
+                        </StyledLink>
+                    </ListItem>
+                </CSSTransition>
+            )),
+            <CSSTransition
+                key="header-toggle"
+                classNames={fadeDownClass}
+                timeout={timeout}
+                onEntered={() => {
+                    document.getElementById('toggle-animation-container').style.transitionDelay =
+                        '0s';
+                }}>
+                <div
+                    id="toggle-animation-container"
+                    style={{ transitionDelay: `${navLinks.length * 100}ms` }}>
+                    <ThemeToggle />
+                </div>
+            </CSSTransition>,
+        ];
+
         return (
             <HeaderContainer scrollDirection={scrollDirection}>
-                <TransitionGroup component={null}>
-                    {isMounted && (
-                        <CSSTransition classNames={fadeClass} timeout={timeout}>
-                            <Hamburger onClick={this.toggleMenu}>
-                                <HamburgerBox>
-                                    <HamburgerContent isMenuOpen={isMenuOpen} />
-                                </HamburgerBox>
-                            </Hamburger>
-                        </CSSTransition>
+                <Media
+                    query="(min-width: 801px)"
+                    render={() => (
+                        <NavContainer>
+                            <LinksList>
+                                <TransitionGroup component={null}>
+                                    {isMounted && desktopLinks.length > 0 && desktopLinks}
+                                </TransitionGroup>
+                            </LinksList>
+                        </NavContainer>
                     )}
-                </TransitionGroup>
-                <NavContainer>
-                    <LinksList>
-                        <TransitionGroup component={null}>
-                            {isMounted &&
-                                navLinks &&
-                                navLinks.map(({ url, name }, i) => (
-                                    <CSSTransition
-                                        key={`header-link-${i}`}
-                                        classNames={fadeDownClass}
-                                        timeout={timeout}>
-                                        <ListItem style={{ transitionDelay: `${i * 100}ms` }}>
-                                            <StyledLink
-                                                onClick={() =>
-                                                    setTimeout(() => {
-                                                        const { scrollDirection } = this.state;
-                                                        if (scrollDirection !== 'none')
-                                                            this.setState({
-                                                                scrollDirection: 'down',
-                                                            });
-                                                    }, 100)
-                                                }
-                                                to={url}>
-                                                {name}
-                                            </StyledLink>
-                                        </ListItem>
+                />
+                <Media
+                    query="(max-width: 800px)"
+                    render={() => (
+                        <>
+                            <TransitionGroup component={null}>
+                                {isMounted && (
+                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
+                                        <ThemeToggle />
                                     </CSSTransition>
-                                ))}
-                        </TransitionGroup>
-                    </LinksList>
-                </NavContainer>
-                <ClientOnly delay={isHome ? navLinks.length * 100 + 500 : 100}>
-                    <ThemeToggle />
-                </ClientOnly>
-                <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
+                                )}
+                            </TransitionGroup>
+                            <TransitionGroup component={null}>
+                                {isMounted && (
+                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
+                                        <Hamburger onClick={this.toggleMenu}>
+                                            <HamburgerBox>
+                                                <HamburgerContent isMenuOpen={isMenuOpen} />
+                                            </HamburgerBox>
+                                        </Hamburger>
+                                    </CSSTransition>
+                                )}
+                            </TransitionGroup>
+                            <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
+                        </>
+                    )}
+                />
             </HeaderContainer>
         );
     }

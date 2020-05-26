@@ -47,6 +47,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
+    "react-media": "^1.10.0",
     "react-slick": "^0.26.1",
     "react-spring": "^8.0.27",
     "react-textarea-autosize": "^7.1.2",

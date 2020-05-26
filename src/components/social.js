@@ -64,7 +64,7 @@ const Social = ({ isHome, ...otherProps }) => (
                 socialMedia.map(({ url, name }, i) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <li key={`socials-${i}`}>
-                        <StyledLink href={url} aria-label={name} variant="none">
+                        <StyledLink href={url} aria-label={name} variant={null}>
                             <Icon name={name} />
                         </StyledLink>
                     </li>
