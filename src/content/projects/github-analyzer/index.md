@@ -4,7 +4,11 @@ overline: 'Front-End Web Application'
 title: 'Github Analyzer'
 images:
     - image: './image-1.png'
-      alt: 'Profile analysis for Facebook'
+      alt: 'GitHub Analyzer home page'
+    - image: './image-2.png'
+      alt: 'GitHub Analyzer profile analysis for Facebook'
+    - image: './image-3.png'
+      alt: 'GitHub Analyzer example of repos'
 github: 'https://github.com/bradypp/github-analyzer'
 external: 'https://githubanalyzer.onrender.com/'
 tech:
