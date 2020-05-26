@@ -129,14 +129,15 @@ const mixins = {
         &:after {
             content: '';
             display: block;
-            width: 100%;
+            width: 25%;
             height: 0;
             position: absolute;
-            bottom: 0.24em;
+            bottom: 0;
+            right: 50%;
             background-color: var(--color-text-link);
-            transition: var(--transition);
+            transition: all 0.3s var(--ease);
             opacity: 0;
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.3rem);
         }
 
         &:hover {
@@ -145,6 +146,7 @@ const mixins = {
 
             &:after {
                 opacity: 1;
+                right: 0;
                 width: 100%;
                 transform: translateY(0);
                 height: 1px;
