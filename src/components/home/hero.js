@@ -26,7 +26,7 @@ const TitleContainer = styled.div`
     margin-bottom: ${margin};
 `;
 const Title = styled.h2`
-    font-size: 5rem;
+    font-size: 4.4rem;
     font-weight: 300;
     margin: 0;
 `;
@@ -43,7 +43,7 @@ const Name = styled.div`
         width: 100%;
         height: 0.3rem;
         position: absolute;
-        bottom: 0.28em;
+        bottom: 0;
         left: 0;
         z-index: -1;
         background: linear-gradient(45deg, var(--color-primary), var(--color-primary));
@@ -53,20 +53,19 @@ const Name = styled.div`
     &:hover {
         color: var(--color-white-1);
         &:after {
-            bottom: 0.1em;
             height: 100%;
         }
     }
 `;
 const Subtitle = styled.h3`
-    font-size: 4rem;
+    font-size: var(--font-size-h3);
     font-weight: 300;
     margin-bottom: ${margin};
 `;
 const WaveEmojiContainer = styled.div`
-    width: 4rem;
+    width: 4.4rem;
     height: 100%;
-    margin: 0 0 1.2rem 2.4rem;
+    margin: 0 0 0 2.4rem;
     ${mixins.clickable}
 
     ${props =>

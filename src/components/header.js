@@ -19,7 +19,8 @@ const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
     background-color: var(--color-background-1);
-    transition: transform 0.25s var(--ease);
+    transition: transform var(--transition-time) var(--ease),
+        box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;
@@ -120,7 +121,7 @@ const LinksList = styled.ul`
 const ListItem = styled.li`
     margin-right: 2rem;
     position: relative;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     font-family: var(--fonts-primary);
 `;
 const StyledLink = styled(Link)`
@@ -247,7 +248,11 @@ class Header extends Component {
                                             <StyledLink
                                                 onClick={() =>
                                                     setTimeout(() => {
-                                                        this.setState({ scrollDirection: 'down' });
+                                                        const { scrollDirection } = this.state;
+                                                        if (scrollDirection !== 'none')
+                                                            this.setState({
+                                                                scrollDirection: 'down',
+                                                            });
                                                     }, 100)
                                                 }
                                                 to={url}>

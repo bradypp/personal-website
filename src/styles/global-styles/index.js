@@ -49,7 +49,7 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: var(--fonts-primary);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-md);
     font-weight: 400;
     line-height: 1.3;
     color: var(--color-text-primary-1);
@@ -87,20 +87,6 @@ const GlobalStyles = createGlobalStyle`
   h6 {
     font-weight: 600;
     margin: 0 0 1rem 0;
-  }
-
-  h1 {
-    &.big-title {
-      font-size: 8rem;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    &.medium-title {
-      font-size: 6rem;
-      line-height: 1.1;
-      margin: 0;
-    }
   }
 
   img {
@@ -144,12 +130,11 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  [role="button"], button, a {
-    ${mixins.clickable}
+  [role="button"], button {
   }
   
   [role="button"], button {
-    cursor: pointer;
+    ${mixins.clickable}
     background: none;
     display: inline-flex;
     justify-content: center;
@@ -161,7 +146,6 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     width: min-content;
     appearance: none;
-    line-height: 1;
   }
 
   a {
@@ -171,7 +155,6 @@ const GlobalStyles = createGlobalStyle`
     color:  var(--color-text-link);
     position: relative;
     transition: var(--color-transition);
-    cursor: pointer;
   }
 
   input, textarea {

@@ -61,13 +61,13 @@ const SkillsContainer = styled.ul`
             min-height: 1rem;
             width: 1rem;
             height: 1rem;
-            margin: 0 1.8rem 0.5rem 0;
+            margin: 0 1.8rem 0 0;
         }
 
         span {
             height: min-content;
             line-height: 1;
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-sm);
         }
     }
 `;

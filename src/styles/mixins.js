@@ -147,7 +147,7 @@ const mixins = {
                 opacity: 1;
                 width: 100%;
                 transform: translateY(0);
-                height: 1.5px;
+                height: 1px;
             }
 
             & > * {
@@ -173,8 +173,6 @@ const mixins = {
         color: var(--color-text-primary-1);
         background-color: var(--color-field-background);
         border: 1px solid var(--color-field-border);
-        font-family: -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif, monospace;
-        font-size: var(--font-size-lg);
 
         &:hover {
             background-color: var(--color-field-background-hover);

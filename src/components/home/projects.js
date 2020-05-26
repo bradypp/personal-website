@@ -30,11 +30,9 @@ const ContentContainer = styled.div`
   */
 `;
 const Overline = styled.h4`
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     font-weight: normal;
     color: var(--color-primary);
-    font-family: var(---fonts-mono);
-    margin-top: 10px;
     padding-top: 0;
 `;
 const ProjectName = styled.h5`
@@ -47,11 +45,11 @@ const ProjectName = styled.h5`
 const Description = styled.div`
     position: relative;
     padding: 2.5rem;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-primary);
     z-index:5;
-    background-color: var(--color-background-2);
+    background-color: var(--color-card);
     /* TODO
     ${media.thone`
     background-color: transparent;

@@ -31,14 +31,14 @@ const theme = css`
         --color-grey-light-3: #ccc;
         --color-code-text: var(--color-text-primary-2);
         --color-code-background: var(--color-background-2);
-        --color-text-highlight: var(--color-tertiary);
+        --color-text-highlight: var(--color-secondary);
         --color-primary: var(--color-blue);
         --color-primary-light: var(--color-blue-light);
         --color-primary-dark: var(--color-blue-dark);
         --color-secondary: var(--color-pink);
         --color-tertiary: var(--color-yellow);
         --color-background-1: var(--color-white-1);
-        --color-background-2: var(--color-white-3);
+        --color-background-2: var(--color-white-2);
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
         --color-text-link: var(--color-primary);
@@ -49,7 +49,8 @@ const theme = css`
         --color-field-border-hover: var(--color-white-5);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
-        --color-theme-toggle: var(--color-blue-light);
+        --color-theme-toggle: var(--color-pink);
+        --color-card: var(--color-background-1);
 
         &.dark-mode {
             --color-primary: var(--color-pink);
@@ -57,18 +58,17 @@ const theme = css`
             --color-primary-dark: var(--color-pink-dark);
             --color-secondary: var(--color-blue);
             --color-tertiary: var(--color-yellow);
-            --color-background-1: hsl(210deg, 30%, 8%);
+            --color-background-1: var(--color-navy-1);
             --color-background-2: var(--color-navy-3);
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-white-2);
-            --color-border-primary: var(--color-white-5);
             --color-socials: var(--color-text-primary-2);
-            --color-theme-toggle: var(--color-pink);
+            --color-card: var(--color-background-2);
         }
 
-        --fonts-primary: Calibre, -apple-system, system-ui, Roboto, Segoe UI, Arial, sans-serif,
+        --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
             monospace;
-        --fonts-mono: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace;
+        --fonts-mono: SF Mono, Fira Code, Fira Mono, Lucida Console, Monaco, Consolas, monospace;
 
         --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 

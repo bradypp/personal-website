@@ -29,7 +29,7 @@ const ToggleTrack = styled.div`
     height: 24px;
     padding: 0;
     border-radius: 30px;
-    background-color: var(--color-navy-4);
+    background-color: var(--color-navy-5);
     transition: var(--transition);
 `;
 
@@ -37,7 +37,7 @@ const sharedSectionStyles = css`
     position: absolute;
     width: 16px;
     height: 16px;
-    top: 0;
+    top: 4px;
     margin-top: auto;
     margin-bottom: auto;
     line-height: 0;
@@ -45,8 +45,7 @@ const sharedSectionStyles = css`
 `;
 const ToggleLeft = styled.div`
     ${sharedSectionStyles}
-    top: 3px;
-    left: 5px;
+    left: 6px;
     opacity: 0;
 
     ${props =>
@@ -57,8 +56,7 @@ const ToggleLeft = styled.div`
 `;
 const ToggleRight = styled.div`
     ${sharedSectionStyles}
-    top: 3px;
-    right: 5px;
+    right: 6px;
     opacity: 1;
 
     ${props =>
@@ -69,11 +67,11 @@ const ToggleRight = styled.div`
 `;
 const ToggleButton = styled.div`
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 1px;
+    left: 1px;
     right: 0;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: var(--color-white-1);
     box-sizing: border-box;
