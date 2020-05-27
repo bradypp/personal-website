@@ -18,9 +18,11 @@ const HeaderContainer = styled.header`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
-    background-color: var(--color-background-primary-1);
+    background-color: ${props =>
+        props.scrollDirection === 'up' ? 'var(--color-background-secondary-1)' : 'transparent'};
     transition: transform var(--transition-time) var(--ease),
-        box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease);
+        box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease),
+        background-color var(--transition-time) var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;

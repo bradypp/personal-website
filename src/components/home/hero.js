@@ -13,13 +13,23 @@ const margin = '11vh';
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
+
+    margin-bottom: -10rem;
+    padding: 0;
+    width: 100vw;
+    background: var(--color-background-secondary-1);
+    background-image: linear-gradient(
+        var(--color-background-secondary-1),
+        var(--color-background-primary-1)
+    );
+`;
+const WidthContainer = styled.div`
+    ${mixins.containAndCenter};
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    min-height: 100vh;
-    margin-bottom: -10rem;
-    padding: 0;
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -165,15 +175,17 @@ const Hero = ({ data }) => {
     ];
     return (
         <HeroContainer>
-            <TransitionGroup component={null}>
-                {isMounted &&
-                    items.map((item, i) => (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
-                            {item}
-                        </CSSTransition>
-                    ))}
-            </TransitionGroup>
+            <WidthContainer>
+                <TransitionGroup component={null}>
+                    {isMounted &&
+                        items.map((item, i) => (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
+                                {item}
+                            </CSSTransition>
+                        ))}
+                </TransitionGroup>
+            </WidthContainer>
         </HeroContainer>
     );
 };

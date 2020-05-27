@@ -69,7 +69,8 @@ const theme = css`
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-indigo);
-        --color-theme-toggle: var(--color-primary);
+        --color-theme-toggle: var(--color-blue-light);
+        --color-theme-toggle-background: var(--color-navy-5);
         --color-scrollbar: var(--color-grey-light-3);
         --color-scrollbar-active: var(--color-grey-light-4);
         --color-menu-background: rgb(23, 42, 69, 0.95);
@@ -87,7 +88,7 @@ const theme = css`
             --color-background-primary-2: var(--color-navy-2);
             --color-background-secondary-1: var(--color-navy-3);
             --color-background-secondary-2: var(--color-navy-3-alt);
-            --color-text-primary-1: var(--color-slate-1);
+            --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-slate-3);
             --color-text-secondary-1: var(--color-background-primary-1);
             --color-socials: var(--color-text-primary-2);
@@ -102,6 +103,7 @@ const theme = css`
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
+            --color-theme-toggle: var(--color-soft-pink);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
