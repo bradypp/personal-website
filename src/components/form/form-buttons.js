@@ -18,7 +18,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     padding: 1.3rem 1.6rem;
 `;
 

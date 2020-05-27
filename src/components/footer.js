@@ -13,7 +13,7 @@ const FooterContainer = styled.footer`
 const FooterContentContainer = styled.footer`
     ${mixins.flexCenterColumn};
     ${mixins.containAndCenter};
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
 
     ${media.bp600`
         flex-direction:column;

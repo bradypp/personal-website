@@ -26,7 +26,7 @@ const EmailContainer = styled.div`
 `;
 const StyledLink = styled(OutboundLink)`
     font-family: var(--fonts-mono);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-xxs);
     letter-spacing: 0.1em;
     writing-mode: vertical-rl;
     margin: 2rem auto;

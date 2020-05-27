@@ -61,10 +61,11 @@ const theme = css`
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-blue);
-        --color-theme-toggle: var(--color-soft-pink);
+        --color-theme-toggle: var(--color-primary);
         --color-card: var(--color-background-1);
         --color-scrollbar: var(--color-grey-light-3);
         --color-scrollbar-active: var(--color-grey-light-4);
+        --color-menu-background: rgb(23, 42, 69, 0.95);
 
         &.dark-mode {
             --color-primary: var(--color-soft-pink);
@@ -99,9 +100,10 @@ const theme = css`
 
         --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
 
-        --font-size-xxs: 1.2rem;
-        --font-size-xs: 1.3rem;
-        --font-size-sm: 1.4rem;
+        --font-size-tiny: 1.2rem;
+        --font-size-xxs: 1.3rem;
+        --font-size-xs: 1.4rem;
+        --font-size-sm: 1.5rem;
         --font-size-md: 1.6rem;
         --font-size-lg: 1.8rem;
         --font-size-xl: 2rem;
@@ -138,12 +140,12 @@ const theme = css`
 
         --header-shadow: rgba(0, 0, 0, 0.25);
 
-        --ham-before: top 0.1s ease-in 0.15s, opacity 0.1s ease-in;
-        --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out;
+        --ham-before: top 0.1s ease-in 0.15s, opacity 0.1s ease-in, background-color 0.22s ease;
+        --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out, background-color 0.22s ease;
         --ham-after: bottom 0.1s ease-in 0.15s,
-            transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), background-color 0.22s ease;
         --ham-after-active: bottom 0.1s ease-out,
-            transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1), background-color 0.22s ease;
     }
 `;
 

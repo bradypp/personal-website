@@ -34,7 +34,7 @@ const ContentContainer = styled.div`
     `}
 `;
 const Overline = styled.h4`
-    font-size: var(--font-size-xxs);
+    font-size: var(--font-size-tiny);
     font-weight: normal;
     color: var(--color-primary);
     padding-top: 0;
@@ -88,7 +88,7 @@ const TechList = styled.ul`
 
     li {
         font-family: var(--fonts-mono);
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-xxs);
         margin-right: ${tagMargin};
         margin-bottom: 0.8rem;
         white-space: nowrap;

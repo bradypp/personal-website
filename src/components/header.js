@@ -40,11 +40,9 @@ const HeaderContainer = styled.header`
     `}
 `;
 const NavContainer = styled.nav`
-    ${mixins.flexCenterRight}
+    ${mixins.flexBetween}
     position: relative;
     width: 100%;
-    color: var(--color-text-primary-2);
-    font-family: var(--fonts-mono);
 `;
 
 const Hamburger = styled.div`
@@ -61,6 +59,10 @@ const Hamburger = styled.div`
     border: 0;
     background-color: transparent;
     z-index: calc(var(--z-index-header) + 1);
+
+    ${media.bp800`
+        margin-left: 6rem;
+    `}
 `;
 const HamburgerBox = styled.div`
     position: relative;
@@ -69,7 +71,8 @@ const HamburgerBox = styled.div`
     height: 2.4rem;
 `;
 const HamburgerContent = styled.div`
-    background-color: var(--color-primary);
+    background-color: ${props =>
+        props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-primary)'};
     position: absolute;
     width: ${hamburgerWidth};
     height: 2px;
@@ -78,24 +81,26 @@ const HamburgerContent = styled.div`
     left: 0;
     right: 0;
     transform: rotate(${props => (props.isMenuOpen ? `45deg` : `0deg`)});
+
     transition: transform 0.15s
-        cubic-bezier(
-            ${props => (props.isMenuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`)}
-        );
+            cubic-bezier(
+                ${props =>
+                    props.isMenuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`}
+            ),
+        background-color 0.22s ease;
 
     &:before,
     &:after {
         content: '';
         display: block;
-        background-color: var(--color-primary);
+        background-color: ${props =>
+            props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-primary)'};
         position: absolute;
         left: auto;
         right: 0;
         width: ${hamburgerWidth};
         height: 2px;
-        transition-timing-function: ease;
-        transition-duration: 0.15s;
-        transition-property: transform;
+        transition: transform 0.15s ease;
         border-radius: 0.4rem;
     }
     &:before {
@@ -113,20 +118,27 @@ const HamburgerContent = styled.div`
     }
 `;
 const LinksList = styled.ul`
-    ${mixins.flexBetween};
+    ${mixins.flexCenter};
+    align-items: baseline;
     padding: 0;
     margin: 0;
     list-style: none;
 `;
-const ListItem = styled.li`
-    margin-right: 2rem;
-    position: relative;
-    font-size: var(--font-size-md);
-    font-family: var(--fonts-primary);
+const Logo = styled(Link).attrs({ to: '/', children: 'Paul Brady' })`
+    font-weight: 600;
+    font-size: 22px;
+    margin-right: 4rem;
+
+    ${media.bp800`
+        margin-right: auto;
+    `}
 `;
 const StyledLink = styled(Link)`
+    font-family: var(--fonts-primary);
+    font-size: var(--font-size-sm);
+    margin-right: 2rem;
     padding: 1.2rem 1rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-text-primary-1);
 
     &:hover {
@@ -219,66 +231,47 @@ class Header extends Component {
         const fadeClass = isHome ? 'fade' : '';
         const fadeDownClass = isHome ? 'fadedown' : '';
 
-        const desktopLinks = [
+        const animatedLinks = [
+            <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+                <li>
+                    <Logo />
+                </li>
+            </CSSTransition>,
             ...navLinks.map(({ url, name }, i) => (
                 <CSSTransition
                     key={`header-link-${i}`}
                     classNames={fadeDownClass}
                     timeout={timeout}>
-                    <ListItem style={{ transitionDelay: `${i * 100}ms` }}>
-                        <StyledLink
-                            onClick={() =>
-                                setTimeout(() => {
-                                    const { scrollDirection } = this.state;
-                                    if (scrollDirection !== 'none')
-                                        this.setState({
-                                            scrollDirection: 'down',
-                                        });
-                                }, 100)
-                            }
-                            to={url}>
-                            {name}
-                        </StyledLink>
-                    </ListItem>
+                    <li style={{ transitionDelay: `${(i + 1) * 100}ms` }}>
+                        <StyledLink to={url}>{name}</StyledLink>
+                    </li>
                 </CSSTransition>
             )),
-            <CSSTransition
-                key="header-toggle"
-                classNames={fadeDownClass}
-                timeout={timeout}
-                onEntered={() => {
-                    const el = document.getElementById('toggle-animation-container');
-                    if (el) el.style.transitionDelay = '0s';
-                }}>
-                <div
-                    id="toggle-animation-container"
-                    style={{ transitionDelay: `${navLinks.length * 100}ms` }}>
-                    <ThemeToggle />
-                </div>
-            </CSSTransition>,
         ];
 
         return (
             <HeaderContainer scrollDirection={scrollDirection}>
-                <span
-                    style={{
-                        fontFamily: 'Fira Code',
-                        fontWeight: 600,
-                        fontSize: 'var(--font-size-xl)',
-                        width: '200px',
-                        color: 'var(--color-secondary)',
-                    }}>
-                    Paul Brady
-                </span>
                 <Media
                     query="(min-width: 801px)"
                     render={() => (
                         <NavContainer>
                             <LinksList>
                                 <TransitionGroup component={null}>
-                                    {isMounted && desktopLinks.length > 0 && desktopLinks}
+                                    {isMounted && animatedLinks.length > 0 && animatedLinks}
                                 </TransitionGroup>
                             </LinksList>
+                            <TransitionGroup component={null}>
+                                {isMounted && (
+                                    <CSSTransition
+                                        key="header-toggle"
+                                        classNames={fadeClass}
+                                        timeout={timeout}>
+                                        <div id="toggle-animation-container">
+                                            <ThemeToggle />
+                                        </div>
+                                    </CSSTransition>
+                                )}
+                            </TransitionGroup>
                         </NavContainer>
                     )}
                 />
@@ -286,6 +279,13 @@ class Header extends Component {
                     query="(max-width: 800px)"
                     render={() => (
                         <>
+                            <TransitionGroup component={null}>
+                                {isMounted && (
+                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
+                                        <Logo to="/">Paul Brady</Logo>
+                                    </CSSTransition>
+                                )}
+                            </TransitionGroup>
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeClass} timeout={timeout}>
@@ -304,7 +304,11 @@ class Header extends Component {
                                     </CSSTransition>
                                 )}
                             </TransitionGroup>
-                            <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
+                            <Menu
+                                isMenuOpen={isMenuOpen}
+                                toggleMenu={this.toggleMenu}
+                                logo={Logo}
+                            />
                         </>
                     )}
                 />

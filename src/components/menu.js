@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Icon, OutboundLink } from '@components';
 import { navLinks, socialMedia } from '@config';
@@ -19,10 +20,17 @@ const MenuContainer = styled.div`
     transition: var(--transition);
     transform: translateX(${props => (props.isMenuOpen ? 0 : 100)}vw);
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
+
+    .fadeleft-enter {
+        transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+    }
+
+    .fadeleft-enter-active {
+        transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+    }
 `;
 const SidebarContainer = styled.aside`
-    ${mixins.flexColumnCenter};
-    background-color: var(--color-background-2);
+    background-color: var(--color-menu-background);
     padding: 5rem;
     width: 50vw;
     height: 100%;
@@ -30,19 +38,24 @@ const SidebarContainer = styled.aside`
     right: 0;
     margin-left: auto;
     box-shadow: -1rem 0 3rem -1.5rem var(--header-shadow);
+
     ${media.bp600`
-    width: 60vw;
-    padding: 2.5rem;
+        width: 75vw;
+        padding: 2.5rem;
     `};
-    ${media.bp440`width: 75vw;`};
-    ${media.bp384`padding: 1.5rem;`};
+    ${media.bp440`width: 80vw;`};
+`;
+const ContentContainer = styled.div`
+    ${mixins.flexColumnCenter};
+    padding-top: 8rem;
+    justify-content: space-between;
+    height: 100%;
 `;
 const NavContainer = styled.nav`
     ${mixins.flexBetween};
     width: 100%;
     flex-direction: column;
     text-align: center;
-    color: var(--color-text-primary-2);
 `;
 const NavList = styled.ul`
     padding: 0;
@@ -53,7 +66,6 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
     margin: 0 auto 3rem;
     position: relative;
-    font-size: var(--font-size-lg);
     ${media.bp440`
       margin: 0 auto 2.4rem;
     `};
@@ -62,19 +74,20 @@ const NavListItem = styled.li`
     `};
 `;
 const StyledLink = styled(Link)`
-    padding: 0.3rem 2rem 2rem;
+    padding: 1.6rem;
     font-weight: 500;
-    color: var(--color-text-primary-1);
+    font-size: var(--font-size-xxl);
+    color: var(--color-white-1);
     width: 100%;
 
     &:hover {
-        color: var(--color-primary);
+        color: var(--color-soft-pink);
     }
 `;
 const SocialsContainer = styled.ul`
     ${mixins.flexCenter};
     list-style: none;
-    position: absolute;
+    /* position: absolute; */
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
@@ -84,18 +97,18 @@ const SocialsLink = styled(OutboundLink)`
     svg {
         width: 2.2rem;
         height: 2.2rem;
-        color: var(--color-socials);
+        color: var(--color-white-1);
     }
 
     &:hover {
         transform: translateY(-0.3rem);
         svg {
             transition: var(--transition);
-            color: var(--color-primary);
+            color: var(--color-soft-pink);
         }
     }
 `;
-const Menu = ({ isMenuOpen, toggleMenu }) => {
+const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
     const handleMenuClick = e => {
         const { target } = e;
         const isLink = target.hasAttribute('href');
@@ -113,27 +126,44 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
             aria-hidden={!isMenuOpen}
             tabIndex={isMenuOpen ? 1 : -1}>
             <SidebarContainer>
-                <NavContainer>
-                    <NavList>
-                        {navLinks &&
-                            navLinks.map(({ url, name }, i) => (
-                                <NavListItem key={`menu-link-${i}`}>
-                                    <StyledLink to={url}>{name}</StyledLink>
-                                </NavListItem>
+                <ContentContainer>
+                    <Logo
+                        className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}
+                        style={{
+                            color: 'var(--color-soft-pink)',
+                            marginRight: 0,
+                        }}
+                    />
+                    <NavContainer>
+                        <NavList>
+                            {navLinks &&
+                                navLinks.map(({ url, name }) => (
+                                    <NavListItem
+                                        className={`${
+                                            isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
+                                        }`}>
+                                        <StyledLink to={url}>{name}</StyledLink>
+                                    </NavListItem>
+                                ))}
+                        </NavList>
+                    </NavContainer>
+                    <SocialsContainer>
+                        {socialMedia &&
+                            socialMedia.map(({ url, name }) => (
+                                <li>
+                                    <SocialsLink
+                                        className={`${
+                                            isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
+                                        }`}
+                                        href={url}
+                                        aria-label={name}
+                                        variant={null}>
+                                        <Icon name={name} />
+                                    </SocialsLink>
+                                </li>
                             ))}
-                    </NavList>
-                </NavContainer>
-                <SocialsContainer>
-                    {socialMedia &&
-                        socialMedia.map(({ url, name }, i) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <li key={`socials-${i}`}>
-                                <SocialsLink href={url} aria-label={name} variant={null}>
-                                    <Icon name={name} />
-                                </SocialsLink>
-                            </li>
-                        ))}
-                </SocialsContainer>
+                    </SocialsContainer>
+                </ContentContainer>
             </SidebarContainer>
         </MenuContainer>
     );
@@ -142,6 +172,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
 Menu.propTypes = {
     isMenuOpen: PropTypes.bool.isRequired,
     toggleMenu: PropTypes.func.isRequired,
+    logo: PropTypes.node.isRequired,
 };
 
 export default Menu;

@@ -47,8 +47,8 @@ const Name = styled.div`
         bottom: 0;
         left: 0;
         z-index: -1;
+        transition: var(--transition);
         background: linear-gradient(45deg, var(--color-primary), var(--color-primary));
-        transition: all 0.2s ease-in-out;
         overflow: visible;
     }
 
@@ -122,7 +122,7 @@ const Hero = ({ data }) => {
     const handleAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
 
     const items = [
-        <TitleContainer>
+        <TitleContainer delay="100ms">
             <Title>
                 {`${title} `}{' '}
                 <OutboundLink variant={null} href={twitter}>
@@ -136,12 +136,10 @@ const Hero = ({ data }) => {
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,
-        <Subtitle>{subtitle}</Subtitle>,
-        <div>
-            <Button as="link" variant="primary-button" to="/#contact">
-                {contact}
-            </Button>
-        </div>,
+        <Subtitle delay="200ms">{subtitle}</Subtitle>,
+        <Button as="link" variant="primary-button" to="/#contact" delay="300ms">
+            {contact}
+        </Button>,
     ];
     return (
         <HeroContainer>
@@ -149,10 +147,7 @@ const Hero = ({ data }) => {
                 {isMounted &&
                     items.map((item, i) => (
                         // eslint-disable-next-line react/no-array-index-key
-                        <CSSTransition
-                            key={`hero-${i}`}
-                            classNames={`fadeup-${(i + 1) * 100}msdelay`}
-                            timeout={3000}>
+                        <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
                             {item}
                         </CSSTransition>
                     ))}

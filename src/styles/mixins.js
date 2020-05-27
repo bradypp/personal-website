@@ -256,7 +256,7 @@ const mixins = {
             span {
                 height: min-content;
                 line-height: 1;
-                font-size: var(--font-size-sm);
+                font-size: var(--font-size-xs);
             }
         }
     `,

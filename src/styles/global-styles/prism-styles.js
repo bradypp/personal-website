@@ -36,7 +36,7 @@ const PrismStyles = css`
     .gatsby-highlight code[class*='language-'],
     .gatsby-highlight pre[class*='language-'] {
         height: auto !important;
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-xs);
         line-height: 1.5;
         white-space: pre;
         word-spacing: normal;
@@ -67,7 +67,7 @@ const PrismStyles = css`
     .gatsby-code-title {
         padding: 1em 1.5em;
         font-family: var(--fonts-mono);
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-xxs);
         background-color: ${prismColors.bg};
         color: ${prismColors.grey};
         border-top-left-radius: var(--border-radius);

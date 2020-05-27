@@ -168,7 +168,6 @@ const GlobalStyles = createGlobalStyle`
     text-decoration-skip-ink: auto;
     color:  var(--color-text-link);
     position: relative;
-    transition: var(--color-transition);
   }
 
   input, textarea {
@@ -195,7 +194,7 @@ const GlobalStyles = createGlobalStyle`
     & > code {
       background-color:  var(--color-code-background);
       color: var(--color-code-text);
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-xs);
       border-radius: var(--border-radius);
       padding: 0.3em 0.5em;
     }  
