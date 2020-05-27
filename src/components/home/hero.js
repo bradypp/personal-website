@@ -19,6 +19,7 @@ const HeroContainer = styled.section`
     width: 100vw;
     background: var(--color-background-secondary-1);
     background-image: linear-gradient(
+        var(--color-background-secondary-1) 10%,
         var(--color-background-secondary-1),
         var(--color-background-primary-1)
     );
