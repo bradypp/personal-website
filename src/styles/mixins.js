@@ -179,7 +179,8 @@ const mixins = {
     homeSection: css`
         width: 100%;
         height: fit-content;
-        padding: 10rem 0;
+        padding-top: 10rem;
+        padding-bottom: 10rem;
 
         h3 {
             &:after {
@@ -189,30 +190,33 @@ const mixins = {
         }
 
         ${media.bp1040`
-            padding: 8rem 0;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
         `}
         ${media.bp800`
-            padding: 6rem 0;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         `}
         ${media.bp440`
-            padding: 4rem 0;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
         `}
     `,
     formField: css`
         border-radius: var(--border-radius);
         color: var(--color-text-primary-1);
         background-color: var(--color-field-background);
-        border: 1px solid var(--color-field-border);
+        border: 2px solid var(--color-field-border);
 
         &:hover {
             background-color: var(--color-field-background-hover);
-            border: 1px solid var(--color-field-border-hover);
+            border: 2px solid var(--color-field-border-hover);
         }
 
         &:focus,
         &:active {
             background-color: var(--color-field-background-active);
-            border: 1px solid var(--color-field-border-active);
+            border: 2px solid var(--color-field-border-active);
         }
 
         ${props =>
@@ -221,7 +225,7 @@ const mixins = {
                 &,
                 &:invalid,
                 &:focus {
-                    border: 1px solid var(--color-danger) !important;
+                    border: 2px solid var(--color-danger) !important;
                 }
             `};
     `,

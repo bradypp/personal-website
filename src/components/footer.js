@@ -7,7 +7,7 @@ import { Icon } from '@components';
 import OutboundLink from './outbound-link';
 
 const FooterContainer = styled.footer`
-    padding: 3.2rem var(--page-padding) 2rem;
+    padding: 3.2rem var(--page-padding) 2.4rem;
     width: 100%;
 `;
 const FooterContentContainer = styled.footer`

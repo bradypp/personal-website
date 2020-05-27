@@ -6,6 +6,7 @@ const sizes = {
     bp1440: 1440, // Large laptop
     bp1280: 1280, // Normal laptop
     bp1040: 1040, // Tablet landscape
+    bp920: 920,
     bp800: 800, // Tablet portrait
     bp600: 600, // Large phone
     bp440: 440, // Normal phone

@@ -130,6 +130,7 @@ const Logo = styled(Link).attrs({ to: '/', children: 'Paul Brady' })`
     font-weight: 600;
     font-size: 22px;
     margin-right: 4rem;
+    color: var(--color-primary);
 
     ${media.bp800`
         margin-right: auto;
@@ -187,7 +188,7 @@ class Header extends Component {
 
     handleScroll = () => {
         const { isMounted, isMenuOpen, scrollDirection, lastDistanceFromTop } = this.state;
-        const distanceFromTopRequired = 5;
+        const distanceFromTopRequired = 10;
         const distanceFromTop = window.scrollY;
         if (
             !isMounted ||

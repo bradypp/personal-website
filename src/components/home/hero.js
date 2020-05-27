@@ -13,9 +13,9 @@ const margin = '11vh';
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
-
     margin-bottom: -10rem;
-    padding: 0;
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
     width: 100vw;
     background: var(--color-background-secondary-1);
     background-image: linear-gradient(
@@ -46,12 +46,21 @@ const Title = styled.h2`
     margin: 0;
 `;
 const Name = styled.div`
-    font-weight: 500;
     position: relative;
     transition: var(--transition);
-    padding: 0.2rem;
-    color: var(--color-text-primary-1);
     overflow: visible;
+
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-weight: 500;
+        position: relative;
+        transition: var(--transition);
+        padding: 0.2rem;
+        color: var(--color-text-primary-1);
+        z-index: 1;
+    }
 
     &:after {
         content: '';
@@ -61,14 +70,17 @@ const Name = styled.div`
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: -1;
+        transform: translateZ(1px);
         transition: var(--transition);
-        background: linear-gradient(45deg, var(--color-primary), var(--color-primary));
+        background: var(--color-primary);
         overflow: visible;
+        z-index: 0;
     }
 
     &:hover {
-        color: var(--color-white-1);
+        span {
+            color: var(--color-white-1);
+        }
         &:after {
             height: 100%;
         }
@@ -156,7 +168,9 @@ const Hero = ({ data }) => {
             <Title>
                 {`${title} `}{' '}
                 <OutboundLink variant={null} href={twitter}>
-                    <Name>{name}</Name>
+                    <Name>
+                        <span>{name}</span>
+                    </Name>
                 </OutboundLink>
             </Title>
             <WaveEmojiContainer

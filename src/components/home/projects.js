@@ -65,7 +65,7 @@ const Description = styled.div`
     background-color: var(--color-background-secondary-1);
     margin-bottom: 2.5rem;
 
-    p {
+    p:last-of-type {
         margin: 0;
     }
     a {
@@ -78,6 +78,7 @@ const Description = styled.div`
     `}
     ${media.bp800`
         padding: 1.6rem;
+        font-size: var(--font-size-md);
     `}
 `;
 const TechList = styled.ul`
@@ -171,6 +172,9 @@ const CarouselContainer = styled.div`
     ${media.bp1040`
         width: 46rem; 
     `}
+    ${media.bp920`
+        width: 42rem; 
+    `}
     ${media.bp800`
         width: 100rem; 
         margin-bottom: 1.6rem;
@@ -193,6 +197,9 @@ const ProjectContainer = styled.div`
     ${media.bp1040`
         grid-gap: 1.6rem;
         margin-bottom: 8rem;
+    `}
+    ${media.bp920`
+        align-items:center; 
     `}
     ${media.bp800`
         ${contentMobile}
