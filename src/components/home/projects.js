@@ -116,14 +116,17 @@ const LinksContainer = styled.div`
     position: relative;
     margin-left: -1rem;
 
+    a:hover {
+        svg {
+            color: var(--color-socials-hover);
+            transition: var(--transition);
+        }
+    }
+
     && svg {
         color: var(--color-text-primary-1);
         width: 24px;
         height: 24px;
-
-        &:hover {
-            color: var(--color-secondary);
-        }
     }
 
     ${media.bp2400`
