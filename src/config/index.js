@@ -13,6 +13,7 @@ module.exports = {
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
     twitterHandle: '@bradypp',
+    mainThemeColor: '#172a45ff',
     socialMedia: [
         {
             name: 'GitHub',

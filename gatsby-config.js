@@ -20,10 +20,10 @@ module.exports = {
                 name: `PaulBrady`,
                 short_name: `PaulBrady`,
                 start_url: `/`,
-                // background_color: ``, // TODO
-                // theme_color: ``, // TODO
+                background_color: `#09162a`,
+                theme_color: `#09162a`,
                 display: `minimal-ui`,
-                // icon: `src/images/logo.png`, // TODO
+                icon: `src/images/favicons/favicon.ico`,
             },
         },
         //  IMPORTANT: this must be ahead of gatsby-plugin-manifest
