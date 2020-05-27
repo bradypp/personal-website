@@ -11,14 +11,14 @@ import { mixins, media } from '@styles';
 import Media from 'react-media';
 
 const navHeight = 100;
-const navScrollHeight = 60;
+const navScrollHeight = 70;
 const hamburgerWidth = '3rem';
 
 const HeaderContainer = styled.header`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
-    background-color: var(--color-background-1);
+    background-color: var(--color-background-primary-1);
     transition: transform var(--transition-time) var(--ease),
         box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease);
     z-index: var(--z-index-header);

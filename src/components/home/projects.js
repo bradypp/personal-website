@@ -52,18 +52,19 @@ const ProjectName = styled.h5`
     }
 
     ${media.bp1040`
-        margin-bottom: 1rem;
+        margin-bottom: 1.6rem;
     `}
 `;
 const Description = styled.div`
     position: relative;
     padding: 2.4rem;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-primary);
     z-index: 5;
-    background-color: var(--color-card);
+    background-color: var(--color-background-secondary-1);
     margin-bottom: 2.5rem;
+
     p {
         margin: 0;
     }
@@ -73,6 +74,7 @@ const Description = styled.div`
 
     ${media.bp1040`
         padding: 2.2rem;
+        margin-bottom: 1.6rem;
     `}
     ${media.bp800`
         padding: 1.6rem;
@@ -86,6 +88,10 @@ const TechList = styled.ul`
     margin-bottom: 1rem;
     list-style: none;
 
+    ${media.bp800`
+        margin-bottom: -0.4rem;
+    `}
+
     li {
         font-family: var(--fonts-mono);
         font-size: var(--font-size-xxs);
@@ -97,6 +103,10 @@ const TechList = styled.ul`
         &:last-of-type {
             margin-right: 0;
         }
+
+        ${media.bp800`
+            margin-bottom: 0.6rem;
+        `}
     }
 `;
 const LinksContainer = styled.div`
@@ -104,6 +114,32 @@ const LinksContainer = styled.div`
     align-items: center;
     position: relative;
     margin-left: -1rem;
+
+    && svg {
+        color: var(--color-text-primary-1);
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+            color: var(--color-secondary);
+        }
+    }
+
+    ${media.bp2400`
+        && svg {
+            width: 22px;
+            height: 22px;
+        }
+    `}
+    ${media.bp800`
+        && a:first-of-type {
+            margin-right: 1rem;
+        }
+        && svg {
+            width: 20px;
+            height: 20px;
+        }
+    `}
 `;
 const StyledImg = styled(Img)`
     width: 100%;
@@ -199,6 +235,7 @@ const ProjectContainer = styled.div`
 
             ${media.bp800`
                 justify-content: flex-start;
+                margin-left: -1rem;
             `}
         }
         ${CarouselContainer} {
@@ -308,39 +345,39 @@ const Projects = ({ data }) => {
                                         ))}
                                     </Slider>
                                 </CarouselContainer>
-                                <Media
-                                    query="(max-width: 800px)"
-                                    render={() => (
-                                        <>
-                                            {tech && (
-                                                <TechList>
-                                                    {tech.map((tech, i) => (
-                                                        <li key={`tech-${i}`}>{tech}</li>
-                                                    ))}
-                                                </TechList>
-                                            )}
-                                            <LinksContainer>
-                                                {github && (
-                                                    <OutboundLink
-                                                        variant={null}
-                                                        href={github}
-                                                        aria-label="GitHub Link">
-                                                        <Icon name="GitHub" />
-                                                    </OutboundLink>
-                                                )}
-                                                {external && (
-                                                    <OutboundLink
-                                                        variant={null}
-                                                        href={external}
-                                                        aria-label="External Link">
-                                                        <Icon name="External" />
-                                                    </OutboundLink>
-                                                )}
-                                            </LinksContainer>
-                                        </>
-                                    )}
-                                />
                             </OutboundLink>
+                            <Media
+                                query="(max-width: 800px)"
+                                render={() => (
+                                    <>
+                                        {tech && (
+                                            <TechList>
+                                                {tech.map((tech, i) => (
+                                                    <li key={`tech-${i}`}>{tech}</li>
+                                                ))}
+                                            </TechList>
+                                        )}
+                                        <LinksContainer>
+                                            {github && (
+                                                <OutboundLink
+                                                    variant="styled-link"
+                                                    href={github}
+                                                    aria-label="GitHub Link">
+                                                    <Icon name="GitHub" />
+                                                </OutboundLink>
+                                            )}
+                                            {external && (
+                                                <OutboundLink
+                                                    variant="styled-link"
+                                                    href={external}
+                                                    aria-label="External Link">
+                                                    <Icon name="External" />
+                                                </OutboundLink>
+                                            )}
+                                        </LinksContainer>
+                                    </>
+                                )}
+                            />
                         </ProjectContainer>
                     );
                 })}

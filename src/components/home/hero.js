@@ -9,7 +9,7 @@ import { mixins } from '@styles';
 import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
 
-const margin = '12vh';
+const margin = '11vh';
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
@@ -24,6 +24,11 @@ const HeroContainer = styled.section`
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
     margin-bottom: ${margin};
+
+    &.fadeup-enter,
+    &.fadeup-enter-active {
+        transition-delay: 100ms;
+    }
 `;
 const Title = styled.h2`
     font-size: 4.4rem;
@@ -63,6 +68,21 @@ const Subtitle = styled.h3`
     font-size: var(--font-size-h3);
     font-weight: 300;
     margin-bottom: ${margin};
+
+    &.fadeup-enter,
+    &.fadeup-enter-active {
+        transition-delay: 200ms;
+    }
+`;
+const ButtonContainer = styled.h3`
+    font-size: var(--font-size-h3);
+    font-weight: 300;
+    margin-bottom: ${margin};
+
+    &.fadeup-enter,
+    &.fadeup-enter-active {
+        transition-delay: 300ms;
+    }
 `;
 const WaveEmojiContainer = styled.div`
     width: 4.4rem;
@@ -122,7 +142,7 @@ const Hero = ({ data }) => {
     const handleAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
 
     const items = [
-        <TitleContainer delay="100ms">
+        <TitleContainer>
             <Title>
                 {`${title} `}{' '}
                 <OutboundLink variant={null} href={twitter}>
@@ -136,10 +156,12 @@ const Hero = ({ data }) => {
                 <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
             </WaveEmojiContainer>
         </TitleContainer>,
-        <Subtitle delay="200ms">{subtitle}</Subtitle>,
-        <Button as="link" variant="primary-button" to="/#contact" delay="300ms">
-            {contact}
-        </Button>,
+        <Subtitle>{subtitle}</Subtitle>,
+        <ButtonContainer>
+            <Button as="link" variant="primary-button" to="/#contact">
+                {contact}
+            </Button>
+        </ButtonContainer>,
     ];
     return (
         <HeroContainer>

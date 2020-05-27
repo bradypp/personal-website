@@ -22,11 +22,11 @@ const MenuContainer = styled.div`
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
 
     .fadeleft-enter {
-        transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+        transition: opacity 700ms var(--ease), transform 700ms var(--ease);
     }
 
     .fadeleft-enter-active {
-        transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+        transition: opacity 700ms var(--ease), transform 700ms var(--ease);
     }
 `;
 const SidebarContainer = styled.aside`

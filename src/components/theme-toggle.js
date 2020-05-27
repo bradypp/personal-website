@@ -29,7 +29,7 @@ const ToggleTrack = styled.div`
     height: 26px;
     padding: 0;
     border-radius: 30px;
-    background-color: var(--color-navy-5);
+    background-color: var(--color-navy-3);
     transition: var(--transition);
 `;
 

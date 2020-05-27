@@ -23,7 +23,7 @@ const List = styled.ul`
         background-color: var(--color-border-primary);
 
         ${media.bp1040`
-        height: 8rem;
+            height: 8rem;
         `}
     }
 

@@ -17,7 +17,7 @@ const TransitionStyles = css`
 
     .fadeleft-enter {
         opacity: 0.01;
-        transform: translateX(3rem);
+        transform: translateX(5rem);
         transition: opacity 300ms var(--ease), transform 300ms var(--ease);
     }
 

@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     line-height: 1.5;
     color: var(--color-text-primary-1);
-    background: var(--color-background-1);
+    background: var(--color-background-primary-1);
     min-height: 100vh;
 
     &.hidden {

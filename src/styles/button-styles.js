@@ -45,14 +45,14 @@ const secondary = css`
 const empty = css`
     ${commonStyles}
     padding: 1.2rem 1.8rem;
-    border: 1px solid var(--color-background-1);
-    background-color: var(--color-background-1);
+    border: 1px solid var(--color-background-primary-1);
+    background-color: var(--color-background-primary-1);
     color: var(--color-text-primary-1);
 
     &:hover,
     &:active {
-        border: 1px solid var(--color-background-2);
-        background-color: var(--color-background-2);
+        border: 1px solid var(--color-background-primary-2);
+        background-color: var(--color-background-primary-2);
     }
 `;
 

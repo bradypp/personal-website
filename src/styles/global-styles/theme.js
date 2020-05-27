@@ -4,11 +4,11 @@ import media from '../media';
 
 const theme = css`
     :root {
-        --color-blue: #4433ff;
-        --color-blue-light: #5847ff;
-        --color-blue-dark: #301feb;
-        --color-soft-blue: #b3e5fc;
-        --color-soft-blue-dark: #03a9f4;
+        --color-indigo: #4433ff;
+        --color-indigo-light: #5847ff;
+        --color-indigo-dark: #301feb;
+        --color-blue-light: #dfebf6;
+        --color-blue-light-alt: #c8d3dd;
         --color-green: #64ffda;
         --color-green-light: #78ffee;
         --color-green-dark: #27c29d;
@@ -24,9 +24,15 @@ const theme = css`
         --color-white-3: #e0e1e3;
         --color-white-4: #d5d6d8;
         --color-white-5: #cbccce;
+        --color-slate-1: #e5eafb;
+        --color-slate-2: #ccd6f6;
+        --color-slate-3: #b5bdd9;
+        --color-slate-4: #a1adce;
+        --color-slate-5: #939ebd;
         --color-navy-1: #09162a;
         --color-navy-2: #132034;
         --color-navy-3: #172a45;
+        --color-navy-3-alt: #1a2b42;
         --color-navy-4: #21344f;
         --color-navy-5: #2b3e59;
         --color-grey-dark-1: #373737;
@@ -37,21 +43,23 @@ const theme = css`
         --color-grey-light-3: #ccc;
         --color-grey-light-4: #bbb;
 
-        --color-primary: var(--color-blue);
-        --color-primary-light: var(--color-blue-light);
-        --color-primary-dark: var(--color-blue-dark);
+        --color-primary: var(--color-indigo);
+        --color-primary-light: var(--color-indigo-light);
+        --color-primary-dark: var(--color-indigo-dark);
         --color-secondary: var(--color-pink);
         --color-tertiary: var(--color-yellow);
-        --color-background-1: var(--color-white-1);
-        --color-background-2: var(--color-white-2);
+        --color-background-primary-1: var(--color-white-1);
+        --color-background-primary-2: var(--color-white-2);
+        --color-background-secondary-1: var(--color-blue-light);
+        --color-background-secondary-2: var(--color-blue-light-alt);
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
-        --color-text-secondary-1: var(--color-background-1);
+        --color-text-secondary-1: var(--color-background-primary-1);
         --color-text-link: var(--color-primary);
         --color-danger: var(--color-red);
         --color-code-text: var(--color-text-primary-2);
-        --color-code-background: var(--color-background-2);
-        --color-text-highlight: var(--color-soft-blue);
+        --color-code-background: var(--color-background-primary-2);
+        --color-text-highlight: var(--color-blue-light);
         --color-field-background: var(--color-white-2);
         --color-field-background-hover: var(--color-white-3);
         --color-field-background-active: var(--color-white-1);
@@ -60,12 +68,12 @@ const theme = css`
         --color-field-border-active: var(--color-primary);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
-        --color-socials-hover: var(--color-blue);
+        --color-socials-hover: var(--color-indigo);
         --color-theme-toggle: var(--color-primary);
-        --color-card: var(--color-background-1);
         --color-scrollbar: var(--color-grey-light-3);
         --color-scrollbar-active: var(--color-grey-light-4);
         --color-menu-background: rgb(23, 42, 69, 0.95);
+        --color-box-shadow: rgba(0, 0, 0, 0.25);
 
         &.dark-mode {
             --color-primary: var(--color-soft-pink);
@@ -75,30 +83,32 @@ const theme = css`
             --color-secondary-light: var(--color-green-light);
             --color-secondary-dark: var(--color-green-dark);
             --color-tertiary: var(--color-yellow);
-            --color-background-1: var(--color-navy-1);
-            --color-background-2: var(--color-navy-3);
-            --color-text-primary-1: var(--color-white-1);
-            --color-text-primary-2: var(--color-white-2);
-            --color-text-secondary-1: var(--color-background-1);
+            --color-background-primary-1: var(--color-navy-1);
+            --color-background-primary-2: var(--color-navy-2);
+            --color-background-secondary-1: var(--color-navy-3);
+            --color-background-secondary-2: var(--color-navy-3-alt);
+            --color-text-primary-1: var(--color-slate-1);
+            --color-text-primary-2: var(--color-slate-3);
+            --color-text-secondary-1: var(--color-background-primary-1);
             --color-socials: var(--color-text-primary-2);
             --color-socials-hover: var(--color-green);
-            --color-card: var(--color-background-2);
-            --color-text-highlight: var(--color-soft-blue-dark);
+            --color-text-highlight: var(--color-blue-light);
             --color-danger: var(--color-red-light);
             --color-scrollbar: var(--color-navy-4);
             --color-scrollbar-active: var(--color-navy-5);
             --color-field-background: var(--color-navy-4);
             --color-field-background-hover: var(--color-navy-3);
-            --color-field-background-active: var(--color-navy-4);
-            --color-field-border: var(--color-navy-3);
-            --color-field-border-hover: var(--color-navy-2);
+            --color-field-background-active: var(--color-navy-5);
+            --color-field-border: var(--color-navy-4);
+            --color-field-border-hover: var(--color-navy-3);
+            --color-box-shadow: rgba(7, 18, 34, 0.25);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
             monospace;
         --fonts-mono: SF Mono, Fira Code, Fira Mono, Lucida Console, Monaco, Consolas, monospace;
 
-        --box-shadow-primary: 0 1px 3px rgba(0, 0, 0, 0.25);
+        --box-shadow-primary: 0 1px 3px var(--color-box-shadow);
 
         --font-size-tiny: 1.2rem;
         --font-size-xxs: 1.3rem;
