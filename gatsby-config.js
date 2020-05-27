@@ -23,7 +23,7 @@ module.exports = {
                 background_color: `#09162a`,
                 theme_color: `#09162a`,
                 display: `minimal-ui`,
-                icon: `src/images/favicons/favicon.ico`,
+                icon: `src/images/favicons/favicon-32x32.png`,
             },
         },
         //  IMPORTANT: this must be ahead of gatsby-plugin-manifest
@@ -176,7 +176,6 @@ module.exports = {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
                 trackingId: config.googleAnalyticsID,
-                head
                 cookieExpires: 63072000,
             },
         },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { useIsMounted } from '@hooks';
 import { media } from '@styles';
 
-// TODO: media queries to hide on tablets/phones
 const SideContainer = styled.div`
     width: 4rem;
     position: fixed;
