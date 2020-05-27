@@ -20,4 +20,6 @@ tech:
     - GraphQL
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure vel nam repellat, libero accusantium enim labore voluptas dolores consectetur consequatur architecto laboriosam, provident earum omnis. Corporis exercitationem facere illum ratione.
+made with gatsby, front end ssr, using graphql and plugins to be more optimized and to qury dat from many sources such as wordpress, mysql, markdonw.
+
+I loved making this site and particularly enjoyed implementing a dark mode theme which involves injecting a script to detect user preferences before loading the theme
