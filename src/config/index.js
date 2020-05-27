@@ -1,14 +1,15 @@
 module.exports = {
     siteTitle: 'Paul Brady',
     siteDescription: 'Personal website',
-    siteKeywords: '',
+    siteKeywords:
+        'Paul Brady, software engineer, bradypp, front-end, web developer, CSS,JavaScript, React, Manchester',
     siteUrl: 'https://paulbrady.dev',
     siteLanguage: 'en',
-    googleAnalyticsID: '',
-    googleVerification: '',
+    googleAnalyticsID: 'UA-139901711-2',
+    googleVerification: 'axiXsozMKFTNRLVp9Id2jalRMucI63r1G9cNH9zTjTM',
     name: 'Paul Brady',
     location: 'Manchester, UK',
-    email: 'bradypp44@gmail.com', // TODO: update
+    email: 'bradypp44@gmail.com',
     repo: 'https://github.com/bradypp/personal-website',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',

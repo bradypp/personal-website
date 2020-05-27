@@ -176,6 +176,7 @@ module.exports = {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
                 trackingId: config.googleAnalyticsID,
+                head
                 cookieExpires: 63072000,
             },
         },
