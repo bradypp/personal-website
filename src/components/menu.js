@@ -89,7 +89,7 @@ const SocialsContainer = styled.ul`
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 1.8rem;
+    padding: 2rem;
     transition: var(--transition);
 
     svg {
