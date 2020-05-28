@@ -8,8 +8,8 @@ import { useOnOutsideClick } from '@hooks';
 
 const ToggleContainer = styled.div`
     position: relative;
-    width: 50px;
-    height: 24px;
+    width: 54px;
+    height: 28px;
 `;
 const StyledInput = styled.input`
     ${mixins.hideElement}

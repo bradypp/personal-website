@@ -5,7 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Img from 'gatsby-image';
 
 import { twitter } from '@config';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
 
@@ -19,18 +19,21 @@ const HeroContainer = styled.section`
     width: 100vw;
     background: var(--color-background-secondary-1);
     background-image: linear-gradient(
-        var(--color-background-secondary-1) 10%,
         var(--color-background-secondary-1),
         var(--color-background-primary-1)
     );
 `;
-const WidthContainer = styled.div`
+const ContentContainer = styled.div`
     ${mixins.containAndCenter};
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+
+    ${media.bp800`
+        padding-top: 70px;
+    `}
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -45,6 +48,14 @@ const Title = styled.h2`
     font-size: 4.4rem;
     font-weight: 300;
     margin: 0;
+
+    a:after {
+        height: 2px !important;
+    }
+
+    ${media.bp440`
+        font-size: 3.6rem;
+    `}
 `;
 const Name = styled.div`
     position: relative;
@@ -63,7 +74,7 @@ const Name = styled.div`
         z-index: 1;
     }
 
-    &:after {
+    /* &:after {
         content: '';
         display: block;
         width: 100%;
@@ -71,7 +82,6 @@ const Name = styled.div`
         position: absolute;
         bottom: 0;
         left: 0;
-        transform: translateZ(1px);
         transition: var(--transition);
         background: var(--color-primary);
         overflow: visible;
@@ -85,7 +95,7 @@ const Name = styled.div`
         &:after {
             height: 100%;
         }
-    }
+    } */
 `;
 const Subtitle = styled.h3`
     font-size: var(--font-size-h3);
@@ -96,6 +106,10 @@ const Subtitle = styled.h3`
     &.fadeup-enter-active {
         transition-delay: 200ms;
     }
+
+    ${media.bp440`
+        font-size: 2.4rem;
+    `}
 `;
 const ButtonContainer = styled.h3`
     font-size: var(--font-size-h3);
@@ -118,6 +132,10 @@ const WaveEmojiContainer = styled.div`
         css`
             animation: 1s wave;
         `}
+
+    ${media.bp440`
+        margin: 0 0 0 1.8rem;
+    `}
 
     @keyframes wave {
         from {
@@ -168,7 +186,7 @@ const Hero = ({ data }) => {
         <TitleContainer>
             <Title>
                 {`${title} `}{' '}
-                <OutboundLink variant={null} href={twitter}>
+                <OutboundLink href={twitter}>
                     <Name>
                         <span>{name}</span>
                     </Name>
@@ -190,7 +208,7 @@ const Hero = ({ data }) => {
     ];
     return (
         <HeroContainer>
-            <WidthContainer>
+            <ContentContainer>
                 <TransitionGroup component={null}>
                     {isMounted &&
                         items.map((item, i) => (
@@ -200,7 +218,7 @@ const Hero = ({ data }) => {
                             </CSSTransition>
                         ))}
                 </TransitionGroup>
-            </WidthContainer>
+            </ContentContainer>
         </HeroContainer>
     );
 };

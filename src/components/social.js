@@ -34,6 +34,18 @@ const List = styled.ul`
     li:last-of-type {
         margin-bottom: 2rem;
     }
+
+    li {
+        svg {
+            width: 2.2rem;
+            height: 2.2rem;
+
+            ${media.bp1440`
+                width: 2rem;
+                height: 2rem;
+            `}
+        }
+    }
 `;
 
 const Social = ({ isHome, ...otherProps }) => (

@@ -19,7 +19,7 @@ const FooterContentContainer = styled.footer`
         flex-direction:column;
     `}
 `;
-const FooterLeftContainer = styled.div`
+const FooterTopContainer = styled.div`
     ${mixins.flexCenter}
     p,
     a {
@@ -34,41 +34,42 @@ const FooterLeftContainer = styled.div`
     }
     margin-bottom: 1rem;
 `;
-const FooterRightContainer = styled.div``;
-const List = styled.ul`
+const FooterBottomContainer = styled.ul`
     ${mixins.flexCenter}
-
-    li {
+    a {
+        padding: 1.6rem;
+        svg {
+            width: 2.2rem;
+            height: 2.2rem;
+        }
     }
 `;
 
 const Footer = () => (
     <FooterContainer>
         <FooterContentContainer>
-            <FooterLeftContainer>
+            <FooterTopContainer>
                 <OutboundLink href={repo} variant="styled-link">
                     <p>Designed & developed by Paul Brady </p>
                     <p>Click here to check out the GitHub repo</p>
                 </OutboundLink>
-            </FooterLeftContainer>
-            <FooterRightContainer>
-                <List>
-                    <li>
-                        <OutboundLink variant="styled-link" href={`mailto:${email}`}>
-                            <Icon name="Email" />
-                        </OutboundLink>
-                    </li>
-                    {socialMedia &&
-                        socialMedia.map(({ url, name }, i) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <li key={`footer-socials-${i}`}>
-                                <OutboundLink variant="styled-link" href={url} aria-label={name}>
-                                    <Icon name={name} />
-                                </OutboundLink>
-                            </li>
-                        ))}
-                </List>
-            </FooterRightContainer>
+            </FooterTopContainer>
+            <FooterBottomContainer>
+                <li>
+                    <OutboundLink variant="styled-link" href={`mailto:${email}`}>
+                        <Icon name="Email" />
+                    </OutboundLink>
+                </li>
+                {socialMedia &&
+                    socialMedia.map(({ url, name }, i) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <li key={`footer-socials-${i}`}>
+                            <OutboundLink variant="styled-link" href={url} aria-label={name}>
+                                <Icon name={name} />
+                            </OutboundLink>
+                        </li>
+                    ))}
+            </FooterBottomContainer>
         </FooterContentContainer>
     </FooterContainer>
 );

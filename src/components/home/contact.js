@@ -65,6 +65,7 @@ const MiddleText = styled.span`
     ${media.bp440`
         padding: 4rem;
         margin:0;
+        align-self:center;
     `}
 `;
 
@@ -106,7 +107,8 @@ const Contact = ({ data }) => {
                         validationSchema={validation}
                         onSubmit={async (values, form) => {
                             // Done using Netlify lambda functions
-                            // See https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
+                            // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
+                            // And https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
                             try {
                                 await fetch('./netlify/functions/sendEmail', {
                                     method: 'POST',

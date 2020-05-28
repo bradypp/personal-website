@@ -6,7 +6,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle } from '@components';
+import { Menu, ThemeToggle, Icon } from '@components';
 import { mixins, media } from '@styles';
 import Media from 'react-media';
 
@@ -22,7 +22,7 @@ const HeaderContainer = styled.header`
         props.scrollDirection === 'none' ? 'transparent' : 'var(--color-background-secondary-1)'};
     transition: transform var(--transition-time) var(--ease),
         box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease),
-        background-color var(--transition-time) var(--ease);
+        background-color 0.1s var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;
@@ -63,7 +63,7 @@ const Hamburger = styled.div`
     z-index: calc(var(--z-index-header) + 1);
 
     ${media.bp800`
-        margin-left: 6rem;
+        margin-left: 10%;
     `}
 `;
 const HamburgerBox = styled.div`
@@ -74,7 +74,7 @@ const HamburgerBox = styled.div`
 `;
 const HamburgerContent = styled.div`
     background-color: ${props =>
-        props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-primary)'};
+        props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-text-primary-1)'};
     position: absolute;
     width: ${hamburgerWidth};
     height: 2px;
@@ -96,7 +96,7 @@ const HamburgerContent = styled.div`
         content: '';
         display: block;
         background-color: ${props =>
-            props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-primary)'};
+            props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-text-primary-1)'};
         position: absolute;
         left: auto;
         right: 0;
@@ -130,15 +130,6 @@ const LinksList = styled.ul`
         margin-right: 2rem;
     }
 `;
-const Logo = styled(Link).attrs({ to: '/', children: 'Paul Brady' })`
-    font-weight: 400;
-    font-size: 20px;
-    color: var(--color-text-primary-1);
-
-    ${media.bp800`
-        margin-right: auto;
-    `}
-`;
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-sm);
@@ -150,6 +141,21 @@ const StyledLink = styled(Link)`
     &:hover {
         transition: var(--transition);
         color: var(--color-primary);
+    }
+`;
+const HomeLink = styled(Link)`
+    color: var(--color-text-primary-1);
+    padding: 2rem;
+    margin-right: auto;
+    margin-left: -2rem;
+
+    &:hover {
+        color: var(--color-text-primary-1);
+    }
+
+    svg {
+        width: 28px;
+        height: 28px;
     }
 `;
 
@@ -191,7 +197,7 @@ class Header extends Component {
 
     handleScroll = () => {
         const { isMounted, isMenuOpen, scrollDirection, lastDistanceFromTop } = this.state;
-        const distanceFromTopRequired = 10;
+        const distanceFromTopRequired = 0;
         const distanceFromTop = window.scrollY;
 
         if (
@@ -202,7 +208,7 @@ class Header extends Component {
             return;
         }
 
-        if (distanceFromTop < distanceFromTopRequired) {
+        if (distanceFromTop <= distanceFromTopRequired) {
             this.setState({ scrollDirection: 'none' });
         } else if (distanceFromTop > lastDistanceFromTop && distanceFromTop > navHeight) {
             if (scrollDirection !== 'down') {
@@ -238,24 +244,6 @@ class Header extends Component {
         const fadeClass = isHome ? 'fade' : '';
         const fadeDownClass = isHome ? 'fadedown' : '';
 
-        const animatedLinks = [
-            <CSSTransition key="header-logo" classNames={fadeDownClass} timeout={timeout}>
-                <li>
-                    <Logo />
-                </li>
-            </CSSTransition>,
-            ...navLinks.map(({ url, name }, i) => (
-                <CSSTransition
-                    key={`header-link-${i}`}
-                    classNames={fadeDownClass}
-                    timeout={timeout}>
-                    <li style={{ transitionDelay: `${(i + 1) * 100}ms` }}>
-                        <StyledLink to={url}>{name}</StyledLink>
-                    </li>
-                </CSSTransition>
-            )),
-        ];
-
         return (
             <HeaderContainer scrollDirection={scrollDirection}>
                 <Media
@@ -264,7 +252,21 @@ class Header extends Component {
                         <NavContainer>
                             <LinksList>
                                 <TransitionGroup component={null}>
-                                    {isMounted && animatedLinks.length > 0 && animatedLinks}
+                                    {isMounted &&
+                                        navLinks.length > 0 &&
+                                        navLinks.map(({ url, name }, i) => (
+                                            <CSSTransition
+                                                key={`header-link-${i}`}
+                                                classNames={fadeDownClass}
+                                                timeout={timeout}>
+                                                <li
+                                                    style={{
+                                                        transitionDelay: `${(i + 1) * 100}ms`,
+                                                    }}>
+                                                    <StyledLink to={url}>{name}</StyledLink>
+                                                </li>
+                                            </CSSTransition>
+                                        ))}
                                 </TransitionGroup>
                             </LinksList>
                             <TransitionGroup component={null}>
@@ -289,7 +291,9 @@ class Header extends Component {
                             <TransitionGroup component={null}>
                                 {isMounted && (
                                     <CSSTransition classNames={fadeClass} timeout={timeout}>
-                                        <Logo to="/">Paul Brady</Logo>
+                                        <HomeLink to="/">
+                                            <Icon name="Home" />
+                                        </HomeLink>
                                     </CSSTransition>
                                 )}
                             </TransitionGroup>
@@ -311,11 +315,7 @@ class Header extends Component {
                                     </CSSTransition>
                                 )}
                             </TransitionGroup>
-                            <Menu
-                                isMenuOpen={isMenuOpen}
-                                toggleMenu={this.toggleMenu}
-                                logo={Logo}
-                            />
+                            <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
                         </>
                     )}
                 />

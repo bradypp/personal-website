@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
+import { AiOutlineHome } from 'react-icons/ai';
 import { IoMdArrowRoundForward } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
 
@@ -18,6 +19,8 @@ import IconSun from './sun';
 
 const Icon = ({ name }) => {
     switch (name) {
+        case 'Home':
+            return <AiOutlineHome />;
         case 'CV':
             return <IconCV />;
         case 'ArrowRight':

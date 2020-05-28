@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
+import Media from 'react-media';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, github } from '@config';
@@ -66,9 +67,6 @@ const SkillsContainer = styled(props => <CustomList {...props} />)`
     ${media.bp800`
        margin-bottom: 4rem;
     `}
-    ${media.bp440`
-       margin-bottom: 2rem;
-    `}
 `;
 
 const About = ({ data }) => {
@@ -83,7 +81,7 @@ const About = ({ data }) => {
     }));
     const transition = xy.interpolate(
         (x, y) =>
-            `perspective(600px) rotateY(${x / 90}deg) rotateX(${-y / 90}deg) 
+            `perspective(400px) rotateY(${x / 90}deg) rotateX(${-y / 90}deg) 
             `,
     );
 
@@ -110,11 +108,32 @@ const About = ({ data }) => {
                     <SkillsContainer items={skills} columns={3} />
                 </ContentContainer>
                 <AvatarContainer>
-                    <animated.div style={{ transform: transition }}>
+                    <Media
+                        query="(min-width: 801px)"
+                        render={() => (
+                            <animated.div style={{ transform: transition }}>
+                                <OutboundLink
+                                    href={github}
+                                    variant={null}
+                                    style={{ width: '100%' }}>
+                                    <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+                                </OutboundLink>
+                            </animated.div>
+                        )}
+                    />
+                    <Media
+                        query="(max-width: 800px)"
+                        render={() => (
+                            <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
+                                <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+                            </OutboundLink>
+                        )}
+                    />
+                    {/* <animated.div style={{ transform: transition }}>
                         <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
                             <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
                         </OutboundLink>
-                    </animated.div>
+                    </animated.div> */}
                 </AvatarContainer>
             </FlexContainer>
         </AboutContainer>

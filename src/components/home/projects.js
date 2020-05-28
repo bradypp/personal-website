@@ -89,10 +89,6 @@ const TechList = styled.ul`
     margin-bottom: 1rem;
     list-style: none;
 
-    ${media.bp800`
-        margin-bottom: -0.4rem;
-    `}
-
     li {
         font-family: var(--fonts-mono);
         font-size: var(--font-size-xxs);
@@ -117,23 +113,13 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
 
     && svg {
-        width: 24px;
-        height: 24px;
+        width: 2.2rem;
+        height: 2.2rem;
     }
 
-    ${media.bp2400`
-        && svg {
-            width: 22px;
-            height: 22px;
-        }
-    `}
     ${media.bp800`
         && a:first-of-type {
             margin-right: 1rem;
-        }
-        && svg {
-            width: 20px;
-            height: 20px;
         }
     `}
 `;

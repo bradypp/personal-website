@@ -46,15 +46,15 @@ const SidebarContainer = styled.aside`
 `;
 const ContentContainer = styled.div`
     ${mixins.flexColumnCenter};
-    padding-top: 8rem;
     justify-content: space-between;
     height: 100%;
 `;
 const NavContainer = styled.nav`
     ${mixins.flexBetween};
-    width: 100%;
+    height: 100%;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
 `;
 const NavList = styled.ul`
     padding: 0;
@@ -89,12 +89,12 @@ const SocialsContainer = styled.ul`
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 2rem;
+    padding: 1.8rem;
     transition: var(--transition);
 
     svg {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 24px;
+        height: 24px;
         color: var(--color-white-1);
     }
 
@@ -105,8 +105,16 @@ const SocialsLink = styled(OutboundLink)`
             color: var(--color-soft-pink);
         }
     }
+
+    ${media.bp384`
+        padding: 1.4rem;
+        svg{
+            width: 22px;
+            height: 22px;
+        }
+    `}
 `;
-const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
+const Menu = ({ isMenuOpen, toggleMenu }) => {
     const handleMenuClick = e => {
         const { target } = e;
         const isLink = target.hasAttribute('href');
@@ -125,13 +133,6 @@ const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
             tabIndex={isMenuOpen ? 1 : -1}>
             <SidebarContainer>
                 <ContentContainer>
-                    <Logo
-                        className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}
-                        style={{
-                            color: 'var(--color-white-1)',
-                            marginRight: 0,
-                        }}
-                    />
                     <NavContainer>
                         <NavList>
                             {navLinks &&
@@ -171,7 +172,6 @@ const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
 Menu.propTypes = {
     isMenuOpen: PropTypes.bool.isRequired,
     toggleMenu: PropTypes.func.isRequired,
-    logo: PropTypes.object.isRequired,
 };
 
 export default Menu;

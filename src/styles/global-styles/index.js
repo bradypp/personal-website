@@ -40,12 +40,17 @@ const GlobalStyles = createGlobalStyle`
     ${media.bp2400`
         font-size: 62.5%;
     `}
-    ${media.bp1280`
+    ${media.bp800`
+        font-size: 56.25%;
+    `}
+    ${
+        '' /* ${media.bp1280`
         font-size: 56.25%;
     `}
     ${media.bp800`
         font-size: 50%;
-    `}
+    `} */
+    }
   }
 
   body {
