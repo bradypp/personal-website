@@ -20,6 +20,6 @@ tech:
     - GraphQL
 ---
 
-made with gatsby, front end ssr, using graphql and plugins to be more optimized and to qury dat from many sources such as wordpress, mysql, markdonw.
+My personal site was built using Gatsby.js, the fantastic modern react SSR framework. I took advantage of GraphQL and the many available plugins to thoroughly optimize the final site and query data from different data sources.
 
-I loved making this site and particularly enjoyed implementing a dark mode theme which involves injecting a script to detect user preferences before loading the theme
+I loved making this site and particularly enjoyed implementing a dark mode theme which involves injecting a script before loading the content to detect user theme preferences.

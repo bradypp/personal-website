@@ -12,7 +12,7 @@ const mixins = {
             width: ${config.width || '8px'};
         }
         &::-webkit-scrollbar-track {
-            background: none;
+            background: var(--color-background-secondary-1);
         }
         &::-webkit-scrollbar-thumb {
             border-radius: 10rem;
@@ -206,17 +206,17 @@ const mixins = {
         border-radius: var(--border-radius);
         color: var(--color-text-primary-1);
         background-color: var(--color-field-background);
-        border: 2px solid var(--color-field-border);
+        border: 1.5px solid var(--color-field-border);
 
         &:hover {
             background-color: var(--color-field-background-hover);
-            border: 2px solid var(--color-field-border-hover);
+            border: 1.5px solid var(--color-field-border-hover);
         }
 
         &:focus,
         &:active {
             background-color: var(--color-field-background-active);
-            border: 2px solid var(--color-field-border-active);
+            border: 1.5px solid var(--color-field-border-active);
         }
 
         ${props =>
@@ -225,7 +225,7 @@ const mixins = {
                 &,
                 &:invalid,
                 &:focus {
-                    border: 2px solid var(--color-danger) !important;
+                    border: 1.5px solid var(--color-danger) !important;
                 }
             `};
     `,

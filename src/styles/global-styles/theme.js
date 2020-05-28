@@ -7,6 +7,9 @@ const theme = css`
         --color-indigo: #4433ff;
         --color-indigo-light: #5847ff;
         --color-indigo-dark: #301feb;
+        --color-blue-darker: #8ebeeb;
+        --color-blue-dark: #aacdee;
+        --color-blue: #c5dcf1;
         --color-blue-light: #dfebf6;
         --color-blue-light-alt: #c8d3dd;
         --color-green: #64ffda;
@@ -26,7 +29,7 @@ const theme = css`
         --color-white-5: #cbccce;
         --color-slate-1: #e5eafb;
         --color-slate-2: #ccd6f6;
-        --color-slate-3: #b5bdd9;
+        --color-slate-3: #c2c9e0;
         --color-slate-4: #a1adce;
         --color-slate-5: #939ebd;
         --color-navy-1: #09162a;
@@ -35,6 +38,7 @@ const theme = css`
         --color-navy-3-alt: #1a2b42;
         --color-navy-4: #21344f;
         --color-navy-5: #2b3e59;
+        --color-navy-6: #354863;
         --color-grey-dark-1: #373737;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
@@ -42,6 +46,7 @@ const theme = css`
         --color-grey-light-2: #ddd;
         --color-grey-light-3: #ccc;
         --color-grey-light-4: #bbb;
+        --color-grey-light-5: #aaa;
 
         --color-primary: var(--color-indigo);
         --color-primary-light: var(--color-indigo-light);
@@ -59,21 +64,20 @@ const theme = css`
         --color-danger: var(--color-red);
         --color-code-text: var(--color-text-primary-2);
         --color-code-background: var(--color-background-primary-2);
-        --color-text-highlight: var(--color-blue-light);
         --color-field-background: var(--color-white-2);
-        --color-field-background-hover: var(--color-white-3);
+        --color-field-background-hover: var(--color-white-2);
         --color-field-background-active: var(--color-white-1);
-        --color-field-border: var(--color-white-4);
-        --color-field-border-hover: var(--color-white-5);
+        --color-field-border: var(--color-white-3);
+        --color-field-border-hover: var(--color-white-4);
         --color-field-border-active: var(--color-primary);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-indigo);
         --color-theme-toggle: var(--color-blue-light);
         --color-theme-toggle-background: var(--color-navy-5);
-        --color-scrollbar: var(--color-grey-light-3);
-        --color-scrollbar-active: var(--color-grey-light-4);
-        --color-menu-background: rgb(23, 42, 69, 0.95);
+        --color-scrollbar: var(--color-blue-dark);
+        --color-scrollbar-active: var(--color-blue-darker);
+        --color-menu-background: rgba(23, 42, 69, 0.95);
         --color-box-shadow: rgba(0, 0, 0, 0.25);
 
         &.dark-mode {
@@ -93,15 +97,15 @@ const theme = css`
             --color-text-secondary-1: var(--color-background-primary-1);
             --color-socials: var(--color-text-primary-2);
             --color-socials-hover: var(--color-green);
-            --color-text-highlight: var(--color-blue-light);
             --color-danger: var(--color-red-light);
-            --color-scrollbar: var(--color-navy-4);
+            --color-scrollbar: var(--color-navy-6);
             --color-scrollbar-active: var(--color-navy-5);
-            --color-field-background: var(--color-navy-4);
-            --color-field-background-hover: var(--color-navy-3);
+            --color-field-background: var(--color-navy-5);
+            --color-field-background-hover: var(--color-navy-4);
             --color-field-background-active: var(--color-navy-5);
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
+            --color-menu-background: rgba(9, 22, 42, 0.95);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
         }

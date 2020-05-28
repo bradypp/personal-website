@@ -48,7 +48,7 @@ const Footer = () => (
             <FooterLeftContainer>
                 <OutboundLink href={repo} variant="styled-link">
                     <p>Designed & developed by Paul Brady </p>
-                    <p>Click here to check out the github repo</p>
+                    <p>Click here to check out the GitHub repo</p>
                 </OutboundLink>
             </FooterLeftContainer>
             <FooterRightContainer>

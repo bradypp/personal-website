@@ -80,13 +80,9 @@ const GlobalStyles = createGlobalStyle`
 
   ${mixins.customScrollbar({
       color: 'var(--color-scrollbar)',
-      width: '12px',
+      width: '15px',
       activeColor: 'var(--color-scrollbar-active)',
   })}
-
-  ::selection {
-    background-color:  var(--color-text-highlight);
-  }
 
   #root {
     ${mixins.flexColumnCenter}
