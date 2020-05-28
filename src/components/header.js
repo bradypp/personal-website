@@ -19,7 +19,7 @@ const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
     background-color: ${props =>
-        props.scrollDirection === 'up' ? 'var(--color-background-secondary-1)' : 'transparent'};
+        props.scrollDirection === 'none' ? 'transparent' : 'var(--color-background-secondary-1)'};
     transition: transform var(--transition-time) var(--ease),
         box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease),
         background-color var(--transition-time) var(--ease);
@@ -125,12 +125,15 @@ const LinksList = styled.ul`
     padding: 0;
     margin: 0;
     list-style: none;
+
+    li {
+        margin-right: 2rem;
+    }
 `;
 const Logo = styled(Link).attrs({ to: '/', children: 'Paul Brady' })`
-    font-weight: 600;
-    font-size: 22px;
-    margin-right: 4rem;
-    color: var(--color-primary);
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--color-text-primary-1);
 
     ${media.bp800`
         margin-right: auto;
@@ -139,7 +142,7 @@ const Logo = styled(Link).attrs({ to: '/', children: 'Paul Brady' })`
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-sm);
-    margin-right: 2rem;
+
     padding: 1.2rem 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
@@ -190,6 +193,7 @@ class Header extends Component {
         const { isMounted, isMenuOpen, scrollDirection, lastDistanceFromTop } = this.state;
         const distanceFromTopRequired = 10;
         const distanceFromTop = window.scrollY;
+
         if (
             !isMounted ||
             Math.abs(lastDistanceFromTop - distanceFromTop) <= distanceFromTopRequired ||
@@ -235,7 +239,7 @@ class Header extends Component {
         const fadeDownClass = isHome ? 'fadedown' : '';
 
         const animatedLinks = [
-            <CSSTransition classNames={fadeDownClass} timeout={timeout}>
+            <CSSTransition key="header-logo" classNames={fadeDownClass} timeout={timeout}>
                 <li>
                     <Logo />
                 </li>

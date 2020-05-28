@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { Icon, OutboundLink } from '@components';
 import { navLinks, socialMedia } from '@config';
@@ -87,11 +86,10 @@ const StyledLink = styled(Link)`
 const SocialsContainer = styled.ul`
     ${mixins.flexCenter};
     list-style: none;
-    /* position: absolute; */
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 1.8rem;
+    padding: 2rem;
     transition: var(--transition);
 
     svg {
@@ -130,15 +128,16 @@ const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
                     <Logo
                         className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}
                         style={{
-                            color: 'var(--color-soft-pink)',
+                            color: 'var(--color-white-1)',
                             marginRight: 0,
                         }}
                     />
                     <NavContainer>
                         <NavList>
                             {navLinks &&
-                                navLinks.map(({ url, name }) => (
+                                navLinks.map(({ url, name }, i) => (
                                     <NavListItem
+                                        key={`menu-nav-${i}`}
                                         className={`${
                                             isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
                                         }`}>
@@ -149,8 +148,8 @@ const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
                     </NavContainer>
                     <SocialsContainer>
                         {socialMedia &&
-                            socialMedia.map(({ url, name }) => (
-                                <li>
+                            socialMedia.map(({ url, name }, i) => (
+                                <li key={`menu-socials-${i}`}>
                                     <SocialsLink
                                         className={`${
                                             isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
@@ -172,7 +171,7 @@ const Menu = ({ isMenuOpen, toggleMenu, logo: Logo }) => {
 Menu.propTypes = {
     isMenuOpen: PropTypes.bool.isRequired,
     toggleMenu: PropTypes.func.isRequired,
-    logo: PropTypes.node.isRequired,
+    logo: PropTypes.object.isRequired,
 };
 
 export default Menu;
