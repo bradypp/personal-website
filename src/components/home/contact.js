@@ -96,7 +96,6 @@ const Contact = ({ data }) => {
             <FlexContainer>
                 <FormContainer>
                     <Form
-                        validateOnChange={false}
                         initialValues={{
                             name: '',
                             email: '',

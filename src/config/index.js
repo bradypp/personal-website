@@ -5,8 +5,6 @@ module.exports = {
         'Paul Brady, software engineer, bradypp, front-end, web developer, CSS,JavaScript, React, Manchester',
     siteUrl: 'https://paulbrady.dev',
     siteLanguage: 'en',
-    googleAnalyticsID: 'UA-139901711-2',
-    googleVerification: 'axiXsozMKFTNRLVp9Id2jalRMucI63r1G9cNH9zTjTM',
     name: 'Paul Brady',
     location: 'Manchester, UK',
     email: 'bradypp44@gmail.com',

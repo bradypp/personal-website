@@ -42,7 +42,10 @@ const Head = ({ meta }) => {
             <link rel="canonical" href={siteUrl} />
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={config.siteKeywords} />
-            <meta name="google-site-verification" content={config.googleVerification} />
+            <meta
+                name="google-site-verification"
+                content={process.env.GOOGLE_ANALYTICS_VERIFICATION}
+            />
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />
