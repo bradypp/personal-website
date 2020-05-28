@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+const proxy = require('http-proxy-middleware');
 const config = require('./src/config');
 
 module.exports = {
@@ -5,6 +7,20 @@ module.exports = {
         title: config.siteTitle,
         siteUrl: config.siteUrl,
         description: config.siteDescription,
+    },
+    // for avoiding CORS while developing Netlify Functions locally
+    // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
+    developMiddleware: app => {
+        app.use(
+            '/.netlify/functions/',
+            proxy({
+                target: 'http://localhost:9000',
+                secure: false,
+                pathRewrite: {
+                    '/.netlify/functions/': '',
+                },
+            }),
+        );
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -176,7 +192,7 @@ module.exports = {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
                 trackingId: config.googleAnalyticsID,
-                cookieExpires: 63072000,
+                cookieExpires: 63072000, // 2 years
             },
         },
     ],

@@ -5,13 +5,16 @@
   "version": "1.0.0",
   "author": "Paul Brady",
   "scripts": {
-    "build": "gatsby build",
     "develop": "env-cmd -f ./.env.local gatsby develop -p 3000",
+    "start": "run-p start:**",
+    "start:app": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/functions",
+    "build": "gatsby build && netlify-lambda build src/functions",
+    "build:app": "gatsby build",
+    "build:lambda": "netlify-lambda build src/functions",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "yarn develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.1.1",
@@ -73,6 +76,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "http-proxy-middleware": "^1.0.4",
+    "netlify-lambda": "^1.6.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.0.5"
   },
   "keywords": [
