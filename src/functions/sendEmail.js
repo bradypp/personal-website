@@ -1,14 +1,11 @@
 const sgMail = require('@sendgrid/mail');
 
-sgMail.setApiKey('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');
+sgMail.setApiKey(process.env.SENDGRID_KEY);
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async event => {
     const payload = JSON.parse(event.body);
     const { name, email, subject } = payload;
-    return callback(null, {
-        statusCode: 200,
-        body: 'Let there be light!',
-    });
+
     const body = Object.keys(payload)
         .map(key => {
             return `${key}: ${payload[key]}`;
@@ -18,7 +15,7 @@ exports.handler = async (event, context, callback) => {
     const msg = {
         to: {
             name: 'Paul Brady',
-            email: 'bradypp44@gmail.com',
+            email: process.env.SENDGRID_EMAIL,
         },
         from: {
             name: `${name} via paulbrady.dev`,

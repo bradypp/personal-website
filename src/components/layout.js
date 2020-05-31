@@ -26,7 +26,7 @@ const Layout = ({ children, meta, location }) => {
             <Content id="content">
                 <Main>{children}</Main>
             </Content>
-            <Footer isHome={isHome} />
+            <Footer />
         </div>
     );
 };

@@ -1,9 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { scrollReveal } from '@utils';
 import { mixins, media } from '@styles';
-import { scrollRevealConfig, socialMedia, email, repo } from '@config';
+import { socialMedia, email, repo } from '@config';
 import { Icon } from '@components';
 import OutboundLink from './outbound-link';
 
@@ -46,17 +45,9 @@ const FooterBottomContainer = styled.ul`
     }
 `;
 
-const Footer = ({ isHome }) => {
-    const footerRef = useRef();
-
-    useEffect(() => {
-        if (isHome) {
-            scrollReveal.reveal(footerRef.current, scrollRevealConfig());
-        }
-    }, [isHome]);
-
+const Footer = () => {
     return (
-        <FooterContainer ref={footerRef}>
+        <FooterContainer>
             <FooterContentContainer>
                 <FooterTopContainer>
                     <OutboundLink href={repo} variant="styled-link">
