@@ -15,9 +15,6 @@ module.exports = {
             '/.netlify/functions/',
             createProxyMiddleware({
                 target: 'http://localhost:3000',
-                pathRewrite: {
-                    '^/.netlify/functions/': '',
-                },
             }),
         );
     },

@@ -103,21 +103,9 @@ const Contact = ({ data }) => {
                             message: '',
                         }}
                         validationSchema={validation}
-                        // onSubmit={async (values, form) => {
-                        //     // Done using Netlify lambda functions
-                        //     // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
-                        //     try {
-                        //         const res = await fetch('./netlify/functions/sendEmail', {
-                        //             method: 'POST',
-                        //             body: JSON.stringify(values),
-                        //         });
-                        //         console.log(res);
-                        //         form.resetForm();
-                        //     } catch (err) {
-                        //         console.error(err);
-                        //     }
-                        // }}
-                    >
+                        onSubmit={(values, form) => {
+                            form.submitForm(values);
+                        }}>
                         <Form.Element
                             name="contact"
                             method="POST"
