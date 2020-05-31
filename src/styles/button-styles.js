@@ -21,10 +21,12 @@ const primary = css`
     padding: 2rem 2.2rem;
     border: 1px solid var(--color-primary);
 
-    &:hover,
-    &:active {
-        color: var(--color-text-secondary-1);
-        background-color: var(--color-primary);
+    &:not(:disabled) {
+        &:hover,
+        &:active {
+            color: var(--color-text-secondary-1);
+            background-color: var(--color-primary);
+        }
     }
 `;
 
@@ -35,10 +37,12 @@ const secondary = css`
     padding: 1.2rem 1.8rem;
     border: 1px solid var(--color-primary);
 
-    &:hover,
-    &:active {
-        background-color: var(--color-primary-dark);
-        border: 1px solid var(--color-primary-dark);
+    &:not(:disabled) {
+        &:hover,
+        &:active {
+            background-color: var(--color-primary-dark);
+            border: 1px solid var(--color-primary-dark);
+        }
     }
 `;
 

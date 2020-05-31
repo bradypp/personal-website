@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import { scrollReveal } from '@utils';
 import { scrollRevealConfig, email } from '@config';
@@ -71,6 +71,7 @@ const MiddleText = styled.span`
 `;
 
 const Contact = ({ data }) => {
+    const [submitText, setSubmitText] = useState('Send Message');
     const { frontmatter, html } = data[0].node;
     const { title, emailText } = frontmatter;
 
@@ -107,24 +108,45 @@ const Contact = ({ data }) => {
                         onSubmit={async (values, form) => {
                             // Done using Netlify lambda functions
                             // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
+                            // and https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
                             try {
-                                const res = await axios.post(
+                                form.setSubmitting(true);
+                                await axios.post(
                                     '/.netlify/functions/sendEmail',
                                     JSON.stringify(values),
                                 );
-                                console.log(res);
+                                form.setSubmitting(false);
                                 form.resetForm();
+                                setSubmitText('Message Sent!');
+                                setTimeout(() => {
+                                    setSubmitText('Send Message');
+                                }, 3000);
                             } catch (err) {
-                                console.error(err);
+                                setSubmitText('Message Unsuccessful');
+                                setTimeout(() => {
+                                    setSubmitText('Send Message');
+                                }, 3000);
                             }
                         }}>
-                        <Form.Element>
-                            <Form.Field.Input label="Name" name="name" />
-                            <Form.Field.Input label="Email" name="email" />
-                            <Form.Field.Input label="Subject" name="subject" />
-                            <Form.Field.TextArea height={20} label="Message" name="message" />
-                            <Form.Buttons withReset submitText="Send Message" />
-                        </Form.Element>
+                        {({ isSubmitting }) => (
+                            <>
+                                <Form.Element>
+                                    <Form.Field.Input label="Name" name="name" />
+                                    <Form.Field.Input label="Email" name="email" />
+                                    <Form.Field.Input label="Subject" name="subject" />
+                                    <Form.Field.TextArea
+                                        height={20}
+                                        label="Message"
+                                        name="message"
+                                    />
+                                    <Form.Buttons
+                                        isSubmitting={isSubmitting}
+                                        withReset
+                                        submitText={submitText}
+                                    />
+                                </Form.Element>
+                            </>
+                        )}
                     </Form>
                 </FormContainer>
                 <MiddleText>or</MiddleText>

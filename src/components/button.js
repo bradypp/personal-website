@@ -4,17 +4,35 @@ import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 import { buttonStyles } from '@styles';
+import { Spinner, Icon } from '@components';
 
 const StyledButton = styled.button`
     ${buttonStyles}
 `;
-
 const StyledLink = styled(GatsbyLink)`
     ${buttonStyles}
 `;
+const ButtonText = styled.span`
+    padding: ${({ withPadding, iconLocation }) =>
+        withPadding ? (iconLocation === 'left' ? '0 0 0 0.5rem' : '0 0.5rem 0 0') : '0'};
+`;
+const ButtonSpinner = styled(props => <Spinner {...props} />).attrs({
+    size: 2,
+})``;
 
-const Button = ({ children, type: propsType, as, ...props }) => {
+const Button = ({
+    children,
+    disabled,
+    isWorking,
+    icon,
+    iconLocation,
+    type: propsType,
+    as,
+    onClick,
+    ...props
+}) => {
     const Component = as === 'button' ? StyledButton : StyledLink;
+
     let type;
     if (propsType) {
         type = propsType;
@@ -22,9 +40,24 @@ const Button = ({ children, type: propsType, as, ...props }) => {
         type = as === 'button' ? 'button' : null;
     }
 
+    const renderedIcon = (
+        <>{!isWorking && icon && typeof icon === 'string' ? <Icon name={icon} /> : icon}</>
+    );
+
+    const handleClick = e => {
+        if (!disabled && !isWorking && onClick) {
+            onClick(e);
+        }
+    };
+
     return (
-        <Component type={type} {...props}>
-            {children}
+        <Component onClick={handleClick} type={type} disabled={disabled || isWorking} {...props}>
+            {isWorking && <ButtonSpinner />}
+            {iconLocation === 'left' && renderedIcon}
+            <ButtonText withPadding={icon || isWorking} iconLocation={iconLocation}>
+                {children}
+            </ButtonText>
+            {iconLocation === 'right' && renderedIcon}
         </Component>
     );
 };
@@ -37,6 +70,10 @@ Button.propTypes = {
     variant: PropTypes.oneOf(['inline-link', 'primary-button', 'secondary-button', 'empty-button']),
     as: PropTypes.oneOf(['link', 'button']),
     type: PropTypes.string,
+    icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    iconLocation: PropTypes.string,
+    disabled: PropTypes.bool,
+    isWorking: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -47,6 +84,10 @@ Button.defaultProps = {
     variant: 'primary-button',
     as: 'button',
     type: undefined,
+    icon: undefined,
+    iconLocation: 'left',
+    disabled: false,
+    isWorking: false,
 };
 
 export default Button;

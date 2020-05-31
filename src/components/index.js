@@ -27,3 +27,4 @@ export { default as Section } from './section';
 export { default as ClientOnly } from './client-only';
 export { default as ThemeToggle } from './theme-toggle';
 export { default as CustomList } from './custom-list';
+export { default as Spinner } from './spinner';

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from '../button';
+import { Spinner } from '@components';
 
 const ButtonsContainer = styled.div`
     display: flex;
@@ -31,11 +32,12 @@ const FormButtons = ({
     submitText,
     resetText,
     cancelText,
+    isSubmitting,
     ...props
 }) => (
     <ButtonsContainer {...props}>
         {withSubmit && (
-            <StyledButton type="submit" variant="secondary-button">
+            <StyledButton type="submit" variant="secondary-button" isWorking={isSubmitting}>
                 {submitText}
             </StyledButton>
         )}
@@ -60,6 +62,7 @@ FormButtons.propTypes = {
     resetText: PropTypes.string,
     cancelText: PropTypes.string,
     align: PropTypes.string,
+    isSubmitting: PropTypes.bool,
 };
 
 FormButtons.defaultProps = {
@@ -73,6 +76,7 @@ FormButtons.defaultProps = {
     resetText: 'Reset',
     cancelText: 'Cancel',
     align: 'left',
+    isSubmitting: false,
 };
 
 export default FormButtons;
