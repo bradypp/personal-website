@@ -105,12 +105,9 @@ const Contact = ({ data }) => {
                         validationSchema={validation}
                         onSubmit={(values, form) => {
                             form.submitForm(values);
+                            form.resetForm();
                         }}>
-                        <Form.Element
-                            name="contact"
-                            method="POST"
-                            data-netlify="true"
-                            netlify-honeypot="bot-field">
+                        <Form.Element name="contact" method="POST" data-netlify="true">
                             <Form.Field.Input label="Name" name="name" />
                             <Form.Field.Input label="Email" name="email" />
                             <Form.Field.Input label="Subject" name="subject" />
