@@ -1,4 +1,5 @@
-// const proxy = require('http-proxy-middleware');
+/* eslint-disable import/no-extraneous-dependencies */
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const config = require('./src/config');
 
 module.exports = {
@@ -7,20 +8,19 @@ module.exports = {
         siteUrl: config.siteUrl,
         description: config.siteDescription,
     },
-    // for avoiding CORS while developing Netlify Functions locally
+    // To avoid CORS while developing Netlify Functions locally
     // read more: https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
-    // developMiddleware: app => {
-    //     app.use(
-    //         '/.netlify/functions/',
-    //         proxy({
-    //             target: 'http://localhost:3000',
-    //             secure: false,
-    //             pathRewrite: {
-    //                 '/.netlify/functions/': '',
-    //             },
-    //         }),
-    //     );
-    // },
+    developMiddleware: app => {
+        app.use(
+            '/.netlify/functions/',
+            createProxyMiddleware({
+                target: 'http://localhost:3000',
+                pathRewrite: {
+                    '^/.netlify/functions/': '',
+                },
+            }),
+        );
+    },
     plugins: [
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-styled-components`,

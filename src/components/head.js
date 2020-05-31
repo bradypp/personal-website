@@ -10,7 +10,6 @@ import favicon32x32 from '@images/favicons/favicon-32x32.png';
 import favicon16x16 from '@images/favicons/favicon-16x16.png';
 import msTile150x150 from '@images/favicons/mstile-150x150.png';
 import ogImage from '@images/og-image.png';
-
 import config from '@config';
 
 const Head = ({ meta }) => {
@@ -34,8 +33,8 @@ const Head = ({ meta }) => {
 
     return (
         <Helmet>
-            <html lang="en" />
-            <title itemProp="name" lang="en">
+            <html lang={config.siteLanguage} />
+            <title itemProp="name" lang={config.siteLanguage}>
                 {metaTitle}
             </title>
             <link rel="shortcut icon" href={favicon} />

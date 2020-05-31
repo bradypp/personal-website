@@ -13,8 +13,9 @@ tech:
     - Node.js
     - Express.js
     - MongoDB
+    - AWS
 ---
 
-Dev Link is a full-stack social media web app aimed towards software developers. It's made easy for developers to create a profile, showcase their skills, experience & projects, and to easily find other developers that fit a certain set of requirements.
+Dev Link is a full-stack social media web app aimed towards software developers. It allows developers to easily create a profile to showcase their skills, experience & projects and quickly find other developers that fit certain requirements.
 
 In the creation of this project, I learned how to plan and develop a medium-sized full-stack web app from scratch using modern technologies.

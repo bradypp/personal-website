@@ -69,7 +69,7 @@ FieldContainer.propTypes = {
     htmlFor: PropTypes.string,
     tipLocation: PropTypes.string,
     touched: PropTypes.bool,
-    error: PropTypes.bool,
+    error: PropTypes.string,
 };
 
 FieldContainer.defaultProps = {

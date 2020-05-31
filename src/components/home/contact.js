@@ -103,33 +103,32 @@ const Contact = ({ data }) => {
                             message: '',
                         }}
                         validationSchema={validation}
-                        onSubmit={async (values, form) => {
-                            // Done using Netlify lambda functions
-                            // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
-                            // And https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
-                            try {
-                                const res = await fetch('./netlify/functions/sendEmail', {
-                                    method: 'POST',
-                                    body: JSON.stringify(values),
-                                });
-                                if (!res.ok)
-                                    alert(
-                                        'Something went wrong! Please try again later or consider contacting me via email.',
-                                    );
-
-                                form.resetForm();
-                            } catch (err) {
-                                alert(
-                                    'Something went wrong! Please try again later or consider contacting me via email.',
-                                );
-                                console.error(err);
-                            }
-                        }}>
-                        <Form.Element>
+                        // onSubmit={async (values, form) => {
+                        //     // Done using Netlify lambda functions
+                        //     // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
+                        //     try {
+                        //         const res = await fetch('./netlify/functions/sendEmail', {
+                        //             method: 'POST',
+                        //             body: JSON.stringify(values),
+                        //         });
+                        //         console.log(res);
+                        //         form.resetForm();
+                        //     } catch (err) {
+                        //         console.error(err);
+                        //     }
+                        // }}
+                    >
+                        <Form.Element
+                            name="contact"
+                            method="POST"
+                            data-netlify="true"
+                            netlify-honeypot="bot-field"
+                            data-netlify-recaptcha="true">
                             <Form.Field.Input label="Name" name="name" />
                             <Form.Field.Input label="Email" name="email" />
                             <Form.Field.Input label="Subject" name="subject" />
                             <Form.Field.TextArea height={20} label="Message" name="message" />
+                            <div data-netlify-recaptcha="true" />
                             <Form.Buttons withReset submitText="Send Message" />
                         </Form.Element>
                     </Form>
