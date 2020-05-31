@@ -122,13 +122,11 @@ const Contact = ({ data }) => {
                             name="contact"
                             method="POST"
                             data-netlify="true"
-                            netlify-honeypot="bot-field"
-                            data-netlify-recaptcha="true">
+                            netlify-honeypot="bot-field">
                             <Form.Field.Input label="Name" name="name" />
                             <Form.Field.Input label="Email" name="email" />
                             <Form.Field.Input label="Subject" name="subject" />
                             <Form.Field.TextArea height={20} label="Message" name="message" />
-                            <div data-netlify-recaptcha="true" />
                             <Form.Buttons withReset submitText="Send Message" />
                         </Form.Element>
                     </Form>
