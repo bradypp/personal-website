@@ -90,11 +90,10 @@ const SocialsContainer = styled.ul`
 `;
 const SocialsLink = styled(OutboundLink)`
     padding: 2rem;
-    transition: var(--transition);
 
     svg {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
         color: var(--color-white-1);
     }
 
@@ -107,10 +106,10 @@ const SocialsLink = styled(OutboundLink)`
     }
 
     ${media.bp384`
-        padding: 1.4rem;
+        padding: 1.6rem;
         svg{
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
         }
     `}
 `;
@@ -134,30 +133,24 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
             <SidebarContainer>
                 <ContentContainer>
                     <NavContainer>
-                        <NavList>
+                        <NavList
+                            className={`${
+                                isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
+                            }`}>
                             {navLinks &&
                                 navLinks.map(({ url, name }, i) => (
-                                    <NavListItem
-                                        key={`menu-nav-${i}`}
-                                        className={`${
-                                            isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
-                                        }`}>
+                                    <NavListItem key={`menu-nav-${i}`}>
                                         <StyledLink to={url}>{name}</StyledLink>
                                     </NavListItem>
                                 ))}
                         </NavList>
                     </NavContainer>
-                    <SocialsContainer>
+                    <SocialsContainer
+                        className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}>
                         {socialMedia &&
                             socialMedia.map(({ url, name }, i) => (
                                 <li key={`menu-socials-${i}`}>
-                                    <SocialsLink
-                                        className={`${
-                                            isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
-                                        }`}
-                                        href={url}
-                                        aria-label={name}
-                                        variant={null}>
+                                    <SocialsLink href={url} aria-label={name} variant={null}>
                                         <Icon name={name} />
                                     </SocialsLink>
                                 </li>

@@ -6,29 +6,20 @@ import { mixins } from '@styles';
 
 const StyledMain = styled.main`
     ${mixins.flexColumnCenter};
-    max-width: ${props => props.maxWidth};
-    margin: 0 auto;
-    width: 100%;
+    ${mixins.containAndCenter};
     min-height: 100vh;
-`;
-const Container = styled.div`
-    width: 100%;
-    padding: 0 var(--page-padding);
+    padding: 180px 0;
 `;
 
-const Main = ({ children, maxWidth, ...props }) => (
-    <Container id="content" {...props}>
-        <StyledMain maxWidth={maxWidth}>{children}</StyledMain>
-    </Container>
-);
+const Main = ({ children, ...props }) => <StyledMain {...props}>{children}</StyledMain>;
 
 Main.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
-    maxWidth: PropTypes.string,
 };
 
 Main.defaultProps = {
-    maxWidth: 'var(--max-width)',
+    className: undefined,
 };
 
 export default Main;

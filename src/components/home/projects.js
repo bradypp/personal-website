@@ -80,6 +80,11 @@ const Description = styled.div`
         padding: 1.6rem;
         font-size: var(--font-size-md);
     `}
+    ${media.bp440`
+        padding:0;
+        background: none;
+        box-shadow: none;
+    `}
 `;
 const TechList = styled.ul`
     position: relative;
@@ -105,6 +110,10 @@ const TechList = styled.ul`
             margin-bottom: 0.6rem;
         `}
     }
+
+    ${media.bp800`
+        margin-bottom: 0;
+    `}
 `;
 const LinksContainer = styled.div`
     display: flex;
@@ -113,14 +122,19 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
 
     && svg {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 24px;
+        height: 24px;
     }
 
     ${media.bp800`
         && a:first-of-type {
             margin-right: 1rem;
         }
+
+        && svg {
+        width: 22px;
+        height: 22px;
+    }
     `}
 `;
 const StyledImg = styled(Img)`
@@ -139,7 +153,7 @@ const StyledImg = styled(Img)`
 `;
 const CarouselContainer = styled.div`
     width: 60rem;
-    max-width: calc(100vw - 2 * var(--page-padding));
+    max-width: calc(100vw - 2 * var(--side-padding));
     overflow: hidden;
     max-height: ${props => props.maxHeight};
     grid-column: 2 / -1;

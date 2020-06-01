@@ -18,35 +18,30 @@ const List = styled.ul`
         content: '';
         display: block;
         width: 1px;
-        height: 8rem;
+        height: 7rem;
         margin: 0 auto;
         background-color: var(--color-border-primary);
 
         ${media.bp1280`
-            height: 7rem;
+            height: 6rem;
         `}
         ${media.bp1040`
-            height: 6rem;
+            height: 5rem;
         `}
     }
 
     li:first-of-type {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     li:last-of-type {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     li {
-        a {
-            ${media.bp1040`
-                padding: 0.8rem;
-            `}
-        }
         svg {
-            width: 2rem;
-            height: 2rem;
+            width: 20px;
+            height: 20px;
         }
     }
 `;

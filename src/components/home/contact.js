@@ -43,14 +43,23 @@ const FormContainer = styled.div`
 const Socials = styled.div`
     flex: 3;
     margin-bottom: 5%;
+    text-align: center;
 
     ${media.bp1040`
         flex: 2;
     `}
     ${media.bp600`
         flex: 0;
-        min-width: 12rem;
+        a {
+            white-space:nowrap;
+        }
+    `}
+    ${media.bp440`
         margin:0;
+        width: 100%;
+        a {
+            width: 100%;
+        }
     `}
 `;
 const MiddleText = styled.span`

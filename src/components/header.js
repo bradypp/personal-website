@@ -18,11 +18,17 @@ const HeaderContainer = styled.header`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
-    background-color: ${props =>
-        props.scrollDirection === 'none' ? 'transparent' : 'var(--color-background-secondary-1)'};
+    background-color: ${props => {
+        if (props.isHome) {
+            return props.scrollDirection === 'none'
+                ? 'transparent'
+                : 'var(--color-background-secondary-1)';
+        }
+        return 'var(--color-background-primary-1)';
+    }};
     transition: transform var(--transition-time) var(--ease),
         box-shadow var(--transition-time) var(--ease), height var(--transition-time) var(--ease),
-        background-color 0.1s var(--ease);
+        background-color 0s var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;
@@ -38,7 +44,7 @@ const HeaderContainer = styled.header`
     );
 
     ${media.bp600`
-        padding: 0 var(--page-padding);
+        padding: 0 var(--side-padding);
     `}
 `;
 const NavContainer = styled.nav`
@@ -165,7 +171,7 @@ class Header extends Component {
         isMounted: !this.props.isHome,
         isMenuOpen: false,
         scrollDirection: 'none',
-        lastDistanceFromTop: 0,
+        lastDistanceFromTop: 10,
     };
 
     componentDidMount() {
@@ -245,7 +251,7 @@ class Header extends Component {
         const fadeDownClass = isHome ? 'fadedown' : '';
 
         return (
-            <HeaderContainer scrollDirection={scrollDirection}>
+            <HeaderContainer scrollDirection={scrollDirection} isHome={isHome}>
                 <Media
                     query="(min-width: 801px)"
                     render={() => (

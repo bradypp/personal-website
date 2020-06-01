@@ -7,7 +7,7 @@ import { Icon } from '@components';
 import OutboundLink from './outbound-link';
 
 const FooterContainer = styled.footer`
-    padding: 3.2rem var(--page-padding) 2.4rem;
+    padding: 3.2rem var(--side-padding) 2.4rem;
     width: 100%;
 `;
 const FooterContentContainer = styled.footer`
@@ -24,24 +24,30 @@ const FooterTopContainer = styled.div`
     p,
     a {
         margin: 0;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 0;
         text-align: center;
     }
 
-    p {
+    p:first-of-type {
         margin-bottom: 0.6rem;
     }
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
 `;
 const FooterBottomContainer = styled.ul`
     ${mixins.flexCenter}
     a {
         padding: 1.6rem;
         svg {
-            width: 2.2rem;
-            height: 2.2rem;
+            width: 22px;
+            height: 22px;
         }
+
+        ${media.bp800`
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        `}
     }
 `;
 

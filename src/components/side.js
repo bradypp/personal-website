@@ -14,19 +14,9 @@ const SideContainer = styled.div`
     right: ${props => (props.orientation === 'left' ? 'auto' : '3rem')};
     z-index: var(--z-index-side);
     color: var(--color-text-primary-2);
-    ${media.bp1040`
-        left: ${props => (props.orientation === 'left' ? '2rem' : 'auto')};
-        right: ${props => (props.orientation === 'left' ? 'auto' : '2rem')};
-    `};
     ${media.bp800`
         display: none;
     `};
-
-    a {
-        &:after {
-            display: none;
-        }
-    }
 `;
 
 const Side = ({ children, isHome, orientation }) => {

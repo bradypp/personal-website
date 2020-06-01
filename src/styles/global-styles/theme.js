@@ -77,7 +77,7 @@ const theme = css`
         --color-theme-toggle-background: var(--color-navy-5);
         --color-scrollbar: var(--color-blue-dark);
         --color-scrollbar-active: var(--color-blue-darker);
-        --color-menu-background: rgba(23, 42, 69, 0.95);
+        --color-menu-background: rgba(9, 22, 42, 0.95);
         --color-box-shadow: rgba(0, 0, 0, 0.25);
 
         &.dark-mode {
@@ -105,7 +105,6 @@ const theme = css`
             --color-field-background-active: var(--color-navy-5);
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
-            --color-menu-background: rgba(9, 22, 42, 0.95);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
         }
@@ -132,11 +131,11 @@ const theme = css`
         --z-index-modal: 150;
 
         --max-width: 1200px;
-        --page-padding: 12rem;
-        ${media.bp1040`--page-padding: 8.8rem;`}
-        ${media.bp800`--page-padding: 4.8rem;`}
-        ${media.bp600`--page-padding: 3.2rem;`}
-        ${media.bp440`--page-padding: 2.4rem;`}
+        --side-padding: 150px;
+        ${media.bp1280`--side-padding: 125px;`}
+        ${media.bp1040`--side-padding: 100px;`}
+        ${media.bp800`--side-padding: 50px;`}
+        ${media.bp600`--side-padding: 25px;`}
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

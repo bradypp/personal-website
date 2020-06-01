@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
 import { FaDev, FaMediumM } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
-import { IoMdArrowRoundForward } from 'react-icons/io';
+import { IoMdArrowRoundForward, IoMdArrowBack } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
 
 import IconCV from './cv';
@@ -23,6 +23,8 @@ const Icon = ({ name }) => {
             return <AiOutlineHome />;
         case 'CV':
             return <IconCV />;
+        case 'ArrowLeft':
+            return <IoMdArrowBack />;
         case 'ArrowRight':
             return <IoMdArrowRoundForward />;
         case 'Medium':

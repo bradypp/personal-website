@@ -8,8 +8,8 @@ skills:
     - Node.js & Express.js
     - SQL & MySQL
     - MongoDB
-    - Next.js
-    - Gatsby.js
+    - PHP & Laravel
+    - WordPress
     - jQuery
     - Bootstrap
     - Tailwind CSS

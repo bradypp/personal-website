@@ -43,6 +43,7 @@ const sharedSectionStyles = css`
     margin-bottom: auto;
     line-height: 0;
     transition: opacity var(--transition-time) var(--ease);
+    color: var(--color-white-1);
 `;
 const ToggleLeft = styled.div`
     ${sharedSectionStyles}

@@ -35,16 +35,18 @@ const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
     touch-action: manipulation;
-    font-size: 68.75%;
-    
-    ${media.bp2400`
-        font-size: 62.5%;
+
+    ${'' /* 1rem = 16px */}
+    font-size: 62.5%; 
+
+    ${'' /* 1rem = 15px */}
+    ${media.bp1280`
+        font-size: 56.25%; 
     `}
-     ${media.bp1280`
-        font-size: 56.25%;
-    `}
+
+    ${'' /* 1rem = 14px */}
     ${media.bp800`
-        font-size: 50%;
+        font-size: 50%; 
     `} 
     
   }
@@ -60,6 +62,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--color-text-primary-1);
     background: var(--color-background-primary-1);
     min-height: 100vh;
+    transition: var(--transition);
 
     &.hidden {
       overflow: hidden;
@@ -98,63 +101,6 @@ const GlobalStyles = createGlobalStyle`
   h6 {
     font-weight: 600;
     margin: 0 0 1rem 0;
-  }
-
-  h1 {
-    &.big-title {
-      font-size: 8rem;
-      line-height: 1.1;
-      margin: 0;
-    }
-
-    &.medium-title {
-      font-size: 6rem;
-      line-height: 1.1;
-      margin: 0;
-    }
-  }
-
-  .overline {
-    color: var(--color-primary);
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-md);
-    font-weight: normal;
-  }
-
-  .subtitle {
-    color: var(--color-primary);
-    margin: 0 0 2rem 0;
-    font-size: var(--font-size-md);
-    font-family: var(--font-family-mono);
-    font-weight: normal;
-    line-height: 1.5;
-
-    a {
-      ${mixins.inlineLink};
-      line-height: 1.5;
-    }
-  }
-
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5rem;
-    color: var(--color-primary);
-
-    .arrow {
-      display: block;
-      margin-right: 1rem;
-      padding-top: 0.4rem;
-    }
-    a {
-      ${mixins.inlineLink};
-      font-family: var(--font-family-mono);
-      font-size: var(--font-size-sm);
-      font-weight: bold;
-      line-height: 1.5;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
   }
 
   img {
@@ -256,36 +202,10 @@ const GlobalStyles = createGlobalStyle`
     }  
   }
 
-  ol, ul {
-      display: block;
-      list-style-type: decimal;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0;
-      margin-inline-end: 0;
-      padding-inline-start: 4rem;
-  }
-
   ul {
-      list-style-type: disc;
-  }
-
-  ol {
-      list-style-type: decimal;
-  }
-
-  blockquote {
-    border-left-color: var(--color-primary);
-    border-left-style: solid;
-    border-left-width: 1px;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 2.4rem;
-
-    p {
-      font-style: italic;
-      font-size: 2.4rem;
-    }
+      margin:0;
+      padding:0;
+      list-style: none;
   }
 
   code {
