@@ -116,22 +116,22 @@ const theme = css`
 
         --box-shadow-primary: 0 1px 3px var(--color-box-shadow);
 
-        --font-size-tiny: 1.2rem;
-        --font-size-xxs: 1.3rem;
-        --font-size-xs: 1.4rem;
-        --font-size-sm: 1.5rem;
-        --font-size-md: 1.6rem;
-        --font-size-lg: 1.8rem;
-        --font-size-xl: 2rem;
-        --font-size-xxl: 2.2rem;
-        --font-size-h3: 3.2rem;
+        --font-size-tiny: 12px;
+        --font-size-xxs: 13px;
+        --font-size-xs: 14px;
+        --font-size-sm: 15px;
+        --font-size-md: 16px;
+        --font-size-lg: 18px;
+        --font-size-xl: 20px;
+        --font-size-xxl: 22px;
+        --font-size-h3: 32px;
 
         --z-index-side: 25;
         --z-index-header: 50;
         --z-index-dropdown: 100;
         --z-index-modal: 150;
 
-        --max-width: 120rem;
+        --max-width: 1200px;
         --page-padding: 12rem;
         ${media.bp1040`--page-padding: 8.8rem;`}
         ${media.bp800`--page-padding: 4.8rem;`}

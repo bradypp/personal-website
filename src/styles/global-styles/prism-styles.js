@@ -18,9 +18,9 @@ const prismColors = {
 
 const PrismStyles = css`
     /**
-  * Add back the container background-color, border-radius, padding, margin
-  * and overflow that we removed from <pre>.
-  */
+    * Add back the container background-color, border-radius, padding, margin
+    * and overflow that we removed from <pre>.
+    */
     .gatsby-highlight {
         background-color: ${prismColors.bg};
         color: ${prismColors.variable};

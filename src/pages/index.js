@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import { Layout, Hero, About, Projects, Contact } from '@components';
-
+// TODO : tracedSVG colors
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
         if (location.hash) {
@@ -43,13 +43,6 @@ export const pageQuery = graphql`
                         name
                         subtitle
                         contact
-                        wave {
-                            childImageSharp {
-                                fluid(maxWidth: 200, quality: 90) {
-                                    ...GatsbyImageSharpFluid_withWebp
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -62,7 +55,7 @@ export const pageQuery = graphql`
                         skills
                         avatar {
                             childImageSharp {
-                                fluid(maxWidth: 700, quality: 90) {
+                                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#09162a" }) {
                                     ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                 }
                             }
@@ -84,7 +77,11 @@ export const pageQuery = graphql`
                         images {
                             image {
                                 childImageSharp {
-                                    fluid(maxWidth: 700, quality: 90) {
+                                    fluid(
+                                        maxWidth: 700
+                                        quality: 90
+                                        traceSVG: { color: "#09162a" }
+                                    ) {
                                         ...GatsbyImageSharpFluid_withWebp_tracedSVG
                                     }
                                 }

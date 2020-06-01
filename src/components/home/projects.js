@@ -169,7 +169,7 @@ const ProjectContainer = styled.div`
     display: grid;
     grid-gap: 3rem;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: center;
     margin-bottom: 10rem;
     
     ${media.bp1280`

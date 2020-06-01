@@ -33,6 +33,14 @@ const ContentContainer = styled.div`
         ${mixins.inlineLink};
     }
 
+    ul {
+        margin-top: 2.4rem;
+
+        ${media.bp800`
+            margin-bottom: 4rem;
+        `}
+    }
+
     ${media.bp800`
         width: 100%;
         max-width: 100%;
@@ -60,13 +68,6 @@ const Avatar = styled(Img)`
     transition: var(--transition);
     box-shadow: var(--box-shadow-primary);
     filter: contrast(110%);
-`;
-const SkillsContainer = styled(props => <CustomList {...props} />)`
-    margin-top: 2rem;
-
-    ${media.bp800`
-       margin-bottom: 4rem;
-    `}
 `;
 
 const About = ({ data }) => {
@@ -105,7 +106,14 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <div dangerouslySetInnerHTML={{ __html: html }} />
-                    <SkillsContainer items={skills} columns={3} />
+                    <Media
+                        query="(min-width: 441px)"
+                        render={() => <CustomList items={skills} columns={3} />}
+                    />
+                    <Media
+                        query="(max-width: 440px)"
+                        render={() => <CustomList items={skills} columns={2} />}
+                    />
                 </ContentContainer>
                 <AvatarContainer>
                     <Media
@@ -129,11 +137,6 @@ const About = ({ data }) => {
                             </OutboundLink>
                         )}
                     />
-                    {/* <animated.div style={{ transform: transition }}>
-                        <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
-                            <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-                        </OutboundLink>
-                    </animated.div> */}
                 </AvatarContainer>
             </FlexContainer>
         </AboutContainer>

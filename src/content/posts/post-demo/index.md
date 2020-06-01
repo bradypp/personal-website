@@ -1,11 +1,11 @@
 ---
-title: Markdown Test File
-description: abc234
-date: '2019-12-07'
+title: Post Demo
+description: Testing posts with markdown
+date: '2020-05-31'
 draft: true
-slug: '/pensieve/markdown-playground'
+slug: '/post-demo'
 tags:
-  - Testing
+    - Demo
 ---
 
 ![Image Alt](./image.jpg)
@@ -100,76 +100,76 @@ $colorGreen: #008000;
 $colorGreenDark: darken($colorGreen, 10);
 
 @mixin container {
-  max-width: 980px;
+    max-width: 980px;
 }
 
 // mixins with parameters
 @mixin button($color: green) {
-  @if ($color == green) {
-    background-color: #008000;
-  } @else if ($color == red) {
-    background-color: #b22222;
-  }
+    @if ($color == green) {
+        background-color: #008000;
+    } @else if ($color == red) {
+        background-color: #b22222;
+    }
 }
 
 button {
-  @include button(red);
+    @include button(red);
 }
 
 div,
 .navbar,
 #header,
 input[type='input'] {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  width: auto;
-  margin: 0 auto;
-  display: block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    width: auto;
+    margin: 0 auto;
+    display: block;
 }
 
 .row-12 > [class*='spans'] {
-  border-left: 1px solid #b5c583;
+    border-left: 1px solid #b5c583;
 }
 
 // nested definitions
 ul {
-  width: 100%;
-  padding: {
-    left: 5px;
-    right: 5px;
-  }
-  li {
-    float: left;
-    margin-right: 10px;
-    .home {
-      background: url('http://placehold.it/20') scroll no-repeat 0 0;
+    width: 100%;
+    padding: {
+        left: 5px;
+        right: 5px;
     }
-  }
+    li {
+        float: left;
+        margin-right: 10px;
+        .home {
+            background: url('http://placehold.it/20') scroll no-repeat 0 0;
+        }
+    }
 }
 
 .banner {
-  @extend .container;
+    @extend .container;
 }
 
 a {
-  color: $colorGreen;
-  &:hover {
-    color: $colorGreenDark;
-  }
-  &:visited {
-    color: #c458cb;
-  }
+    color: $colorGreen;
+    &:hover {
+        color: $colorGreenDark;
+    }
+    &:visited {
+        color: #c458cb;
+    }
 }
 
 @for $i from 1 through 5 {
-  .span#{$i} {
-    width: 20px * $i;
-  }
+    .span#{$i} {
+        width: 20px * $i;
+    }
 }
 
 @mixin mobile {
-  @media screen and (max-width: 600px) {
-    @content;
-  }
+    @media screen and (max-width: 600px) {
+        @content;
+    }
 }
 ```
 
@@ -178,8 +178,8 @@ a {
 
 you can write text [with links](http://example.com) inline or [link references][1].
 
-- one _thing_ has *em*phasis
-- two **things** are **bold**
+-   one _thing_ has *em*phasis
+-   two **things** are **bold**
 
 [1]: http://example.com
 
@@ -256,30 +256,30 @@ you can write text [with links](http://example.com) inline or [link references][
     >
     >     Markdown.generate();
 
-- Red
-- Green
-- Blue
+-   Red
+-   Green
+-   Blue
 
-* Red
-* Green
-* Blue
+*   Red
+*   Green
+*   Blue
 
-- Red
-- Green
-- Blue
+-   Red
+-   Green
+-   Blue
 
 ```markdown
-- Red
-- Green
-- Blue
+-   Red
+-   Green
+-   Blue
 
-* Red
-* Green
-* Blue
+*   Red
+*   Green
+*   Blue
 
-- Red
-- Green
-- Blue
+-   Red
+-   Green
+-   Blue
 ```
 
 1. Buy flour and salt

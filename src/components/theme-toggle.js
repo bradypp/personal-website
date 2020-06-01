@@ -10,6 +10,7 @@ const ToggleContainer = styled.div`
     position: relative;
     width: 54px;
     height: 28px;
+    margin-top: 4px;
 `;
 const StyledInput = styled.input`
     ${mixins.hideElement}

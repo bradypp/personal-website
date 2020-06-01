@@ -3,11 +3,37 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 
-import { mixins } from '@styles';
 import { Icon } from '@components';
 
 const ListContainer = styled.ul`
-    ${mixins.customList(3)}
+    display: grid;
+    grid-template-columns: repeat(${props => props.columns || 1}, 1fr);
+    grid-column-gap: 1.6rem;
+    grid-row-gap: 1.8rem;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+
+    li {
+        display: flex;
+        align-items: center;
+
+        svg {
+            color: var(--color-secondary);
+            min-width: 1rem;
+            min-height: 1rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            margin: 0 1.6rem 0 0;
+        }
+
+        span {
+            height: min-content;
+            line-height: 1;
+            font-size: var(--font-size-xs);
+        }
+    }
 `;
 
 const CustomList = ({ items, icon, ...props }) => {

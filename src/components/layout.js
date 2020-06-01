@@ -1,19 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import { Head, Footer, Header, Social } from '@components';
-import { mixins } from '@styles';
-
-const Main = styled.main`
-    ${mixins.containAndCenter};
-    ${mixins.flexColumnCenter};
-    min-height: 100vh;
-`;
-const Content = styled.div`
-    width: 100%;
-    padding: 0 var(--page-padding);
-`;
+import { Head, Footer, Header, Social, Main } from '@components';
 
 const Layout = ({ children, meta, location }) => {
     const isHome = location && location.pathname === '/';
@@ -23,9 +11,7 @@ const Layout = ({ children, meta, location }) => {
             <Head meta={meta} />
             <Social isHome={isHome} orientation="left" />
             <Header isHome={isHome} />
-            <Content id="content">
-                <Main>{children}</Main>
-            </Content>
+            <Main>{children}</Main>
             <Footer />
         </div>
     );

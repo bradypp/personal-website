@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Img from 'gatsby-image';
 
 import { twitter } from '@config';
 import { mixins, media } from '@styles';
 import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
+import wave from '@images/wave.png';
 
 const margin = '11vh';
 
@@ -54,48 +54,18 @@ const Title = styled.h2`
     }
 
     ${media.bp440`
-        font-size: 3.6rem;
+        font-size: 3.8rem;
     `}
 `;
 const Name = styled.div`
     position: relative;
     transition: var(--transition);
     overflow: visible;
-
-    span {
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-weight: 500;
-        position: relative;
-        transition: var(--transition);
-        padding: 0.2rem;
-        color: var(--color-text-primary-1);
-        z-index: 1;
-    }
-
-    /* &:after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 0.3rem;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transition: var(--transition);
-        background: var(--color-primary);
-        overflow: visible;
-        z-index: 0;
-    }
-
-    &:hover {
-        span {
-            color: var(--color-white-1);
-        }
-        &:after {
-            height: 100%;
-        }
-    } */
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+    padding: 0.2rem;
+    color: var(--color-text-primary-1);
 `;
 const Subtitle = styled.h3`
     font-size: var(--font-size-h3);
@@ -108,7 +78,7 @@ const Subtitle = styled.h3`
     }
 
     ${media.bp440`
-        font-size: 2.4rem;
+        font-size: 2.8rem;
     `}
 `;
 const ButtonContainer = styled.h3`
@@ -167,7 +137,7 @@ const Hero = ({ data }) => {
     const [isWaveAnimated, setIsWaveAnimated] = useState(false);
 
     const { frontmatter } = data[0].node;
-    const { title, name, wave, subtitle, contact } = frontmatter;
+    const { title, name, subtitle, contact } = frontmatter;
 
     useEffect(() => {
         if (!isMounted) return;
@@ -187,17 +157,17 @@ const Hero = ({ data }) => {
             <Title>
                 {`${title} `}{' '}
                 <OutboundLink href={twitter}>
-                    <Name>
-                        <span>{name}</span>
-                    </Name>
+                    <Name>{name}</Name>
                 </OutboundLink>
             </Title>
-            <WaveEmojiContainer
-                isAnimated={isWaveAnimated}
-                onMouseEnter={handleAnimation}
-                onClick={handleAnimation}>
-                <Img fluid={wave.childImageSharp.fluid} alt="wave emoji" />
-            </WaveEmojiContainer>
+            {wave && (
+                <WaveEmojiContainer
+                    isAnimated={isWaveAnimated}
+                    onMouseEnter={handleAnimation}
+                    onClick={handleAnimation}>
+                    <img src={wave} alt="wave emoji" />
+                </WaveEmojiContainer>
+            )}
         </TitleContainer>,
         <Subtitle>{subtitle}</Subtitle>,
         <ButtonContainer>

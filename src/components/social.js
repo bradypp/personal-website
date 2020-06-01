@@ -18,12 +18,15 @@ const List = styled.ul`
         content: '';
         display: block;
         width: 1px;
-        height: 9rem;
+        height: 8rem;
         margin: 0 auto;
         background-color: var(--color-border-primary);
 
+        ${media.bp1280`
+            height: 7rem;
+        `}
         ${media.bp1040`
-            height: 8rem;
+            height: 6rem;
         `}
     }
 
@@ -36,14 +39,14 @@ const List = styled.ul`
     }
 
     li {
-        svg {
-            width: 2.2rem;
-            height: 2.2rem;
-
-            ${media.bp1440`
-                width: 2rem;
-                height: 2rem;
+        a {
+            ${media.bp1040`
+                padding: 0.8rem;
             `}
+        }
+        svg {
+            width: 2rem;
+            height: 2rem;
         }
     }
 `;

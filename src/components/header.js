@@ -42,7 +42,7 @@ const HeaderContainer = styled.header`
     `}
 `;
 const NavContainer = styled.nav`
-    ${mixins.flexBetween}
+    ${mixins.flexBetween};
     position: relative;
     width: 100%;
 `;
@@ -74,7 +74,7 @@ const HamburgerBox = styled.div`
 `;
 const HamburgerContent = styled.div`
     background-color: ${props =>
-        props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-text-primary-1)'};
+        props.isMenuOpen ? 'var(--color-white-1)' : 'var(--color-text-primary-1)'};
     position: absolute;
     width: ${hamburgerWidth};
     height: 2px;
@@ -96,7 +96,7 @@ const HamburgerContent = styled.div`
         content: '';
         display: block;
         background-color: ${props =>
-            props.isMenuOpen ? 'var(--color-soft-pink)' : 'var(--color-text-primary-1)'};
+            props.isMenuOpen ? 'var(--color-white-1)' : 'var(--color-text-primary-1)'};
         position: absolute;
         left: auto;
         right: 0;
