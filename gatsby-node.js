@@ -69,6 +69,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+    // Stop scrollreveal null references to the window on build
     // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
     if (stage === 'build-html') {
         actions.setWebpackConfig({
@@ -83,6 +84,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         });
     }
 
+    // Allows absolute referencing (e.g. import { Component } from '@components')
     actions.setWebpackConfig({
         resolve: {
             alias: {

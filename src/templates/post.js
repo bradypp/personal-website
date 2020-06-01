@@ -4,8 +4,13 @@ import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Layout, Main } from '@components';
+import { Layout, Main, Icon } from '@components';
+import { mixins } from '@styles';
 
+const StyledMain = styled(Main)`
+    max-width: 800px;
+    align-items: flex-start;
+`;
 const PostHeader = styled.header`
     margin-bottom: 5rem;
     .tag {
@@ -15,6 +20,7 @@ const PostHeader = styled.header`
 const PostContent = styled.div`
     margin-bottom: 10rem;
     width: 100%;
+
     h1,
     h2,
     h3,
@@ -26,6 +32,76 @@ const PostContent = styled.div`
 
     p {
         margin: 1em 0;
+        line-height: 1.5;
+    }
+
+    ol,
+    ul {
+        display: block;
+        list-style-type: decimal;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-inline-start: 4rem;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    blockquote {
+        border-left-color: var(--color-primary);
+        border-left-style: solid;
+        border-left-width: 1px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 2.4rem;
+
+        p {
+            font-style: italic;
+            font-size: 24px;
+        }
+    }
+`;
+const BreadCrumb = styled(Link)`
+    ${mixins.inlineLink};
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    color: var(--color-primary);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    svg {
+        display: block;
+        margin-right: 1rem;
+        height: 20px;
+        width: 20px;
+    }
+`;
+const Title = styled.h1`
+    font-size: 6rem;
+    line-height: 1.2;
+`;
+const Subtitle = styled.p`
+    color: var(--color-primary);
+    margin: 0 0 2rem 0;
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-mono);
+    font-weight: normal;
+    line-height: 1.5;
+
+    a {
+        ${mixins.inlineLink};
         line-height: 1.5;
     }
 `;
@@ -51,20 +127,19 @@ const PostTemplate = ({ data, location }) => {
 
     return (
         <Layout location={location}>
-            <Main maxWidth="1000px">
-                <span className="breadcrumb">
-                    <span className="arrow">&larr;</span>
-                    <Link to="/pensieve">All memories</Link>
-                </span>
-
+            <StyledMain>
+                <BreadCrumb to="/posts">
+                    <Icon name="ArrowLeft" />
+                    All Posts
+                </BreadCrumb>
                 <PostHeader>
-                    <h1 className="medium-title">{title}</h1>
-                    <p className="subtitle">
+                    <Title>{title}</Title>
+                    <Subtitle>
                         <time>
-                            {new Date(date).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: 'long',
+                            {new Date(date).toLocaleDateString('en-UK', {
                                 day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
                             })}
                         </time>
                         <span>&nbsp;&mdash;&nbsp;</span>
@@ -72,16 +147,16 @@ const PostTemplate = ({ data, location }) => {
                             tags.length > 0 &&
                             tags.map((tag, i) => (
                                 <Link
-                                    key={i}
-                                    to={`/pensieve/tags/${kebabCase(tag)}/`}
+                                    key={`post-tag-${i}`}
+                                    to={`/tags/${kebabCase(tag)}/`}
                                     className="tag">
                                     #{tag}
                                 </Link>
                             ))}
-                    </p>
+                    </Subtitle>
                 </PostHeader>
                 <PostContent dangerouslySetInnerHTML={{ __html: html }} />
-            </Main>
+            </StyledMain>
         </Layout>
     );
 };
