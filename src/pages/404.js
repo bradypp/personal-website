@@ -1,8 +1,12 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
-import Layout from '@components/layout';
+const NotFoundPage = () => {
+    useEffect(() => {
+        navigate('/');
+    }, []);
 
-// TODO: redirect
-const NotFoundPage = () => <Layout>404</Layout>;
+    return null;
+};
 
 export default NotFoundPage;
