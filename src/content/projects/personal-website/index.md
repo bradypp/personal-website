@@ -16,8 +16,9 @@ external: 'https://paulbrady.dev'
 tech:
     - React
     - Gatsby.js
-    - Styled Components
+    - Markdown
     - GraphQL
+    - Netlify
 ---
 
 My personal site was built using Gatsby.js, the fantastic modern react SSR framework.
