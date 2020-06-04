@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Layout, Main, Icon } from '@components';
-import { mixins, media } from '@styles';
+import { mixins } from '@styles';
 
 const StyledMain = styled(Main)`
     max-width: 800px;

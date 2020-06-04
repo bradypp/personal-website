@@ -25,7 +25,7 @@ const SideContainer = styled.div`
     `};
 
     &.fade-in {
-        animation: 1s fadeIn;
+        animation: 0.8s fadeIn;
     }
 
     @keyframes fadeIn {
@@ -36,20 +36,27 @@ const SideContainer = styled.div`
             opacity: 1;
         }
     }
+
+    &.fade-out {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+    }
 `;
 
 const Side = ({ children, isHome, orientation }) => {
     const [isVisible, setIsVisible] = useState(
-        window && window.pageYOffset > window.innerHeight * 0.5,
+        typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.5,
     );
     const isMounted = useIsMounted(2000, isHome);
 
     const handleScroll = () => {
-        setIsVisible(window && window.pageYOffset > window.innerHeight * 0.5);
+        setIsVisible(
+            typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.5,
+        );
     };
 
     useLayoutEffect(() => {
-        if (!window) return;
         window.addEventListener('scroll', handleScroll);
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -58,7 +65,7 @@ const Side = ({ children, isHome, orientation }) => {
     return (
         isMounted && (
             <SideContainer
-                className={isMounted ? (isVisible ? 'fade-in' : 'fade-exit-active') : ''}
+                className={isMounted ? (isVisible ? 'fade-in' : 'fade-out') : ''}
                 orientation={orientation}>
                 {children}
             </SideContainer>
