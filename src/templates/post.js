@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Layout, Main, Icon } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const StyledMain = styled(Main)`
     max-width: 800px;
@@ -89,7 +89,9 @@ const BreadCrumb = styled(Link)`
     }
 `;
 const Title = styled.h1`
-    font-size: 6rem;
+    font-size: var(--font-size-h1);
+    line-height: 1.1;
+    margin: 0;
     line-height: 1.2;
 `;
 const Subtitle = styled.p`

@@ -18,11 +18,13 @@ const ListContainer = styled.ul`
     li {
         display: flex;
         align-items: center;
+        min-width: 1.6rem;
+        min-height: 1.6rem;
 
         svg {
             color: var(--color-secondary);
-            min-width: 1rem;
-            min-height: 1rem;
+            min-width: 1.6rem;
+            min-height: 1.6rem;
             width: 1.6rem;
             height: 1.6rem;
             margin: 0 1.6rem 0 0;

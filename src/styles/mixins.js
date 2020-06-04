@@ -179,8 +179,8 @@ const mixins = {
     homeSection: css`
         width: 100%;
         height: fit-content;
-        padding-top: 10rem;
-        padding-bottom: 10rem;
+        padding-top: 100px;
+        padding-bottom: 100px;
 
         h3 {
             &:after {
@@ -190,16 +190,16 @@ const mixins = {
         }
 
         ${media.bp1040`
-            padding-top: 8rem;
-            padding-bottom: 8rem;
+            padding-top: 80px;
+            padding-bottom: 80px;
         `}
         ${media.bp800`
-            padding-top: 6rem;
-            padding-bottom: 6rem;
+            padding-top: 60px;
+            padding-bottom: 60px;
         `}
         ${media.bp440`
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+            padding-top: 40px;
+            padding-bottom: 40px;
         `}
     `,
     formField: css`

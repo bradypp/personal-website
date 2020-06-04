@@ -124,6 +124,8 @@ const theme = css`
         --font-size-xl: 20px;
         --font-size-xxl: 22px;
         --font-size-h3: 32px;
+        --font-size-h2: 38px;
+        --font-size-h1: 44px;
 
         --z-index-side: 25;
         --z-index-header: 50;
@@ -133,9 +135,10 @@ const theme = css`
         --max-width: 1200px;
         --side-padding: 150px;
         ${media.bp1280`--side-padding: 125px;`}
-        ${media.bp1040`--side-padding: 100px;`}
-        ${media.bp800`--side-padding: 50px;`}
+        ${media.bp1040`--side-padding: 80px;`}
+        ${media.bp800`--side-padding: 45px;`}
         ${media.bp600`--side-padding: 25px;`}
+        ${media.bp440`--side-padding: 20px;`}
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

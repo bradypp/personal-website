@@ -56,7 +56,8 @@ const TransitionStyles = css`
 
     .fade-exit-active {
         opacity: 0;
-        transition: opacity 1000ms var(--ease);
+        visibility: hidden;
+        transition: opacity 1000ms var(--ease), visibility 1000ms var(--ease);
     }
 `;
 

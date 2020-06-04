@@ -25,36 +25,31 @@ const FlexContainer = styled.div`
     justify-content: space-between;
     width: 100%;
 
-    ${media.bp440`
+    ${media.bp600`
         flex-direction: column;
         align-items:flex-start;
     `}
 `;
 const FormContainer = styled.div`
-    flex: 5;
+    flex: 2;
     margin-top: 2rem;
     ${media.bp600`
         flex:3;
-    `}
-    ${media.bp440`
         width:100%;
     `}
 `;
 const Socials = styled.div`
-    flex: 3;
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
     margin-bottom: 5%;
     text-align: center;
 
-    ${media.bp1040`
-        flex: 2;
-    `}
     ${media.bp600`
         flex: 0;
         a {
             white-space:nowrap;
         }
-    `}
-    ${media.bp440`
         margin:0;
         width: 100%;
         a {
@@ -69,10 +64,7 @@ const MiddleText = styled.span`
     margin-bottom: 5%;
     text-align: center;
     ${media.bp600`
-        padding: 2rem;
         flex:0;
-    `}
-    ${media.bp440`
         padding: 4rem;
         margin:0;
         align-self:center;

@@ -103,6 +103,28 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 0 1rem 0;
   }
 
+  h1 {
+    font-size: var(--font-size-h1);
+    line-height: 1.2;
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+    line-height: 1.3;
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+    line-height: 1.4;
+  }
+  h4 {
+    font-size: var(--font-size-lg);
+  }
+  h5 {
+    font-size: var(--font-size-md);
+  }
+  h6 {
+    font-size: var(--font-size-sm);
+  }
+
   img {
     width: 100%;
     max-width: 100%;

@@ -43,6 +43,13 @@ const List = styled.ul`
             width: 20px;
             height: 20px;
         }
+
+        ${media.bp1040`
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        `}
     }
 `;
 
