@@ -13,7 +13,7 @@
   </a>
 </p>
 <a href="https://paulbrady.dev" target="_blank">
-  <img src="https://raw.githubusercontent.com/bradypp/personal-website/dev/src/images/demo.png" alt="repo demo">
+  <img src="https://raw.githubusercontent.com/bradypp/personal-website/master/src/images/demo.png" alt="repo demo">
 </a>
 
 ## 🛠 Try For Yourself
@@ -21,17 +21,17 @@
 1. Install the Gatsby CLI
 
     ```sh
-    npm install -g gatsby-cli
+    yarn global add gatsby-cli (or npm install -g gatsby-cli)
     ```
 
 2. Install dependencies
 
     ```sh
-    yarn
+    yarn (or npm i)
     ```
 
 3. Start the development server
 
     ```sh
-    yarn start
+    yarn start (or npm start)
     ```
