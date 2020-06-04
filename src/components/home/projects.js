@@ -151,15 +151,19 @@ const StyledImg = styled(Img)`
         height: 100%;
     `}
 `;
-const CarouselContainer = styled.div`
+
+const containerStyles = css`
     width: 60rem;
     max-width: calc(100vw - 2 * var(--side-padding));
-    overflow: hidden;
     max-height: ${props => props.maxHeight};
+    box-shadow: var(--box-shadow-primary);
+    overflow: hidden;
+    position: relative;
+`;
+const CarouselContainer = styled.div`
+    ${containerStyles}
     grid-column: 2 / -1;
     grid-row: 1 / -1;
-    position: relative;
-    box-shadow: var(--box-shadow-primary);
 
     ${media.bp1280`
         width: 54rem; 
@@ -180,12 +184,7 @@ const StyledImgContainer = styled.div`
     border-radius: var(--border-radius);
 
     ${media.bp440`
-        margin-bottom: 1.6rem;
-        max-width: calc(100vw - 2 * var(--side-padding));
-        max-height: ${props => props.maxHeight};
-        overflow: hidden;
-        width: 60rem;
-        box-shadow: var(--box-shadow-primary);
+        ${containerStyles}
     `}
 `;
 const ProjectContainer = styled.div`
@@ -347,6 +346,7 @@ const Projects = ({ data }) => {
                                                     autoplaySpeed: 5000,
                                                     fade: true,
                                                     cssEase: 'ease',
+                                                    pauseOnHover: false,
                                                 }}>
                                                 {images.map(({ image, alt }, i) => (
                                                     <StyledImgContainer
@@ -366,7 +366,7 @@ const Projects = ({ data }) => {
                                     query="(max-width: 440px)"
                                     render={() => (
                                         <StyledImgContainer>
-                                            <Img
+                                            <StyledImg
                                                 ref={imageRef}
                                                 fluid={images[0].image.childImageSharp.fluid}
                                                 alt={images[0].alt || `${title}-image-${i}`}

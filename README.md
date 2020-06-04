@@ -5,7 +5,7 @@
   My personal website made to showcase my work and share my blog posts. 
 </p>
 <p align="center">
-  Found at <a href="https://paulbrady.dev" target="_blank">paulbrady.dev</a>, built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+  Found at <a href="https://paulbrady.dev" target="_blank">paulbrady.dev</a>, built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>.
 </p>
 <p align="center">
   <a href="https://app.netlify.com/sites/paulbrady/deploys" target="_blank">
