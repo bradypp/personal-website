@@ -185,6 +185,7 @@ const StyledImgContainer = styled.div`
         max-height: ${props => props.maxHeight};
         overflow: hidden;
         width: 60rem;
+        box-shadow: var(--box-shadow-primary);
     `}
 `;
 const ProjectContainer = styled.div`
