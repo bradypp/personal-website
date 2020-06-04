@@ -178,6 +178,14 @@ const CarouselContainer = styled.div`
 const StyledImgContainer = styled.div`
     position: relative;
     border-radius: var(--border-radius);
+
+    ${media.bp440`
+        margin-bottom: 1.6rem;
+        max-width: calc(100vw - 2 * var(--side-padding));
+        max-height: ${props => props.maxHeight};
+        overflow: hidden;
+        width: 60rem;
+    `}
 `;
 const ProjectContainer = styled.div`
     display: grid;
@@ -324,29 +332,47 @@ const Projects = ({ data }) => {
                                 />
                             </ContentContainer>
                             <OutboundLink href={external || github || '#'} variant={null}>
-                                <CarouselContainer>
-                                    <Slider
-                                        {...{
-                                            arrows: false,
-                                            dots: false,
-                                            infinite: true,
-                                            speed: 800,
-                                            autoplay: true,
-                                            autoplaySpeed: 5000,
-                                            fade: true,
-                                            cssEase: 'ease',
-                                        }}>
-                                        {images.map(({ image, alt }, i) => (
-                                            <StyledImgContainer key={`project-image-${title}-${i}`}>
-                                                <StyledImg
-                                                    ref={imageRef}
-                                                    fluid={image.childImageSharp.fluid}
-                                                    alt={alt || `${title}-image-${i}`}
-                                                />
-                                            </StyledImgContainer>
-                                        ))}
-                                    </Slider>
-                                </CarouselContainer>
+                                <Media
+                                    query="(min-width: 441px)"
+                                    render={() => (
+                                        <CarouselContainer>
+                                            <Slider
+                                                {...{
+                                                    arrows: false,
+                                                    dots: false,
+                                                    infinite: true,
+                                                    speed: 800,
+                                                    autoplay: true,
+                                                    autoplaySpeed: 5000,
+                                                    fade: true,
+                                                    cssEase: 'ease',
+                                                }}>
+                                                {images.map(({ image, alt }, i) => (
+                                                    <StyledImgContainer
+                                                        key={`project-image-${title}-${i}`}>
+                                                        <StyledImg
+                                                            ref={imageRef}
+                                                            fluid={image.childImageSharp.fluid}
+                                                            alt={alt || `${title}-image-${i}`}
+                                                        />
+                                                    </StyledImgContainer>
+                                                ))}
+                                            </Slider>
+                                        </CarouselContainer>
+                                    )}
+                                />
+                                <Media
+                                    query="(max-width: 440px)"
+                                    render={() => (
+                                        <StyledImgContainer>
+                                            <Img
+                                                ref={imageRef}
+                                                fluid={images[0].image.childImageSharp.fluid}
+                                                alt={images[0].alt || `${title}-image-${i}`}
+                                            />
+                                        </StyledImgContainer>
+                                    )}
+                                />
                             </OutboundLink>
                             <Media
                                 query="(max-width: 800px)"
