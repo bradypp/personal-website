@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 
-import InterThinItalicWOFF from '@fonts/Inter/Inter-ThinItalic.woff';
-import InterThinItalicWOFF2 from '@fonts/Inter/Inter-ThinItalic.woff2';
 import InterThinWOFF from '@fonts/Inter/Inter-Thin.woff';
 import InterThinWOFF2 from '@fonts/Inter/Inter-Thin.woff2';
+import InterThinItalicWOFF from '@fonts/Inter/Inter-ThinItalic.woff';
+import InterThinItalicWOFF2 from '@fonts/Inter/Inter-ThinItalic.woff2';
 import InterExtraLightItalicWOFF from '@fonts/Inter/Inter-ExtraLightItalic.woff';
 import InterExtraLightItalicWOFF2 from '@fonts/Inter/Inter-ExtraLightItalic.woff2';
 import InterExtraLightWOFF from '@fonts/Inter/Inter-ExtraLight.woff';
