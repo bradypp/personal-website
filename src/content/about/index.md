@@ -5,15 +5,15 @@ skills:
     - HTML5 & (S)CSS3
     - JavaScript (ES6+)
     - React & Redux
-    - Gatsby.js / Next.js
     - Node.js & Express.js
     - MongoDB
     - SQL & MySQL
-    - C#
     - jQuery
     - Bootstrap
+    - Gatsby.js / Next.js
     - Gulp / Webpack
     - Git & GitHub
+    - C#
 ---
 
 Hello! I'm Paul, a curiosity-driven full-stack web developer based in Manchester, UK.
