@@ -164,6 +164,7 @@ const CarouselContainer = styled.div`
     ${containerStyles}
     grid-column: 2 / -1;
     grid-row: 1 / -1;
+    border-radius: var(--border-radius);
 
     ${media.bp1280`
         width: 54rem; 

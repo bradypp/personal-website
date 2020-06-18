@@ -16,7 +16,7 @@ external: 'https://paulbrady.dev'
 tech:
     - React
     - Gatsby.js
-    - Markdown
+    - Styled Components
     - GraphQL
     - Netlify
 ---

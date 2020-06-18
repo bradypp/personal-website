@@ -21,4 +21,4 @@ tech:
 
 A unique, slick static website for PlayStation.
 
-Styled with advanced SCSS including CSS Grid, scroll-snap and keyframe animations. On build, Gulp.js with Jekyll is used to automatically generate optimized HTML, SCSS, JavaScript and images.
+Styled with advanced SCSS including CSS Grid, scroll-snap and keyframe animations. All site HTML, CSS, JavaScript and images are automatically optimized through the use Gulp.js and Jekyll.

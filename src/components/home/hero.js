@@ -104,7 +104,7 @@ const WaveEmojiContainer = styled.div`
         `}
 
     ${media.bp440`
-        margin: 0 0 0 1.8rem;
+        margin: 0.2rem 0 0 1.8rem;
         width: 3.8rem;
     `}
 
