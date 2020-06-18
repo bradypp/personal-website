@@ -1,6 +1,6 @@
 ---
 sort: 4
-overline: 'Modern Website'
+overline: 'Modern SSR Website'
 title: 'My Personal Website'
 images:
     - image: './image-1.png'

@@ -10,7 +10,7 @@ images:
     - image: './image-3.png'
       alt: 'GitHub Analyzer example of repos'
 github: 'https://github.com/bradypp/github-analyzer'
-external: 'https://githubanalyzer.onrender.com/'
+external: 'https://githubanalyzer.onrender.com'
 tech:
     - React
     - SCSS
@@ -18,6 +18,6 @@ tech:
     - Chart.js
 ---
 
-A simple and stylish web-app that analyzes your Github profile and repos.
+A stylish web-app that analyzes your Github profile and repos.
 
 Informative charts are generated from data fetched using the GitHub API making it easy to see stats such as your most starred repos. You can also easily sort your repos based on different criteria.

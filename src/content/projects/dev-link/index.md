@@ -12,7 +12,7 @@ images:
     - image: './image-4.png'
       alt: 'Dev-link portfolio edit modal'
 github: 'https://github.com/bradypp/dev-link'
-external: 'https://d-link.herokuapp.com/'
+external: 'https://d-link.herokuapp.com'
 tech:
     - React
     - Redux
@@ -20,6 +20,7 @@ tech:
     - Express.js
     - MongoDB
     - AWS S3
+    - JWT
 ---
 
 Dev Link is a full-stack social media web app aimed towards software developers. It allows developers to easily create a profile to showcase their skills, experience & projects and quickly find other developers that fit certain requirements.

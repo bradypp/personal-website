@@ -1,7 +1,7 @@
 ---
 sort: 3
 overline: 'Static Website'
-title: 'PlayStation Website Design'
+title: 'PlayStation Website'
 images:
     - image: './image-1.png'
       alt: 'PlayStation project hero section'
@@ -9,8 +9,8 @@ images:
       alt: 'PlayStation project grid section'
     - image: './image-3.png'
       alt: 'PlayStation project side menu'
-github: 'https://github.com/bradypp/github-analyzer'
-external: 'https://githubanalyzer.onrender.com/'
+github: 'https://github.com/bradypp/playstation'
+external: 'https://bradypp.github.io/playstation'
 tech:
     - HTML5
     - JavaScript
@@ -19,6 +19,6 @@ tech:
     - Jekyll
 ---
 
-A unique, slick website design for PlayStation.
+A unique, slick static website for PlayStation.
 
-Uses Gulp.js to automate the process of optimizing and compressing the site JavaScript, SCSS and images. Jekyll then uses these optimized files along with the modular HTML files to generate fully optimized static pages.
+Styled with advanced SCSS including CSS Grid, scroll-snap and keyframe animations. On build, Gulp.js with Jekyll is used to automatically generate optimized HTML, SCSS, JavaScript and images.
