@@ -13,7 +13,7 @@ github: 'https://github.com/bradypp/github-analyzer'
 external: 'https://githubanalyzer.onrender.com'
 tech:
     - React
-    - SCSS
+    - Sass
     - Github API
     - Chart.js
 ---

@@ -13,7 +13,7 @@ skills:
     - Gatsby.js / Next.js
     - Gulp / Webpack
     - Git & GitHub
-    - C#
+    - Jira / Trello
 ---
 
 Hello! I'm Paul, a curiosity-driven full-stack web developer based in Manchester, UK.
