@@ -30,10 +30,6 @@ module.exports = {
             name: 'CodePen',
             url: 'https://codepen.io/bradypp',
         },
-        {
-            name: 'DevTo',
-            url: 'https://dev.to/bradypp',
-        },
     ],
     navLinks: [
         {
