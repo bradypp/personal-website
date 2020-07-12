@@ -1,6 +1,6 @@
 ---
 sort: 3
-overline: 'Static Website'
+overline: 'Web Design'
 title: 'PlayStation Website'
 images:
     - image: './image-1.png'
@@ -19,6 +19,6 @@ tech:
     - Jekyll
 ---
 
-A unique, slick static website for PlayStation.
+A unique, slick site design for PlayStation.
 
 Styled with advanced Sass including CSS Grid, scroll-snap and keyframe animations. All site HTML, CSS, JavaScript and images are automatically optimized through the use Gulp.js and Jekyll.

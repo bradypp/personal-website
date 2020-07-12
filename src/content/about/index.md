@@ -10,9 +10,8 @@ skills:
     - SQL & MySQL
     - MongoDB
     - GraphQL
-    - PHP / WordPress
     - jQuery
-    - Tailwind CSS
+    - Tailwind CSS / Bootstrap
     - Gulp / Webpack
     - Git & GitHub
 ---

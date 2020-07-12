@@ -188,6 +188,12 @@ const StyledImgContainer = styled.div`
         ${containerStyles}
     `}
 `;
+const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
+    &:hover,
+    &:active {
+        transform: none !important;
+    }
+`;
 const ProjectContainer = styled.div`
     display: grid;
     grid-gap: 3rem;
@@ -312,20 +318,18 @@ const Projects = ({ data }) => {
                                             )}
                                             <LinksContainer>
                                                 {github && (
-                                                    <OutboundLink
-                                                        variant="styled-link"
+                                                    <IconLink
                                                         href={github}
                                                         aria-label="GitHub Link">
                                                         <Icon name="GitHub" />
-                                                    </OutboundLink>
+                                                    </IconLink>
                                                 )}
                                                 {external && (
-                                                    <OutboundLink
-                                                        variant="styled-link"
+                                                    <IconLink
                                                         href={external}
                                                         aria-label="External Link">
                                                         <Icon name="External" />
-                                                    </OutboundLink>
+                                                    </IconLink>
                                                 )}
                                             </LinksContainer>
                                         </>
@@ -389,20 +393,16 @@ const Projects = ({ data }) => {
                                         )}
                                         <LinksContainer>
                                             {github && (
-                                                <OutboundLink
-                                                    variant="styled-link"
-                                                    href={github}
-                                                    aria-label="GitHub Link">
+                                                <IconLink href={github} aria-label="GitHub Link">
                                                     <Icon name="GitHub" />
-                                                </OutboundLink>
+                                                </IconLink>
                                             )}
                                             {external && (
-                                                <OutboundLink
-                                                    variant="styled-link"
+                                                <IconLink
                                                     href={external}
                                                     aria-label="External Link">
                                                     <Icon name="External" />
-                                                </OutboundLink>
+                                                </IconLink>
                                             )}
                                         </LinksContainer>
                                     </>
