@@ -155,36 +155,17 @@ const containerStyles = css`
     max-width: calc(100vw - 2 * var(--side-padding));
     max-height: ${props => props.maxHeight};
     box-shadow: var(--box-shadow-primary);
+    border-radius: var(--border-radius);
     overflow: hidden;
     position: relative;
 `;
-const CarouselContainer = styled.div`
-    ${containerStyles}
-    grid-column: 2 / -1;
-    grid-row: 1 / -1;
-    border-radius: var(--border-radius);
-
-    ${media.bp1280`
-        width: 54rem; 
-    `}
-    ${media.bp1040`
-        width: 46rem; 
-    `}
-    ${media.bp920`
-        width: 42rem; 
-    `}
-    ${media.bp800`
-        width: 100rem; 
-        margin-bottom: 1.5rem;
-    `}
-`;
 const StyledImgContainer = styled.div`
+    ${containerStyles}
     position: relative;
     border-radius: var(--border-radius);
     max-width: 100%;
 
     ${media.bp800`
-        ${containerStyles}
         width: calc(100vw - 2 * var(--side-padding));
         margin-bottom: 1.5rem;
 
@@ -259,10 +240,6 @@ const ProjectContainer = styled.div`
                 justify-content: flex-start;
                 margin-left: -1rem;
             `}
-        }
-        ${CarouselContainer} {
-            grid-column: 1 / 2;
-            
         }
     }
 `;
