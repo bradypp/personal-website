@@ -1,6 +1,6 @@
 ---
-sort: 4
-overline: 'Modern SSR Website'
+sort: 5
+overline: 'Modern SSG Web-App'
 title: 'My Personal Website'
 images:
     - image: './image-1.png'

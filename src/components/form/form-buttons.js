@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from '../button';
-import { Spinner } from '@components';
 
 const ButtonsContainer = styled.div`
     display: flex;
@@ -37,7 +36,7 @@ const FormButtons = ({
 }) => (
     <ButtonsContainer {...props}>
         {withSubmit && (
-            <StyledButton type="submit" variant="secondary-button" isWorking={isSubmitting}>
+            <StyledButton type="submit" variant="primary-button" isWorking={isSubmitting}>
                 {submitText}
             </StyledButton>
         )}

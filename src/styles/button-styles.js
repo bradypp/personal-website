@@ -5,7 +5,7 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-md);
     font-family: var(--fonts-mono);
     font-weight: 600;
     line-height: 1;
@@ -16,16 +16,22 @@ const commonStyles = css`
 
 const primary = css`
     ${commonStyles}
-    color: var(--color-primary);
-    background-color: transparent;
-    padding: 2rem 2.2rem;
-    border: 1px solid var(--color-primary);
+    color: var(--color-text-secondary-1);
+    background-color: var(--color-primary);
+    padding: 1.8rem 2.4rem;
+    box-shadow: 0 0.4rem var(--color-primary-darker);
+    margin-bottom: 0.25em;
 
     &:not(:disabled) {
-        &:hover,
+        &:hover {
+            background-color: var(--color-primary-light);
+            box-shadow: 0 0.4rem var(--color-primary-dark);
+        }
         &:active {
-            color: var(--color-text-secondary-1);
-            background-color: var(--color-primary);
+            box-shadow: 0 0.1rem var(--color-primary-darker);
+            background-color: var(--color-primary-darker);
+            margin-bottom: 0.05em;
+            margin-top: 0.2em;
         }
     }
 `;

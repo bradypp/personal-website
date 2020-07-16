@@ -7,6 +7,7 @@ const theme = css`
         --color-indigo: #4433ff;
         --color-indigo-light: #5847ff;
         --color-indigo-dark: #301feb;
+        --color-indigo-darker: #1C0BD7;
         --color-blue-darker: #8ebeeb;
         --color-blue-dark: #aacdee;
         --color-blue: #c5dcf1;
@@ -19,6 +20,7 @@ const theme = css`
         --color-soft-pink: #ffa7c4;
         --color-soft-pink-light: #ffbbd8;
         --color-soft-pink-dark: #eb93b0;
+        --color-soft-pink-darker: #D77F9C;
         --color-yellow: #ffdc00;
         --color-red: #e13c3c;
         --color-red-light: #f54747;
@@ -51,6 +53,7 @@ const theme = css`
         --color-primary: var(--color-indigo);
         --color-primary-light: var(--color-indigo-light);
         --color-primary-dark: var(--color-indigo-dark);
+        --color-primary-darker: var(--color-indigo-darker);
         --color-secondary: var(--color-pink);
         --color-tertiary: var(--color-yellow);
         --color-background-primary-1: var(--color-white-1);
@@ -84,6 +87,7 @@ const theme = css`
             --color-primary: var(--color-soft-pink);
             --color-primary-light: var(--color-soft-pink-light);
             --color-primary-dark: var(--color-soft-pink-dark);
+            --color-primary-darker: var(--color-soft-pink-darker);
             --color-secondary: var(--color-green);
             --color-secondary-light: var(--color-green-light);
             --color-secondary-dark: var(--color-green-dark);

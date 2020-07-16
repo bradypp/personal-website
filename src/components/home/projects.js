@@ -96,7 +96,7 @@ const TechList = styled.ul`
 
     li {
         font-family: var(--fonts-mono);
-        font-size: var(--font-size-xxs);
+        font-size: 1.25rem;
         margin-right: ${tagMargin};
         margin-bottom: 0.8rem;
         white-space: nowrap;

@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 4
 overline: 'Web Design'
 title: 'PlayStation Website'
 images:
@@ -14,11 +14,11 @@ external: 'https://bradypp.github.io/playstation'
 tech:
     - HTML5
     - JavaScript
-    - Sass
+    - SCSS
     - Gulp.js
     - Jekyll
 ---
 
 A unique, slick site design for PlayStation.
 
-Styled with advanced Sass including CSS Grid, scroll-snap and keyframe animations. All site HTML, CSS, JavaScript and images are automatically optimized through the use Gulp.js and Jekyll.
+Styled with advanced SCSS including CSS Grid, scroll-snap and keyframe animations. All site HTML, CSS, JavaScript and images are automatically optimized through the use Gulp.js and Jekyll.

@@ -19,16 +19,16 @@ module.exports = {
             url: 'https://github.com/bradypp',
         },
         {
-            name: 'LinkedIn',
-            url: 'https://www.linkedin.com/in/paul-brady-pb/',
-        },
-        {
             name: 'Twitter',
             url: 'https://twitter.com/bradypp',
         },
         {
-            name: 'CodePen',
-            url: 'https://codepen.io/bradypp',
+            name: 'LinkedIn',
+            url: 'https://www.linkedin.com/in/paul-brady-pb/',
+        },
+        {
+            name: 'DevTo',
+            url: 'https://dev.to/bradypp',
         },
     ],
     navLinks: [

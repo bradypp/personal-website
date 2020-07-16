@@ -81,14 +81,20 @@ const Subtitle = styled.h3`
         font-size: 2.8rem;
     `}
 `;
-const ButtonContainer = styled.h3`
+const ButtonContainer = styled.div`
     font-size: var(--font-size-h3);
     font-weight: 300;
     margin-bottom: ${margin};
-
+    height: min-content;
+    display: flex;
+    align-items: flex-end;
     &.fadeup-enter,
     &.fadeup-enter-active {
         transition-delay: 300ms;
+    }
+
+    & > * {
+        margin-right: 1.6rem;
     }
 `;
 const WaveEmojiContainer = styled.div`

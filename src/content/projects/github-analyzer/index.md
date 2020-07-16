@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 3
 overline: 'Front-End Web Application'
 title: 'Github Analyzer'
 images:
@@ -13,7 +13,7 @@ github: 'https://github.com/bradypp/github-analyzer'
 external: 'https://githubanalyzer.onrender.com'
 tech:
     - React
-    - Sass
+    - SCSS
     - Github API
     - Chart.js
 ---

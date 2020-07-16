@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { useIsMounted } from '@hooks';
 import { media } from '@styles';

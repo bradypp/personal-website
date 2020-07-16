@@ -26,10 +26,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html,
-  body, 
-  #root {
+  body {
     width: 100%;
     max-width: 100%;
+    overflow-x: hidden;
   }
 
   html {
@@ -52,7 +52,6 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: var(--fonts-primary);
