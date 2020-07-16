@@ -74,7 +74,7 @@ const Description = styled.div`
 
     ${media.bp1040`
         padding: 2.2rem;
-        margin-bottom: 1.6rem;
+        margin-bottom: 1.5rem;
     `}
     ${media.bp800`
         padding: 1.6rem;
@@ -177,7 +177,7 @@ const CarouselContainer = styled.div`
     `}
     ${media.bp800`
         width: 100rem; 
-        margin-bottom: 1.6rem;
+        margin-bottom: 1.5rem;
     `}
 `;
 const StyledImgContainer = styled.div`
@@ -187,6 +187,11 @@ const StyledImgContainer = styled.div`
 
     ${media.bp440`
         ${containerStyles}
+        width: calc(100vw - 2 * var(--side-padding));
+
+        img {
+            width: calc(100vw - 2 * var(--side-padding));
+        }
     `}
 `;
 const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
@@ -371,7 +376,7 @@ const Projects = ({ data }) => {
                                 <Media
                                     query="(max-width: 440px)"
                                     render={() => (
-                                        <StyledImgContainer style={{ marginBottom: '1.6rem' }}>
+                                        <StyledImgContainer style={{ marginBottom: '1.5rem' }}>
                                             <StyledImg
                                                 ref={imageRef}
                                                 fluid={images[0].image.childImageSharp.fluid}
