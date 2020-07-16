@@ -109,8 +109,8 @@ const WaveEmojiContainer = styled.div`
             animation: 1s wave;
         `}
 
-        display: none;
     ${media.bp440`
+        display: none;
     `}
 
     @keyframes wave {

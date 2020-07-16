@@ -3,10 +3,10 @@ sort: 4
 overline: 'Web Design'
 title: 'PlayStation Website'
 images:
-    - image: './image-1.png'
-      alt: 'PlayStation project hero section'
     - image: './image-2.png'
       alt: 'PlayStation project grid section'
+    - image: './image-1.png'
+      alt: 'PlayStation project hero section'
     - image: './image-3.png'
       alt: 'PlayStation project side menu'
 github: 'https://github.com/bradypp/playstation'
