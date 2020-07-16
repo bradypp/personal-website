@@ -96,7 +96,7 @@ const TechList = styled.ul`
 
     li {
         font-family: var(--fonts-mono);
-        font-size: 1.25rem;
+        font-size: var(--font-size-xxs);
         margin-right: ${tagMargin};
         margin-bottom: 0.8rem;
         white-space: nowrap;
@@ -183,6 +183,7 @@ const CarouselContainer = styled.div`
 const StyledImgContainer = styled.div`
     position: relative;
     border-radius: var(--border-radius);
+    max-width: 100%;
 
     ${media.bp440`
         ${containerStyles}
@@ -370,7 +371,7 @@ const Projects = ({ data }) => {
                                 <Media
                                     query="(max-width: 440px)"
                                     render={() => (
-                                        <StyledImgContainer>
+                                        <StyledImgContainer style={{ marginBottom: '1.6rem' }}>
                                             <StyledImg
                                                 ref={imageRef}
                                                 fluid={images[0].image.childImageSharp.fluid}

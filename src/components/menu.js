@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Icon, OutboundLink } from '@components';
-import { navLinks, socialMedia } from '@config';
+import { navLinks, socialMedia, email } from '@config';
 import { mixins, media } from '@styles';
 
 const MenuContainer = styled.div`
@@ -21,11 +21,11 @@ const MenuContainer = styled.div`
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
 
     .fadeleft-enter {
-        transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+        transition: opacity 500ms var(--ease), transform 500ms var(--ease);
     }
 
     .fadeleft-enter-active {
-        transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+        transition: opacity 500ms var(--ease), transform 500ms var(--ease);
     }
 `;
 const SidebarContainer = styled.aside`
@@ -147,6 +147,11 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                     </NavContainer>
                     <SocialsContainer
                         className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}>
+                        <li>
+                            <SocialsLink aria-label="Email" variant={null} href={`mailto:${email}`}>
+                                <Icon name="Email" />
+                            </SocialsLink>
+                        </li>
                         {socialMedia &&
                             socialMedia.map(({ url, name }, i) => (
                                 <li key={`menu-socials-${i}`}>

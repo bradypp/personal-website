@@ -18,7 +18,10 @@ const ButtonText = styled.span`
 `;
 const ButtonSpinner = styled(props => <Spinner {...props} />).attrs({
     size: 2,
-})``;
+})`
+    padding-right: 0.5rem;
+    border-top-color: #666;
+`;
 
 const Button = ({
     children,

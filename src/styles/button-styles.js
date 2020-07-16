@@ -5,7 +5,7 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-family: var(--fonts-mono);
     font-weight: 600;
     line-height: 1;
@@ -18,7 +18,7 @@ const primary = css`
     ${commonStyles}
     color: var(--color-text-secondary-1);
     background-color: var(--color-primary);
-    padding: 1.8rem 2.4rem;
+    padding: 1.6rem 2.3rem;
     box-shadow: 0 0.4rem var(--color-primary-darker);
     margin-bottom: 0.25em;
 
