@@ -89,7 +89,7 @@ const Contact = ({ data }) => {
             .email('Please enter a valid email address')
             .required('Please enter your email')
             .lowercase(),
-        message: Yup.string().trim().required('Please enter your message').lowercase(),
+        message: Yup.string().trim().required('Please enter your message'),
     });
 
     return (

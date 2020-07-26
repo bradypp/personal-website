@@ -171,7 +171,6 @@ const mixins = {
         }
 
         &:hover {
-            transform: translateY(-0.3rem);
             color: var(--color-socials-hover);
             transition: var(--transition);
         }

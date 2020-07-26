@@ -1,6 +1,7 @@
 module.exports = {
     siteTitle: 'Paul Brady',
-    siteDescription: 'Personal website',
+    siteDescription:
+        "Paul Brady's personal website showcases his work and expertise in web development.",
     siteKeywords:
         'Paul Brady, software engineer, bradypp, front-end, web developer, CSS,JavaScript, React, Manchester',
     siteUrl: 'https://paulbrady.dev',
