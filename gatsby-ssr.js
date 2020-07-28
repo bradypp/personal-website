@@ -49,29 +49,29 @@ const setCrispChat = () => {
     }
 };
 
-const preBodyScript = () => {
-    setColorTheme();
-    setCrispChat();
-};
-
-const PreBodyScripts = () => {
-    const boundFn = String(preBodyScript);
-    const preBodyScript = Terser.minify(`(${boundFn})()`).code;
-    // const boundThemeFn = String(setColorTheme);
-    // const boundChatFn = String(setCrispChat);
-    // const preBodyThemeScript = Terser.minify(`(${boundThemeFn})();`).code;
-    // const preBodyChatScript = Terser.minify(`(${boundChatFn})()`).code;
+const PreBodyScript = () => {
+    const boundThemeFn = String(setColorTheme);
+    const boundChatFn = String(setCrispChat);
+    const preBodyThemeScript = Terser.minify(`(${boundThemeFn})();`).code;
+    const preBodyChatScript = Terser.minify(`(${boundChatFn})()`).code;
     return (
-        <script
-            dangerouslySetInnerHTML={{
-                __html: preBodyScript,
-            }}
-        />
+        <>
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: preBodyThemeScript,
+                }}
+            />
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: preBodyChatScript,
+                }}
+            />
+        </>
     );
 };
 
 export const onRenderBody = ({ setPreBodyComponents }) => {
-    setPreBodyComponents(<PreBodyScripts />);
+    setPreBodyComponents(<PreBodyScript />);
 };
 
 export const wrapPageElement = ({ element }) => {
