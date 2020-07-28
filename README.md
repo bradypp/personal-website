@@ -18,20 +18,20 @@
 
 ## 🛠 Try For Yourself
 
-1. Install the Gatsby CLI
+## Step 1. Install the Gatsby CLI
 
-    ```sh
-    yarn global add gatsby-cli (or npm install -g gatsby-cli)
-    ```
+```sh
+yarn global add gatsby-cli (or npm install -g gatsby-cli)
+```
 
-2. Install dependencies
+## Step 2. Install dependencies
 
-    ```sh
-    yarn (or npm i)
-    ```
+```sh
+yarn (or npm i)
+```
 
-3. Start the development server
+## Step 3. Start the development server
 
-    ```sh
-    yarn start (or npm start)
-    ```
+```sh
+yarn start (or npm start)
+```

@@ -32,45 +32,41 @@ const setColorTheme = () => {
     root.classList.add(colorMode);
 };
 
-const PreBodyScripts = () => {
-    const boundFn = String(setColorTheme);
-    const preBodyThemeScript = Terser.minify(`(${boundFn})();`).code;
-    const preBodyDriftScript = Terser.minify(`"use strict";
-    !function() {
-    var t = window.driftt = window.drift = window.driftt || [];
-    if (!t.init) {
-        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
-        t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-        t.factory = function(e) {
-        return function() {
-            var n = Array.prototype.slice.call(arguments);
-            return n.unshift(e), t.push(n), t;
-        };
-        }, t.methods.forEach(function(e) {
-        t[e] = t.factory(e);
-        }), t.load = function(t) {
-        var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
-        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
-        var i = document.getElementsByTagName("script")[0];
-        i.parentNode.insertBefore(o, i);
-        };
+const setCrispChat = () => {
+    if (
+        window.document.location.pathname === '/' ||
+        window.document.location.pathname === '/contact'
+    ) {
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = '003cdd6c-4b7e-47c7-81a7-febaea842c51';
+        (() => {
+            const d = document;
+            const s = d.createElement('script');
+            s.src = 'https://client.crisp.chat/l.js';
+            s.async = 1;
+            d.getElementsByTagName('head')[0].appendChild(s);
+        })();
     }
-    }();
-    drift.SNIPPET_VERSION = '0.3.1';
-    drift.load('4cseihnb4wet');`).code;
+};
+
+const preBodyScript = () => {
+    setColorTheme();
+    setCrispChat();
+};
+
+const PreBodyScripts = () => {
+    const boundFn = String(preBodyScript);
+    const preBodyScript = Terser.minify(`(${boundFn})()`).code;
+    // const boundThemeFn = String(setColorTheme);
+    // const boundChatFn = String(setCrispChat);
+    // const preBodyThemeScript = Terser.minify(`(${boundThemeFn})();`).code;
+    // const preBodyChatScript = Terser.minify(`(${boundChatFn})()`).code;
     return (
-        <>
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: preBodyThemeScript,
-                }}
-            />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: preBodyDriftScript,
-                }}
-            />
-        </>
+        <script
+            dangerouslySetInnerHTML={{
+                __html: preBodyScript,
+            }}
+        />
     );
 };
 
