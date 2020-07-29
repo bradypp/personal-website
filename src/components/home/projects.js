@@ -90,7 +90,7 @@ const TechList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     list-style: none;
 
     li {
@@ -111,7 +111,7 @@ const TechList = styled.ul`
     }
 
     ${media.bp800`
-        margin-bottom: -1px;
+        margin-bottom: -0.4rem;
     `}
 `;
 const LinksContainer = styled.div`
@@ -119,6 +119,7 @@ const LinksContainer = styled.div`
     align-items: center;
     position: relative;
     margin-left: -1rem;
+    overflow: visible;
 
     && svg {
         width: 2.2rem;
