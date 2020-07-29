@@ -18,7 +18,6 @@ const setColorTheme = () => {
     const persistedPreference = localStorage.getItem(colorModeKey);
 
     let colorMode = 'dark-mode';
-
     const hasUsedToggle = typeof persistedPreference === 'string';
 
     if (hasUsedToggle) {
@@ -32,41 +31,15 @@ const setColorTheme = () => {
     root.classList.add(colorMode);
 };
 
-const setCrispChat = () => {
-    if (
-        window.document.location.pathname === '/' ||
-        window.document.location.pathname === '/contact'
-    ) {
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = '003cdd6c-4b7e-47c7-81a7-febaea842c51';
-        (() => {
-            const d = document;
-            const s = d.createElement('script');
-            s.src = 'https://client.crisp.chat/l.js';
-            s.async = 1;
-            d.getElementsByTagName('head')[0].appendChild(s);
-        })();
-    }
-};
-
 const PreBodyScript = () => {
-    const boundThemeFn = String(setColorTheme);
-    const boundChatFn = String(setCrispChat);
-    const preBodyThemeScript = Terser.minify(`(${boundThemeFn})();`).code;
-    const preBodyChatScript = Terser.minify(`(${boundChatFn})()`).code;
+    const boundFn = String(setColorTheme);
+    const preBodyScript = Terser.minify(`(${boundFn})();`).code;
     return (
-        <>
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: preBodyThemeScript,
-                }}
-            />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: preBodyChatScript,
-                }}
-            />
-        </>
+        <script
+            dangerouslySetInnerHTML={{
+                __html: preBodyScript,
+            }}
+        />
     );
 };
 
