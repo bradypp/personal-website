@@ -120,17 +120,17 @@ const theme = css`
 
         --box-shadow-primary: 0 1px 3px var(--color-box-shadow);
 
-        --font-size-tiny: 12px;
-        --font-size-xxs: 13px;
-        --font-size-xs: 14px;
-        --font-size-sm: 15px;
-        --font-size-md: 16px;
-        --font-size-lg: 18px;
-        --font-size-xl: 20px;
-        --font-size-xxl: 22px;
-        --font-size-h3: 32px;
-        --font-size-h2: 38px;
-        --font-size-h1: 44px;
+        --font-size-tiny: 1.2rem;
+        --font-size-xxs: 1.3rem;
+        --font-size-xs: 1.4rem;
+        --font-size-sm: 1.5rem;
+        --font-size-md: 1.6rem;
+        --font-size-lg: 1.8rem;
+        --font-size-xl: 2.0rem;
+        --font-size-xxl: 2.2rem;
+        --font-size-h3: 3.2rem;
+        --font-size-h2: 3.8rem;
+        --font-size-h1: 4.4rem;
 
         --z-index-side: 25;
         --z-index-header: 50;

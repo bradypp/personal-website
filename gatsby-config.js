@@ -7,6 +7,8 @@ module.exports = {
         title: config.siteTitle,
         siteUrl: config.siteUrl,
         description: config.siteDescription,
+        keywords: config.siteKeywords,
+        language: config.siteLanguage,
     },
     // To avoid CORS while developing Netlify Functions locally
     // See https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying

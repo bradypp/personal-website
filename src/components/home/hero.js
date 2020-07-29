@@ -143,7 +143,7 @@ const Hero = ({ data }) => {
     const [isWaveAnimated, setIsWaveAnimated] = useState(false);
 
     const { frontmatter } = data[0].node;
-    const { title, name, subtitle, contact } = frontmatter;
+    const { title, name, subtitle, buttonText } = frontmatter;
 
     useEffect(() => {
         if (!isMounted) return;
@@ -177,8 +177,8 @@ const Hero = ({ data }) => {
         </TitleContainer>,
         <Subtitle>{subtitle}</Subtitle>,
         <ButtonContainer>
-            <Button as="link" variant="primary-button" to="/#contact">
-                {contact}
+            <Button as="link" variant="primary-button" to="/#portfolio">
+                {buttonText}
             </Button>
         </ButtonContainer>,
     ];

@@ -139,7 +139,7 @@ const mixins = {
             bottom: 2px;
             right: 50%;
             background-color: var(--color-text-link);
-            transition: all 0.3s var(--ease);
+            transition: var(--transition);
             opacity: 0;
         }
 

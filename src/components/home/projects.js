@@ -258,8 +258,8 @@ const Projects = ({ data }) => {
 
     return (
         <ProjectsContainer>
-            <Heading id="projects" ref={headingRef}>
-                Projects
+            <Heading id="portfolio" ref={headingRef}>
+                Portfolio
             </Heading>
             {data &&
                 data.map(({ node }, i) => {

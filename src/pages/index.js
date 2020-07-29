@@ -49,7 +49,7 @@ export const pageQuery = graphql`
                         title
                         name
                         subtitle
-                        contact
+                        buttonText
                     }
                 }
             }

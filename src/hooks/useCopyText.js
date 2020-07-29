@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { browser } from '@utils';
 
-const useCopyText = textToCopy => {
+const useCopyText = () => {
     const [isCopied, setCopied] = useState(false);
-    const handleCopy = () => {
+    const handleCopy = textToCopy => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
         browser.copyToClipboard(textToCopy);
