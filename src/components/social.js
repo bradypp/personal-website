@@ -40,16 +40,9 @@ const List = styled.ul`
 
     li {
         svg {
-            width: 20px;
-            height: 20px;
+            width: 2rem;
+            height: 2rem;
         }
-
-        ${media.bp1040`
-            svg {
-                width: 18px;
-                height: 18px;
-            }
-        `}
     }
 `;
 

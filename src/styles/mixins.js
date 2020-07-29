@@ -215,7 +215,6 @@ const mixins = {
         &:focus,
         &:active {
             background-color: var(--color-field-background-active);
-            border: 1.5px solid var(--color-field-border-active);
         }
 
         ${props =>

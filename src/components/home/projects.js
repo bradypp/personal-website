@@ -111,7 +111,7 @@ const TechList = styled.ul`
     }
 
     ${media.bp800`
-        margin-bottom: 0;
+        margin-bottom: -1px;
     `}
 `;
 const LinksContainer = styled.div`
@@ -121,19 +121,14 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
 
     && svg {
-        width: 24px;
-        height: 24px;
+        width: 2.2rem;
+        height: 2.2rem;
     }
 
     ${media.bp800`
         && a:first-of-type {
             margin-right: 1rem;
         }
-
-        && svg {
-        width: 22px;
-        height: 22px;
-    }
     `}
 `;
 const StyledImg = styled(Img)`
@@ -151,7 +146,7 @@ const StyledImg = styled(Img)`
     `}
 `;
 const containerStyles = css`
-    width: 60rem;
+    width: 54rem;
     max-width: calc(100vw - 2 * var(--side-padding));
     max-height: ${props => props.maxHeight};
     box-shadow: var(--box-shadow-primary);
@@ -165,6 +160,9 @@ const StyledImgContainer = styled.div`
     border-radius: var(--border-radius);
     max-width: 100%;
 
+    ${media.bp2400`
+        width: 60rem;
+    `}
     ${media.bp800`
         width: calc(100vw - 2 * var(--side-padding));
         margin-bottom: 1.5rem;

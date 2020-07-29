@@ -138,7 +138,7 @@ const LinksList = styled.ul`
 `;
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
 
     padding: 1.2rem 1rem;
     font-weight: 600;

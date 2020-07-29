@@ -1,16 +1,10 @@
 ---
-sort: 1
+sort: 2
 overline: 'Full-Stack Web-App'
 title: 'Dev Link'
 images:
     - image: './image-1.png'
-      alt: 'Dev-link sign-up form'
-    - image: './image-2.png'
-      alt: 'Dev-link developers page'
-    - image: './image-3.png'
-      alt: 'Dev-link profile page'
-    - image: './image-4.png'
-      alt: 'Dev-link portfolio edit modal'
+      alt: 'Dev-link home page'
 github: 'https://github.com/bradypp/dev-link'
 external: 'https://d-link.herokuapp.com'
 tech:

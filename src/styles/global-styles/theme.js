@@ -107,7 +107,7 @@ const theme = css`
             --color-scrollbar-active: var(--color-navy-5);
             --color-field-background: var(--color-navy-5);
             --color-field-background-hover: var(--color-navy-4);
-            --color-field-background-active: var(--color-navy-5);
+            --color-field-background-active: var(--color-navy-6);
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
             --color-box-shadow: rgba(7, 18, 34, 0.25);

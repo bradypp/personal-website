@@ -38,16 +38,9 @@ const FooterBottomContainer = styled.ul`
     a {
         padding: 1.6rem;
         svg {
-            width: 22px;
-            height: 22px;
+            width: 2rem;
+            height: 2rem;
         }
-
-        ${media.bp800`
-            svg {
-                width: 20px;
-                height: 20px;
-            }
-        `}
     }
 `;
 

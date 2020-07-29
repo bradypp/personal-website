@@ -5,9 +5,10 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-xs);
-    font-family: var(--fonts-mono);
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-family: var(--fonts-primary);
+    letter-spacing: 0.06em;
+    font-weight: 500;
     line-height: 1;
     text-decoration: none;
     cursor: pointer;

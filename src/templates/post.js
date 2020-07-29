@@ -84,13 +84,12 @@ const BreadCrumb = styled(Link)`
     svg {
         display: block;
         margin-right: 1rem;
-        height: 20px;
-        width: 20px;
+        height: 2rem;
+        width: 2rem;
     }
 `;
 const Title = styled.h1`
     font-size: var(--font-size-h1);
-    line-height: 1.1;
     margin: 0;
     line-height: 1.2;
 `;

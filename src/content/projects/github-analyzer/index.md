@@ -3,12 +3,8 @@ sort: 3
 overline: 'Front-End Web Application'
 title: 'GitHub Analyzer'
 images:
-    - image: './image-2.png'
-      alt: 'GitHub Analyzer profile analysis for Facebook'
     - image: './image-1.png'
-      alt: 'GitHub Analyzer home page'
-    - image: './image-3.png'
-      alt: 'GitHub Analyzer example of repos'
+      alt: 'GitHub Analyzer profile analysis for me'
 github: 'https://github.com/bradypp/github-analyzer'
 external: 'https://githubanalyzer.onrender.com'
 tech:

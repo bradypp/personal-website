@@ -92,8 +92,8 @@ const SocialsLink = styled(OutboundLink)`
     padding: 2rem;
 
     svg {
-        width: 22px;
-        height: 22px;
+        width: 2rem;
+        height: 2rem;
         color: var(--color-white-1);
     }
 
