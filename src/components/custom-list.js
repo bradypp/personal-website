@@ -17,7 +17,7 @@ const ListContainer = styled.ul`
 
     li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         min-width: 1.6rem;
         min-height: 1.6rem;
 

@@ -99,6 +99,7 @@ const theme = css`
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-slate-3);
             --color-text-secondary-1: var(--color-background-primary-1);
+            --color-border-primary: var(--color-text-primary-2);
             --color-socials: var(--color-text-primary-2);
             --color-socials-hover: var(--color-green);
             --color-danger: var(--color-red-light);

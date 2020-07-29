@@ -94,11 +94,9 @@ const About = ({ data }) => {
                     />
                 </ContentContainer>
                 <AvatarContainer>
-                    <div>
-                        <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
-                            <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-                        </OutboundLink>
-                    </div>
+                    <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
+                        <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+                    </OutboundLink>
                 </AvatarContainer>
             </FlexContainer>
         </AboutContainer>
