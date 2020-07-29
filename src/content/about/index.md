@@ -18,8 +18,8 @@ skills:
 
 Hello! I'm Paul, a full-stack web developer based in Manchester, UK.
 
-My goal as a developer is to provide pixel-perfect products that feel satisfying and are scalable and efficient under the hood. I love the constant learning and problem solving that comes with developing exceptional websites and applications.
+My goal as a developer is to provide pixel-perfect products that feel smooth and are scalable and efficient under the hood. I love the satisfaction in providing a quality product as well as the constant learning and problem solving that comes with it.
 
-I graduated from [Manchester University](https://www.manchester.ac.uk/) with a maths degree in 2015 and have developed my knowledge and skills in web development over the years since.
+I graduated from [Manchester University](https://www.manchester.ac.uk/) with a maths degree in 2015 and have continuously developed my knowledge and skills in web development over the years since.
 
 Some languages and technologies in my toolbox:

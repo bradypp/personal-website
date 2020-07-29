@@ -1,6 +1,6 @@
 ---
 sort: 1
-overline: 'Full-Stack Web Application'
+overline: 'Full-Stack Web-App'
 title: 'Dev Link'
 images:
     - image: './image-3.png'
@@ -19,12 +19,9 @@ tech:
     - Node.js
     - Express.js
     - MongoDB
-    - AWS S3
-    - JWT
+    - Styled Components
 ---
 
-Dev Link is a full-stack social media web app aimed towards software developers.
+Dev Link is a full-stack web-app which allows developers to create a profile, showcase their abilities and quickly find other developers that fit certain requirements.
 
-It allows developers to easily create a profile, showcase their skills, experience & projects and quickly find other developers that fit certain requirements.
-
-In the creation of this project, I learned how to plan and develop a medium-sized full-stack web app from scratch using modern technologies.
+In the creation of this project, I became comfortable with planning and developing a large web-app with auth and user permissions using the [MERN stack](https://www.mongodb.com/mern-stack).

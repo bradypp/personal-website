@@ -1,7 +1,7 @@
 ---
 sort: 3
 overline: 'Front-End Web Application'
-title: 'Github Analyzer'
+title: 'GitHub Analyzer'
 images:
     - image: './image-2.png'
       alt: 'GitHub Analyzer profile analysis for Facebook'
@@ -14,10 +14,12 @@ external: 'https://githubanalyzer.onrender.com'
 tech:
     - React
     - SCSS
-    - Github API
+    - GitHub API
     - Chart.js
 ---
 
-A stylish web-app that analyzes your Github profile and repos.
+A stylish web-app that analyzes your [GitHub](https://github.com/) profile and repos.
 
-Informative charts are generated from data fetched using the GitHub API making it easy to see stats such as your most starred repos. You can also easily sort your repos based on different criteria.
+Informative charts are generated using [Chart.js](chart.js) with data fetched from the GitHub API making it easy to see stats such as your most starred repos.
+
+You can also easily sort your repos based on different criteria.
