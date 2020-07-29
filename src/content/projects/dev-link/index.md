@@ -24,4 +24,4 @@ tech:
 
 Dev Link is a full-stack web-app which allows developers to create a profile, showcase their abilities and quickly find other developers that fit certain requirements.
 
-In the creation of this project, I became comfortable with planning and developing a large web-app with auth and user permissions using the [MERN stack](https://www.mongodb.com/mern-stack).
+In the creation of this project, I became comfortable with planning and developing a large secure web-app using the [MERN stack](https://www.mongodb.com/mern-stack).

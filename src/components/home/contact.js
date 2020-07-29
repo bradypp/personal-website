@@ -152,7 +152,7 @@ const Contact = ({ data }) => {
                 </FormContainer>
                 <MiddleText>or</MiddleText>
                 <Socials>
-                    <OutboundLink href={`mailto:${email}`} variant="primary-button">
+                    <OutboundLink href={`mailto:${email}`} variant="button-primary">
                         {emailText}
                     </OutboundLink>
                 </Socials>

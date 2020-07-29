@@ -14,7 +14,7 @@ const StyledLink = styled(GatsbyLink)`
 `;
 const ButtonText = styled.span`
     padding: ${({ withPadding, iconLocation }) =>
-        withPadding ? (iconLocation === 'left' ? '0 0 0 0.5rem' : '0 0.5rem 0 0') : '0'};
+        withPadding ? (iconLocation === 'left' ? '0 0 0 0.7rem' : '0 0.7rem 0 0') : '0'};
 `;
 const ButtonSpinner = styled(props => <Spinner {...props} />).attrs({
     size: 2,
@@ -70,7 +70,13 @@ Button.propTypes = {
     onClick: PropTypes.func,
     children: PropTypes.node,
     className: PropTypes.string,
-    variant: PropTypes.oneOf(['inline-link', 'primary-button', 'secondary-button', 'empty-button']),
+    variant: PropTypes.oneOf([
+        'inline-link',
+        'button-primary',
+        'button-secondary',
+        'button-tertiary',
+        'button-empty',
+    ]),
     as: PropTypes.oneOf(['link', 'button']),
     type: PropTypes.string,
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -84,7 +90,7 @@ Button.defaultProps = {
     onClick: undefined,
     className: undefined,
     children: undefined,
-    variant: 'primary-button',
+    variant: 'button-primary',
     as: 'button',
     type: undefined,
     icon: undefined,

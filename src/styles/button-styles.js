@@ -5,7 +5,7 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-family: var(--fonts-mono);
     font-weight: 600;
     line-height: 1;
@@ -18,17 +18,15 @@ const primary = css`
     ${commonStyles}
     color: var(--color-text-secondary-1);
     background-color: var(--color-primary);
-    padding: 1.6rem 2.3rem;
+    padding: 1.5rem 2.3rem;
     box-shadow: 0 0.4rem var(--color-primary-darker);
     margin-bottom: 0.25em;
 
     &:not(:disabled) {
         &:hover {
-            background-color: var(--color-primary-light);
-            box-shadow: 0 0.4rem var(--color-primary-dark);
+            background-color: var(--color-primary-dark);
         }
         &:active {
-            box-shadow: 0 0.1rem var(--color-primary-darker);
             background-color: var(--color-primary-darker);
             margin-bottom: 0.05em;
             margin-top: 0.2em;
@@ -50,6 +48,10 @@ const secondary = css`
             border: 1px solid var(--color-primary-dark);
         }
     }
+`;
+
+const tertiary = css`
+    ${commonStyles}
 `;
 
 const empty = css`
@@ -81,11 +83,13 @@ const buttonStyles = css`
     }
     ${props => {
         switch (props.variant) {
-            case 'primary-button':
+            case 'button-primary':
                 return primary;
-            case 'secondary-button':
+            case 'button-secondary':
                 return secondary;
-            case 'empty-button':
+            case 'button-tertiary':
+                return tertiary;
+            case 'button-empty':
                 return empty;
             case 'inline-link':
                 return inlineLink;

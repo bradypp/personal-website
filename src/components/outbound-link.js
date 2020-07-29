@@ -25,7 +25,7 @@ OutboundLink.propTypes = {
     className: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
-    variant: PropTypes.oneOf(['inline-link', 'styled-link', 'primary-button']),
+    variant: PropTypes.oneOf(['inline-link', 'styled-link', 'button-primary']),
 };
 
 OutboundLink.defaultProps = {

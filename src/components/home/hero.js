@@ -161,8 +161,8 @@ const Hero = ({ data }) => {
     const items = [
         <TitleContainer>
             <Title>
-                {`${title} `}{' '}
-                <OutboundLink href={twitter}>
+                {title}{' '}
+                <OutboundLink href={twitter} variant={null}>
                     <Name>{name}</Name>
                 </OutboundLink>
             </Title>
@@ -177,7 +177,7 @@ const Hero = ({ data }) => {
         </TitleContainer>,
         <Subtitle>{subtitle}</Subtitle>,
         <ButtonContainer>
-            <Button as="link" variant="primary-button" to="/#portfolio">
+            <Button as="link" variant="button-primary" to="/#portfolio">
                 {buttonText}
             </Button>
         </ButtonContainer>,
