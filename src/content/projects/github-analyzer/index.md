@@ -14,8 +14,8 @@ tech:
     - Chart.js
 ---
 
-A stylish web-app that analyzes your [GitHub](https://github.com/) profile and repos.
+A stylish web-app that analyzes your GitHub profile and repos.
 
-Informative charts are generated using [Chart.js](chart.js) with data fetched from the GitHub API making it easy to see stats such as your most starred repos.
+Informative charts are generated using Chart.js with data fetched from the GitHub API making it easy to see stats such as your most starred repos.
 
 You can also easily sort your repos based on different criteria.

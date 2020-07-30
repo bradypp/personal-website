@@ -42,7 +42,7 @@ const GlobalStyles = createGlobalStyle`
     `} 
 
     ${'' /* 1rem = 9px */}
-    ${media.bp1280`
+    ${media.bp800`
         font-size: 56.25%; 
     `}
 
@@ -73,10 +73,6 @@ const GlobalStyles = createGlobalStyle`
         user-select: none;
       }
     }
-  }
-
-  .slick-slider {
-      line-height: 0;
   }
 
   ${mixins.customScrollbar({

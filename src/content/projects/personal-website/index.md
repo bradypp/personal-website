@@ -15,8 +15,8 @@ tech:
     - Netlify
 ---
 
-My personal site was built using [Gatsby.js](https://www.gatsbyjs.org/), the modern react SSR framework.
+My personal site was built using Gatsby.js, the modern react SSR framework.
 
-I took advantage of [GraphQL](https://graphql.org/) and the many Gatsby plugins to thoroughly optimize the site and easily query data from different data sources.
+I took advantage of GraphQL and the many Gatsby plugins to thoroughly optimize the site and easily query data from different data sources.
 
 The implemented dark mode involves injecting a script before loading the content to detect user theme preferences then updating the relevant CSS variables.

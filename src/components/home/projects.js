@@ -164,6 +164,12 @@ const StyledImgContainer = styled.div`
     ${media.bp2400`
         width: 60rem;
     `}
+    ${media.bp1440`
+        width: 52rem;
+    `}
+    ${media.bp1280`
+        width: 44rem;
+    `}
     ${media.bp800`
         width: calc(100vw - 2 * var(--side-padding));
         margin-bottom: 1.5rem;
