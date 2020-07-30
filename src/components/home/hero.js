@@ -9,14 +9,15 @@ import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
 import wave from '@images/wave.png';
 
-const margin = '11vh';
+const margin = '12vh';
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
-    margin-bottom: -12rem;
     padding-left: var(--side-padding);
     padding-right: var(--side-padding);
+    padding-top: 0;
     width: 100vw;
+    height: 100vh;
     background: var(--color-background-secondary-1);
     background-image: linear-gradient(
         var(--color-background-secondary-1),
@@ -30,10 +31,6 @@ const ContentContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-
-    ${media.bp800`
-        padding-top: 70px;
-    `}
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};
@@ -78,16 +75,16 @@ const Subtitle = styled.h3`
     }
 
     ${media.bp440`
-        font-size: 2.8rem;
+        font-size: 2.6rem;
     `}
 `;
 const ButtonContainer = styled.div`
     font-size: var(--font-size-h3);
     font-weight: 300;
-    margin-bottom: ${margin};
     height: min-content;
     display: flex;
     align-items: flex-end;
+
     &.fadeup-enter,
     &.fadeup-enter-active {
         transition-delay: 300ms;
