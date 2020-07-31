@@ -29,6 +29,7 @@ const primary = css`
         }
         &:active {
             background-color: var(--color-primary-darker);
+            box-shadow: 0 0.1rem var(--color-primary-darker);
             margin-bottom: 0.05em;
             margin-top: 0.2em;
         }

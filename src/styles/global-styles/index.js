@@ -33,13 +33,8 @@ const GlobalStyles = createGlobalStyle`
     touch-action: manipulation;
 
 
-    ${'' /* 1rem = 11px */}
-        font-size: 68.75%; 
-
-    ${'' /* 1rem = 10px */}
-    ${media.bp2400`
-      font-size: 62.5%; 
-    `} 
+    
+      font-size: 62.5%;
 
     ${'' /* 1rem = 9px */}
     ${media.bp800`
@@ -185,6 +180,7 @@ const GlobalStyles = createGlobalStyle`
     text-decoration-skip-ink: auto;
     color:  var(--color-text-link);
     position: relative;
+    font-weight: 500;
   }
 
   input, textarea {

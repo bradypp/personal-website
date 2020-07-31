@@ -9,7 +9,7 @@ import { scrollReveal } from '@utils';
 import { Icon, OutboundLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
-const tagMargin = '1.6rem';
+const tagMargin = '1.7rem';
 const contentMobile = css`
     display: flex;
     justify-content: center;
@@ -125,20 +125,14 @@ const LinksContainer = styled.div`
 `;
 const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
     &&:first-of-type {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
 
     && svg {
-        width: 24px;
-        height: 24px;
+        width: 22px;
+        height: 22px;
     }
 
-    ${media.bp2400`
-        && svg {
-            width: 22px;
-            height: 22px;
-        }
-    `}
     ${media.bp800`
         && svg {
             width: 24px;

@@ -28,24 +28,21 @@ const List = styled.ul`
     }
 
     li:first-of-type {
-        margin-top: 1rem;
+        margin-top: 1.1rem;
     }
 
     li:last-of-type {
-        margin-bottom: 1rem;
+        margin-bottom: 1.1rem;
     }
 
     li {
-        svg {
-            width: 22px;
-            height: 22px;
+        a {
+            padding: 1.1rem;
         }
-        ${media.bp2400`
         svg {
             width: 20px;
             height: 20px;
         }
-    `}
     }
 `;
 
