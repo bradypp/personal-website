@@ -24,6 +24,13 @@ const FlexContainer = styled.div`
         flex-direction: column;
     `}
 `;
+const Description = styled.div`
+    padding-right: 1rem;
+
+    ${media.bp800`
+        padding-right: 0;
+    `}
+`;
 const ContentContainer = styled.div`
     width: 60%;
     max-width: 60rem;
@@ -50,11 +57,10 @@ const AvatarLinkContainer = styled(props => <OutboundLink {...props} />)`
     width: 40%;
     max-width: 36rem;
     border-radius: 50%;
-    margin: 1rem 8rem 0 1rem;
+    margin: 1rem 80px 0 0;
 
-    ${media.bp1280`
-        margin-right: 0rem; 
-        margin-left: 0rem; 
+    ${media.bp1440`
+        margin-right: 0; 
     `}
     ${media.bp800`
         width: 90%;
@@ -84,7 +90,7 @@ const About = ({ data }) => {
             <Heading id="about">{title}</Heading>
             <FlexContainer>
                 <ContentContainer>
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <Description dangerouslySetInnerHTML={{ __html: html }} />
                     <Media
                         query="(min-width: 441px)"
                         render={() => <CustomList items={skills} columns={3} />}

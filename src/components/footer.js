@@ -35,13 +35,22 @@ const FooterTopContainer = styled.div`
 `;
 const FooterBottomContainer = styled.ul`
     ${mixins.flexCenter}
-    a {
-        padding: 1.6rem;
-        svg {
-            width: 2rem;
-            height: 2rem;
-        }
+    li {
+        margin: 0.6rem;
     }
+    a {
+        padding: 1rem;
+    }
+    svg {
+        width: 22px;
+        height: 22px;
+    }
+    ${media.bp2400`
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    `}
 `;
 
 const Footer = () => {

@@ -31,7 +31,7 @@ const ContentContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    margin-top: 5vh;
+    margin-top: 4vh;
 
     ${media.bp800`
         margin-top: 0;

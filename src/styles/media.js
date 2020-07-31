@@ -2,11 +2,11 @@ import { css } from 'styled-components';
 
 const sizes = {
     bp2400: 2400, // Huge monitor
-    bp1760: 1760, // Large monitor
+    bp1760: 1760, // Medium monitor
     bp1440: 1440, // Large laptop
-    bp1280: 1280, // Normal laptop
+    bp1280: 1280, // Small laptop
     bp1040: 1040, // Tablet landscape
-    bp920: 920,
+    bp920: 920, // Large tablet portrait
     bp800: 800, // Tablet portrait
     bp600: 600, // Large phone
     bp440: 440, // Normal phone

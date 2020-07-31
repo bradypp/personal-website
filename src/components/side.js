@@ -9,17 +9,17 @@ const SideContainer = styled.div`
     width: 4rem;
     position: fixed;
     bottom: 0;
-    left: ${props => (props.orientation === 'left' ? '3rem' : 'auto')};
-    right: ${props => (props.orientation === 'left' ? 'auto' : '3rem')};
+    left: ${props => (props.orientation === 'left' ? '30px' : 'auto')};
+    right: ${props => (props.orientation === 'left' ? 'auto' : '30px')};
     z-index: var(--z-index-side);
     color: var(--color-text-primary-2);
 
-    ${media.bp1040`
-    left: ${props => (props.orientation === 'left' ? '2rem' : 'auto')};
-    right: ${props => (props.orientation === 'left' ? 'auto' : '2rem')};
+    ${media.bp1280`
+        left: ${props => (props.orientation === 'left' ? '25px' : 'auto')};
+        right: ${props => (props.orientation === 'left' ? 'auto' : '25px')};
     `};
 
-    ${media.bp800`
+    ${media.bp1040`
         display: none;
     `};
 

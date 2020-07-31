@@ -122,26 +122,28 @@ const LinksContainer = styled.div`
     position: relative;
     margin-left: -1rem;
     overflow: visible;
+`;
+const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
+    &&:first-of-type {
+        margin-right: 1rem;
+    }
 
     && svg {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 24px;
+        height: 24px;
     }
 
     ${media.bp2400`
-        && a:first-of-type {
-            margin-right: 1rem;
+        && svg {
+            width: 22px;
+            height: 22px;
         }
     `}
     ${media.bp800`
-        && a:first-of-type {
-            margin-right: 1rem;
-        }
-
         && svg {
-        width: 21px;
-        height: 21px;
-    }
+            width: 24px;
+            height: 24px;
+        }
     `}
 `;
 const ImgLinkContainer = styled(props => <OutboundLink {...props} />)`
@@ -159,7 +161,7 @@ const ImgLinkContainer = styled(props => <OutboundLink {...props} />)`
     
 
     ${media.bp1440`
-        width: 540px;
+        width: 530px;
     `}
     ${media.bp1280`
         width: 460px;
@@ -184,12 +186,6 @@ const StyledImg = styled(Img)`
         object-fit: cover;
         height: 100%;
     `}
-`;
-const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
-    &:hover,
-    &:active {
-        transform: none !important;
-    }
 `;
 const ProjectContainer = styled.div`
     display: grid;

@@ -89,16 +89,16 @@ const SocialsContainer = styled.ul`
     bottom: 2rem;
 `;
 const SocialsLink = styled(OutboundLink)`
-    padding: 2rem;
+    padding: 1.6rem;
+    margin: 0.4rem;
 
     svg {
-        width: 2rem;
-        height: 2rem;
+        width: 20px;
+        height: 20px;
         color: var(--color-white-1);
     }
 
     &:hover {
-        transform: translateY(-0.3rem);
         svg {
             transition: var(--transition);
             color: var(--color-soft-pink);

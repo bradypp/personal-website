@@ -165,11 +165,6 @@ const mixins = {
         transition: var(--transition);
         color: var(--color-socials);
 
-        svg {
-            width: 1.8rem;
-            height: 1.8rem;
-        }
-
         &:hover {
             color: var(--color-socials-hover);
             transition: var(--transition);

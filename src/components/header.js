@@ -26,7 +26,7 @@ const HeaderContainer = styled.header`
         }
         return 'var(--color-background-primary-1)';
     }};
-    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), height 0.4s var(--ease),
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), height 0.3s var(--ease),
         background-color 0s var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;

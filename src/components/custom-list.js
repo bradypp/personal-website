@@ -12,7 +12,7 @@ const ListContainer = styled.ul`
     grid-row-gap: 1.8rem;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     list-style: none;
 
     li {
