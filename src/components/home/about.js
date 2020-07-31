@@ -45,15 +45,16 @@ const ContentContainer = styled.div`
         max-width: 100%;
     `}
 `;
-const AvatarContainer = styled.div`
+const AvatarLinkContainer = styled(props => <OutboundLink {...props} />)`
     position: relative;
     width: 40%;
     max-width: 36rem;
     border-radius: 50%;
-    margin: 1rem 8rem 0 0;
+    margin: 1rem 8rem 0 1rem;
 
     ${media.bp1280`
         margin-right: 0rem; 
+        margin-left: 0rem; 
     `}
     ${media.bp800`
         width: 90%;
@@ -93,11 +94,9 @@ const About = ({ data }) => {
                         render={() => <CustomList items={skills} columns={2} />}
                     />
                 </ContentContainer>
-                <AvatarContainer>
-                    <OutboundLink href={github} variant={null} style={{ width: '100%' }}>
-                        <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
-                    </OutboundLink>
-                </AvatarContainer>
+                <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
+                    <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
+                </AvatarLinkContainer>
             </FlexContainer>
         </AboutContainer>
     );

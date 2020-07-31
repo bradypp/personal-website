@@ -31,6 +31,11 @@ const ContentContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    margin-top: 5vh;
+
+    ${media.bp800`
+        margin-top: 0;
+    `}
 `;
 const TitleContainer = styled.div`
     ${mixins.flexCenter};

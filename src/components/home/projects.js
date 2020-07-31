@@ -27,6 +27,7 @@ const ContentContainer = styled.div`
     position: relative;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
+    justify-self: start;
 
     ${media.bp800`
         ${contentMobile}
@@ -106,12 +107,13 @@ const TechList = styled.ul`
         }
 
         ${media.bp800`
+            font-size: var(--font-size-xs);
             margin-bottom: 0.6rem;
         `}
     }
 
     ${media.bp800`
-        margin-bottom: -0.4rem;
+        margin-bottom: -0.6rem;
     `}
 `;
 const LinksContainer = styled.div`
@@ -126,10 +128,48 @@ const LinksContainer = styled.div`
         height: 2.2rem;
     }
 
+    ${media.bp2400`
+        && a:first-of-type {
+            margin-right: 1rem;
+        }
+    `}
     ${media.bp800`
         && a:first-of-type {
             margin-right: 1rem;
         }
+
+        && svg {
+        width: 21px;
+        height: 21px;
+    }
+    `}
+`;
+const ImgLinkContainer = styled(props => <OutboundLink {...props} />)`
+    width: 600px;
+    max-width: calc(100vw - 2 * var(--side-padding));
+    max-height: ${props => props.maxHeight || 'auto'};
+    box-shadow: var(--box-shadow-primary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--border-radius);
+    max-width: 100%;
+    grid-column: 2 / -1;
+    justify-self: end;
+    
+
+    ${media.bp1440`
+        width: 540px;
+    `}
+    ${media.bp1280`
+        width: 460px;
+    `}
+    ${media.bp1040`
+        width: 400px;
+    `}
+    ${media.bp800`
+        width: calc(100vw - 2 * var(--side-padding));
+        margin-bottom: 1.5rem;
     `}
 `;
 const StyledImg = styled(Img)`
@@ -142,41 +182,7 @@ const StyledImg = styled(Img)`
 
     ${media.bp800`
         object-fit: cover;
-        width: auto;
         height: 100%;
-    `}
-`;
-const containerStyles = css`
-    width: 54rem;
-    max-width: calc(100vw - 2 * var(--side-padding));
-    max-height: ${props => props.maxHeight};
-    box-shadow: var(--box-shadow-primary);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    position: relative;
-`;
-const StyledImgContainer = styled.div`
-    ${containerStyles}
-    position: relative;
-    border-radius: var(--border-radius);
-    max-width: 100%;
-
-    ${media.bp2400`
-        width: 60rem;
-    `}
-    ${media.bp1440`
-        width: 52rem;
-    `}
-    ${media.bp1280`
-        width: 44rem;
-    `}
-    ${media.bp800`
-        width: calc(100vw - 2 * var(--side-padding));
-        margin-bottom: 1.5rem;
-
-        img {
-            width: calc(100vw - 2 * var(--side-padding));
-        }
     `}
 `;
 const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
@@ -215,11 +221,16 @@ const ProjectContainer = styled.div`
         ${ContentContainer} {
             grid-column: 2 / -1;
             text-align: right;
+            justify-self: end;
 
             ${media.bp800`
                 ${contentMobile}
                 text-align:left;
             `}
+        }
+        ${ImgLinkContainer} {
+            grid-column: 1 / 2;
+            justify-self: start;
         }
         ${TechList} {
             justify-content: flex-end;
@@ -323,15 +334,13 @@ const Projects = ({ data }) => {
                                     )}
                                 />
                             </ContentContainer>
-                            <OutboundLink href={external || github || '#'} variant={null}>
-                                <StyledImgContainer>
-                                    <StyledImg
-                                        ref={imageRef}
-                                        fluid={images[0].image.childImageSharp.fluid}
-                                        alt={images[0].alt || `${title}-image-${i}`}
-                                    />
-                                </StyledImgContainer>
-                            </OutboundLink>
+                            <ImgLinkContainer href={external || github || '#'} variant={null}>
+                                <StyledImg
+                                    ref={imageRef}
+                                    fluid={images[0].image.childImageSharp.fluid}
+                                    alt={images[0].alt || `${title}-image-${i}`}
+                                />
+                            </ImgLinkContainer>
                             <Media
                                 query="(max-width: 800px)"
                                 render={() => (
