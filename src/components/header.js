@@ -2,19 +2,33 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { motion } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
+import Media from 'react-media';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, Icon } from '@components';
+import { Menu, ThemeToggle, Icon, ClientOnly } from '@components';
 import { mixins, media } from '@styles';
-import Media from 'react-media';
 
 const navHeight = 100;
 const navScrollHeight = 70;
 const hamburgerWidth = '3rem';
 
-const HeaderContainer = styled.header`
+const variants = {
+    hidden: {
+        opacity: 0,
+    },
+    visible: isHome => ({
+        opacity: 1,
+        transition: {
+            delay: isHome ? 0.6 : 0.3,
+            duration: 0.5,
+        },
+    }),
+};
+
+const HeaderContainer = styled(motion.header)`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
@@ -51,7 +65,6 @@ const NavContainer = styled.nav`
     position: relative;
     width: 100%;
 `;
-
 const Hamburger = styled.div`
     ${mixins.flexCenter};
     ${mixins.clickable};
@@ -144,23 +157,36 @@ const StyledLink = styled(Link)`
     color: var(--color-text-primary-1);
 
     &:hover {
-        transition: var(--transition);
+        transition: all 0.2s var(--ease);
         color: var(--color-primary);
     }
 `;
-const HomeLink = styled(Link)`
-    color: var(--color-text-primary-1);
-    padding: 2rem;
-    margin-right: auto;
-    margin-left: -2rem;
-
-    &:hover {
-        color: var(--color-text-primary-1);
-    }
+const Logo = styled(Link).attrs({ to: '/' })`
+    margin-right: 3.5rem;
 
     svg {
-        width: 28px;
-        height: 28px;
+        width: 4.5rem;
+        height: 4.5rem;
+
+        .logo-border {
+            transition: all 0.2s var(--ease);
+            stroke: var(--color-text-primary-1);
+        }
+        .logo-text {
+            transition: all 0.2s var(--ease);
+            fill: var(--color-text-primary-1);
+        }
+
+        &:hover {
+            fill: var(--color-logo-hover);
+
+            .logo-border {
+                stroke: var(--color-primary);
+            }
+            .logo-text {
+                fill: var(--color-primary);
+            }
+        }
     }
 `;
 
@@ -181,8 +207,8 @@ class Header extends Component {
                     scrollDirection: window && window.pageYOffset > 0 ? 'down' : 'none',
                 },
                 () => {
-                    window.addEventListener('scroll', () => js.throttle(this.handleScroll()));
-                    window.addEventListener('resize', () => js.throttle(this.handleResize()));
+                    window.addEventListener('scroll', js.throttle(this.handleScroll));
+                    window.addEventListener('resize', js.throttle(this.handleResize));
                     window.addEventListener('keydown', e => this.handleKeydown(e));
                 },
             );
@@ -190,8 +216,8 @@ class Header extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', () => this.handleScroll());
-        window.removeEventListener('resize', () => this.handleResize());
+        window.removeEventListener('scroll', js.throttle(this.handleScroll));
+        window.removeEventListener('resize', js.throttle(this.handleResize));
         window.removeEventListener('keydown', e => this.handleKeydown(e));
     }
 
@@ -245,90 +271,58 @@ class Header extends Component {
     render() {
         const { isMounted, isMenuOpen, scrollDirection } = this.state;
         const { isHome } = this.props;
-        const timeout = isHome ? 3000 : 0;
-        const fadeClass = isHome ? 'fade' : '';
-        const fadeDownClass = isHome ? 'fadedown' : '';
 
         return (
-            <HeaderContainer scrollDirection={scrollDirection} isHome={isHome}>
-                <Media
-                    query="(min-width: 801px)"
-                    render={() => (
-                        <NavContainer>
-                            <LinksList>
-                                <TransitionGroup component={null}>
-                                    {isMounted &&
-                                        navLinks.length > 0 &&
-                                        navLinks.map(({ url, name }, i) => (
-                                            <CSSTransition
-                                                key={`header-link-${i}`}
-                                                classNames={fadeDownClass}
-                                                timeout={timeout}>
-                                                <li
-                                                    style={{
-                                                        transitionDelay: `${(i + 1) * 100}ms`,
-                                                    }}>
-                                                    <StyledLink to={url}>{name}</StyledLink>
-                                                </li>
-                                            </CSSTransition>
+            <HeaderContainer
+                scrollDirection={scrollDirection}
+                isHome={isHome}
+                custom={isHome}
+                initial="hidden"
+                animate="visible"
+                variants={variants}>
+                {isMounted && (
+                    <>
+                        <Media
+                            query="(min-width: 801px)"
+                            render={() => (
+                                <NavContainer>
+                                    <LinksList>
+                                        <Logo>
+                                            <Icon name="logo" />
+                                        </Logo>
+                                        {navLinks.map(({ url, name }) => (
+                                            <li key={uuidv4()}>
+                                                <StyledLink to={url}>{name}</StyledLink>
+                                            </li>
                                         ))}
-                                </TransitionGroup>
-                            </LinksList>
-                            <TransitionGroup component={null}>
-                                {isMounted && (
-                                    <CSSTransition
-                                        key="header-toggle"
-                                        classNames={fadeClass}
-                                        timeout={timeout}>
-                                        <div id="toggle-animation-container">
-                                            <ThemeToggle />
-                                        </div>
-                                    </CSSTransition>
-                                )}
-                            </TransitionGroup>
-                        </NavContainer>
-                    )}
-                />
-                <Media
-                    query="(max-width: 800px)"
-                    render={() => (
-                        <>
-                            <TransitionGroup component={null}>
-                                {isMounted && (
-                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
-                                        <HomeLink to="/">
-                                            <Icon name="Home" />
-                                        </HomeLink>
-                                    </CSSTransition>
-                                )}
-                            </TransitionGroup>
-                            <TransitionGroup component={null}>
-                                {isMounted && (
-                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
-                                        <ThemeToggle />
-                                    </CSSTransition>
-                                )}
-                            </TransitionGroup>
-                            <TransitionGroup component={null}>
-                                {isMounted && (
-                                    <CSSTransition classNames={fadeClass} timeout={timeout}>
-                                        <Hamburger onClick={this.toggleMenu}>
-                                            <HamburgerBox>
-                                                <HamburgerContent isMenuOpen={isMenuOpen} />
-                                            </HamburgerBox>
-                                        </Hamburger>
-                                    </CSSTransition>
-                                )}
-                            </TransitionGroup>
-                            <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
-                        </>
-                    )}
-                />
+                                    </LinksList>
+                                    <ThemeToggle />
+                                </NavContainer>
+                            )}
+                        />
+                        <Media
+                            query="(max-width: 800px)"
+                            render={() => (
+                                <ClientOnly>
+                                    <Logo>
+                                        <Icon name="logo" />
+                                    </Logo>
+                                    <ThemeToggle />
+                                    <Hamburger onClick={toggleMenu}>
+                                        <HamburgerBox>
+                                            <HamburgerContent isMenuOpen={isMenuOpen} />
+                                        </HamburgerBox>
+                                    </Hamburger>
+                                    <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+                                </ClientOnly>
+                            )}
+                        />
+                    </>
+                )}
             </HeaderContainer>
         );
     }
 }
-
 Header.propTypes = {
     isHome: PropTypes.bool.isRequired,
 };

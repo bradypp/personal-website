@@ -1,61 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MdEmail } from 'react-icons/md';
-import { FaDev, FaMediumM } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
+import { FaDev } from 'react-icons/fa';
 import { IoMdArrowRoundForward, IoMdArrowBack } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
 
-import IconCV from './cv';
 import IconCodePen from './codepen';
 import IconExternal from './external';
-import IconFolder from './folder';
 import IconGitHub from './github';
 import IconLinkedIn from './linkedin';
-import IconLocation from './location';
-import IconStar from './star';
 import IconTwitter from './twitter';
 import IconSun from './sun';
+import IconLogo from './logo';
 
 const Icon = ({ name }) => {
-    switch (name) {
-        case 'Home':
-            return <AiOutlineHome />;
-        case 'CV':
-            return <IconCV />;
-        case 'ArrowLeft':
-            return <IoMdArrowBack />;
-        case 'ArrowRight':
-            return <IoMdArrowRoundForward />;
-        case 'Medium':
-            return <FaMediumM />;
-        case 'DevTo':
-            return <FaDev />;
-        case 'Email':
-            return <MdEmail />;
-        case 'Sun':
-            return <IconSun />;
-        case 'CodePen':
-            return <IconCodePen />;
-        case 'External':
-            return <IconExternal />;
-        case 'Folder':
-            return <IconFolder />;
-        case 'GitHub':
-            return <IconGitHub />;
-        case 'Moon':
-            return <FiMoon />;
-        case 'LinkedIn':
-            return <IconLinkedIn />;
-        case 'Location':
-            return <IconLocation />;
-        case 'Star':
-            return <IconStar />;
-        case 'Twitter':
-            return <IconTwitter />;
-        default:
-            return <IconExternal />;
-    }
+    const icons = {
+        home: AiOutlineHome,
+        'arrow-left': IoMdArrowBack,
+        'arrow-right': IoMdArrowRoundForward,
+        email: MdEmail,
+        external: IconExternal,
+        sun: IconSun,
+        moon: FiMoon,
+        logo: IconLogo,
+        GitHub: IconGitHub,
+        DevTo: FaDev,
+        CodePen: IconCodePen,
+        LinkedIn: IconLinkedIn,
+        Twitter: IconTwitter,
+    };
+    const Component = icons[name];
+
+    return <Component />;
 };
 
 Icon.propTypes = {

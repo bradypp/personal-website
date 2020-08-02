@@ -6,9 +6,24 @@ import { useStaticQuery, graphql } from 'gatsby';
 import favicon from '@images/favicons/favicon.ico';
 import androidIcon192x192 from '@images/favicons/android-chrome-192x192.png';
 import androidIcon512x512 from '@images/favicons/android-chrome-512x512.png';
-import favicon32x32 from '@images/favicons/favicon-32x32.png';
 import favicon16x16 from '@images/favicons/favicon-16x16.png';
+import favicon32x32 from '@images/favicons/favicon-32x32.png';
+import favicon96x96 from '@images/favicons/favicon-96x96.png';
+import favicon128x128 from '@images/favicons/favicon-128x128.png';
+import favicon196x196 from '@images/favicons/favicon-196x196.png';
+import msTile144x144 from '@images/favicons/mstile-144x144.png';
 import msTile150x150 from '@images/favicons/mstile-150x150.png';
+import msTile70x70 from '@images/favicons/mstile-70x70.png';
+import msTile310x150 from '@images/favicons/mstile-310x150.png';
+import msTile310x310 from '@images/favicons/mstile-310x310.png';
+import appleIcon57x57 from '@images/favicons/apple-touch-icon-57x57.png';
+import appleIcon60x60 from '@images/favicons/apple-touch-icon-60x60.png';
+import appleIcon72x72 from '@images/favicons/apple-touch-icon-72x72.png';
+import appleIcon76x76 from '@images/favicons/apple-touch-icon-76x76.png';
+import appleIcon114x114 from '@images/favicons/apple-touch-icon-114x114.png';
+import appleIcon120x120 from '@images/favicons/apple-touch-icon-120x120.png';
+import appleIcon144x144 from '@images/favicons/apple-touch-icon-144x144.png';
+import appleIcon152x152 from '@images/favicons/apple-touch-icon-152x152.png';
 import ogImage from '@images/og-image.png';
 import { twitterHandle, mainThemeColor } from '@config';
 
@@ -72,8 +87,23 @@ const Head = meta => {
             <link rel="icon" type="image/png" sizes="512x512" href={androidIcon512x512} />
             <link rel="icon" type="image/png" sizes="32x32" href={favicon32x32} />
             <link rel="icon" type="image/png" sizes="16x16" href={favicon16x16} />
+            <link rel="icon" type="image/png" sizes="96x96" href={favicon96x96} />
+            <link rel="icon" type="image/png" sizes="128x128" href={favicon128x128} />
+            <link rel="icon" type="image/png" sizes="196x196" href={favicon196x196} />
             <meta name="msapplication-TileColor" content={mainThemeColor} />
-            <meta name="msapplication-TileImage" content={msTile150x150} />
+            <meta name="msapplication-TileImage" content={msTile144x144} />
+            <meta name="msapplication-square70x70logo" content={msTile70x70} />
+            <meta name="msapplication-square150x150logo" content={msTile150x150} />
+            <meta name="msapplication-wide310x150logo" content={msTile310x150} />
+            <meta name="msapplication-square310x310logo" content={msTile310x310} />
+            <link rel="apple-touch-icon-precomposed" sizes="57x57" href={appleIcon57x57} />
+            <link rel="apple-touch-icon-precomposed" sizes="60x60" href={appleIcon60x60} />
+            <link rel="apple-touch-icon-precomposed" sizes="72x72" href={appleIcon72x72} />
+            <link rel="apple-touch-icon-precomposed" sizes="76x76" href={appleIcon76x76} />
+            <link rel="apple-touch-icon-precomposed" sizes="114x114" href={appleIcon114x114} />
+            <link rel="apple-touch-icon-precomposed" sizes="120x120" href={appleIcon120x120} />
+            <link rel="apple-touch-icon-precomposed" sizes="144x144" href={appleIcon144x144} />
+            <link rel="apple-touch-icon-precomposed" sizes="152x152" href={appleIcon152x152} />
             <meta name="theme-color" content={mainThemeColor} />
             <meta
                 name="google-site-verification"
