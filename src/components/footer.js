@@ -22,17 +22,16 @@ const FooterContentContainer = styled.footer`
 `;
 const FooterTopContainer = styled.div`
     ${mixins.flexCenter}
-    p,
+    margin-bottom:0.5rem;
+
     a {
+        padding: 1rem;
+    }
+    p {
         margin: 0;
         padding: 0;
         text-align: center;
     }
-
-    p:first-of-type {
-        margin-bottom: 0.6rem;
-    }
-    margin-bottom: 1.6rem;
 `;
 const FooterBottomContainer = styled.ul`
     ${mixins.flexCenter}

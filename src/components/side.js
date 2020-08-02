@@ -45,7 +45,7 @@ const SideContainer = styled.div`
 
 const Side = ({ children, isHome, orientation }) => {
     const [isVisible, setIsVisible] = useState(
-        typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.5,
+        typeof window !== 'undefined' && window.pageYOffset > 4000,
     );
     const isMounted = useIsMounted(2000, isHome);
 

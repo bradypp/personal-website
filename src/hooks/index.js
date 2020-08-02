@@ -5,5 +5,5 @@ export { default as useOnEscapeKeyDown } from './useOnEscapeKeyDown';
 export { default as useIsFirstRender } from './useIsFirstRender';
 export { default as useIsMounted } from './useIsMounted';
 export { default as useCopyText } from './useCopyText';
-export { default as useHover } from './useHover';
-export { default as useFocus } from './useFocus';
+export { default as useFadeUp } from './useFadeUp';
+export { default as useMergeInViewRef } from './useMergeInViewRef';

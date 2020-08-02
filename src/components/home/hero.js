@@ -20,8 +20,8 @@ const variants = {
         opacity: 1,
         y: 0,
         transition: {
-            delay: 0.3 + i * 0.15,
-            duration: 0.5,
+            delay: 0.4 + i * 0.15,
+            duration: 0.6,
         },
     }),
 };
@@ -61,10 +61,6 @@ const Title = styled.h2`
     font-weight: 300;
     margin: 0;
 
-    a:after {
-        height: 2px !important;
-    }
-
     ${media.bp440`
         font-size: 3.8rem;
     `}
@@ -94,11 +90,6 @@ const ButtonContainer = styled(motion.div)`
     height: min-content;
     display: flex;
     align-items: flex-end;
-
-    &.fadeup-enter,
-    &.fadeup-enter-active {
-        transition-delay: 300ms;
-    }
 
     & > * {
         margin-right: 1.6rem;
@@ -152,18 +143,18 @@ const Hero = ({ data }) => {
     const { frontmatter } = data[0].node;
     const { title, name, subtitle, buttonText } = frontmatter;
 
+    const handleWaveAnimation = () => {
+        if (!isWaveAnimated) {
+            setIsWaveAnimated(true);
+            setTimeout(() => setIsWaveAnimated(false), 1000);
+        }
+    };
+
     useEffect(() => {
         if (!isMounted) return;
-        const timeout = setTimeout(() => setIsWaveAnimated(true), 500);
-        return () => clearTimeout(timeout);
+        handleWaveAnimation();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted]);
-    useEffect(() => {
-        if (!isWaveAnimated) return;
-        const timeout = setTimeout(() => setIsWaveAnimated(false), 1000);
-        return () => clearTimeout(timeout);
-    }, [isWaveAnimated]);
-
-    const handleWaveAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
 
     return (
         <HeroContainer>

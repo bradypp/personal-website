@@ -22,8 +22,8 @@ const variants = {
     visible: {
         opacity: 1,
         transition: {
-            delay: 0,
-            duration: 0.5,
+            delay: 0.2,
+            duration: 0.8,
         },
     },
 };
@@ -36,7 +36,7 @@ const HeaderContainer = styled(motion.header)`
         if (props.isHome) {
             return props.scrollDirection === 'none'
                 ? 'transparent'
-                : 'var(--color-background-primary-1)';
+                : 'var(--color-background-secondary-1)';
         }
         return 'var(--color-background-primary-1)';
     }};

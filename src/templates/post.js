@@ -123,12 +123,12 @@ export const pageQuery = graphql`
     }
 `;
 
-const PostTemplate = ({ data, location }) => {
+const PostTemplate = ({ data }) => {
     const { frontmatter, html } = data.markdownRemark;
     const { title, date, tags } = frontmatter;
 
     return (
-        <Layout location={location}>
+        <Layout>
             <StyledMain>
                 <BreadCrumb to="/posts">
                     <Icon name="arrow-left" />
