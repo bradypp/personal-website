@@ -108,8 +108,6 @@ const Contact = ({ data }) => {
                         validationSchema={validation}
                         onSubmit={async (values, form) => {
                             // Done using Netlify lambda functions
-                            // See https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
-                            // and https://dev.to/char_bone/using-netlify-lambda-functions-to-send-emails-from-a-gatsbyjs-site-3pnb
                             try {
                                 form.setSubmitting(true);
                                 await axios.post(

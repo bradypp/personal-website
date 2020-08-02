@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { uniqueId } from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Icon } from '@components';
 
@@ -43,7 +43,7 @@ const CustomList = ({ items, icon, ...props }) => {
         <ListContainer {...props}>
             {items &&
                 items.map(item => (
-                    <li key={uniqueId('list-item-')}>
+                    <li key={uuidv4()}>
                         <Icon name={icon} />
                         <span>{item}</span>
                     </li>
@@ -62,7 +62,7 @@ CustomList.propTypes = {
 CustomList.defaultProps = {
     className: undefined,
     columns: 1,
-    icon: 'ArrowRight',
+    icon: 'arrow-right',
 };
 
 export default CustomList;

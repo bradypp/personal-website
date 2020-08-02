@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { mixins, media } from '@styles';
 import { socialMedia, email, repo } from '@config';
@@ -52,19 +53,18 @@ const Footer = () => {
                 <FooterTopContainer>
                     <OutboundLink href={repo} variant="styled-link">
                         <p>Designed & developed by Paul Brady </p>
-                        <p>Click here to check out the GitHub repo</p>
                     </OutboundLink>
                 </FooterTopContainer>
                 <FooterBottomContainer>
                     <li>
                         <OutboundLink variant="styled-link" href={`mailto:${email}`}>
-                            <Icon name="Email" />
+                            <Icon name="email" />
                         </OutboundLink>
                     </li>
                     {socialMedia &&
-                        socialMedia.map(({ url, name }, i) => (
+                        socialMedia.map(({ url, name }) => (
                             // eslint-disable-next-line react/no-array-index-key
-                            <li key={`footer-socials-${i}`}>
+                            <li key={uuidv4()}>
                                 <OutboundLink variant="styled-link" href={url} aria-label={name}>
                                     <Icon name={name} />
                                 </OutboundLink>

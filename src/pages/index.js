@@ -22,7 +22,7 @@ const IndexPage = ({ location, data }) => {
     }, [location.hash]);
 
     return (
-        <Layout location={location}>
+        <Layout isHome={location && location.pathname === '/'}>
             <StyledMain>
                 <Hero data={data.hero.edges} />
                 <About data={data.about.edges} />

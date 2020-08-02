@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Layout, Main, Icon } from '@components';
 import { mixins } from '@styles';
@@ -130,7 +131,7 @@ const PostTemplate = ({ data, location }) => {
         <Layout location={location}>
             <StyledMain>
                 <BreadCrumb to="/posts">
-                    <Icon name="ArrowLeft" />
+                    <Icon name="arrow-left" />
                     All Posts
                 </BreadCrumb>
                 <PostHeader>
@@ -146,9 +147,9 @@ const PostTemplate = ({ data, location }) => {
                         <span>&nbsp;&mdash;&nbsp;</span>
                         {tags &&
                             tags.length > 0 &&
-                            tags.map((tag, i) => (
+                            tags.map(tag => (
                                 <Link
-                                    key={`post-tag-${i}`}
+                                    key={uuidv4()}
                                     to={`/tags/${kebabCase(tag)}/`}
                                     className="tag">
                                     #{tag}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled, { css } from 'styled-components';
 import Media from 'react-media';
+import { v4 as uuidv4 } from 'uuid';
 
 import { scrollRevealConfig } from '@config';
 import { scrollReveal } from '@utils';
@@ -274,7 +275,7 @@ const Projects = ({ data }) => {
 
                     return (
                         <ProjectContainer
-                            key={`project-${i}`}
+                            key={uuidv4()}
                             ref={el => {
                                 projectRef.current[i] = el;
                             }}>
@@ -299,8 +300,8 @@ const Projects = ({ data }) => {
                                         <>
                                             {tech && (
                                                 <TechList>
-                                                    {tech.map((tech, i) => (
-                                                        <li key={`tech-${i}`}>{tech}</li>
+                                                    {tech.map(tech => (
+                                                        <li key={uuidv4()}>{tech}</li>
                                                     ))}
                                                 </TechList>
                                             )}
@@ -316,7 +317,7 @@ const Projects = ({ data }) => {
                                                     <IconLink
                                                         href={external}
                                                         aria-label="External Link">
-                                                        <Icon name="External" />
+                                                        <Icon name="external" />
                                                     </IconLink>
                                                 )}
                                             </LinksContainer>
@@ -337,8 +338,8 @@ const Projects = ({ data }) => {
                                     <>
                                         {tech && (
                                             <TechList>
-                                                {tech.map((tech, i) => (
-                                                    <li key={`tech-${i}`}>{tech}</li>
+                                                {tech.map(tech => (
+                                                    <li key={uuidv4()}>{tech}</li>
                                                 ))}
                                             </TechList>
                                         )}
@@ -352,7 +353,7 @@ const Projects = ({ data }) => {
                                                 <IconLink
                                                     href={external}
                                                     aria-label="External Link">
-                                                    <Icon name="External" />
+                                                    <Icon name="external" />
                                                 </IconLink>
                                             )}
                                         </LinksContainer>

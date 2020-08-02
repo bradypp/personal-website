@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Side, OutboundLink, Icon } from '@components';
 import { socialMedia, email } from '@config';
@@ -22,7 +23,7 @@ const List = styled.ul`
         margin: 0 auto;
         background-color: var(--color-border-primary);
 
-        ${media.bp1440`
+        ${media.bp1280`
             height: 60px;
         `}
     }
@@ -51,13 +52,13 @@ const Social = ({ isHome, ...otherProps }) => (
         <List>
             <li>
                 <OutboundLink variant="styled-link" href={`mailto:${email}`}>
-                    <Icon name="Email" />
+                    <Icon name="email" />
                 </OutboundLink>
             </li>
             {socialMedia &&
-                socialMedia.map(({ url, name }, i) => (
+                socialMedia.map(({ url, name }) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <li key={`socials-${i}`}>
+                    <li key={uuidv4()}>
                         <OutboundLink href={url} aria-label={name} variant="styled-link">
                             <Icon name={name} />
                         </OutboundLink>

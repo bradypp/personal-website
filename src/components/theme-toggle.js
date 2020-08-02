@@ -11,6 +11,7 @@ const ToggleContainer = styled.div`
     width: 54px;
     height: 28px;
     margin-top: 6px;
+    margin-left: auto;
 `;
 const StyledInput = styled.input`
     ${mixins.hideElement}
@@ -127,10 +128,10 @@ const ThemeToggle = () => {
             <StyledLabel htmlFor="theme-toggle" ref={toggleRef}>
                 <ToggleTrack checked={isChecked}>
                     <ToggleLeft checked={isChecked}>
-                        <Icon name="Moon" />
+                        <Icon name="moon" />
                     </ToggleLeft>
                     <ToggleRight checked={isChecked}>
-                        <Icon name="Sun" />
+                        <Icon name="sun" />
                     </ToggleRight>
                 </ToggleTrack>
                 <ToggleButton

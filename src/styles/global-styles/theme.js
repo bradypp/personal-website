@@ -82,6 +82,7 @@ const theme = css`
         --color-scrollbar-active: var(--color-blue-darker);
         --color-menu-background: rgba(9, 22, 42, 0.95);
         --color-box-shadow: rgba(0, 0, 0, 0.25);
+        --color-logo-hover: rgba(68, 51, 255, 0.05);
 
         &.dark-mode {
             --color-primary: var(--color-soft-pink);
@@ -112,6 +113,7 @@ const theme = css`
             --color-field-border-hover: var(--color-navy-3);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
+        --color-logo-hover: rgba(255, 167, 196, 0.05);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,

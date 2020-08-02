@@ -18,6 +18,9 @@ tech:
 
 A lightning fast and stylish modern website that would be perfect for any digital agency to showcase their work and experience.
 
-Since it's built using Next.js, an optimized version of each page is generated server side with most data already queried from Prismic.io before any user request.
+Since it's built using Next.js, an optimized version of each page is generated at build time with most data already queried from Prismic.io before any user request.
 
-I enjoyed using the popular CSS framework, Tailwind CSS, for most of the styling along with Framer Motion for the more advanced animations.
+For the styling, I enjoyed using Tailwind CSS, the popular CSS framework, along with Framer Motion for the more advanced animations.
+
+<!-- next.js, super fast, pre generated pages & queries using raphql -->
+<!-- styling tailwind css and advanced animations framer motion -->

@@ -8,7 +8,7 @@ import Media from 'react-media';
 
 import { js, constants } from '@utils';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, Icon, ClientOnly } from '@components';
+import { Menu, ThemeToggle, Icon } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -19,13 +19,13 @@ const variants = {
     hidden: {
         opacity: 0,
     },
-    visible: isHome => ({
+    visible: {
         opacity: 1,
         transition: {
-            delay: isHome ? 0.6 : 0.3,
+            delay: 0,
             duration: 0.5,
         },
-    }),
+    },
 };
 
 const HeaderContainer = styled(motion.header)`
@@ -36,7 +36,7 @@ const HeaderContainer = styled(motion.header)`
         if (props.isHome) {
             return props.scrollDirection === 'none'
                 ? 'transparent'
-                : 'var(--color-background-secondary-1)';
+                : 'var(--color-background-primary-1)';
         }
         return 'var(--color-background-primary-1)';
     }};
@@ -273,53 +273,50 @@ class Header extends Component {
         const { isHome } = this.props;
 
         return (
-            <HeaderContainer
-                scrollDirection={scrollDirection}
-                isHome={isHome}
-                custom={isHome}
-                initial="hidden"
-                animate="visible"
-                variants={variants}>
-                {isMounted && (
-                    <>
-                        <Media
-                            query="(min-width: 801px)"
-                            render={() => (
-                                <NavContainer>
-                                    <LinksList>
-                                        <Logo>
-                                            <Icon name="logo" />
-                                        </Logo>
-                                        {navLinks.map(({ url, name }) => (
-                                            <li key={uuidv4()}>
-                                                <StyledLink to={url}>{name}</StyledLink>
-                                            </li>
-                                        ))}
-                                    </LinksList>
-                                    <ThemeToggle />
-                                </NavContainer>
-                            )}
-                        />
-                        <Media
-                            query="(max-width: 800px)"
-                            render={() => (
-                                <ClientOnly>
+            isMounted && (
+                <HeaderContainer
+                    scrollDirection={scrollDirection}
+                    isHome={isHome}
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}>
+                    <Media
+                        query="(min-width: 801px)"
+                        render={() => (
+                            <NavContainer>
+                                <LinksList>
                                     <Logo>
                                         <Icon name="logo" />
                                     </Logo>
-                                    <ThemeToggle />
-                                    <Hamburger onClick={toggleMenu}>
-                                        <HamburgerBox>
-                                            <HamburgerContent isMenuOpen={isMenuOpen} />
-                                        </HamburgerBox>
-                                    </Hamburger>
-                                    <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-                                </ClientOnly>
-                            )}
-                        />
-                    </>
-                )}
-            </HeaderContainer>
+                                    {navLinks.map(({ url, name }) => (
+                                        <li key={uuidv4()}>
+                                            <StyledLink to={url}>{name}</StyledLink>
+                                        </li>
+                                    ))}
+                                </LinksList>
+                                <ThemeToggle />
+                            </NavContainer>
+                        )}
+                    />
+                    <Media
+                        query="(max-width: 800px)"
+                        render={() => (
+                            <>
+                                <Logo>
+                                    <Icon name="logo" />
+                                </Logo>
+                                <ThemeToggle />
+                                <Hamburger onClick={this.toggleMenu}>
+                                    <HamburgerBox>
+                                        <HamburgerContent isMenuOpen={isMenuOpen} />
+                                    </HamburgerBox>
+                                </Hamburger>
+                                <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
+                            </>
+                        )}
+                    />
+                </HeaderContainer>
+            )
         );
     }
 }

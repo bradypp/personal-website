@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Icon, OutboundLink } from '@components';
 import { navLinks, socialMedia, email } from '@config';
@@ -137,8 +138,8 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                                 isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
                             }`}>
                             {navLinks &&
-                                navLinks.map(({ url, name }, i) => (
-                                    <NavListItem key={`menu-nav-${i}`}>
+                                navLinks.map(({ url, name }) => (
+                                    <NavListItem key={uuidv4()}>
                                         <StyledLink to={url}>{name}</StyledLink>
                                     </NavListItem>
                                 ))}
@@ -148,12 +149,12 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                         className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}>
                         <li>
                             <SocialsLink aria-label="Email" variant={null} href={`mailto:${email}`}>
-                                <Icon name="Email" />
+                                <Icon name="email" />
                             </SocialsLink>
                         </li>
                         {socialMedia &&
-                            socialMedia.map(({ url, name }, i) => (
-                                <li key={`menu-socials-${i}`}>
+                            socialMedia.map(({ url, name }) => (
+                                <li key={uuidv4()}>
                                     <SocialsLink href={url} aria-label={name} variant={null}>
                                         <Icon name={name} />
                                     </SocialsLink>

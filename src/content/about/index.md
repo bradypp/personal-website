@@ -11,15 +11,15 @@ skills:
     - jQuery
     - Gatsby.js / Next.js
     - GraphQL
-    - Tailwind CSS / Bootstrap
+    - Tailwind CSS
     - Gulp / Webpack
     - Git & GitHub
 ---
 
 Hello! I'm Paul, a full-stack web developer based in Manchester, UK.
 
-My goal as a developer is to provide pixel-perfect products that feel smooth and are scalable and efficient under the hood. I love the satisfaction in providing a quality product as well as the constant learning and problem solving that comes with it.
+My goal as a developer is to provide pixel-perfect products that feel smooth and are scalable and efficient under the hood. I take great satisfaction in successfully building, deploying and maintaining quality products and love the constant learning and problem solving that comes with it.
 
-I graduated from [Manchester University](https://www.manchester.ac.uk/) with a maths degree in 2015 and have continuously developed my knowledge and skills in web development over the years since.
+I'm a maths graduate from [The University of Manchester](https://www.manchester.ac.uk/) and this experience has definitely helped me stay productive on my learning path in web development.
 
 Some languages and technologies in my toolbox:

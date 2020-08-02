@@ -9,9 +9,7 @@ const Content = styled.div`
     padding: 0 var(--side-padding);
 `;
 
-const Layout = ({ children, meta, location }) => {
-    const isHome = location && location.pathname === '/';
-
+const Layout = ({ children, meta, isHome }) => {
     return (
         <div id="root">
             <Head meta={meta} />
@@ -29,12 +27,12 @@ Layout.propTypes = {
         title: PropTypes.string,
         description: PropTypes.string,
     }),
-    location: PropTypes.object,
+    isHome: PropTypes.bool,
 };
 
 Layout.defaultProps = {
     meta: undefined,
-    location: undefined,
+    isHome: false,
 };
 
 export default Layout;

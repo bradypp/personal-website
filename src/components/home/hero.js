@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { motion } from 'framer-motion';
 
 import { twitter } from '@config';
 import { mixins, media } from '@styles';
@@ -10,6 +10,21 @@ import { useIsMounted } from '@hooks';
 import wave from '@images/wave.png';
 
 const margin = '12vh';
+
+const variants = {
+    hidden: {
+        opacity: 0,
+        y: 50,
+    },
+    visible: i => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: 0.3 + i * 0.15,
+            duration: 0.5,
+        },
+    }),
+};
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
@@ -37,14 +52,9 @@ const ContentContainer = styled.div`
         margin-top: 0;
     `}
 `;
-const TitleContainer = styled.div`
+const TitleContainer = styled(motion.div)`
     ${mixins.flexCenter};
     margin-bottom: ${margin};
-
-    &.fadeup-enter,
-    &.fadeup-enter-active {
-        transition-delay: 100ms;
-    }
 `;
 const Title = styled.h2`
     font-size: 4.4rem;
@@ -69,21 +79,16 @@ const Name = styled.div`
     padding: 0.2rem;
     color: var(--color-text-primary-1);
 `;
-const Subtitle = styled.h3`
+const Subtitle = styled(motion.h3)`
     font-size: var(--font-size-h3);
     font-weight: 300;
     margin-bottom: ${margin};
-
-    &.fadeup-enter,
-    &.fadeup-enter-active {
-        transition-delay: 200ms;
-    }
 
     ${media.bp440`
         font-size: 2.6rem;
     `}
 `;
-const ButtonContainer = styled.div`
+const ButtonContainer = styled(motion.div)`
     font-size: var(--font-size-h3);
     font-weight: 300;
     height: min-content;
@@ -158,44 +163,35 @@ const Hero = ({ data }) => {
         return () => clearTimeout(timeout);
     }, [isWaveAnimated]);
 
-    const handleAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
+    const handleWaveAnimation = () => !isWaveAnimated && setIsWaveAnimated(true);
 
-    const items = [
-        <TitleContainer>
-            <Title>
-                {title}{' '}
-                <OutboundLink href={twitter} variant={null}>
-                    <Name>{name}</Name>
-                </OutboundLink>
-            </Title>
-            {wave && (
-                <WaveEmojiContainer
-                    isAnimated={isWaveAnimated}
-                    onMouseEnter={handleAnimation}
-                    onClick={handleAnimation}>
-                    <img src={wave} alt="wave emoji" />
-                </WaveEmojiContainer>
-            )}
-        </TitleContainer>,
-        <Subtitle>{subtitle}</Subtitle>,
-        <ButtonContainer>
-            <Button as="link" variant="button-primary" to="/#portfolio">
-                {buttonText}
-            </Button>
-        </ButtonContainer>,
-    ];
     return (
         <HeroContainer>
             <ContentContainer>
-                <TransitionGroup component={null}>
-                    {isMounted &&
-                        items.map((item, i) => (
-                            // eslint-disable-next-line react/no-array-index-key
-                            <CSSTransition key={`hero-${i}`} classNames="fadeup" timeout={3000}>
-                                {item}
-                            </CSSTransition>
-                        ))}
-                </TransitionGroup>
+                <TitleContainer custom={0} initial="hidden" animate="visible" variants={variants}>
+                    <Title>
+                        {title}{' '}
+                        <OutboundLink href={twitter} variant={null}>
+                            <Name>{name}</Name>
+                        </OutboundLink>
+                    </Title>
+                    {wave && (
+                        <WaveEmojiContainer
+                            isAnimated={isWaveAnimated}
+                            onMouseEnter={handleWaveAnimation}
+                            onClick={handleWaveAnimation}>
+                            <img src={wave} alt="wave emoji" />
+                        </WaveEmojiContainer>
+                    )}
+                </TitleContainer>
+                <Subtitle custom={1} initial="hidden" animate="visible" variants={variants}>
+                    {subtitle}
+                </Subtitle>
+                <ButtonContainer custom={2} initial="hidden" animate="visible" variants={variants}>
+                    <Button as="link" variant="button-primary" to="/#portfolio">
+                        {buttonText}
+                    </Button>
+                </ButtonContainer>
             </ContentContainer>
         </HeroContainer>
     );
