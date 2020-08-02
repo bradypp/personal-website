@@ -31,6 +31,7 @@ module.exports = {
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
         `gatsby-plugin-netlify`,
+        `gatsby-plugin-mdx`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
