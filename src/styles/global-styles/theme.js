@@ -123,13 +123,14 @@ const theme = css`
         --box-shadow-primary: 0 1px 3px var(--color-box-shadow);
 
         --font-size-tiny: 1.2rem;
-        --font-size-xxs: 1.3rem;
+        --font-size-2xs: 1.3rem;
         --font-size-xs: 1.4rem;
         --font-size-sm: 1.5rem;
         --font-size-md: 1.6rem;
         --font-size-lg: 1.8rem;
         --font-size-xl: 2.0rem;
-        --font-size-xxl: 2.2rem;
+        --font-size-2xl: 2.2rem;
+        --font-size-3xl: 2.4rem;
         --font-size-h3: 3.2rem;
         --font-size-h2: 3.8rem;
         --font-size-h1: 4.4rem;

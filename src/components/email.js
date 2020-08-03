@@ -26,7 +26,7 @@ const EmailContainer = styled.div`
 `;
 const secondaryLink = styled(CustomLink)`
     font-family: var(--fonts-mono);
-    font-size: var(--font-size-xxs);
+    font-size: var(--font-size-2xs);
     letter-spacing: 0.1em;
     writing-mode: vertical-rl;
     margin: 2rem auto;

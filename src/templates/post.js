@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -7,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Icon } from '@components';
+import { Layout, Icon, Head } from '@components';
 
 const PostHeader = styled.header`
     margin-bottom: 5rem;
@@ -100,29 +101,47 @@ const Tag = styled(Link)`
     line-height: 1.5;
 `;
 
+// TODO: excerpt(pruneLength: 200, truncate: true)
 export const pageQuery = graphql`
     query PostQuery($id: String!) {
         mdx(id: { eq: $id }) {
             body
-            excerpt(pruneLength: 200, truncate: true)
+            fields {
+                slug
+            }
             frontmatter {
                 title
-                subtitle
+                description
                 date(formatString: "MMMM Do, YYYY")
                 tags
+                og_image {
+                    childImageSharp {
+                        fluid(maxWidth: 800, quality: 90) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
             }
         }
     }
 `;
-
+// TODO: check meta tags are working
 const PostTemplate = ({ data }) => {
-    const { frontmatter, body, excerpt } = data.mdx;
-    const { title, subtitle, date, tags } = frontmatter;
+    const { frontmatter, body, fields } = data.mdx;
+    const { title, description, date, tags, og_image } = frontmatter;
 
-    const shortcodes = { Icon };
+    const shortCodes = { Icon };
 
     return (
         <Layout>
+            <Head
+                meta={{
+                    title,
+                    description,
+                    ogImage: og_image.childImageSharp.fluid.src,
+                    relativeUrl: fields.slug,
+                }}
+            />
             <div>
                 <BreadCrumb to="/blog">
                     <Icon name="arrow-left" />
@@ -143,7 +162,7 @@ const PostTemplate = ({ data }) => {
                     </Subtitle>
                 </PostHeader>
                 <PostContent>
-                    <MDXProvider components={shortcodes}>
+                    <MDXProvider components={shortCodes}>
                         <MDXRenderer>{body}</MDXRenderer>
                     </MDXProvider>
                 </PostContent>

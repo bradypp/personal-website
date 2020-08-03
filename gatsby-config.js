@@ -21,7 +21,6 @@ const remarkPlugins = [
         resolve: 'gatsby-remark-images',
         options: {
             maxWidth: 1200,
-            linkImagesToOriginal: true,
             quality: 90,
             withWebp: true,
             tracedSVG: { color: '#09162a' },

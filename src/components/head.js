@@ -56,7 +56,7 @@ const Head = meta => {
         <Helmet>
             <html lang={language} />
             <title itemProp="name" lang={language}>
-                {metaTitle}
+                {meta.title}
             </title>
             <link rel="canonical" href={metaPageUrl} />
             <link rel="shortcut icon" href={favicon} />

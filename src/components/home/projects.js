@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { scrollRevealConfig } from '@config';
 import scrollReveal from '@utils/scrollReveal';
+import { BREAKPOINTS } from '@utils/constants';
 import { Icon, CustomLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
@@ -97,7 +98,7 @@ const TechList = styled.ul`
 
     li {
         font-family: var(--fonts-mono);
-        font-size: var(--font-size-xxs);
+        font-size: var(--font-size-2xs);
         margin-right: ${tagMargin};
         margin-bottom: 0.8rem;
         white-space: nowrap;
@@ -295,7 +296,7 @@ const Projects = ({ data }) => {
                                 </ProjectName>
                                 <Description dangerouslySetInnerHTML={{ __html: html }} />
                                 <Media
-                                    query="(min-width: 801px)"
+                                    query={`(min-width: ${BREAKPOINTS.bp800 + 1}px)`}
                                     render={() => (
                                         <>
                                             {tech && (
@@ -333,7 +334,7 @@ const Projects = ({ data }) => {
                                 />
                             </ImgLinkContainer>
                             <Media
-                                query="(max-width: 800px)"
+                                query={`(max-width: ${BREAKPOINTS.bp800}px)"`}
                                 render={() => (
                                     <>
                                         {tech && (

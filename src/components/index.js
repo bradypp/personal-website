@@ -32,3 +32,4 @@ export { default as CustomList } from './custom-list';
 export { default as Spinner } from './spinner';
 export { default as FadeUp } from './fade-up';
 export { default as Date } from './date';
+export { default as Logo } from './logo';

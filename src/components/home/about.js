@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Media from 'react-media';
 
 import scrollReveal from '@utils/scrollReveal';
+import { BREAKPOINTS } from '@utils/constants';
 import { scrollRevealConfig, github } from '@config';
 import { Heading, CustomLink, CustomList } from '@components';
 import { mixins, media } from '@styles';
@@ -92,11 +93,11 @@ const About = ({ data }) => {
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
                     <Media
-                        query="(min-width: 441px)"
+                        query={`(min-width: ${BREAKPOINTS.bp440 + 1})"`}
                         render={() => <CustomList items={skills} columns={3} />}
                     />
                     <Media
-                        query="(max-width: 440px)"
+                        query={`(max-width: ${BREAKPOINTS.bp440})`}
                         render={() => <CustomList items={skills} columns={2} />}
                     />
                 </ContentContainer>

@@ -61,7 +61,7 @@ CustomLink.propTypes = {
     className: PropTypes.string,
     target: PropTypes.string,
     rel: PropTypes.string,
-    variant: PropTypes.oneOf(['primary', 'secondary']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'button-primary']),
     to: PropTypes.string,
 };
 

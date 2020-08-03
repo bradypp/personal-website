@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { mixins } from '@styles';
-import { Head, Footer, Header, Social } from '@components';
+import { Footer, Header, Social } from '@components';
 
 const Content = styled.div`
     ${mixins.containAndCenter};
@@ -17,10 +17,9 @@ const Main = styled.main`
     min-height: 100vh;
 `;
 
-const Layout = ({ children, meta, isHome }) => {
+const Layout = ({ children, isHome }) => {
     return (
         <div id="root">
-            <Head meta={meta} />
             <Social isHome={isHome} orientation="left" />
             <Header isHome={isHome} />
             <Main>
@@ -35,15 +34,10 @@ const Layout = ({ children, meta, isHome }) => {
 
 Layout.propTypes = {
     children: PropTypes.node.isRequired,
-    meta: PropTypes.shape({
-        title: PropTypes.string,
-        description: PropTypes.string,
-    }),
     isHome: PropTypes.bool,
 };
 
 Layout.defaultProps = {
-    meta: undefined,
     isHome: false,
 };
 

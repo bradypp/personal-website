@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { motion, useAnimation } from 'framer-motion';
 
 import { Icon, CustomLink } from '@components';
 import { navLinks, socialMedia, email } from '@config';
@@ -18,16 +19,8 @@ const MenuContainer = styled.div`
     z-index: 10;
     outline: 0;
     transition: var(--transition);
-    transform: translateX(${props => (props.isMenuOpen ? 0 : 100)}vw);
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
-
-    .fadeleft-enter {
-        transition: opacity 500ms var(--ease), transform 500ms var(--ease);
-    }
-
-    .fadeleft-enter-active {
-        transition: opacity 500ms var(--ease), transform 500ms var(--ease);
-    }
+    opacity: ${props => (props.isMenuOpen ? 1 : 0)};
 `;
 const SidebarContainer = styled.aside`
     background-color: var(--color-menu-background);
@@ -47,6 +40,7 @@ const SidebarContainer = styled.aside`
 `;
 const ContentContainer = styled.div`
     ${mixins.flexColumnCenter};
+    padding-top: 2rem;
     justify-content: space-between;
     height: 100%;
 `;
@@ -63,7 +57,7 @@ const NavList = styled.ul`
     list-style: none;
     width: 100%;
 `;
-const NavListItem = styled.li`
+const NavListItem = styled(motion.li)`
     margin: 0 auto 3rem;
     position: relative;
     ${media.bp440`
@@ -73,10 +67,10 @@ const NavListItem = styled.li`
       margin: 0 auto 1.8rem;
     `};
 `;
-const secondaryLink = styled(Link)`
+const StyledLink = styled(Link)`
     padding: 1.6rem;
     font-weight: 500;
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-3xl);
     color: var(--color-white-1);
     width: 100%;
 
@@ -84,7 +78,7 @@ const secondaryLink = styled(Link)`
         color: var(--color-soft-pink);
     }
 `;
-const SocialsContainer = styled.ul`
+const SocialsContainer = styled(motion.ul)`
     ${mixins.flexCenter};
     list-style: none;
     bottom: 2rem;
@@ -114,6 +108,8 @@ const SocialsLink = styled(CustomLink)`
     `}
 `;
 const Menu = ({ isMenuOpen, toggleMenu }) => {
+    const navControls = useAnimation();
+    const socialsControls = useAnimation();
     const handleMenuClick = e => {
         const { target } = e;
         const isLink = target.hasAttribute('href');
@@ -124,6 +120,39 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         }
     };
 
+    const socials = [{ url: `mailto:${email}`, name: 'email' }, ...socialMedia];
+
+    const variants = {
+        navHidden: {
+            opacity: 0,
+            y: 50,
+            transition: { duration: 0.6 },
+        },
+        navVisible: i => ({
+            opacity: 1,
+            y: 0,
+            transition: { delay: i * 0.1, duration: 0.4 },
+        }),
+        socialsHidden: {
+            opacity: 0,
+            transition: { duration: 0.6 },
+        },
+        socialsVisible: {
+            opacity: 1,
+            transition: { delay: socials.length * 0.1 + 0.2, duration: 0.6 },
+        },
+    };
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            navControls.start('navVisible');
+            socialsControls.start('socialsVisible');
+        } else {
+            navControls.start('navHidden');
+            socialsControls.start('socialsHidden');
+        }
+    }, [navControls, socialsControls, isMenuOpen]);
+
     return (
         <MenuContainer
             isMenuOpen={isMenuOpen}
@@ -133,33 +162,31 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
             <SidebarContainer>
                 <ContentContainer>
                     <NavContainer>
-                        <NavList
-                            className={`${
-                                isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'
-                            }`}>
-                            {navLinks &&
-                                navLinks.map(({ url, name }) => (
-                                    <NavListItem key={uuidv4()}>
-                                        <secondaryLink to={url}>{name}</secondaryLink>
-                                    </NavListItem>
-                                ))}
+                        <NavList>
+                            {/*  TODO: Remove home */}
+                            {navLinks.map(({ url, name }, i) => (
+                                <NavListItem
+                                    key={uuidv4()}
+                                    custom={i}
+                                    initial="navHidden"
+                                    variants={variants}
+                                    animate={navControls}>
+                                    <StyledLink to={url}>{name}</StyledLink>
+                                </NavListItem>
+                            ))}
                         </NavList>
                     </NavContainer>
                     <SocialsContainer
-                        className={`${isMenuOpen ? 'fadeleft-enter-active' : 'fadeleft-enter'}`}>
-                        <li>
-                            <SocialsLink aria-label="Email" variant={null} href={`mailto:${email}`}>
-                                <Icon name="email" />
-                            </SocialsLink>
-                        </li>
-                        {socialMedia &&
-                            socialMedia.map(({ url, name }) => (
-                                <li key={uuidv4()}>
-                                    <SocialsLink href={url} aria-label={name} variant={null}>
-                                        <Icon name={name} />
-                                    </SocialsLink>
-                                </li>
-                            ))}
+                        initial="socialsHidden"
+                        variants={variants}
+                        animate={socialsControls}>
+                        {socials.map(({ url, name }) => (
+                            <li key={uuidv4()}>
+                                <SocialsLink href={url} aria-label={name} variant={null}>
+                                    <Icon name={name} />
+                                </SocialsLink>
+                            </li>
+                        ))}
                     </SocialsContainer>
                 </ContentContainer>
             </SidebarContainer>
