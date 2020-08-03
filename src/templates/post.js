@@ -8,17 +8,9 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { Layout, Icon } from '@components';
-import { mixins } from '@styles';
 
-// const StyledMain = styled(Main)`
-//     max-width: 800px;
-//     align-items: flex-start;
-// `;
 const PostHeader = styled.header`
     margin-bottom: 5rem;
-    .tag {
-        margin-right: 1rem;
-    }
 `;
 const PostContent = styled.div`
     margin-bottom: 10rem;
@@ -72,7 +64,6 @@ const PostContent = styled.div`
     }
 `;
 const BreadCrumb = styled(Link)`
-    ${mixins.inlineLink};
     display: flex;
     align-items: center;
     margin-bottom: 4rem;
@@ -100,14 +91,13 @@ const Subtitle = styled.p`
     color: var(--color-primary);
     margin: 0 0 2rem 0;
     font-size: var(--font-size-md);
-    font-family: var(--font-family-mono);
+    font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
-
-    a {
-        ${mixins.inlineLink};
-        line-height: 1.5;
-    }
+`;
+const Tag = styled(Link)`
+    margin-right: 1rem;
+    line-height: 1.5;
 `;
 
 export const pageQuery = graphql`
@@ -118,7 +108,7 @@ export const pageQuery = graphql`
             frontmatter {
                 title
                 subtitle
-                date(formatString: "DD MMMM YYYY")
+                date(formatString: "MMMM Do, YYYY")
                 tags
             }
         }
@@ -134,36 +124,29 @@ const PostTemplate = ({ data }) => {
     return (
         <Layout>
             <div>
-                <BreadCrumb to="/posts">
+                <BreadCrumb to="/blog">
                     <Icon name="arrow-left" />
                     All Posts
                 </BreadCrumb>
                 <PostHeader>
                     <Title>{title}</Title>
                     <Subtitle>
-                        <time>
-                            {new Date(date).toLocaleDateString('en-UK', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric',
-                            })}
-                        </time>
+                        <time>{date}</time>
                         <span>&nbsp;&mdash;&nbsp;</span>
                         {tags &&
                             tags.length > 0 &&
                             tags.map(tag => (
-                                <Link
-                                    key={uuidv4()}
-                                    to={`/tags/${kebabCase(tag)}/`}
-                                    className="tag">
+                                <Tag key={uuidv4()} to={`/tags/${kebabCase(tag)}/`}>
                                     #{tag}
-                                </Link>
+                                </Tag>
                             ))}
                     </Subtitle>
                 </PostHeader>
-                <MDXProvider components={shortcodes}>
-                    <MDXRenderer>{body}</MDXRenderer>
-                </MDXProvider>
+                <PostContent>
+                    <MDXProvider components={shortcodes}>
+                        <MDXRenderer>{body}</MDXRenderer>
+                    </MDXProvider>
+                </PostContent>
             </div>
         </Layout>
     );
