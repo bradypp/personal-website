@@ -93,6 +93,15 @@ const remarkPlugins = [
             },
         },
     },
+    'gatsby-remark-responsive-iframe',
+    'gatsby-remark-smartypants',
+    {
+        resolve: `gatsby-remark-copy-linked-files`,
+        options: {
+            destinationDir: `static/files`,
+            ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`, `webp`],
+        },
+    },
 ];
 
 module.exports = {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, Hero, About, Projects, Contact, Head } from '@components';
+import { Layout, Hero, About, Projects, Contact } from '@components';
 
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
@@ -18,7 +18,6 @@ const IndexPage = ({ location, data }) => {
 
     return (
         <Layout isHome={location && location.pathname === '/'}>
-            <Head />
             <Hero data={data.hero.edges} />
             <About data={data.about.edges} />
             <Projects data={data.projects.edges} />
