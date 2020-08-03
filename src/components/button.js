@@ -1,16 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link as GatsbyLink } from 'gatsby';
 
-import { buttonStyles } from '@styles';
 import { Spinner, Icon } from '@components';
+import { buttonStyles } from '@styles';
 
 const StyledButton = styled.button`
-    ${buttonStyles}
-`;
-const StyledLink = styled(GatsbyLink)`
-    ${buttonStyles}
+    svg {
+        color: currentColor;
+        fill: currentColor;
+    }
+
+    ${props => {
+        switch (props.variant) {
+            case 'primary':
+                return buttonStyles.primary;
+            case 'empty':
+                return buttonStyles.empty;
+            default:
+                return null;
+        }
+    }}
 `;
 const ButtonText = styled.span`
     padding: ${({ withPadding, iconLocation }) =>
@@ -23,26 +33,7 @@ const ButtonSpinner = styled(props => <Spinner {...props} />).attrs({
     border-top-color: #666;
 `;
 
-const Button = ({
-    children,
-    disabled,
-    isWorking,
-    icon,
-    iconLocation,
-    type: propsType,
-    as,
-    onClick,
-    ...props
-}) => {
-    const Component = as === 'button' ? StyledButton : StyledLink;
-
-    let type;
-    if (propsType) {
-        type = propsType;
-    } else {
-        type = as === 'button' ? 'button' : null;
-    }
-
+const Button = ({ children, disabled, isWorking, icon, iconLocation, type, onClick, ...props }) => {
     const renderedIcon = (
         <>{!isWorking && icon && typeof icon === 'string' ? <Icon name={icon} /> : icon}</>
     );
@@ -54,14 +45,14 @@ const Button = ({
     };
 
     return (
-        <Component onClick={handleClick} type={type} disabled={disabled || isWorking} {...props}>
+        <StyledButton onClick={handleClick} type={type} disabled={disabled || isWorking} {...props}>
             {isWorking && <ButtonSpinner />}
             {iconLocation === 'left' && renderedIcon}
             <ButtonText withPadding={icon || isWorking} iconLocation={iconLocation}>
                 {children}
             </ButtonText>
             {iconLocation === 'right' && renderedIcon}
-        </Component>
+        </StyledButton>
     );
 };
 
@@ -70,8 +61,7 @@ Button.propTypes = {
     onClick: PropTypes.func,
     children: PropTypes.node,
     className: PropTypes.string,
-    variant: PropTypes.oneOf(['inline-link', 'button-primary', 'button-secondary', 'button-empty']),
-    as: PropTypes.oneOf(['link', 'button']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'empty']),
     type: PropTypes.string,
     icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     iconLocation: PropTypes.string,
@@ -84,9 +74,8 @@ Button.defaultProps = {
     onClick: undefined,
     className: undefined,
     children: undefined,
-    variant: 'button-primary',
-    as: 'button',
-    type: undefined,
+    variant: 'primary',
+    type: 'button',
     icon: undefined,
     iconLocation: 'left',
     disabled: false,

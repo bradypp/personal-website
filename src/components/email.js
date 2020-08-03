@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Side, OutboundLink } from '@components';
+import { Side, CustomLink } from '@components';
 import { email } from '@config';
 
 const EmailContainer = styled.div`
@@ -24,7 +24,7 @@ const EmailContainer = styled.div`
         margin-bottom: 2rem;
     }
 `;
-const StyledLink = styled(OutboundLink)`
+const secondaryLink = styled(CustomLink)`
     font-family: var(--fonts-mono);
     font-size: var(--font-size-xxs);
     letter-spacing: 0.1em;
@@ -43,9 +43,9 @@ const StyledLink = styled(OutboundLink)`
 const Email = ({ isHome, ...otherProps }) => (
     <Side isHome={isHome} {...otherProps}>
         <EmailContainer>
-            <StyledLink variant={null} href={`mailto:${email}`}>
+            <secondaryLink variant={null} href={`mailto:${email}`}>
                 {email}
-            </StyledLink>
+            </secondaryLink>
         </EmailContainer>
     </Side>
 );

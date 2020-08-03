@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Icon, OutboundLink } from '@components';
+import { Icon, CustomLink } from '@components';
 import { navLinks, socialMedia, email } from '@config';
 import { mixins, media } from '@styles';
 
@@ -73,7 +73,7 @@ const NavListItem = styled.li`
       margin: 0 auto 1.8rem;
     `};
 `;
-const StyledLink = styled(Link)`
+const secondaryLink = styled(Link)`
     padding: 1.6rem;
     font-weight: 500;
     font-size: var(--font-size-xxl);
@@ -89,7 +89,7 @@ const SocialsContainer = styled.ul`
     list-style: none;
     bottom: 2rem;
 `;
-const SocialsLink = styled(OutboundLink)`
+const SocialsLink = styled(CustomLink)`
     padding: 2rem;
 
     svg {
@@ -140,7 +140,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                             {navLinks &&
                                 navLinks.map(({ url, name }) => (
                                     <NavListItem key={uuidv4()}>
-                                        <StyledLink to={url}>{name}</StyledLink>
+                                        <secondaryLink to={url}>{name}</secondaryLink>
                                     </NavListItem>
                                 ))}
                         </NavList>

@@ -14,7 +14,7 @@ export { default as TextArea } from './form/text-area';
 // Other Components
 export { default as Icon } from './icons/icon';
 export { default as Button } from './button';
-export { default as OutboundLink } from './outbound-link';
+export { default as CustomLink } from './custom-link';
 export { default as Side } from './side';
 export { default as Social } from './social';
 export { default as Email } from './email';
@@ -31,4 +31,4 @@ export { default as ThemeToggle } from './theme-toggle';
 export { default as CustomList } from './custom-list';
 export { default as Spinner } from './spinner';
 export { default as FadeUp } from './fade-up';
-export { default as Prism } from './prism';
+export { default as Date } from './date';

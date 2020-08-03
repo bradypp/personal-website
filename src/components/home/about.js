@@ -7,7 +7,7 @@ import Media from 'react-media';
 
 import scrollReveal from '@utils/scrollReveal';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, OutboundLink, CustomList } from '@components';
+import { Heading, CustomLink, CustomList } from '@components';
 import { mixins, media } from '@styles';
 
 const AboutContainer = styled.section`
@@ -36,7 +36,7 @@ const ContentContainer = styled.div`
     max-width: 60rem;
 
     a {
-        ${mixins.inlineLink};
+        ${mixins.primaryLink};
     }
 
     ul {
@@ -52,7 +52,7 @@ const ContentContainer = styled.div`
         max-width: 100%;
     `}
 `;
-const AvatarLinkContainer = styled(props => <OutboundLink {...props} />)`
+const AvatarLinkContainer = styled(props => <CustomLink {...props} />)`
     position: relative;
     width: 40%;
     max-width: 36rem;

@@ -9,12 +9,12 @@ const Content = styled.div`
     ${mixins.containAndCenter};
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    padding: ${props => (!props.isHome ? '180px 0' : '0')};
+    padding-top: ${props => (!props.isHome ? '180px' : '0')};
 `;
 const Main = styled.main`
     width: 100%;
     padding: 0 var(--side-padding);
+    min-height: 100vh;
 `;
 
 const Layout = ({ children, meta, isHome }) => {

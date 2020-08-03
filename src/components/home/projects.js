@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { scrollRevealConfig } from '@config';
 import scrollReveal from '@utils/scrollReveal';
-import { Icon, OutboundLink, Heading } from '@components';
+import { Icon, CustomLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
 const tagMargin = '1.7rem';
@@ -70,7 +70,7 @@ const Description = styled.div`
         margin: 0;
     }
     a {
-        ${mixins.inlineLink};
+        ${mixins.primaryLink};
     }
 
     ${media.bp1040`
@@ -124,7 +124,7 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
     overflow: visible;
 `;
-const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
+const IconLink = styled(props => <CustomLink variant="secondary" {...props} />)`
     &&:first-of-type {
         margin-right: 0.5rem;
     }
@@ -141,7 +141,7 @@ const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} 
         }
     `}
 `;
-const ImgLinkContainer = styled(props => <OutboundLink {...props} />)`
+const ImgLinkContainer = styled(props => <CustomLink {...props} />)`
     width: 600px;
     max-width: calc(100vw - 2 * var(--side-padding));
     max-height: ${props => props.maxHeight || 'auto'};
@@ -283,12 +283,12 @@ const Projects = ({ data }) => {
                                 <Overline>{overline}</Overline>
                                 <ProjectName>
                                     {external ? (
-                                        <OutboundLink
+                                        <CustomLink
                                             variant={null}
                                             href={external}
                                             aria-label="External Link">
                                             {title}
-                                        </OutboundLink>
+                                        </CustomLink>
                                     ) : (
                                         title
                                     )}

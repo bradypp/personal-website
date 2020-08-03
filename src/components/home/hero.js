@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import { twitter } from '@config';
 import { mixins, media } from '@styles';
-import { Button, OutboundLink } from '@components';
+import { Button, CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
 import wave from '@assets/images/wave.png';
 
@@ -163,9 +163,9 @@ const Hero = ({ data }) => {
                 <TitleContainer custom={0} initial="hidden" animate="visible" variants={variants}>
                     <Title>
                         {title}{' '}
-                        <OutboundLink href={twitter} variant={null}>
+                        <CustomLink href={twitter} variant={null}>
                             <Name>{name}</Name>
-                        </OutboundLink>
+                        </CustomLink>
                     </Title>
                     {wave && (
                         <WaveEmojiContainer
@@ -180,9 +180,9 @@ const Hero = ({ data }) => {
                     {subtitle}
                 </Subtitle>
                 <ButtonContainer custom={2} initial="hidden" animate="visible" variants={variants}>
-                    <Button as="link" variant="button-primary" to="/#portfolio">
+                    <CustomLink variant="button-primary" to="/#portfolio">
                         {buttonText}
-                    </Button>
+                    </CustomLink>
                 </ButtonContainer>
             </ContentContainer>
         </HeroContainer>

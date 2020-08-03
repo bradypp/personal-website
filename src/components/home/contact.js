@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import scrollReveal from '@utils/scrollReveal';
 import { scrollRevealConfig, email } from '@config';
-import { Heading, OutboundLink, Form } from '@components';
+import { Heading, CustomLink, Form } from '@components';
 import { mixins, media } from '@styles';
 
 const ContactContainer = styled.section`
@@ -150,9 +150,9 @@ const Contact = ({ data }) => {
                 </FormContainer>
                 <MiddleText>or</MiddleText>
                 <Socials>
-                    <OutboundLink href={`mailto:${email}`} variant="button-primary">
+                    <CustomLink href={`mailto:${email}`} variant="button-primary">
                         {emailText}
-                    </OutboundLink>
+                    </CustomLink>
                 </Socials>
             </FlexContainer>
         </ContactContainer>

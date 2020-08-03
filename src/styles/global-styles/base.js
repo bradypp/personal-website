@@ -122,15 +122,15 @@ const base = css`
     input,
     select,
     textarea {
-        outline: none;
+        ${'' /* outline: none; */}
         border: 0;
         border-radius: 0;
         transition: var(--transition);
 
-        &:focus,
+        ${'' /* &:focus,
         &:active {
             outline: none;
-        }
+        } */}
 
         &:disabled {
             opacity: 0.7;
@@ -182,7 +182,7 @@ const base = css`
         margin: 0 0 1.5rem 0;
 
         & > a {
-            ${mixins.inlineLink};
+            ${mixins.primaryLink};
         }
 
         & > code {
