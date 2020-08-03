@@ -42,19 +42,6 @@ const base = css`
         background: var(--color-background-primary-1);
         min-height: 100vh;
         transition: var(--transition);
-
-        &.hidden {
-            overflow: hidden;
-        }
-        &.blur {
-            overflow: hidden;
-            #content > * {
-                filter: blur(5px) brightness(0.7);
-                transition: var(--transition);
-                pointer-events: none;
-                user-select: none;
-            }
-        }
     }
 
     ${mixins.customScrollbar({

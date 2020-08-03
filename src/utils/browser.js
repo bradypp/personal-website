@@ -1,10 +1,10 @@
-const getTextContentsFromHtmlString = html => {
+export const getTextContentsFromHtmlString = html => {
     const el = document.createElement('div');
     el.innerHTML = html;
     return el.textContent;
 };
 
-const copyToClipboard = value => {
+export const copyToClipboard = value => {
     const $textarea = document.createElement('textarea');
     $textarea.value = value;
     document.body.appendChild($textarea);
@@ -13,12 +13,6 @@ const copyToClipboard = value => {
     document.body.removeChild($textarea);
 };
 
-const isFocusedElementEditable = () =>
+export const isFocusedElementEditable = () =>
     !!document.activeElement.getAttribute('content-editable') ||
     ['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName);
-
-export default {
-    getTextContentsFromHtmlString,
-    copyToClipboard,
-    isFocusedElementEditable,
-};

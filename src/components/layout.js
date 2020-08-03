@@ -2,9 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { mixins } from '@styles';
 import { Head, Footer, Header, Social } from '@components';
 
 const Content = styled.div`
+    ${mixins.containAndCenter};
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: ${props => (!props.isHome ? '180px 0' : '0')};
+`;
+const Main = styled.main`
     width: 100%;
     padding: 0 var(--side-padding);
 `;
@@ -15,7 +23,11 @@ const Layout = ({ children, meta, isHome }) => {
             <Head meta={meta} />
             <Social isHome={isHome} orientation="left" />
             <Header isHome={isHome} />
-            <Content id="content">{children}</Content>
+            <Main>
+                <Content id="content" isHome={isHome}>
+                    {children}
+                </Content>
+            </Main>
             <Footer />
         </div>
     );

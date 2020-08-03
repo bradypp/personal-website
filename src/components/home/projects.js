@@ -6,7 +6,7 @@ import Media from 'react-media';
 import { v4 as uuidv4 } from 'uuid';
 
 import { scrollRevealConfig } from '@config';
-import { scrollReveal } from '@utils';
+import scrollReveal from '@utils/scrollReveal';
 import { Icon, OutboundLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 

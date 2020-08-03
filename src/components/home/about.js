@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Media from 'react-media';
 
-import { scrollReveal } from '@utils';
+import scrollReveal from '@utils/scrollReveal';
 import { scrollRevealConfig, github } from '@config';
 import { Heading, OutboundLink, CustomList } from '@components';
 import { mixins, media } from '@styles';

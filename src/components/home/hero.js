@@ -7,7 +7,7 @@ import { twitter } from '@config';
 import { mixins, media } from '@styles';
 import { Button, OutboundLink } from '@components';
 import { useIsMounted } from '@hooks';
-import wave from '@images/wave.png';
+import wave from '@assets/images/wave.png';
 
 const margin = '12vh';
 
@@ -28,6 +28,7 @@ const variants = {
 
 const HeroContainer = styled.section`
     ${mixins.homeSection}
+    align-self: center;
     padding-left: var(--side-padding);
     padding-right: var(--side-padding);
     padding-top: 0;

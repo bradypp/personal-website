@@ -1,17 +1,17 @@
-const moveItemWithinArray = (arr, item, newIndex) => {
+export const moveItemWithinArray = (arr, item, newIndex) => {
     const arrClone = [...arr];
     const oldIndex = arrClone.indexOf(item);
     arrClone.splice(newIndex, 0, arrClone.splice(oldIndex, 1)[0]);
     return arrClone;
 };
 
-const insertItemIntoArray = (arr, item, index) => {
+export const insertItemIntoArray = (arr, item, index) => {
     const arrClone = [...arr];
     arrClone.splice(index, 0, item);
     return arrClone;
 };
 
-const updateArrayItemById = (arr, itemId, fields) => {
+export const updateArrayItemById = (arr, itemId, fields) => {
     const arrClone = [...arr];
     const item = arrClone.find(({ id }) => id === itemId);
     if (item) {
@@ -21,10 +21,10 @@ const updateArrayItemById = (arr, itemId, fields) => {
     return arrClone;
 };
 
-const sortByNewest = (items, sortField) =>
+export const sortByNewest = (items, sortField) =>
     items.sort((a, b) => -a[sortField].localeCompare(b[sortField]));
 
-const throttle = (func, wait = 100) => {
+export const throttle = (func, wait = 100) => {
     let timer = null;
     return (...args) => {
         if (timer === null) {
@@ -34,12 +34,4 @@ const throttle = (func, wait = 100) => {
             }, wait);
         }
     };
-};
-
-export default {
-    moveItemWithinArray,
-    insertItemIntoArray,
-    updateArrayItemById,
-    sortByNewest,
-    throttle,
 };

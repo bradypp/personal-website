@@ -4,14 +4,16 @@ import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Main, Icon } from '@components';
+import { Layout, Icon } from '@components';
 import { mixins } from '@styles';
 
-const StyledMain = styled(Main)`
-    max-width: 800px;
-    align-items: flex-start;
-`;
+// const StyledMain = styled(Main)`
+//     max-width: 800px;
+//     align-items: flex-start;
+// `;
 const PostHeader = styled.header`
     margin-bottom: 5rem;
     .tag {
@@ -109,14 +111,14 @@ const Subtitle = styled.p`
 `;
 
 export const pageQuery = graphql`
-    query($path: String!) {
-        markdownRemark(frontmatter: { slug: { eq: $path } }) {
-            html
+    query PostQuery($id: String!) {
+        mdx(id: { eq: $id }) {
+            body
+            excerpt(pruneLength: 200, truncate: true)
             frontmatter {
                 title
-                description
-                date
-                slug
+                subtitle
+                date(formatString: "DD MMMM YYYY")
                 tags
             }
         }
@@ -124,12 +126,14 @@ export const pageQuery = graphql`
 `;
 
 const PostTemplate = ({ data }) => {
-    const { frontmatter, html } = data.markdownRemark;
-    const { title, date, tags } = frontmatter;
+    const { frontmatter, body, excerpt } = data.mdx;
+    const { title, subtitle, date, tags } = frontmatter;
+
+    const shortcodes = { Icon };
 
     return (
         <Layout>
-            <StyledMain>
+            <div>
                 <BreadCrumb to="/posts">
                     <Icon name="arrow-left" />
                     All Posts
@@ -157,15 +161,16 @@ const PostTemplate = ({ data }) => {
                             ))}
                     </Subtitle>
                 </PostHeader>
-                <PostContent dangerouslySetInnerHTML={{ __html: html }} />
-            </StyledMain>
+                <MDXProvider components={shortcodes}>
+                    <MDXRenderer>{body}</MDXRenderer>
+                </MDXProvider>
+            </div>
         </Layout>
     );
 };
 
-export default PostTemplate;
-
 PostTemplate.propTypes = {
     data: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
 };
+
+export default PostTemplate;

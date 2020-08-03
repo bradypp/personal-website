@@ -1,4 +1,4 @@
-const KEY_CODES = {
+export const KEY_CODES = {
     TAB: 9,
     ENTER: 13,
     ESCAPE: 27,
@@ -10,12 +10,20 @@ const KEY_CODES = {
     M: 77,
 };
 
-const THEME = {
+export const THEME = {
     COLOR_MODE_KEY: 'color-mode',
     INITIAL_COLOR_MODE_PROP: '--initial-color-mode',
 };
 
-export default {
-    KEY_CODES,
-    THEME,
+export const BREAKPOINTS = {
+    bp2400: 2400, // Huge monitor
+    bp1760: 1760, // Medium monitor
+    bp1440: 1440, // Large laptop
+    bp1280: 1280, // Small laptop
+    bp1040: 1040, // Tablet landscape
+    bp920: 920, // Large tablet portrait
+    bp800: 800, // Tablet portrait
+    bp600: 600, // Large phone
+    bp440: 440, // Normal phone
+    bp384: 384, // Small phone
 };

@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import Media from 'react-media';
 
-import { js, constants } from '@utils';
+import { throttle } from '@utils/javascript';
+import { KEY_CODES } from '@utils/constants';
 import { navLinks } from '@config';
 import { Menu, ThemeToggle, Icon } from '@components';
 import { mixins, media } from '@styles';
@@ -207,8 +208,8 @@ class Header extends Component {
                     scrollDirection: window && window.pageYOffset > 0 ? 'down' : 'none',
                 },
                 () => {
-                    window.addEventListener('scroll', js.throttle(this.handleScroll));
-                    window.addEventListener('resize', js.throttle(this.handleResize));
+                    window.addEventListener('scroll', throttle(this.handleScroll));
+                    window.addEventListener('resize', throttle(this.handleResize));
                     window.addEventListener('keydown', e => this.handleKeydown(e));
                 },
             );
@@ -216,8 +217,8 @@ class Header extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', js.throttle(this.handleScroll));
-        window.removeEventListener('resize', js.throttle(this.handleResize));
+        window.removeEventListener('scroll', throttle(this.handleScroll));
+        window.removeEventListener('resize', throttle(this.handleResize));
         window.removeEventListener('keydown', e => this.handleKeydown(e));
     }
 
@@ -263,7 +264,7 @@ class Header extends Component {
 
     handleKeydown = e => {
         const { isMenuOpen } = this.state;
-        if (isMenuOpen && e.keyCode === constants.KEY_CODES.ESCAPE) {
+        if (isMenuOpen && e.keyCode === KEY_CODES.ESCAPE) {
             this.toggleMenu();
         }
     };
