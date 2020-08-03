@@ -129,7 +129,7 @@ const mixins = {
     hardwareAccelerate: css`
         transform: translateZ(0);
     `,
-    inlineLink: css`
+    primaryLink: css`
         &:after {
             content: '';
             display: block;
@@ -160,7 +160,7 @@ const mixins = {
             }
         }
     `,
-    styledLink: css`
+    secondaryLink: css`
         padding: 1rem;
         transition: var(--transition);
         color: var(--color-socials);

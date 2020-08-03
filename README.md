@@ -13,7 +13,7 @@
   </a>
 </p>
 <a href="https://paulbrady.dev" target="_blank">
-  <img src="https://raw.githubusercontent.com/bradypp/personal-website/master/src/images/demo.png" alt="repo demo">
+  <img src="https://raw.githubusercontent.com/bradypp/personal-website/master/src/assets/images/demo.png" alt="repo demo">
 </a>
 
 ## 🛠 Try For Yourself

@@ -4,8 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { mixins, media } from '@styles';
 import { socialMedia, email, repo } from '@config';
-import { Icon } from '@components';
-import OutboundLink from './outbound-link';
+import { Icon, CustomLink } from '@components';
 
 const FooterContainer = styled.footer`
     padding: 3.2rem var(--side-padding) 2.4rem;
@@ -50,23 +49,23 @@ const Footer = () => {
         <FooterContainer>
             <FooterContentContainer>
                 <FooterTopContainer>
-                    <OutboundLink href={repo} variant="styled-link">
+                    <CustomLink href={repo} variant="secondary">
                         <p>Designed & developed by Paul Brady </p>
-                    </OutboundLink>
+                    </CustomLink>
                 </FooterTopContainer>
                 <FooterBottomContainer>
                     <li>
-                        <OutboundLink variant="styled-link" href={`mailto:${email}`}>
+                        <CustomLink variant="secondary" href={`mailto:${email}`}>
                             <Icon name="email" />
-                        </OutboundLink>
+                        </CustomLink>
                     </li>
                     {socialMedia &&
                         socialMedia.map(({ url, name }) => (
                             // eslint-disable-next-line react/no-array-index-key
                             <li key={uuidv4()}>
-                                <OutboundLink variant="styled-link" href={url} aria-label={name}>
+                                <CustomLink variant="secondary" href={url} aria-label={name}>
                                     <Icon name={name} />
-                                </OutboundLink>
+                                </CustomLink>
                             </li>
                         ))}
                 </FooterBottomContainer>

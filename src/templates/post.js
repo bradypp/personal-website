@@ -1,22 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
+import { MDXProvider } from '@mdx-js/react';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Main, Icon } from '@components';
-import { mixins } from '@styles';
+import { Layout, Icon, Head } from '@components';
 
-const StyledMain = styled(Main)`
-    max-width: 800px;
-    align-items: flex-start;
-`;
 const PostHeader = styled.header`
     margin-bottom: 5rem;
-    .tag {
-        margin-right: 1rem;
-    }
 `;
 const PostContent = styled.div`
     margin-bottom: 10rem;
@@ -70,7 +65,6 @@ const PostContent = styled.div`
     }
 `;
 const BreadCrumb = styled(Link)`
-    ${mixins.inlineLink};
     display: flex;
     align-items: center;
     margin-bottom: 4rem;
@@ -98,74 +92,87 @@ const Subtitle = styled.p`
     color: var(--color-primary);
     margin: 0 0 2rem 0;
     font-size: var(--font-size-md);
-    font-family: var(--font-family-mono);
+    font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
-
-    a {
-        ${mixins.inlineLink};
-        line-height: 1.5;
-    }
+`;
+const Tag = styled(Link)`
+    margin-right: 1rem;
+    line-height: 1.5;
 `;
 
+// TODO: excerpt(pruneLength: 200, truncate: true)
 export const pageQuery = graphql`
-    query($path: String!) {
-        markdownRemark(frontmatter: { slug: { eq: $path } }) {
-            html
+    query PostQuery($id: String!) {
+        mdx(id: { eq: $id }) {
+            body
+            fields {
+                slug
+            }
             frontmatter {
                 title
                 description
-                date
-                slug
+                date(formatString: "MMMM Do, YYYY")
                 tags
+                og_image {
+                    childImageSharp {
+                        fluid(maxWidth: 800, quality: 90) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
             }
         }
     }
 `;
-
+// TODO: check meta tags are working
 const PostTemplate = ({ data }) => {
-    const { frontmatter, html } = data.markdownRemark;
-    const { title, date, tags } = frontmatter;
+    const { frontmatter, body, fields } = data.mdx;
+    const { title, description, date, tags, og_image } = frontmatter;
+
+    const shortCodes = { Icon };
 
     return (
         <Layout>
-            <StyledMain>
-                <BreadCrumb to="/posts">
+            <Head
+                meta={{
+                    title,
+                    description,
+                    ogImage: og_image.childImageSharp.fluid.src,
+                    relativeUrl: fields.slug,
+                }}
+            />
+            <div>
+                <BreadCrumb to="/blog">
                     <Icon name="arrow-left" />
                     All Posts
                 </BreadCrumb>
                 <PostHeader>
                     <Title>{title}</Title>
                     <Subtitle>
-                        <time>
-                            {new Date(date).toLocaleDateString('en-UK', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric',
-                            })}
-                        </time>
+                        <time>{date}</time>
                         <span>&nbsp;&mdash;&nbsp;</span>
                         {tags &&
                             tags.length > 0 &&
                             tags.map(tag => (
-                                <Link
-                                    key={uuidv4()}
-                                    to={`/tags/${kebabCase(tag)}/`}
-                                    className="tag">
+                                <Tag key={uuidv4()} to={`/tags/${kebabCase(tag)}/`}>
                                     #{tag}
-                                </Link>
+                                </Tag>
                             ))}
                     </Subtitle>
                 </PostHeader>
-                <PostContent dangerouslySetInnerHTML={{ __html: html }} />
-            </StyledMain>
+                <PostContent>
+                    <MDXProvider components={shortCodes}>
+                        <MDXRenderer>{body}</MDXRenderer>
+                    </MDXProvider>
+                </PostContent>
+            </div>
         </Layout>
     );
 };
 
-export default PostTemplate;
-
 PostTemplate.propTypes = {
     data: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
 };
+
+export default PostTemplate;

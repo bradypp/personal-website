@@ -42,19 +42,6 @@ const base = css`
         background: var(--color-background-primary-1);
         min-height: 100vh;
         transition: var(--transition);
-
-        &.hidden {
-            overflow: hidden;
-        }
-        &.blur {
-            overflow: hidden;
-            #content > * {
-                filter: blur(5px) brightness(0.7);
-                transition: var(--transition);
-                pointer-events: none;
-                user-select: none;
-            }
-        }
     }
 
     ${mixins.customScrollbar({
@@ -135,15 +122,15 @@ const base = css`
     input,
     select,
     textarea {
-        outline: none;
+        ${'' /* outline: none; */}
         border: 0;
         border-radius: 0;
         transition: var(--transition);
 
-        &:focus,
+        ${'' /* &:focus,
         &:active {
             outline: none;
-        }
+        } */}
 
         &:disabled {
             opacity: 0.7;
@@ -195,7 +182,7 @@ const base = css`
         margin: 0 0 1.5rem 0;
 
         & > a {
-            ${mixins.inlineLink};
+            ${mixins.primaryLink};
         }
 
         & > code {

@@ -2,20 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Head, Footer, Header, Social } from '@components';
+import { mixins } from '@styles';
+import { Footer, Meta, Social } from '@components';
 
 const Content = styled.div`
+    ${mixins.containAndCenter};
+    display: flex;
+    flex-direction: column;
+    padding-top: ${props => (!props.isHome ? '180px' : '0')};
+`;
+const Main = styled.main`
     width: 100%;
     padding: 0 var(--side-padding);
+    min-height: 100vh;
 `;
 
-const Layout = ({ children, meta, isHome }) => {
+const Layout = ({ children, isHome, meta }) => {
     return (
         <div id="root">
-            <Head meta={meta} />
             <Social isHome={isHome} orientation="left" />
-            <Header isHome={isHome} />
-            <Content id="content">{children}</Content>
+            <Meta isHome={isHome} meta={meta} />
+            <Main>
+                <Content id="content" isHome={isHome}>
+                    {children}
+                </Content>
+            </Main>
             <Footer />
         </div>
     );
@@ -23,16 +34,18 @@ const Layout = ({ children, meta, isHome }) => {
 
 Layout.propTypes = {
     children: PropTypes.node.isRequired,
+    isHome: PropTypes.bool,
     meta: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string,
+        relativeUrl: PropTypes.string,
+        ogImage: PropTypes.string,
     }),
-    isHome: PropTypes.bool,
 };
 
 Layout.defaultProps = {
-    meta: undefined,
     isHome: false,
+    meta: undefined,
 };
 
 export default Layout;

@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
 import Media from 'react-media';
 
-import { js, constants } from '@utils';
+import { throttle } from '@utils/javascript';
+import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
 import { navLinks } from '@config';
 import { Menu, ThemeToggle, Icon } from '@components';
 import { mixins, media } from '@styles';
@@ -151,7 +152,6 @@ const LinksList = styled.ul`
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-xs);
-
     padding: 1.2rem 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
@@ -161,32 +161,13 @@ const StyledLink = styled(Link)`
         color: var(--color-primary);
     }
 `;
-const Logo = styled(Link).attrs({ to: '/' })`
-    margin-right: 3.5rem;
-
+const HomeLink = styled(Link)`
+    height: 35px;
+    width: 35px;
+    color: var(--color-text-primary-1);
     svg {
-        width: 4.5rem;
-        height: 4.5rem;
-
-        .logo-border {
-            transition: all 0.2s var(--ease);
-            stroke: var(--color-text-primary-1);
-        }
-        .logo-text {
-            transition: all 0.2s var(--ease);
-            fill: var(--color-text-primary-1);
-        }
-
-        &:hover {
-            fill: var(--color-logo-hover);
-
-            .logo-border {
-                stroke: var(--color-primary);
-            }
-            .logo-text {
-                fill: var(--color-primary);
-            }
-        }
+        color: currentColor;
+        fill: currentColor;
     }
 `;
 
@@ -207,8 +188,8 @@ class Header extends Component {
                     scrollDirection: window && window.pageYOffset > 0 ? 'down' : 'none',
                 },
                 () => {
-                    window.addEventListener('scroll', js.throttle(this.handleScroll));
-                    window.addEventListener('resize', js.throttle(this.handleResize));
+                    window.addEventListener('scroll', throttle(this.handleScroll));
+                    window.addEventListener('resize', throttle(this.handleResize));
                     window.addEventListener('keydown', e => this.handleKeydown(e));
                 },
             );
@@ -216,8 +197,8 @@ class Header extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', js.throttle(this.handleScroll));
-        window.removeEventListener('resize', js.throttle(this.handleResize));
+        window.removeEventListener('scroll', throttle(this.handleScroll));
+        window.removeEventListener('resize', throttle(this.handleResize));
         window.removeEventListener('keydown', e => this.handleKeydown(e));
     }
 
@@ -263,7 +244,7 @@ class Header extends Component {
 
     handleKeydown = e => {
         const { isMenuOpen } = this.state;
-        if (isMenuOpen && e.keyCode === constants.KEY_CODES.ESCAPE) {
+        if (isMenuOpen && e.keyCode === KEY_CODES.ESCAPE) {
             this.toggleMenu();
         }
     };
@@ -281,13 +262,10 @@ class Header extends Component {
                     animate="visible"
                     variants={variants}>
                     <Media
-                        query="(min-width: 801px)"
+                        query={`(min-width: ${BREAKPOINTS.bp800 + 1}px)`}
                         render={() => (
                             <NavContainer>
                                 <LinksList>
-                                    <Logo>
-                                        <Icon name="logo" />
-                                    </Logo>
                                     {navLinks.map(({ url, name }) => (
                                         <li key={uuidv4()}>
                                             <StyledLink to={url}>{name}</StyledLink>
@@ -299,12 +277,12 @@ class Header extends Component {
                         )}
                     />
                     <Media
-                        query="(max-width: 800px)"
+                        query={`(max-width: ${BREAKPOINTS.bp800}px)`}
                         render={() => (
                             <>
-                                <Logo>
-                                    <Icon name="logo" />
-                                </Logo>
+                                <HomeLink to="/">
+                                    <Icon name="home" />
+                                </HomeLink>
                                 <ThemeToggle />
                                 <Hamburger onClick={this.toggleMenu}>
                                     <HamburgerBox>

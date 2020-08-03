@@ -6,8 +6,9 @@ import Media from 'react-media';
 import { v4 as uuidv4 } from 'uuid';
 
 import { scrollRevealConfig } from '@config';
-import { scrollReveal } from '@utils';
-import { Icon, OutboundLink, Heading } from '@components';
+import scrollReveal from '@utils/scrollReveal';
+import { BREAKPOINTS } from '@utils/constants';
+import { Icon, CustomLink, Heading } from '@components';
 import { mixins, media } from '@styles';
 
 const tagMargin = '1.7rem';
@@ -70,7 +71,7 @@ const Description = styled.div`
         margin: 0;
     }
     a {
-        ${mixins.inlineLink};
+        ${mixins.primaryLink};
     }
 
     ${media.bp1040`
@@ -97,7 +98,7 @@ const TechList = styled.ul`
 
     li {
         font-family: var(--fonts-mono);
-        font-size: var(--font-size-xxs);
+        font-size: var(--font-size-2xs);
         margin-right: ${tagMargin};
         margin-bottom: 0.8rem;
         white-space: nowrap;
@@ -124,7 +125,7 @@ const LinksContainer = styled.div`
     margin-left: -1rem;
     overflow: visible;
 `;
-const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} />)`
+const IconLink = styled(props => <CustomLink variant="secondary" {...props} />)`
     &&:first-of-type {
         margin-right: 0.5rem;
     }
@@ -141,7 +142,7 @@ const IconLink = styled(props => <OutboundLink variant="styled-link" {...props} 
         }
     `}
 `;
-const ImgLinkContainer = styled(props => <OutboundLink {...props} />)`
+const ImgLinkContainer = styled(props => <CustomLink {...props} />)`
     width: 600px;
     max-width: calc(100vw - 2 * var(--side-padding));
     max-height: ${props => props.maxHeight || 'auto'};
@@ -283,19 +284,19 @@ const Projects = ({ data }) => {
                                 <Overline>{overline}</Overline>
                                 <ProjectName>
                                     {external ? (
-                                        <OutboundLink
+                                        <CustomLink
                                             variant={null}
                                             href={external}
                                             aria-label="External Link">
                                             {title}
-                                        </OutboundLink>
+                                        </CustomLink>
                                     ) : (
                                         title
                                     )}
                                 </ProjectName>
                                 <Description dangerouslySetInnerHTML={{ __html: html }} />
                                 <Media
-                                    query="(min-width: 801px)"
+                                    query={`(min-width: ${BREAKPOINTS.bp800 + 1}px)`}
                                     render={() => (
                                         <>
                                             {tech && (
@@ -333,7 +334,7 @@ const Projects = ({ data }) => {
                                 />
                             </ImgLinkContainer>
                             <Media
-                                query="(max-width: 800px)"
+                                query={`(max-width: ${BREAKPOINTS.bp800}px)"`}
                                 render={() => (
                                     <>
                                         {tech && (

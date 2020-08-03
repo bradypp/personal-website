@@ -36,12 +36,12 @@ const FormButtons = ({
 }) => (
     <ButtonsContainer {...props}>
         {withSubmit && (
-            <StyledButton type="submit" variant="button-primary" isWorking={isSubmitting}>
+            <StyledButton type="submit" variant="primary" isWorking={isSubmitting}>
                 {submitText}
             </StyledButton>
         )}
         {withReset && (
-            <StyledButton type="reset" variant="button-empty">
+            <StyledButton type="reset" variant="empty">
                 {resetText}
             </StyledButton>
         )}

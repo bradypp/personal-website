@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 
-import { Layout, Hero, About, Projects, Contact, Main } from '@components';
-
-const StyledMain = styled(Main)`
-    padding: 0;
-`;
+import { Layout, Hero, About, Projects, Contact } from '@components';
 
 const IndexPage = ({ location, data }) => {
     useEffect(() => {
@@ -23,12 +18,10 @@ const IndexPage = ({ location, data }) => {
 
     return (
         <Layout isHome={location && location.pathname === '/'}>
-            <StyledMain>
-                <Hero data={data.hero.edges} />
-                <About data={data.about.edges} />
-                <Projects data={data.projects.edges} />
-                <Contact data={data.contact.edges} />
-            </StyledMain>
+            <Hero data={data.hero.edges} />
+            <About data={data.about.edges} />
+            <Projects data={data.projects.edges} />
+            <Contact data={data.contact.edges} />
         </Layout>
     );
 };

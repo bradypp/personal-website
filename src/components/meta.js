@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import favicon from '@images/favicons/favicon.ico';
-import androidIcon192x192 from '@images/favicons/android-chrome-192x192.png';
-import androidIcon512x512 from '@images/favicons/android-chrome-512x512.png';
-import favicon16x16 from '@images/favicons/favicon-16x16.png';
-import favicon32x32 from '@images/favicons/favicon-32x32.png';
-import favicon96x96 from '@images/favicons/favicon-96x96.png';
-import favicon128x128 from '@images/favicons/favicon-128x128.png';
-import favicon196x196 from '@images/favicons/favicon-196x196.png';
-import msTile144x144 from '@images/favicons/mstile-144x144.png';
-import msTile150x150 from '@images/favicons/mstile-150x150.png';
-import msTile70x70 from '@images/favicons/mstile-70x70.png';
-import msTile310x150 from '@images/favicons/mstile-310x150.png';
-import msTile310x310 from '@images/favicons/mstile-310x310.png';
-import appleIcon57x57 from '@images/favicons/apple-touch-icon-57x57.png';
-import appleIcon60x60 from '@images/favicons/apple-touch-icon-60x60.png';
-import appleIcon72x72 from '@images/favicons/apple-touch-icon-72x72.png';
-import appleIcon76x76 from '@images/favicons/apple-touch-icon-76x76.png';
-import appleIcon114x114 from '@images/favicons/apple-touch-icon-114x114.png';
-import appleIcon120x120 from '@images/favicons/apple-touch-icon-120x120.png';
-import appleIcon144x144 from '@images/favicons/apple-touch-icon-144x144.png';
-import appleIcon152x152 from '@images/favicons/apple-touch-icon-152x152.png';
-import ogImage from '@images/og-image.png';
+import favicon from '@assets/images/favicons/favicon.ico';
+import androidIcon192x192 from '@assets/images/favicons/android-chrome-192x192.png';
+import androidIcon512x512 from '@assets/images/favicons/android-chrome-512x512.png';
+import favicon16x16 from '@assets/images/favicons/favicon-16x16.png';
+import favicon32x32 from '@assets/images/favicons/favicon-32x32.png';
+import favicon96x96 from '@assets/images/favicons/favicon-96x96.png';
+import favicon128x128 from '@assets/images/favicons/favicon-128x128.png';
+import favicon196x196 from '@assets/images/favicons/favicon-196x196.png';
+import msTile144x144 from '@assets/images/favicons/mstile-144x144.png';
+import msTile150x150 from '@assets/images/favicons/mstile-150x150.png';
+import msTile70x70 from '@assets/images/favicons/mstile-70x70.png';
+import msTile310x150 from '@assets/images/favicons/mstile-310x150.png';
+import msTile310x310 from '@assets/images/favicons/mstile-310x310.png';
+import appleIcon57x57 from '@assets/images/favicons/apple-touch-icon-57x57.png';
+import appleIcon60x60 from '@assets/images/favicons/apple-touch-icon-60x60.png';
+import appleIcon72x72 from '@assets/images/favicons/apple-touch-icon-72x72.png';
+import appleIcon76x76 from '@assets/images/favicons/apple-touch-icon-76x76.png';
+import appleIcon114x114 from '@assets/images/favicons/apple-touch-icon-114x114.png';
+import appleIcon120x120 from '@assets/images/favicons/apple-touch-icon-120x120.png';
+import appleIcon144x144 from '@assets/images/favicons/apple-touch-icon-144x144.png';
+import appleIcon152x152 from '@assets/images/favicons/apple-touch-icon-152x152.png';
+import ogImage from '@assets/images/og-image.png';
 import { twitterHandle, mainThemeColor } from '@config';
 
-const Head = meta => {
+const Meta = ({ meta }) => {
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -48,7 +48,6 @@ const Head = meta => {
 
     const metaTitle = meta.title || title;
     const metaDescription = meta.description || description;
-    const metaKeywords = meta.keywords || keywords;
     const metaOgImage = meta.ogImage || ogImage;
     const metaPageUrl = `${siteUrl}${meta.relativeUrl || ''}`;
 
@@ -56,7 +55,7 @@ const Head = meta => {
         <Helmet>
             <html lang={language} />
             <title itemProp="name" lang={language}>
-                {metaTitle}
+                {meta.title}
             </title>
             <link rel="canonical" href={metaPageUrl} />
             <link rel="shortcut icon" href={favicon} />
@@ -64,7 +63,7 @@ const Head = meta => {
             <meta itemProp="description" content={metaDescription} />
             <meta itemProp="image" content={metaOgImage} />
             <meta name="description" content={metaDescription} />
-            <meta name="keywords" content={metaKeywords} />
+            <meta name="keywords" content={keywords} />
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />
@@ -113,18 +112,17 @@ const Head = meta => {
     );
 };
 
-Head.propTypes = {
+Meta.propTypes = {
     meta: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string,
-        keywords: PropTypes.string,
         relativeUrl: PropTypes.string,
         ogImage: PropTypes.string,
     }),
 };
 
-Head.defaultProps = {
+Meta.defaultProps = {
     meta: {},
 };
 
-export default Head;
+export default Meta;
