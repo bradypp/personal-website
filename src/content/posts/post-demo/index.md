@@ -1,6 +1,6 @@
 ---
 title: Post Demo
-description: Testing posts with markdown
+subtitle: Testing posts with markdown
 date: '2020-05-31'
 draft: true
 slug: '/post-demo'
@@ -9,6 +9,8 @@ tags:
 ---
 
 ![Image Alt](./image.jpg)
+
+            <Prism />
 
 ```jsx
 class FlavorForm extends React.Component { // highlight-line

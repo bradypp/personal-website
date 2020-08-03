@@ -5,23 +5,43 @@
  */
 
 const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
 // const { kebabCase } = require('lodash');
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
+    const { createNodeField } = actions;
+
+    if (node.internal.type === 'Mdx') {
+        const value = createFilePath({ node, getNode, basePath: 'posts' });
+        createNodeField({
+            // Name of the field you are adding
+            name: 'slug',
+            // Individual MDX node
+            node,
+            // Generated value based on filepath with "blog" prefix. you
+            // don't need a separating "/" before the value because
+            // createFilePath returns a path with the leading "/".
+            value: `/blog${value}`,
+        });
+    }
+};
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions;
-    const postTemplate = path.resolve(`src/templates/post.js`);
+    const PostLayout = path.resolve(`./src/components`);
     // const tagTemplate = path.resolve('src/templates/tag.js');
 
     const result = await graphql(`
         {
-            postsRemark: allMarkdownRemark(
+            postsRemark: allMdx(
                 filter: { fileAbsolutePath: { regex: "/posts/" } }
                 sort: { order: DESC, fields: [frontmatter___date] }
                 limit: 1000
             ) {
                 edges {
                     node {
-                        frontmatter {
+                        id
+                        fields {
                             slug
                         }
                     }
@@ -46,9 +66,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     posts.forEach(({ node }) => {
         createPage({
-            component: postTemplate,
-            path: node.frontmatter.slug,
-            context: {},
+            component: PostLayout,
+            path: node.fields.slug,
+            context: { id: node.id },
         });
     });
 
@@ -90,8 +110,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             alias: {
                 '@components': path.resolve(__dirname, 'src/components'),
                 '@config': path.resolve(__dirname, 'src/config'),
-                '@fonts': path.resolve(__dirname, 'src/fonts'),
-                '@images': path.resolve(__dirname, 'src/images'),
+                '@assets': path.resolve(__dirname, 'src/assets'),
                 '@pages': path.resolve(__dirname, 'src/pages'),
                 '@styles': path.resolve(__dirname, 'src/styles'),
                 '@utils': path.resolve(__dirname, 'src/utils'),
