@@ -6,7 +6,7 @@ skills:
     - JavaScript (ES6+)
     - React & Redux
     - Node.js & Express.js
-    - SQL
+    - SQL & MySQL
     - MongoDB
     - jQuery
     - Gatsby.js / Next.js
