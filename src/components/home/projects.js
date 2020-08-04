@@ -264,6 +264,8 @@ const Projects = ({ data }) => {
         );
     }, []);
 
+    console.log(BREAKPOINTS.bp800);
+
     return (
         <ProjectsContainer>
             <Heading id="portfolio" ref={headingRef}>
@@ -334,7 +336,7 @@ const Projects = ({ data }) => {
                                 />
                             </ImgLinkContainer>
                             <Media
-                                query={`(max-width: ${BREAKPOINTS.bp800}px)"`}
+                                query={`(max-width: ${BREAKPOINTS.bp800}px)`}
                                 render={() => (
                                     <>
                                         {tech && (
