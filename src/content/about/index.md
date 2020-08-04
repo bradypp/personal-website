@@ -8,9 +8,9 @@ skills:
     - Node.js & Express.js
     - SQL & MySQL
     - MongoDB
-    - jQuery
     - Gatsby.js / Next.js
     - GraphQL
+    - jQuery
     - Tailwind CSS / Bootstrap
     - Gulp / Webpack
     - Git & GitHub
