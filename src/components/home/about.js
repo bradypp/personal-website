@@ -93,11 +93,11 @@ const About = ({ data }) => {
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
                     <Media
-                        query={`(min-width: ${BREAKPOINTS.bp440 + 1})"`}
+                        query={`(min-width: ${BREAKPOINTS.bp440 + 1}px)`}
                         render={() => <CustomList items={skills} columns={3} />}
                     />
                     <Media
-                        query={`(max-width: ${BREAKPOINTS.bp440})`}
+                        query={`(max-width: ${BREAKPOINTS.bp440}px)`}
                         render={() => <CustomList items={skills} columns={2} />}
                     />
                 </ContentContainer>
