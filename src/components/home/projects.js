@@ -265,8 +265,6 @@ const Projects = ({ data }) => {
         );
     }, []);
 
-    console.log(BREAKPOINTS.bp800);
-
     return (
         <ProjectsContainer>
             <Heading id="portfolio" ref={headingRef}>
