@@ -154,6 +154,7 @@ const ImgLinkContainer = styled(props => <CustomLink {...props} />)`
     max-width: 100%;
     grid-column: 2 / -1;
     justify-self: end;
+    z-index: 1;
     
 
     ${media.bp1440`
