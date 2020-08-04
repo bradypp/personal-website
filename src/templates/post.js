@@ -1,6 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -8,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Icon, Head } from '@components';
+import { Layout, Icon, CustomLink } from '@components';
 
 const PostHeader = styled.header`
     margin-bottom: 5rem;
@@ -64,7 +63,7 @@ const PostContent = styled.div`
         }
     }
 `;
-const BreadCrumb = styled(Link)`
+const BreadCrumb = styled(CustomLink)`
     display: flex;
     align-items: center;
     margin-bottom: 4rem;
@@ -96,7 +95,7 @@ const Subtitle = styled.p`
     font-weight: normal;
     line-height: 1.5;
 `;
-const Tag = styled(Link)`
+const Tag = styled(CustomLink)`
     margin-right: 1rem;
     line-height: 1.5;
 `;
@@ -133,15 +132,13 @@ const PostTemplate = ({ data }) => {
     const shortCodes = { Icon };
 
     return (
-        <Layout>
-            <Head
-                meta={{
-                    title,
-                    description,
-                    ogImage: og_image.childImageSharp.fluid.src,
-                    relativeUrl: fields.slug,
-                }}
-            />
+        <Layout
+            meta={{
+                title,
+                description,
+                ogImage: og_image.childImageSharp.fluid.src,
+                relativeUrl: fields.slug,
+            }}>
             <div>
                 <BreadCrumb to="/blog">
                     <Icon name="arrow-left" />

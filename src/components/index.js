@@ -17,7 +17,6 @@ export { default as Button } from './button';
 export { default as CustomLink } from './custom-link';
 export { default as Side } from './side';
 export { default as Social } from './social';
-export { default as Email } from './email';
 export { default as Meta } from './meta';
 export { default as Header } from './header';
 export { default as Footer } from './footer';

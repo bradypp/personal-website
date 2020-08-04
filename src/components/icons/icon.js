@@ -13,6 +13,7 @@ import IconLinkedIn from './linkedin';
 import IconTwitter from './twitter';
 import IconSun from './sun';
 import IconLogo from './logo';
+import IconAnchor from './anchor';
 
 const Icon = ({ name }) => {
     const icons = {
@@ -20,6 +21,7 @@ const Icon = ({ name }) => {
         'arrow-left': IoMdArrowBack,
         'arrow-right': IoMdArrowRoundForward,
         email: MdEmail,
+        anchor: IconAnchor,
         external: IconExternal,
         sun: IconSun,
         moon: FiMoon,
