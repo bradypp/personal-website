@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { mixins } from '@styles';
-import { Footer, Meta, Social } from '@components';
+import { Footer, Meta, Social, Header } from '@components';
 
 const Content = styled.div`
     ${mixins.containAndCenter};
@@ -22,6 +22,7 @@ const Layout = ({ children, isHome, meta }) => {
         <div id="root">
             <Social isHome={isHome} orientation="left" />
             <Meta isHome={isHome} meta={meta} />
+            <Header isHome={isHome} />
             <Main>
                 <Content id="content" isHome={isHome}>
                     {children}
