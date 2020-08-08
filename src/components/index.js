@@ -6,6 +6,9 @@ export { default as About } from './home/about';
 export { default as Projects } from './home/projects';
 export { default as Contact } from './home/contact';
 
+// Blog
+export { default as Tag } from './blog/tag';
+
 // Form
 export { default as Form } from './form/form';
 export { default as Input } from './form/input';

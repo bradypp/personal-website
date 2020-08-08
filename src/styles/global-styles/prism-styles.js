@@ -18,8 +18,7 @@ const prismColors = {
 
 const PrismStyles = css`
     /**
-    * Add back the container background-color, border-radius, padding, margin
-    * and overflow that we removed from <pre>.
+    * Add back the container background-color, border-radius, padding, margin and overflow that's removed from <pre>.
     */
     .gatsby-highlight {
         background-color: ${prismColors.bg};
@@ -44,6 +43,9 @@ const PrismStyles = css`
         word-wrap: normal;
         tab-size: 2;
         hyphens: none;
+    }
+    .gatsby-highlight pre[class*='language-'].line-numbers {
+        padding-left: 2.8em;
     }
 
     /**

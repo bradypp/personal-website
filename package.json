@@ -7,9 +7,10 @@
   "scripts": {
     "develop": "env-cmd -f ./.env.development gatsby develop -p 3000",
     "start": "run-p start:**",
-    "start:app": "npm run develop",
+    "start:app": "yarn develop",
     "start:lambda": "env-cmd -f ./.env.development netlify-lambda serve src/functions",
-    "build": "gatsby build && netlify-lambda build src/functions",
+    "build": "yarn build:app && yarn build:lambda",
+    "build:profile": "gatsby build --profile",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/functions",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",

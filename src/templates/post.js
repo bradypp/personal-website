@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Icon, CustomLink } from '@components';
+import { Layout, Tag, Date } from '@components';
 
 const PostHeader = styled.header`
     margin-bottom: 5rem;
@@ -63,91 +63,68 @@ const PostContent = styled.div`
         }
     }
 `;
-const BreadCrumb = styled(CustomLink)`
-    display: flex;
-    align-items: center;
-    margin-bottom: 4rem;
-    color: var(--color-primary);
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-xs);
-    font-weight: bold;
-    line-height: 1.5;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+// const BreadCrumb = styled(CustomLink)`
+//     display: flex;
+//     align-items: center;
+//     margin-bottom: 4rem;
+//     color: var(--color-primary);
+//     font-family: var(--font-family-mono);
+//     font-size: var(--font-size-xs);
+//     font-weight: bold;
+//     line-height: 1.5;
+//     text-transform: uppercase;
+//     letter-spacing: 0.1em;
 
-    svg {
-        display: block;
-        margin-right: 1rem;
-        height: 2rem;
-        width: 2rem;
-    }
-`;
+//     svg {
+//         display: block;
+//         margin-right: 1rem;
+//         height: 2rem;
+//         width: 2rem;
+//     }
+// `;
 const Title = styled.h1`
     font-size: var(--font-size-h1);
-    margin: 0;
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
 `;
-const Subtitle = styled.p`
-    color: var(--color-primary);
-    margin: 0 0 2rem 0;
-    font-size: var(--font-size-md);
+const DateTagsContainer = styled.div`
+    color: var(--color-text-primary-1);
+    font-size: var(--font-size-xs);
     font-family: var(--fonts-mono);
     font-weight: normal;
+    margin-bottom: 0.5rem;
     line-height: 1.5;
 `;
-const Tag = styled(CustomLink)`
-    margin-right: 1rem;
-    line-height: 1.5;
+const Subtitle = styled.p`
+    color: var(--color-text-primary-2);
+    font-style: italic;
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+    margin-bottom: 0.8rem;
 `;
 
-// TODO: excerpt(pruneLength: 200, truncate: true)
-export const pageQuery = graphql`
-    query PostQuery($id: String!) {
-        mdx(id: { eq: $id }) {
-            body
-            fields {
-                slug
-            }
-            frontmatter {
-                title
-                description
-                date(formatString: "MMMM Do, YYYY")
-                tags
-                og_image {
-                    childImageSharp {
-                        fluid(maxWidth: 800, quality: 90) {
-                            ...GatsbyImageSharpFluid
-                        }
-                    }
-                }
-            }
-        }
-    }
-`;
-// TODO: check meta tags are working
+// TODO: add link to dev.to & tags list to bottom of post
+// TODO: add newsletter box, twitter share, keep reading links, & contents
 const PostTemplate = ({ data }) => {
-    const { frontmatter, body, fields } = data.mdx;
-    const { title, description, date, tags, og_image } = frontmatter;
+    const { frontmatter, body, fields } = data?.mdx;
+    const { title, subtitle, description, date, tags, og_image } = frontmatter;
 
-    const shortCodes = { Icon };
+    const shortCodes = {};
 
     return (
         <Layout
             meta={{
-                title,
+                title: `${title} | Paul Brady`,
                 description,
                 ogImage: og_image.childImageSharp.fluid.src,
                 relativeUrl: fields.slug,
             }}>
             <div>
-                <BreadCrumb to="/blog">
-                    <Icon name="arrow-left" />
-                    All Posts
-                </BreadCrumb>
                 <PostHeader>
                     <Title>{title}</Title>
-                    <Subtitle>
-                        <time>{date}</time>
+                    {subtitle && <Subtitle>{subtitle}</Subtitle>}
+                    <DateTagsContainer>
+                        <Date date={date} />
                         <span>&nbsp;&mdash;&nbsp;</span>
                         {tags &&
                             tags.length > 0 &&
@@ -156,7 +133,7 @@ const PostTemplate = ({ data }) => {
                                     #{tag}
                                 </Tag>
                             ))}
-                    </Subtitle>
+                    </DateTagsContainer>
                 </PostHeader>
                 <PostContent>
                     <MDXProvider components={shortCodes}>
@@ -173,3 +150,28 @@ PostTemplate.propTypes = {
 };
 
 export default PostTemplate;
+
+export const pageQuery = graphql`
+    query PostQuery($id: String!) {
+        mdx(id: { eq: $id }) {
+            body
+            fields {
+                slug
+            }
+            frontmatter {
+                title
+                description
+                subtitle
+                date(formatString: "MMMM Do, YYYY")
+                tags
+                og_image {
+                    childImageSharp {
+                        fluid(maxWidth: 800, quality: 90) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
+            }
+        }
+    }
+`;

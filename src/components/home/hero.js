@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import { twitter } from '@config';
 import { mixins, media } from '@styles';
-import { Button, CustomLink } from '@components';
+import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
 import wave from '@assets/images/wave.png';
 

@@ -7,8 +7,7 @@ import { Footer, Meta, Social, Header } from '@components';
 
 const Content = styled.div`
     ${mixins.containAndCenter};
-    display: flex;
-    flex-direction: column;
+    ${mixins.flexColumnCenter};
     padding-top: ${props => (!props.isHome ? '180px' : '0')};
 `;
 const Main = styled.main`

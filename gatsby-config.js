@@ -133,6 +133,7 @@ module.exports = {
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
         `gatsby-plugin-netlify`,
+
         {
             resolve: `gatsby-plugin-mdx`,
             options: {
@@ -152,7 +153,7 @@ module.exports = {
                 icon: `./src/assets/images/favicons/android-chrome-512x512.png`,
             },
         },
-        //  IMPORTANT: this must be ahead of gatsby-plugin-manifest
+        //  IMPORTANT: this must be after gatsby-plugin-manifest
         `gatsby-plugin-offline`,
         {
             resolve: `gatsby-source-filesystem`,

@@ -17,7 +17,7 @@ const IndexPage = ({ location, data }) => {
     }, [location.hash]);
 
     return (
-        <Layout isHome={location && location.pathname === '/'}>
+        <Layout isHome>
             <Hero data={data.hero.edges} />
             <About data={data.about.edges} />
             <Projects data={data.projects.edges} />
