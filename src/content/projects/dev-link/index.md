@@ -19,6 +19,6 @@ tech:
 
 Dev Link is a full-stack web-app which allows developers to create a profile, showcase their abilities and quickly search & filter for other developers.
 
-I built this web-app using the MERN stack and especially enjoyed using modern React with Redux and Reselect to efficiently manage global state.
+I built this project using the MERN stack and especially enjoyed using modern React with Redux and Reselect to efficiently manage global state.
 
 It was also extremely satisfying to successfully create a large, secure RESTful API to query for required data from MongoDB.

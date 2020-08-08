@@ -15,7 +15,7 @@ tech:
     - Netlify
 ---
 
-My personal site was built using Gatsby.js, the modern react SSR framework.
+My personal site was built using the modern React SSR framework, Gatsby.js.
 
 I took advantage of GraphQL and the many Gatsby plugins to thoroughly optimize the site and easily query data from different data sources.
 
