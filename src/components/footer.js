@@ -55,7 +55,7 @@ const Footer = () => {
                 </FooterTopContainer>
                 <FooterBottomContainer>
                     <li>
-                        <CustomLink variant="secondary" href={`mailto:${email}`}>
+                        <CustomLink variant="secondary" href={`mailto:${email}`} aria-label="Email">
                             <Icon name="email" />
                         </CustomLink>
                     </li>

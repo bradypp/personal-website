@@ -60,7 +60,6 @@ const Meta = ({ meta }) => {
             <link rel="canonical" href={metaPageUrl} />
             <link rel="shortcut icon" href={favicon} />
             <meta itemProp="name" content={metaTitle} />
-            <meta itemProp="description" content={metaDescription} />
             <meta itemProp="image" content={metaOgImage} />
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={keywords} />

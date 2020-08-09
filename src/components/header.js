@@ -258,6 +258,7 @@ class Header extends Component {
                 <HeaderContainer
                     scrollDirection={scrollDirection}
                     isHome={isHome}
+                    aria-hidden={scrollDirection === 'down'}
                     initial="hidden"
                     animate="visible"
                     variants={variants}>
@@ -268,7 +269,9 @@ class Header extends Component {
                                 <LinksList>
                                     {navLinks.map(({ url, name }) => (
                                         <li key={uuidv4()}>
-                                            <StyledLink to={url}>{name}</StyledLink>
+                                            <StyledLink to={url} aria-label={name}>
+                                                {name}
+                                            </StyledLink>
                                         </li>
                                     ))}
                                 </LinksList>
@@ -280,7 +283,7 @@ class Header extends Component {
                         query={`(max-width: ${BREAKPOINTS.bp800}px)`}
                         render={() => (
                             <>
-                                <HomeLink to="/">
+                                <HomeLink to="/" aria-label="Home">
                                     <Icon name="home" />
                                 </HomeLink>
                                 <ThemeToggle />
@@ -289,7 +292,11 @@ class Header extends Component {
                                         <HamburgerContent isMenuOpen={isMenuOpen} />
                                     </HamburgerBox>
                                 </Hamburger>
-                                <Menu isMenuOpen={isMenuOpen} toggleMenu={this.toggleMenu} />
+                                <Menu
+                                    isMenuOpen={isMenuOpen}
+                                    toggleMenu={this.toggleMenu}
+                                    aria-label="Menu Toggle"
+                                />
                             </>
                         )}
                     />

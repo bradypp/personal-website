@@ -288,7 +288,7 @@ const Projects = ({ data }) => {
                                         <CustomLink
                                             variant={null}
                                             href={external}
-                                            aria-label="External Link">
+                                            aria-label="Demo">
                                             {title}
                                         </CustomLink>
                                     ) : (
@@ -311,14 +311,12 @@ const Projects = ({ data }) => {
                                                 {github && (
                                                     <IconLink
                                                         href={github}
-                                                        aria-label="GitHub Link">
+                                                        aria-label="GitHub Repo">
                                                         <Icon name="GitHub" />
                                                     </IconLink>
                                                 )}
                                                 {external && (
-                                                    <IconLink
-                                                        href={external}
-                                                        aria-label="External Link">
+                                                    <IconLink href={external} aria-label="Demo">
                                                         <Icon name="external" />
                                                     </IconLink>
                                                 )}
@@ -347,14 +345,12 @@ const Projects = ({ data }) => {
                                         )}
                                         <LinksContainer>
                                             {github && (
-                                                <IconLink href={github} aria-label="GitHub Link">
+                                                <IconLink href={github} aria-label="GitHub Repo">
                                                     <Icon name="GitHub" />
                                                 </IconLink>
                                             )}
                                             {external && (
-                                                <IconLink
-                                                    href={external}
-                                                    aria-label="External Link">
+                                                <IconLink href={external} aria-label="Demo">
                                                     <Icon name="external" />
                                                 </IconLink>
                                             )}
