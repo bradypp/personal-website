@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import { Layout, Hero, About, Projects, Contact } from '@components';
 
-const IndexPage = ({ location, data }) => {
+const IndexPage = ({ location, data: propsData }) => {
     useEffect(() => {
         if (location.hash) {
             const id = location.hash.substring(1);
@@ -15,6 +15,12 @@ const IndexPage = ({ location, data }) => {
             }
         }
     }, [location.hash]);
+
+    const data = useMemo(() => propsData, [propsData]);
+    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
+    // const aboutData = useMemo(() => data.about.edges, [data.about.edges]);
+    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
+    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
 
     return (
         <Layout isHome>

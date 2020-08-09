@@ -122,15 +122,15 @@ const base = css`
     input,
     select,
     textarea {
-        ${'' /* outline: none; */}
+        outline: none;
         border: 0;
         border-radius: 0;
         transition: var(--transition);
 
-        ${'' /* &:focus,
+        &:focus,
         &:active {
             outline: none;
-        } */}
+        }
 
         &:disabled {
             opacity: 0.7;

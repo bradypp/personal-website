@@ -51,7 +51,7 @@ const Social = ({ isHome, ...otherProps }) => (
     <Side isHome={isHome} {...otherProps}>
         <List>
             <li>
-                <CustomLink variant="secondary" href={`mailto:${email}`}>
+                <CustomLink variant="secondary" href={`mailto:${email}`} aria-label="Email">
                     <Icon name="email" />
                 </CustomLink>
             </li>

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import Media from 'react-media';
 
 import { twitter } from '@config';
 import { mixins, media } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
+import { BREAKPOINTS } from '@utils/constants';
 import wave from '@assets/images/wave.png';
 
 const margin = '12vh';
@@ -166,7 +168,9 @@ const Hero = ({ data }) => {
                         <CustomLink href={twitter} variant={null}>
                             <Name>{name}</Name>
                         </CustomLink>
+                        <Media query={`(max-width: ${BREAKPOINTS.bp440}px)`} render={() => '.'} />
                     </Title>
+
                     {wave && (
                         <WaveEmojiContainer
                             isAnimated={isWaveAnimated}

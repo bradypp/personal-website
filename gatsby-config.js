@@ -133,7 +133,6 @@ module.exports = {
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
         `gatsby-plugin-netlify`,
-
         {
             resolve: `gatsby-plugin-mdx`,
             options: {
@@ -151,6 +150,24 @@ module.exports = {
                 theme_color: `#fff`,
                 display: `minimal-ui`,
                 icon: `./src/assets/images/favicons/android-chrome-512x512.png`,
+                icons: [
+                    {
+                        src: `/favicons/android-chrome-192x192.png`,
+                        sizes: `192x192`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicons/android-chrome-512x512.png`,
+                        sizes: `512x512`,
+                        type: `image/png`,
+                    },
+                    {
+                        src: `/favicons/android-chrome-512x512.png`,
+                        sizes: `512x512`,
+                        type: `image/png`,
+                        purpose: 'any maskable',
+                    },
+                ],
             },
         },
         //  IMPORTANT: this must be after gatsby-plugin-manifest
