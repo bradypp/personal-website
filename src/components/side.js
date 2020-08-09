@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { throttle } from '@utils/javascript';
 import { useIsMounted } from '@hooks';
 import { media } from '@styles';
 
@@ -45,20 +46,20 @@ const SideContainer = styled.div`
 
 const Side = ({ children, isHome, orientation }) => {
     const [isVisible, setIsVisible] = useState(
-        typeof window !== 'undefined' && window.pageYOffset > 4000,
+        typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.65,
     );
-    const isMounted = useIsMounted(2000, isHome);
+    const isMounted = useIsMounted(1000, isHome);
 
     const handleScroll = () => {
         setIsVisible(
-            typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.5,
+            typeof window !== 'undefined' && window.pageYOffset > window.innerHeight * 0.65,
         );
     };
 
     useLayoutEffect(() => {
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', throttle(handleScroll, 200));
 
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', throttle(handleScroll, 200));
     }, []);
 
     return (
