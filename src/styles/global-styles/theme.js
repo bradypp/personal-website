@@ -41,7 +41,7 @@ const theme = css`
         --color-navy-4: #21344f;
         --color-navy-5: #2b3e59;
         --color-navy-6: #354863;
-        --color-grey-dark-1: #373737;
+        --color-grey-dark-1: #333;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #777;
         --color-grey-light-1: #e7e4e4;

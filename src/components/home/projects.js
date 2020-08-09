@@ -193,13 +193,10 @@ const ProjectContainer = styled.div`
     
     ${media.bp1280`
         grid-gap: 2.2rem;
+        margin-bottom: 8rem;
     `}
     ${media.bp1040`
         grid-gap: 1.6rem;
-        margin-bottom: 8rem;
-    `}
-    ${media.bp920`
-        align-items:center; 
     `}
     ${media.bp800`
         ${contentMobile}
@@ -259,10 +256,8 @@ const Projects = ({ data }) => {
     const imageRef = useRef();
 
     useEffect(() => {
-        scrollReveal.reveal(headingRef.current, scrollRevealConfig());
-        projectRef.current.forEach((ref, i) =>
-            scrollReveal.reveal(ref, scrollRevealConfig(i * 100)),
-        );
+        scrollReveal.reveal(headingRef.current, scrollRevealConfig(100));
+        projectRef.current.forEach(ref => scrollReveal.reveal(ref, scrollRevealConfig()));
     }, []);
 
     return (

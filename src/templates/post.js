@@ -63,25 +63,6 @@ const PostContent = styled.div`
         }
     }
 `;
-// const BreadCrumb = styled(CustomLink)`
-//     display: flex;
-//     align-items: center;
-//     margin-bottom: 4rem;
-//     color: var(--color-primary);
-//     font-family: var(--font-family-mono);
-//     font-size: var(--font-size-xs);
-//     font-weight: bold;
-//     line-height: 1.5;
-//     text-transform: uppercase;
-//     letter-spacing: 0.1em;
-
-//     svg {
-//         display: block;
-//         margin-right: 1rem;
-//         height: 2rem;
-//         width: 2rem;
-//     }
-// `;
 const Title = styled.h1`
     font-size: var(--font-size-h1);
     margin-bottom: 0.5rem;
@@ -99,7 +80,7 @@ const Subtitle = styled.p`
     color: var(--color-text-primary-2);
     font-style: italic;
     font-size: var(--font-size-xl);
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 0.8rem;
 `;
 

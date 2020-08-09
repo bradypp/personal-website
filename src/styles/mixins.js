@@ -1,12 +1,8 @@
 import { css } from 'styled-components';
-import Color from 'color';
 
 import media from './media';
 
 const mixins = {
-    darken: (colorValue, amount = '0.05') => Color(colorValue).darken(amount).string(),
-    lighten: (colorValue, amount = '0.05') => Color(colorValue).lighten(amount).string(),
-    rgba: (colorValue, opacity = '0.05') => Color(colorValue).alpha(opacity).string(),
     customScrollbar: (config = {}) => css`
         &::-webkit-scrollbar {
             width: ${config.width || '8px'};
@@ -183,7 +179,7 @@ const mixins = {
             }
         }
 
-        ${media.bp1040`
+        ${media.bp1280`
             padding-top: 80px;
             padding-bottom: 80px;
         `}
