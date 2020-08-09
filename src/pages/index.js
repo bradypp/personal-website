@@ -1,26 +1,11 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import { Layout, Hero, About, Projects, Contact } from '@components';
 
-const IndexPage = ({ location, data: propsData }) => {
-    useEffect(() => {
-        if (location.hash) {
-            const id = location.hash.substring(1);
-            const el = document.getElementById(id);
-            if (el) {
-                el.scrollIntoView();
-                el.focus();
-            }
-        }
-    }, [location.hash]);
-
+const IndexPage = ({ data: propsData }) => {
     const data = useMemo(() => propsData, [propsData]);
-    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
-    // const aboutData = useMemo(() => data.about.edges, [data.about.edges]);
-    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
-    // const heroData = useMemo(() => data.hero.edges, [data.hero.edges]);
 
     return (
         <Layout isHome>
@@ -33,7 +18,6 @@ const IndexPage = ({ location, data: propsData }) => {
 };
 
 IndexPage.propTypes = {
-    location: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
 };
 
