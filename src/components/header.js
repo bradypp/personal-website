@@ -9,30 +9,18 @@ import Media from 'react-media';
 import { throttle } from '@utils/javascript';
 import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, Icon } from '@components';
+import { Menu, ThemeToggle, Icon, Logo, ClientOnly } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
 const navScrollHeight = 70;
 const hamburgerWidth = '3rem';
 
-const variants = {
-    hidden: {
-        opacity: 0,
-    },
-    visible: {
-        opacity: 1,
-        transition: {
-            delay: 0.2,
-            duration: 0.8,
-        },
-    },
-};
-
 const HeaderContainer = styled(motion.header)`
     ${mixins.flexBetween};
     position: fixed;
     top: 0;
+
     background-color: ${props => {
         if (props.isHome) {
             return props.scrollDirection === 'none'
@@ -41,8 +29,7 @@ const HeaderContainer = styled(motion.header)`
         }
         return 'var(--color-background-primary-1)';
     }};
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), height 0.3s var(--ease),
-        background-color 0s var(--ease);
+    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), height 0.3s var(--ease);
     z-index: var(--z-index-header);
     filter: none !important;
     pointer-events: auto !important;
@@ -151,7 +138,7 @@ const LinksList = styled.ul`
 `;
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2xs);
     padding: 1.2rem 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
@@ -161,14 +148,8 @@ const StyledLink = styled(Link)`
         color: var(--color-primary);
     }
 `;
-const HomeLink = styled(Link)`
-    height: 35px;
-    width: 35px;
-    color: var(--color-text-primary-1);
-    svg {
-        color: currentColor;
-        fill: currentColor;
-    }
+const StyledLogo = styled(props => <Logo {...props} />)`
+    margin-right: 2rem;
 `;
 
 class Header extends Component {
@@ -253,13 +234,26 @@ class Header extends Component {
         const { isMounted, isMenuOpen, scrollDirection } = this.state;
         const { isHome } = this.props;
 
+        const variants = {
+            hidden: {
+                opacity: 0,
+            },
+            visible: {
+                opacity: 1,
+                transition: {
+                    delay: 0.2,
+                    duration: 0.8,
+                },
+            },
+        };
+
         return (
             isMounted && (
                 <HeaderContainer
                     scrollDirection={scrollDirection}
                     isHome={isHome}
                     aria-hidden={scrollDirection === 'down'}
-                    initial="hidden"
+                    initial={isHome ? 'hidden' : 'visible'}
                     animate="visible"
                     variants={variants}>
                     <Media
@@ -267,6 +261,11 @@ class Header extends Component {
                         render={() => (
                             <NavContainer>
                                 <LinksList>
+                                    <li>
+                                        <StyledLogo to="/" aria-label="Home">
+                                            <Icon name="logo" />
+                                        </StyledLogo>
+                                    </li>
                                     {navLinks.map(({ url, name }) => (
                                         <li key={uuidv4()}>
                                             <StyledLink to={url} aria-label={name}>
@@ -283,9 +282,9 @@ class Header extends Component {
                         query={`(max-width: ${BREAKPOINTS.bp800}px)`}
                         render={() => (
                             <>
-                                <HomeLink to="/" aria-label="Home">
-                                    <Icon name="home" />
-                                </HomeLink>
+                                <StyledLogo to="/" aria-label="Home">
+                                    <Icon name="logo" />
+                                </StyledLogo>
                                 <ThemeToggle />
                                 <Hamburger onClick={this.toggleMenu}>
                                     <HamburgerBox>

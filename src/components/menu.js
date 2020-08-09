@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, useAnimation } from 'framer-motion';
 
-import { Icon, CustomLink } from '@components';
+import { Icon, CustomLink, Logo } from '@components';
 import { navLinks, socialMedia, email } from '@config';
 import { mixins, media } from '@styles';
 
@@ -163,8 +163,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                 <ContentContainer>
                     <NavContainer>
                         <NavList>
-                            {/*  TODO: Remove home */}
-                            {navLinks.map(({ url, name }, i) => (
+                            {[{ url: '/', name: 'Home' }, ...navLinks].map(({ url, name }, i) => (
                                 <NavListItem
                                     key={uuidv4()}
                                     custom={i}

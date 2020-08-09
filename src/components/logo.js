@@ -7,10 +7,10 @@ import styled from 'styled-components';
 import { Icon } from '@components';
 
 const StyledLink = styled(Link).attrs({ to: '/' })`
-    svg {
-        width: 4.5rem;
-        height: 4.5rem;
+    width: 5.5rem;
+    height: 5.5rem;
 
+    svg {
         .logo-border {
             transition: all 0.2s var(--ease);
             stroke: var(--color-text-primary-1);
