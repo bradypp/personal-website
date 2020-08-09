@@ -125,7 +125,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
     const variants = {
         navHidden: {
             opacity: 0,
-            y: 50,
+            y: 25,
             transition: { duration: 0.6 },
         },
         navVisible: i => ({
@@ -163,7 +163,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                 <ContentContainer>
                     <NavContainer>
                         <NavList>
-                            {[{ url: '/', name: 'Home' }, ...navLinks].map(({ url, name }, i) => (
+                            {navLinks.map(({ url, name }, i) => (
                                 <NavListItem
                                     key={uuidv4()}
                                     custom={i}
