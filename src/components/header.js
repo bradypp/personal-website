@@ -9,7 +9,7 @@ import Media from 'react-media';
 import { throttle } from '@utils/javascript';
 import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, Icon, Logo, ClientOnly } from '@components';
+import { Menu, ThemeToggle } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -138,7 +138,7 @@ const LinksList = styled.ul`
 `;
 const StyledLink = styled(Link)`
     font-family: var(--fonts-primary);
-    font-size: var(--font-size-2xs);
+    font-size: var(--font-size-xs);
     padding: 1.2rem 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
@@ -147,9 +147,6 @@ const StyledLink = styled(Link)`
         transition: all 0.2s var(--ease);
         color: var(--color-primary);
     }
-`;
-const StyledLogo = styled(props => <Logo {...props} />)`
-    margin-right: 2rem;
 `;
 
 class Header extends Component {
@@ -261,11 +258,6 @@ class Header extends Component {
                         render={() => (
                             <NavContainer>
                                 <LinksList>
-                                    <li>
-                                        <StyledLogo to="/" aria-label="Home">
-                                            <Icon name="logo" />
-                                        </StyledLogo>
-                                    </li>
                                     {navLinks.map(({ url, name }) => (
                                         <li key={uuidv4()}>
                                             <StyledLink to={url} aria-label={name}>
@@ -282,9 +274,6 @@ class Header extends Component {
                         query={`(max-width: ${BREAKPOINTS.bp800}px)`}
                         render={() => (
                             <>
-                                <StyledLogo to="/" aria-label="Home">
-                                    <Icon name="logo" />
-                                </StyledLogo>
                                 <ThemeToggle />
                                 <Hamburger onClick={this.toggleMenu}>
                                     <HamburgerBox>

@@ -66,7 +66,7 @@ const PostTitle = styled.h3`
 const PostSubtitle = styled.p`
     margin-bottom: 0.5rem;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
     font-size: var(--font-size-lg);
     color: var(--color-text-primary-2);
 `;
@@ -106,7 +106,7 @@ const ReadMoreLink = styled(Link)`
 const BlogPage = ({ data }) => {
     const posts = data?.allMdx?.edges;
     const title = 'Blog';
-    const subtitle = 'Your weekly dose of web dev goodness';
+    const subtitle = 'Your regular dose of web dev goodness';
     return (
         <Layout meta={{ title: `${title} | Paul Brady` }}>
             <Title>Blog</Title>

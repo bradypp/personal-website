@@ -12,11 +12,11 @@ const StyledLink = styled(Link).attrs({ to: '/' })`
 
     svg {
         .logo-border {
-            transition: all 0.2s var(--ease);
+            transition: var(--transition);
             stroke: var(--color-text-primary-1);
         }
         .logo-text {
-            transition: all 0.2s var(--ease);
+            transition: var(--transition);
             fill: var(--color-text-primary-1);
         }
 

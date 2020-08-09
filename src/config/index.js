@@ -1,5 +1,5 @@
 module.exports = {
-    siteTitle: 'Paul Brady',
+    siteTitle: 'Paul Brady | Full Stack Developer',
     siteDescription:
         "Paul Brady's personal website showcases his work and expertise in web development.",
     siteKeywords:
@@ -34,6 +34,10 @@ module.exports = {
     ],
     navLinks: [
         {
+            name: 'Home',
+            url: '/',
+        },
+        {
             name: 'About',
             url: '/#about',
         },
@@ -48,13 +52,13 @@ module.exports = {
     ],
     scrollRevealConfig: (delay = 200) => ({
         origin: 'bottom',
-        distance: '20px',
+        distance: '25px',
         duration: 500,
         delay,
         rotate: { x: 0, y: 0, z: 0 },
         opacity: 0,
         scale: 1,
-        easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+        easing: 'ease-out',
         mobile: true,
         reset: false,
         useDelay: 'always',

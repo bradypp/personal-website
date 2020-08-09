@@ -13,21 +13,6 @@ import wave from '@assets/images/wave.png';
 
 const margin = '12vh';
 
-const variants = {
-    hidden: {
-        opacity: 0,
-        y: 50,
-    },
-    visible: i => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: 0.4 + i * 0.15,
-            duration: 0.6,
-        },
-    }),
-};
-
 const HeroContainer = styled.section`
     ${mixins.homeSection}
     align-self: center;
@@ -158,6 +143,22 @@ const Hero = ({ data }) => {
         handleWaveAnimation();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted]);
+
+    const variants = {
+        hidden: {
+            opacity: 0,
+            y: 25,
+        },
+        visible: i => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                ease: 'easeOut',
+                delay: 0.4 + i * 0.15,
+                duration: 0.5,
+            },
+        }),
+    };
 
     return (
         <HeroContainer>

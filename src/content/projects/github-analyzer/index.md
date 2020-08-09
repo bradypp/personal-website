@@ -1,6 +1,6 @@
 ---
 sort: 3
-overline: 'Front-End Web Application'
+overline: 'Front-End Web-App'
 title: 'GitHub Analyzer'
 images:
     - image: './image-1.png'

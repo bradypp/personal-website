@@ -14,7 +14,7 @@ tech:
     - Express.js
     - MongoDB
     - AWS S3
-    - JWT
+    - Styled Components
 ---
 
 Dev Link is a full-stack web-app which allows developers to create a profile, showcase their abilities and quickly search & filter for other developers.
