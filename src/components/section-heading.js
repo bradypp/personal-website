@@ -23,22 +23,22 @@ const StyledHeading = styled.h3`
     }
 `;
 
-const Heading = forwardRef(({ children, id, ...props }, ref) => (
+const SectionHeading = forwardRef(({ children, id, ...props }, ref) => (
     <StyledHeading ref={ref} {...props}>
         {id && <Anchor id={id} />}
         {children}
     </StyledHeading>
 ));
 
-Heading.propTypes = {
+SectionHeading.propTypes = {
     children: PropTypes.node.isRequired,
     id: PropTypes.string,
     className: PropTypes.string,
 };
 
-Heading.defaultProps = {
+SectionHeading.defaultProps = {
     id: undefined,
     className: undefined,
 };
 
-export default Heading;
+export default SectionHeading;

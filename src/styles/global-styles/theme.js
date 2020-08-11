@@ -113,7 +113,7 @@ const theme = css`
             --color-field-border-hover: var(--color-navy-3);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
-        --color-logo-hover: rgba(255, 167, 196, 0.05);
+            --color-logo-hover: rgba(255, 167, 196, 0.05);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
@@ -134,7 +134,8 @@ const theme = css`
         --font-size-4xl: 2.6rem;
         --font-size-h3: 3.2rem;
         --font-size-h2: 3.8rem;
-        --font-size-h1: 4.4rem;
+        --font-size-post-title: 4.4rem;
+        --font-size-page-title: 6rem;
 
         --z-index-side: 25;
         --z-index-header: 50;

@@ -8,6 +8,7 @@ export { default as Contact } from './home/contact';
 
 // Blog
 export { default as Tag } from './blog/tag';
+export { default as Posts } from './blog/posts';
 
 // Form
 export { default as Form } from './form/form';
@@ -23,11 +24,10 @@ export { default as Social } from './social';
 export { default as Meta } from './meta';
 export { default as Header } from './header';
 export { default as Footer } from './footer';
-export { default as Heading } from './heading';
+export { default as SectionHeading } from './section-heading';
 export { default as Menu } from './menu';
 export { default as Anchor } from './anchor';
 export { default as Layout } from './layout';
-export { default as Section } from './section';
 export { default as ClientOnly } from './client-only';
 export { default as ThemeToggle } from './theme-toggle';
 export { default as CustomList } from './custom-list';

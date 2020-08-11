@@ -8,7 +8,7 @@ import Media from 'react-media';
 import scrollReveal from '@utils/scrollReveal';
 import { BREAKPOINTS } from '@utils/constants';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, CustomLink, CustomList } from '@components';
+import { SectionHeading, CustomLink, CustomList } from '@components';
 import { mixins, media } from '@styles';
 
 const AboutContainer = styled.section`
@@ -88,7 +88,7 @@ const About = ({ data }) => {
 
     return (
         <AboutContainer ref={aboutRef}>
-            <Heading id="about">{title}</Heading>
+            <SectionHeading id="about">{title}</SectionHeading>
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />

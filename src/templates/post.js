@@ -11,6 +11,7 @@ import { Layout, Tag, Date } from '@components';
 
 const PostHeader = styled.header`
     margin-bottom: 5rem;
+    align-self: flex-start;
 `;
 const PostContent = styled.div`
     margin-bottom: 10rem;
@@ -64,7 +65,7 @@ const PostContent = styled.div`
     }
 `;
 const Title = styled.h1`
-    font-size: var(--font-size-h1);
+    font-size: var(--font-size-post-title);
     margin-bottom: 0.5rem;
     line-height: 1.25;
 `;
@@ -100,28 +101,26 @@ const PostTemplate = ({ data }) => {
                 ogImage: og_image.childImageSharp.fluid.src,
                 relativeUrl: fields.slug,
             }}>
-            <div>
-                <PostHeader>
-                    <Title>{title}</Title>
-                    {subtitle && <Subtitle>{subtitle}</Subtitle>}
-                    <DateTagsContainer>
-                        <Date date={date} />
-                        <span>&nbsp;&mdash;&nbsp;</span>
-                        {tags &&
-                            tags.length > 0 &&
-                            tags.map(tag => (
-                                <Tag key={uuidv4()} to={`/tags/${kebabCase(tag)}/`}>
-                                    #{tag}
-                                </Tag>
-                            ))}
-                    </DateTagsContainer>
-                </PostHeader>
-                <PostContent>
-                    <MDXProvider components={shortCodes}>
-                        <MDXRenderer>{body}</MDXRenderer>
-                    </MDXProvider>
-                </PostContent>
-            </div>
+            <PostHeader>
+                <Title>{title}</Title>
+                {subtitle && <Subtitle>{subtitle}</Subtitle>}
+                <DateTagsContainer>
+                    <Date date={date} />
+                    <span>&nbsp;&mdash;&nbsp;</span>
+                    {tags &&
+                        tags.length > 0 &&
+                        tags.map(tag => (
+                            <Tag key={uuidv4()} to={`/blog/tags/${kebabCase(tag)}/`}>
+                                #{tag}
+                            </Tag>
+                        ))}
+                </DateTagsContainer>
+            </PostHeader>
+            <PostContent>
+                <MDXProvider components={shortCodes}>
+                    <MDXRenderer>{body}</MDXRenderer>
+                </MDXProvider>
+            </PostContent>
         </Layout>
     );
 };

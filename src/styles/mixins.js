@@ -224,6 +224,16 @@ const mixins = {
         visibility: hidden;
         opacity: 0;
     `,
+    customList: css`
+        display: grid;
+        grid-template-columns: repeat(${props => props.columns || 1}, 1fr);
+        grid-column-gap: 1.6rem;
+        grid-row-gap: 1.8rem;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        list-style: none;
+    `,
 };
 
 export default mixins;

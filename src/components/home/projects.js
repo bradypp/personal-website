@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { scrollRevealConfig } from '@config';
 import scrollReveal from '@utils/scrollReveal';
 import { BREAKPOINTS } from '@utils/constants';
-import { Icon, CustomLink, Heading } from '@components';
+import { Icon, CustomLink, SectionHeading } from '@components';
 import { mixins, media } from '@styles';
 
 const tagMargin = '1.7rem';
@@ -262,9 +262,9 @@ const Projects = ({ data }) => {
 
     return (
         <ProjectsContainer>
-            <Heading id="portfolio" ref={headingRef}>
+            <SectionHeading id="portfolio" ref={headingRef}>
                 Portfolio
-            </Heading>
+            </SectionHeading>
             {data &&
                 data.map(({ node }, i) => {
                     const { frontmatter, html } = node;

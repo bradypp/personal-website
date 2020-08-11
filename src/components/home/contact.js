@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import scrollReveal from '@utils/scrollReveal';
 import { scrollRevealConfig, email } from '@config';
-import { Heading, CustomLink, Form } from '@components';
+import { SectionHeading, CustomLink, Form } from '@components';
 import { mixins, media } from '@styles';
 
 const ContactContainer = styled.section`
@@ -94,7 +94,7 @@ const Contact = ({ data }) => {
 
     return (
         <ContactContainer ref={contactRef}>
-            <Heading id="contact">{title}</Heading>
+            <SectionHeading id="contact">{title}</SectionHeading>
             <HTMLContainer dangerouslySetInnerHTML={{ __html: html }} />
             <FlexContainer>
                 <FormContainer>
