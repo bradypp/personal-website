@@ -6,13 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'gatsby';
 
 import { Icon, Tag, Date } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const PostsContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-gap: 2rem;
     margin-bottom: 8rem;
+
+    ${media.bp800`
+        grid-template-columns: 100%;
+        margin-bottom: 4rem;
+    `}
 `;
 const PostContainer = styled.div`
     display: flex;
@@ -82,7 +87,7 @@ const ReadMoreLink = styled(Link)`
 const Posts = ({ posts }) => {
     return (
         <PostsContainer>
-            {posts.map(post => {
+            {[...posts, ...posts].map(post => {
                 const { excerpt, fields, frontmatter } = post.node;
                 const { title, subtitle, date, tags } = frontmatter;
                 const { slug } = fields;

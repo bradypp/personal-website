@@ -23,7 +23,31 @@ const remarkPlugins = [
             maxWidth: 1200,
             quality: 90,
             withWebp: true,
+            linkImagesToOriginal: false,
             tracedSVG: { color: '#09162a' },
+        },
+    },
+    {
+        resolve: `gatsby-remark-autolink-headers`,
+        options: {
+            offsetY: `100`,
+            className: `header-autolink`,
+            icon: `<svg
+            fill="none"
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>`,
+            maintainCase: false,
+            removeAccents: true,
+            isIconAfterHeader: false,
+            elements: [`h2`, `h3`, `h4`],
         },
     },
     {
@@ -190,28 +214,42 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `hero`,
-                path: `${__dirname}/src/content/hero`,
+                path: `${__dirname}/src/content/home/hero`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `about`,
-                path: `${__dirname}/src/content/about`,
+                path: `${__dirname}/src/content/home/about`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `projects`,
-                path: `${__dirname}/src/content/projects`,
+                path: `${__dirname}/src/content/home/projects`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `contact`,
-                path: `${__dirname}/src/content/contact`,
+                path: `${__dirname}/src/content/home/contact`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `blog`,
+                path: `${__dirname}/src/content/blog`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `tags`,
+                path: `${__dirname}/src/content/tags`,
             },
         },
         {

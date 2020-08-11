@@ -208,6 +208,14 @@ const base = css`
     .gatsby-image-outer-wrapper {
         height: 100%;
     }
+
+    .header-autolink {
+        transform: translateX(-105%) !important;
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+    }
 `;
 
 export default base;

@@ -33,8 +33,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     const result = await graphql(`
         {
-            postsRemark: allMdx(
-                filter: { fileAbsolutePath: { regex: "/posts/" } }
+            postsMdx: allMdx(
+                filter: { fileAbsolutePath: { regex: "/content/posts/" } }
                 sort: { order: DESC, fields: [frontmatter___date] }
                 limit: 1000
             ) {
@@ -49,7 +49,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             }
             tagsGroup: allMdx(
                 filter: {
-                    fileAbsolutePath: { regex: "/posts/" }
+                    fileAbsolutePath: { regex: "/content/posts/" }
                     frontmatter: { draft: { ne: false } }
                 }
             ) {
@@ -66,13 +66,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         return;
     }
 
-    // Create post detail pages
-    const posts = result.data.postsRemark.edges;
+    // Create post pages
+    const posts = result.data.postsMdx.edges;
     posts.forEach(({ node }) => {
         createPage({
             component: postTemplate,
             path: node.fields.slug,
-            context: { id: node.id },
+            context: {
+                id: node.id,
+            },
         });
     });
 
@@ -84,7 +86,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             path: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
             context: {
                 tag: tag.fieldValue,
-                slug: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
+                relativeUrl: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
             },
         });
     });

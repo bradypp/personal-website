@@ -12,7 +12,7 @@ const theme = css`
         --color-blue-dark: #aacdee;
         --color-blue: #c5dcf1;
         --color-blue-light: #dfebf6;
-        --color-blue-light-alt: #c8d3dd;
+        --color-blue-light-alt: #d2e4f6;
         --color-green: #64ffda;
         --color-green-light: #78ffee;
         --color-green-dark: #27c29d;

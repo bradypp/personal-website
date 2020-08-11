@@ -1,28 +1,39 @@
 import { css } from 'styled-components';
 
-const prismColors = {
-    bg: `#112340`,
-    lineHighlight: `#1d2d50`,
-    blue: `#5ccfe6`,
-    purple: `#c3a6ff`,
-    green: `#bae67e`,
-    brightGreen: `#64ffda`,
-    yellow: `#ffd580`,
-    orange: `#ffae57`,
-    red: `#ef6b73`,
-    grey: `#a2aabc`,
-    comment: `#8695b799`,
-};
-
 // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs
-
 const PrismStyles = css`
+    :root {
+        --color-prism-background: #e3eef8;
+        --color-prism-lineHighlight: #d3e6f7;
+        --color-prism-blue: #0f7cd0;
+        --color-prism-purple: #703dd6;
+        --color-prism-green: #39a514;
+        --color-prism-highlightAccent: var(--color-primary);
+        --color-prism-yellow: #ed7445;
+        --color-prism-orange: #dc55bf;
+        --color-prism-red: #e54f58;
+        --color-prism-grey: #9196a2;
+
+        &.dark-mode {
+            --color-prism-background: #112340;
+            --color-prism-lineHighlight: #1d2d50;
+            --color-prism-blue: #59d4ed;
+            --color-prism-purple: #c3a6ff;
+            --color-prism-green: #bae67e;
+            --color-prism-highlightAccent: var(--color-secondary);
+            --color-prism-yellow: #fed583;
+            --color-prism-orange: #ff966c;
+            --color-prism-red: #ef6b73;
+            --color-prism-grey: #a2aabc;
+        }
+    }
+
     /**
     * Add back the container background-color, border-radius, padding, margin and overflow that's removed from <pre>.
     */
     .gatsby-highlight {
-        background-color: ${prismColors.bg};
-        color: ${prismColors.variable};
+        color: var(--color-text-primary-1);
+        background-color: var(--color-prism-background);
         border-radius: var(--border-radius);
         margin: 2em 0;
         padding: 1.25em;
@@ -34,8 +45,10 @@ const PrismStyles = css`
 
     .gatsby-highlight code[class*='language-'],
     .gatsby-highlight pre[class*='language-'] {
+        color: var(--color-text-primary-2);
         height: auto !important;
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
         line-height: 1.5;
         white-space: pre;
         word-spacing: normal;
@@ -70,11 +83,11 @@ const PrismStyles = css`
         padding: 1em 1.5em;
         font-family: var(--fonts-mono);
         font-size: var(--font-size-2xs);
-        background-color: ${prismColors.bg};
-        color: ${prismColors.grey};
+        background-color: var(--color-prism-background);
+        color: var(--color-prism-grey);
         border-top-left-radius: var(--border-radius);
         border-top-right-radius: var(--border-radius);
-        border-bottom: 1px solid ${prismColors.lineHighlight};
+        border-bottom: 1px solid var(--color-prism-lineHighlight);
 
         & + .gatsby-highlight {
             margin-top: 0;
@@ -86,8 +99,8 @@ const PrismStyles = css`
     /* Line highlighting */
     .gatsby-highlight-code-line {
         display: block;
-        background-color: ${prismColors.lineHighlight};
-        border-left: 2px solid ${prismColors.brightGreen};
+        background-color: var(--color-prism-lineHighlight);
+        border-left: 2px solid var(--color-prism-highlightAccent);
         padding-left: calc(1em + 2px);
         padding-right: 1em;
         margin-right: -1.35em;
@@ -96,14 +109,15 @@ const PrismStyles = css`
 
     /* Language badges */
     .gatsby-highlight pre[class*='language-']::before {
-        background: var(--grey-dark-4);
-        color: var(--font-color-white-2);
+        background: var(--color-prism-lineHighlight);
+        color: var(--color-text-primary-2);
         font-size: var(--font-size-md);
         font-family: var(--font-size-md);
+        font-weight: 500;
         line-height: 1.5;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        border-radius: 0 0 3px 3px;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
         position: absolute;
         top: 0;
         left: 1.25rem;
@@ -168,32 +182,32 @@ const PrismStyles = css`
     .token.prolog,
     .token.doctype,
     .token.cdata {
-        color: ${prismColors.comment};
+        color: var(--color-prism-grey);
     }
     .token.punctuation {
-        color: ${prismColors.grey};
+        color: var(--color-prism-grey);
     }
     .token.namespace,
     .token.deleted {
-        color: ${prismColors.red};
+        color: var(--color-prism-red);
     }
     .token.function-name,
     .token.function,
     .token.class-name,
     .token.constant,
     .token.symbol {
-        color: ${prismColors.yellow};
+        color: var(--color-prism-yellow);
     }
     .token.attr-name,
     .token.operator,
     .token.rule {
-        color: ${prismColors.orange};
+        color: var(--color-prism-orange);
     }
     .token.keyword,
     .token.boolean,
     .token.number,
     .token.property {
-        color: ${prismColors.purple};
+        color: var(--color-prism-purple);
     }
     .token.tag,
     .token.selector,
@@ -202,7 +216,7 @@ const PrismStyles = css`
     .token.builtin,
     .token.entity,
     .token.url {
-        color: ${prismColors.blue};
+        color: var(--color-prism-blue);
     }
     .token.string,
     .token.char,
@@ -210,7 +224,7 @@ const PrismStyles = css`
     .token.regex,
     .token.variable,
     .token.inserted {
-        color: ${prismColors.green};
+        color: var(--color-prism-green);
     }
     .token.important,
     .token.bold {

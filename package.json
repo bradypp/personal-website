@@ -39,6 +39,7 @@
     "gatsby-plugin-sharp": "^2.6.3",
     "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-plugin-styled-components": "^3.3.1",
+    "gatsby-remark-autolink-headers": "^2.3.11",
     "gatsby-remark-code-titles": "^1.1.0",
     "gatsby-remark-copy-linked-files": "^2.3.12",
     "gatsby-remark-embed-video": "^3.0.10",
