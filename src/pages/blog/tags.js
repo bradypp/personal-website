@@ -5,7 +5,8 @@ import kebabCase from 'lodash/kebabCase';
 import { v4 as uuidv4 } from 'uuid';
 import { graphql, Link } from 'gatsby';
 
-import { Layout, Icon, CustomLink } from '@components';
+import { Layout, Icon } from '@components';
+import { media } from '@styles';
 
 const Heading = styled.h1`
     margin-bottom: 4rem;
@@ -22,6 +23,13 @@ const TagsList = styled.ul`
     padding: 0;
     overflow: visible;
     list-style: none;
+
+    ${media.bp800`
+        grid-template-columns: repeat(2, 1fr);
+    `}
+    ${media.bp440`
+        grid-template-columns: repeat(1, 1fr);
+    `}
 
     li {
         display: flex;
@@ -63,21 +71,19 @@ const TagsList = styled.ul`
     }
 `;
 
-const TagsPage = ({
-    data: {
-        allMdx: { group: tags },
-    },
-}) => {
+const TagsPage = ({ data }) => {
+    const { tagsMdx, pageData } = data;
+    const { title, description, relativeUrl } = pageData.frontmatter;
     return (
         <Layout
             meta={{
-                title: 'Tags | Paul Brady',
-                description: 'Have a look thorough all the tags used on posts',
-                relativeUrl: '/blog/tags/',
+                title,
+                description,
+                relativeUrl,
             }}>
             <Heading>Tags</Heading>
             <TagsList>
-                {tags.map(tag => (
+                {tagsMdx.group.map(tag => (
                     <li key={uuidv4()}>
                         <Icon name="arrow-right" />
                         <Link to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}>
@@ -91,22 +97,29 @@ const TagsPage = ({
 };
 
 TagsPage.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default TagsPage;
 
 export const pageQuery = graphql`
     {
-        allMdx(
+        tagsMdx: allMdx(
             filter: {
-                fileAbsolutePath: { regex: "/posts/" }
+                fileAbsolutePath: { regex: "/content/posts/" }
                 frontmatter: { draft: { ne: false } }
             }
         ) {
             group(field: frontmatter___tags) {
                 fieldValue
                 totalCount
+            }
+        }
+        pageData: markdownRemark(fileAbsolutePath: { regex: "/content/tags/" }) {
+            frontmatter {
+                title
+                description
+                relativeUrl
             }
         }
     }

@@ -79,7 +79,7 @@ const Avatar = styled(Img)`
 
 const About = ({ data }) => {
     const aboutRef = useRef();
-    const { frontmatter, html } = data[0].node;
+    const { frontmatter, html } = data;
     const { title, avatar, skills } = frontmatter;
 
     useEffect(() => {
@@ -92,9 +92,7 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
-                    <Media queries={{ small: `(max-width: ${BREAKPOINTS.bp440}px)` }}>
-                        {matches => <CustomList items={skills} columns={matches.small ? 2 : 3} />}
-                    </Media>
+                    <CustomList items={skills} columns={3} />
                 </ContentContainer>
                 <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
                     <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />

@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 import { Footer, Meta, Social, Header } from '@components';
 
 const Content = styled.div`
     ${mixins.containAndCenter};
     ${mixins.flexColumnCenter};
     padding-top: ${props => (!props.isHome ? '180px' : '0')};
+
+    ${media.bp1040`
+        padding-top: ${props => (!props.isHome ? '150px' : '0')};
+    `}
+    ${media.bp440`
+        padding-top: ${props => (!props.isHome ? '120px' : '0')};
+    `}
 `;
 const Main = styled.main`
     width: 100%;

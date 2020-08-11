@@ -132,7 +132,7 @@ const Hero = ({ data }) => {
     const isMounted = useIsMounted(1000);
     const [isWaveAnimated, setIsWaveAnimated] = useState(false);
 
-    const { frontmatter } = data[0].node;
+    const { frontmatter } = data;
     const { title, name, subtitle, buttonText } = frontmatter;
 
     const handleWaveAnimation = () => {

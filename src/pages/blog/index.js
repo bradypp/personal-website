@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import { Layout, Posts } from '@components';
+import { media } from '@styles';
 
 const Heading = styled.h1`
     margin-bottom: 2rem;
@@ -12,6 +13,11 @@ const Subtitle = styled.p`
     font-family: var(--fonts-mono);
     margin-bottom: 8rem;
     color: var(--color-primary);
+    text-align: center;
+
+    ${media.bp800`
+        margin-bottom: 4rem;
+    `};
 `;
 // const TagsContainer = styled.section`
 //     flex: 1;
@@ -30,19 +36,19 @@ const Subtitle = styled.p`
 
 // TODO: Add load more button
 const BlogPage = ({ data }) => {
-    const posts = data?.allMdx?.edges;
-    const subtitle = 'Your dose of web dev related goodness';
+    const { postsMdx, pageData } = data;
+    const { title, subtitle, description, relativeUrl } = pageData.frontmatter;
+
     return (
         <Layout
             meta={{
-                title: 'Blog | Paul Brady',
-                description:
-                    "Check out Paul's blog posts covering all things web dev related including JavaScript, CSS, React and more!",
-                relativeUrl: '/blog/',
+                title,
+                description,
+                relativeUrl,
             }}>
-            <Heading>Blog</Heading>
+            <Heading>{title}</Heading>
             <Subtitle>{subtitle}</Subtitle>
-            <Posts posts={posts} />
+            <Posts posts={postsMdx.edges} />
         </Layout>
     );
 };
@@ -55,9 +61,12 @@ export default BlogPage;
 
 export const pageQuery = graphql`
     {
-        allMdx(
+        postsMdx: allMdx(
             limit: 20
-            filter: { fileAbsolutePath: { regex: "/posts/" }, frontmatter: { draft: { ne: true } } }
+            filter: {
+                fileAbsolutePath: { regex: "/content/posts/" }
+                frontmatter: { draft: { ne: false } }
+            }
             sort: { fields: [frontmatter___date], order: DESC }
         ) {
             edges {
@@ -73,6 +82,14 @@ export const pageQuery = graphql`
                         tags
                     }
                 }
+            }
+        }
+        pageData: markdownRemark(fileAbsolutePath: { regex: "/content/blog/" }) {
+            frontmatter {
+                title
+                subtitle
+                description
+                relativeUrl
             }
         }
     }

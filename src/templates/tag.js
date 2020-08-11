@@ -23,14 +23,13 @@ const HeadingContainer = styled.div`
 
 const Tag = ({ pageContext, data }) => {
     const posts = data?.allMdx?.edges;
-    console.log(slug);
-    const { slug, tag } = pageContext;
+    const { relativeUrl, tag } = pageContext;
     return (
         <Layout
             meta={{
-                title: `${tag} | Paul Brady`,
+                title: tag,
                 description: `Check out all the posts with tag ${tag} by Paul Brady`,
-                relativeUrl: slug,
+                relativeUrl,
             }}>
             <HeadingContainer>
                 <h1>{pageContext.tag}</h1>
@@ -53,7 +52,7 @@ export const pageQuery = graphql`
         allMdx(
             limit: 20
             filter: {
-                fileAbsolutePath: { regex: "/posts/" }
+                fileAbsolutePath: { regex: "/content/posts/" }
                 frontmatter: { draft: { ne: false }, tags: { in: [$tag] } }
             }
             sort: { fields: [frontmatter___date], order: DESC }

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Icon } from '@components';
+import { media } from '@styles';
 
 const ListContainer = styled.ul`
     display: grid;
@@ -14,6 +15,21 @@ const ListContainer = styled.ul`
     padding: 0;
     overflow: visible;
     list-style: none;
+
+    ${media.bp800`
+        ${props =>
+            props.columns > 3 &&
+            css`
+                grid-template-columns: repeat(3, 1fr);
+            `}
+    `}
+    ${media.bp440`
+        ${props =>
+            props.columns > 2 &&
+            css`
+                grid-template-columns: repeat(2, 1fr);
+            `}
+    `}
 
     li {
         display: flex;

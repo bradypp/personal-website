@@ -46,7 +46,7 @@ const Meta = ({ meta }) => {
 
     const { title, description, siteUrl, keywords, language } = site.siteMetadata;
 
-    const metaTitle = meta.title || title;
+    const metaTitle = meta.title ? `${meta.title} | Paul Brady` : title;
     const metaDescription = meta.description || description;
     const metaOgImage = meta.ogImage || ogImage;
     const metaPageUrl = `${siteUrl}${meta.relativeUrl || ''}`;

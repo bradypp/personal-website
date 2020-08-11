@@ -73,7 +73,7 @@ const MiddleText = styled.span`
 
 const Contact = ({ data }) => {
     const [submitText, setSubmitText] = useState('Send Message');
-    const { frontmatter, html } = data[0].node;
+    const { frontmatter, html } = data;
     const { title, emailText } = frontmatter;
 
     const contactRef = useRef();
