@@ -16,9 +16,7 @@ const margin = '12vh';
 const HeroContainer = styled.section`
     ${mixins.homeSection}
     align-self: center;
-    padding-left: var(--side-padding);
-    padding-right: var(--side-padding);
-    padding-top: 0;
+    padding: 0 var(--side-padding);
     width: 100vw;
     height: 100vh;
     background: var(--color-background-secondary-1);
@@ -29,12 +27,12 @@ const HeroContainer = styled.section`
 `;
 const ContentContainer = styled.div`
     ${mixins.containAndCenter};
-    min-height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    margin-top: 4vh;
+    padding-top: 4vh;
 
     ${media.bp800`
         margin-top: 0;
@@ -49,6 +47,9 @@ const Title = styled.h2`
     font-weight: 300;
     margin: 0;
 
+    ${media.bp1280`
+        font-size: 4rem;
+    `}
     ${media.bp440`
         font-size: 3.8rem;
     `}
@@ -68,6 +69,9 @@ const Subtitle = styled(motion.h3)`
     font-weight: 300;
     margin-bottom: ${margin};
 
+    ${media.bp1280`
+        font-size: 3rem;
+    `}
     ${media.bp440`
         font-size: 2.6rem;
     `}

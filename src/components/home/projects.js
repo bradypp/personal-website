@@ -270,38 +270,48 @@ const Projects = ({ data }) => {
                     const { frontmatter, html } = node;
                     const { overline, external, title, tech, github, images } = frontmatter;
 
+                    const Image = () => (
+                        <ImgLinkContainer href={external || github || '#'} variant={null}>
+                            <StyledImg
+                                ref={imageRef}
+                                fluid={images[0].image.childImageSharp.fluid}
+                                alt={images[0].alt || `${title}-image-${i}`}
+                            />
+                        </ImgLinkContainer>
+                    );
+
                     return (
                         <ProjectContainer
                             key={uuidv4()}
                             ref={el => {
                                 projectRef.current[i] = el;
                             }}>
-                            <ContentContainer>
-                                <Overline>{overline}</Overline>
-                                <ProjectName>
-                                    {external ? (
-                                        <CustomLink
-                                            variant={null}
-                                            href={external}
-                                            aria-label="Demo">
-                                            {title}
-                                        </CustomLink>
-                                    ) : (
-                                        title
-                                    )}
-                                </ProjectName>
-                                <Description dangerouslySetInnerHTML={{ __html: html }} />
-                                <Media
-                                    query={`(min-width: ${BREAKPOINTS.bp800 + 1}px)`}
-                                    render={() => (
-                                        <>
-                                            {tech && (
-                                                <TechList>
-                                                    {tech.map(tech => (
-                                                        <li key={uuidv4()}>{tech}</li>
-                                                    ))}
-                                                </TechList>
-                                            )}
+                            <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
+                                {matches => (
+                                    <>
+                                        <ContentContainer>
+                                            <Overline>{overline}</Overline>
+                                            <ProjectName>
+                                                {external ? (
+                                                    <CustomLink
+                                                        variant={null}
+                                                        href={external}
+                                                        aria-label="Demo">
+                                                        {title}
+                                                    </CustomLink>
+                                                ) : (
+                                                    title
+                                                )}
+                                            </ProjectName>
+                                            <Description
+                                                dangerouslySetInnerHTML={{ __html: html }}
+                                            />
+                                            {!matches.large && <Image />}
+                                            <TechList>
+                                                {tech.map(tech => (
+                                                    <li key={uuidv4()}>{tech}</li>
+                                                ))}
+                                            </TechList>
                                             <LinksContainer>
                                                 {github && (
                                                     <IconLink
@@ -316,43 +326,11 @@ const Projects = ({ data }) => {
                                                     </IconLink>
                                                 )}
                                             </LinksContainer>
-                                        </>
-                                    )}
-                                />
-                            </ContentContainer>
-                            <ImgLinkContainer href={external || github || '#'} variant={null}>
-                                <StyledImg
-                                    ref={imageRef}
-                                    fluid={images[0].image.childImageSharp.fluid}
-                                    alt={images[0].alt || `${title}-image-${i}`}
-                                />
-                            </ImgLinkContainer>
-                            <Media
-                                query={`(max-width: ${BREAKPOINTS.bp800}px)`}
-                                render={() => (
-                                    <>
-                                        {tech && (
-                                            <TechList>
-                                                {tech.map(tech => (
-                                                    <li key={uuidv4()}>{tech}</li>
-                                                ))}
-                                            </TechList>
-                                        )}
-                                        <LinksContainer>
-                                            {github && (
-                                                <IconLink href={github} aria-label="GitHub Repo">
-                                                    <Icon name="GitHub" />
-                                                </IconLink>
-                                            )}
-                                            {external && (
-                                                <IconLink href={external} aria-label="Demo">
-                                                    <Icon name="external" />
-                                                </IconLink>
-                                            )}
-                                        </LinksContainer>
+                                        </ContentContainer>
+                                        {matches.large && <Image />}
                                     </>
                                 )}
-                            />
+                            </Media>
                         </ProjectContainer>
                     );
                 })}

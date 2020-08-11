@@ -152,10 +152,7 @@ export default BlogPage;
 export const pageQuery = graphql`
     {
         allMdx(
-            filter: {
-                fileAbsolutePath: { regex: "/posts/" }
-                frontmatter: { draft: { ne: false } }
-            }
+            filter: { fileAbsolutePath: { regex: "/posts/" }, frontmatter: { draft: { ne: true } } }
             sort: { fields: [frontmatter___date], order: DESC }
         ) {
             edges {
