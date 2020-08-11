@@ -16,8 +16,6 @@ const margin = '12vh';
 const HeroContainer = styled.section`
     ${mixins.homeSection}
     align-self: center;
-    /* padding-left: var(--side-padding);
-    padding-right: var(--side-padding); */
     padding: 0 var(--side-padding);
     width: 100vw;
     height: 100vh;

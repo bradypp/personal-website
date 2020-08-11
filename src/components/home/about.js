@@ -92,14 +92,9 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
-                    <Media
-                        query={`(min-width: ${BREAKPOINTS.bp440 + 1}px)`}
-                        render={() => <CustomList items={skills} columns={3} />}
-                    />
-                    <Media
-                        query={`(max-width: ${BREAKPOINTS.bp440}px)`}
-                        render={() => <CustomList items={skills} columns={2} />}
-                    />
+                    <Media queries={{ small: `(max-width: ${BREAKPOINTS.bp440}px)` }}>
+                        {matches => <CustomList items={skills} columns={matches.small ? 2 : 3} />}
+                    </Media>
                 </ContentContainer>
                 <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
                     <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
