@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -10,6 +10,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Layout, Tag, Date } from '@components';
 import * as PostDesign from '@components/blog/post-design';
 import { media } from '@styles';
+import { PostContext } from '@context';
 
 const PostHeader = styled.header`
     margin-bottom: 5rem;
@@ -50,38 +51,79 @@ const PostContainer = styled.div`
     justify-content: flex-start;
     width: 100%;
 `;
+const PostContent = styled.article`
+    margin-bottom: 10rem;
+    margin-right: 10rem;
+    width: 720px;
+    ${PostDesign.PostStyles}
+`;
 const ContentsContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+
+    h2 {
+        font-size: var(--font-size-md);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1.6rem;
+    }
 `;
-const PostContent = styled.div`
-    margin-bottom: 10rem;
-    width: 800px;
-    ${PostDesign.PostStyles}
+const ContentsLink = styled(Link)`
+    color: ${props =>
+        props.currentLocation ? 'var(--color-primary)' : 'var(--color-text-primary-2)'};
+    font-weight: 500;
+    transition: var(--transition);
+    font-size: var(--font-size-sm);
+    margin-bottom: 0.6rem;
+    margin-left: ${props => (props.subHeading ? '0.8rem' : '0')};
+
+    &:hover {
+        color: ${props =>
+            props.currentLocation ? 'var(--color-primary)' : 'var(--color-text-primary-1)'};
+    }
 `;
 
 // TODO: add link to dev.to & tags list to bottom of post
 // TODO: add newsletter box, twitter share, keep reading links, & contents
 const PostTemplate = ({ data }) => {
+    const { postLocation } = useContext(PostContext);
     const { frontmatter, body, fields, tableOfContents } = data.mdx;
     const { title, subtitle, description, date, tags, ogImage, withContents = true } = frontmatter;
     const { slug } = fields;
 
-    const shortCodes = {};
+    const shortCodes = {
+        h2: PostDesign.H2,
+        h3: PostDesign.H3,
+    };
 
     const TableOfContents = () => {
         return (
             <ContentsContainer>
                 <h2>Table of Contents</h2>
                 {tableOfContents.items.map(el => {
-                    console.log(el);
+                    const { url, title, items } = el;
                     return (
-                        <div>
-                            <Link to={`${slug}${el.url}`}>{el.title}</Link>
-                            {/* {el.map} */}
-                        </div>
+                        <>
+                            <ContentsLink
+                                currentLocation={`#${postLocation}` === url}
+                                to={`${slug}${url}`}>
+                                {title}
+                            </ContentsLink>
+                            {items &&
+                                items.map(el => {
+                                    const { url, title } = el;
+                                    return (
+                                        <ContentsLink
+                                            subHeading
+                                            currentLocation={`#${postLocation}` === url}
+                                            to={`${slug}${url}`}>
+                                            {title}
+                                        </ContentsLink>
+                                    );
+                                })}
+                        </>
                     );
                 })}
             </ContentsContainer>
@@ -118,9 +160,7 @@ const PostTemplate = ({ data }) => {
                         <MDXRenderer>{body}</MDXRenderer>
                     </MDXProvider>
                 </PostContent>
-                {tableOfContents.items.length !== 0 && withContents && (
-                    <TableOfContents data={tableOfContents.items} />
-                )}
+                {!alignCenter && <TableOfContents data={tableOfContents.items} />}
             </PostContainer>
         </Layout>
     );

@@ -30,7 +30,7 @@ const remarkPlugins = [
     {
         resolve: `gatsby-remark-autolink-headers`,
         options: {
-            offsetY: `100`,
+            offsetY: 100,
             className: `header-autolink`,
             icon: `<svg
             fill="none"
@@ -47,7 +47,7 @@ const remarkPlugins = [
             maintainCase: false,
             removeAccents: true,
             isIconAfterHeader: false,
-            elements: [`h2`, `h3`, `h4`],
+            elements: [`h2`, `h3`],
         },
     },
     {
