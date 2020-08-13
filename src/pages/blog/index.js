@@ -23,7 +23,7 @@ const Subtitle = styled.p`
 //     flex: 1;
 // `;
 // const TagsTitle = styled.h2`
-//     font-size: var(--font-size-lg);
+//     font-size: var(--font-size-xl);
 // `;
 // const Tags = styled.div`
 //     display: flex;

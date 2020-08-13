@@ -1,40 +1,34 @@
-import React, { useContext } from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { useEffect, useContext, useCallback, useRef } from 'react';
+import { graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { useInView } from 'react-intersection-observer';
 
-import { Layout, Tag, Date } from '@components';
-import * as PostDesign from '@components/blog/post-design';
-import { media } from '@styles';
 import { PostContext } from '@context';
+import { Layout, Tag, Date, TableOfContents } from '@components';
+import * as PostDesign from '@components/blog/post-design';
+// import { media } from '@styles';
 
 const PostHeader = styled.header`
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: ${props => (props.alignCenter ? 'center' : 'flex-start')};
     justify-content: flex-start;
     align-self: ${props => (props.alignCenter ? 'center' : 'flex-start')};
-
-    ${media.bp1040`
-        margin-bottom: 3rem;
-    `}
-    ${media.bp440`
-        margin-bottom: 2rem;
-    `}
 `;
 const Title = styled.h1`
     font-size: var(--font-size-post-title);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     line-height: 1.25;
 `;
 const DateTagsContainer = styled.div`
     color: var(--color-text-primary-1);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-sm);
     font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
@@ -42,7 +36,8 @@ const DateTagsContainer = styled.div`
 const Subtitle = styled.p`
     color: var(--color-text-primary-2);
     font-style: italic;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-3xl);
+    line-height: 1.4;
     font-weight: 300;
     margin-bottom: 1rem;
 `;
@@ -54,41 +49,15 @@ const PostContainer = styled.div`
 const PostContent = styled.article`
     margin-bottom: 10rem;
     margin-right: 10rem;
-    width: 720px;
+    width: 760px;
     ${PostDesign.PostStyles}
-`;
-const ContentsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    h2 {
-        font-size: var(--font-size-md);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 1.6rem;
-    }
-`;
-const ContentsLink = styled(Link)`
-    color: ${props =>
-        props.currentLocation ? 'var(--color-primary)' : 'var(--color-text-primary-2)'};
-    font-weight: 500;
-    transition: var(--transition);
-    font-size: var(--font-size-sm);
-    margin-bottom: 0.6rem;
-    margin-left: ${props => (props.subHeading ? '0.8rem' : '0')};
-
-    &:hover {
-        color: ${props =>
-            props.currentLocation ? 'var(--color-primary)' : 'var(--color-text-primary-1)'};
-    }
 `;
 
 // TODO: add link to dev.to & tags list to bottom of post
 // TODO: add newsletter box, twitter share, keep reading links, & contents
 const PostTemplate = ({ data }) => {
-    const { postLocation } = useContext(PostContext);
+    const headerRef = useRef();
+    const { postLocation, setPostLocation } = useContext(PostContext);
     const { frontmatter, body, fields, tableOfContents } = data.mdx;
     const { title, subtitle, description, date, tags, ogImage, withContents = true } = frontmatter;
     const { slug } = fields;
@@ -98,39 +67,29 @@ const PostTemplate = ({ data }) => {
         h3: PostDesign.H3,
     };
 
-    const TableOfContents = () => {
-        return (
-            <ContentsContainer>
-                <h2>Table of Contents</h2>
-                {tableOfContents.items.map(el => {
-                    const { url, title, items } = el;
-                    return (
-                        <>
-                            <ContentsLink
-                                currentLocation={`#${postLocation}` === url}
-                                to={`${slug}${url}`}>
-                                {title}
-                            </ContentsLink>
-                            {items &&
-                                items.map(el => {
-                                    const { url, title } = el;
-                                    return (
-                                        <ContentsLink
-                                            subHeading
-                                            currentLocation={`#${postLocation}` === url}
-                                            to={`${slug}${url}`}>
-                                            {title}
-                                        </ContentsLink>
-                                    );
-                                })}
-                        </>
-                    );
-                })}
-            </ContentsContainer>
-        );
-    };
-
     const alignCenter = tableOfContents.items.length === 0 || !withContents;
+
+    const [inViewRef, inView] = useInView({
+        /* Optional options */
+        threshold: 0,
+        triggerOnce: false,
+    });
+
+    const setRef = useCallback(
+        node => {
+            // eslint-disable-next-line no-param-reassign
+            headerRef.current = node;
+            inViewRef(node);
+        },
+        [inViewRef, headerRef],
+    );
+
+    useEffect(() => {
+        if (inView) {
+            setPostLocation('Introduction');
+        }
+    }, [inView, setPostLocation]);
+
     return (
         <Layout
             meta={{
@@ -139,7 +98,7 @@ const PostTemplate = ({ data }) => {
                 ogImage: ogImage.childImageSharp.fluid.src,
                 relativeUrl: slug,
             }}>
-            <PostHeader alignCenter={alignCenter}>
+            <PostHeader ref={setRef} alignCenter={alignCenter}>
                 <Title>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <DateTagsContainer>
@@ -160,7 +119,9 @@ const PostTemplate = ({ data }) => {
                         <MDXRenderer>{body}</MDXRenderer>
                     </MDXProvider>
                 </PostContent>
-                {!alignCenter && <TableOfContents data={tableOfContents.items} />}
+                {!alignCenter && tableOfContents && (
+                    <TableOfContents slug={slug} tableOfContents={tableOfContents} />
+                )}
             </PostContainer>
         </Layout>
     );

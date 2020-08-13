@@ -11,7 +11,13 @@ export const PostStyles = css`
     h4,
     h5,
     h6 {
-        margin: 2em 0 1em;
+        margin: 1.5em 0 0.5em;
+    }
+
+    p,
+    ul,
+    ol {
+        font-size: var(--font-size-lg);
     }
 
     p {
@@ -52,7 +58,7 @@ export const PostStyles = css`
 
         p {
             font-style: italic;
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-xl);
         }
     }
 `;
@@ -77,6 +83,7 @@ const generateHeading = heading => ({ children, ...props }) => {
     );
 
     useEffect(() => {
+        console.log(ref.current);
         if (inView) {
             setPostLocation(ref.current.id);
         }

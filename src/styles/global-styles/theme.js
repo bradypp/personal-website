@@ -127,14 +127,15 @@ const theme = css`
         --font-size-xs: 1.4rem;
         --font-size-sm: 1.5rem;
         --font-size-md: 1.6rem;
-        --font-size-lg: 1.8rem;
-        --font-size-xl: 2.0rem;
-        --font-size-2xl: 2.2rem;
-        --font-size-3xl: 2.4rem;
-        --font-size-4xl: 2.6rem;
+        --font-size-lg: 1.7rem;
+        --font-size-xl: 1.8rem;
+        --font-size-2xl: 2.0rem;
+        --font-size-3xl: 2.2rem;
+        --font-size-4xl: 2.4rem;
+        --font-size-5xl: 2.6rem;
         --font-size-h3: 3.2rem;
         --font-size-h2: 3.8rem;
-        --font-size-post-title: 4.4rem;
+        --font-size-post-title: 4.8rem;
         --font-size-page-title: 6rem;
 
         --z-index-side: 25;

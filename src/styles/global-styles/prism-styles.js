@@ -47,7 +47,6 @@ const PrismStyles = css`
     .gatsby-highlight pre[class*='language-'] {
         color: var(--color-text-primary-2);
         height: auto !important;
-        font-size: var(--font-size-sm);
         font-weight: 500;
         line-height: 1.5;
         white-space: pre;

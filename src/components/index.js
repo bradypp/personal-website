@@ -9,6 +9,7 @@ export { default as Contact } from './home/contact';
 // Blog
 export { default as Tag } from './blog/tag';
 export { default as Posts } from './blog/posts';
+export { default as TableOfContents } from './blog/table-of-contents';
 
 // Form
 export { default as Form } from './form/form';

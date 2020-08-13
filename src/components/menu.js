@@ -70,7 +70,7 @@ const NavListItem = styled(motion.li)`
 const StyledLink = styled(Link)`
     padding: 1.6rem;
     font-weight: 500;
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
     color: var(--color-white-1);
     width: 100%;
 

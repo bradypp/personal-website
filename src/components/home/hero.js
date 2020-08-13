@@ -34,8 +34,17 @@ const ContentContainer = styled.div`
     flex-direction: column;
     padding-top: 4vh;
 
+    ${media.bp1440`
+        padding-top: 5vh;
+    `}
     ${media.bp800`
         margin-top: 0;
+    `}
+    ${media.bp440`
+        padding-top: 6vh;
+    `}
+    ${media.bp384`
+        padding-top: 7vh;
     `}
 `;
 const TitleContainer = styled(motion.div)`

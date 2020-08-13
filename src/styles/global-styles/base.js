@@ -16,7 +16,7 @@ const base = css`
     body {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        ${'' /* overflow-x: hidden; */}
     }
 
     html {
@@ -78,7 +78,7 @@ const base = css`
         line-height: 1.4;
     }
     h4 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-xl);
     }
     h5 {
         font-size: var(--font-size-md);

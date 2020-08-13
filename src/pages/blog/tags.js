@@ -50,7 +50,7 @@ const TagsList = styled.ul`
         a {
             height: min-content;
             line-height: 1;
-            font-size: var(--font-size-lg);
+            font-size: var(--font-size-xl);
             color: var(--color-text-primary-1);
             transition: var(--transition);
 

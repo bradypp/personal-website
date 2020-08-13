@@ -31,7 +31,7 @@ const PostContainer = styled.div`
     width: 100%;
 `;
 const PostTitle = styled.h3`
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-5xl);
     transition: var(--transition);
     margin: 0;
     color: var(--color-text-primary-1);
@@ -43,7 +43,7 @@ const PostSubtitle = styled.p`
     margin-bottom: 0.5rem;
     font-style: italic;
     font-weight: 300;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     color: var(--color-text-primary-2);
 `;
 const PostDateTags = styled.div`
