@@ -26,6 +26,33 @@ const InputContainer = styled.div`
                     right: ${props => `${props.height / 4.2}rem`};
                 `)}
     }
+    input {
+        position: relative;
+        ${props =>
+            (props.variant === 'default' && mixins.formField) ||
+            (props.variant === 'newsletter' &&
+                css`
+                    background-color: var(--color-background-secondary-1);
+                    border-bottom: 3px solid var(--color-newsletter-field-border);
+                    font-size: var(--font-size-xl);
+                    color: var(--color-text-primary-1);
+
+                    &:focus,
+                    &:active {
+                        border-bottom: 3px solid var(--color-newsletter-field-border-active);
+                    }
+
+                    ${props =>
+                        props.invalid &&
+                        css`
+                            &,
+                            &:invalid,
+                            &:focus {
+                                border-bottom: 3px solid var(--color-danger) !important;
+                            }
+                        `};
+                `)}
+    }
 `;
 
 const InputElement = styled.input`
@@ -38,22 +65,31 @@ const InputElement = styled.input`
                   (iconLocation === 'right' && `0.8rem  ${height}rem 0.8rem  0.6rem `)};
               `
             : '0.8rem 0.6rem'};
-    ${mixins.formField};
 `;
 
-const Input = forwardRef(({ icon, iconLocation, className, onChange, height, ...props }, ref) => (
-    <InputContainer className={className} height={height} iconLocation={iconLocation}>
-        {icon && typeof icon === 'string' ? <Icon name={icon} /> : icon}
-        <InputElement
-            iconLocation={iconLocation}
-            hasIcon={!!icon}
-            onChange={event => onChange(event.target.value, event)}
-            height={height}
-            ref={ref}
-            {...props}
-        />
-    </InputContainer>
-));
+const Input = forwardRef(
+    ({ icon, iconLocation, className, onChange, height, variant, invalid, ...props }, ref) => {
+        return (
+            <InputContainer
+                className={className}
+                height={height}
+                iconLocation={iconLocation}
+                invalid={invalid}
+                variant={variant}>
+                {icon && typeof icon === 'string' ? <Icon name={icon} /> : icon}
+                <InputElement
+                    iconLocation={iconLocation}
+                    hasIcon={!!icon}
+                    onChange={event => onChange(event.target.value, event)}
+                    height={height}
+                    invalid={invalid}
+                    ref={ref}
+                    {...props}
+                />
+            </InputContainer>
+        );
+    },
+);
 
 Input.propTypes = {
     className: PropTypes.string,
@@ -65,6 +101,7 @@ Input.propTypes = {
     fontSize: PropTypes.string,
     invalid: PropTypes.bool,
     onChange: PropTypes.func,
+    variant: PropTypes.oneOf(['default', 'newsletter']),
 };
 
 Input.defaultProps = {
@@ -77,6 +114,7 @@ Input.defaultProps = {
     fontSize: undefined,
     invalid: false,
     onChange: () => {},
+    variant: 'default',
 };
 
 export default Input;

@@ -83,7 +83,6 @@ const generateHeading = heading => ({ children, ...props }) => {
     );
 
     useEffect(() => {
-        console.log(ref.current);
         if (inView) {
             setPostLocation(ref.current.id);
         }

@@ -10,7 +10,8 @@ const FieldLabel = styled.label`
     display: block;
     padding-bottom: 0.6rem;
     color: var(--color-text-primary-1);
-    font-size: var(--font-size-2xs);
+    font-size: ${props =>
+        props.variant === 'newsletter' ? 'var(--font-size-sm)' : 'var(--font-size-2xs)'};
     font-weight: 500;
     width: max-content;
 `;
@@ -25,6 +26,12 @@ const FieldTip = styled.div`
   ${fieldSubtitle}
   padding: ${props => (props.tipLocation === 'below' ? '0.6rem 0 0' : '0 0 1rem')};
     color: var(--color-text-primary-2);
+    ${props =>
+        props.variant === 'newsletter' &&
+        css`
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        `}
   `;
 
 const FieldError = styled.div`
@@ -42,18 +49,26 @@ const FieldContainer = ({
     name,
     htmlFor,
     tipLocation,
+    withErrorMsg,
+    variant,
     ...props
 }) => {
     const isError = touched && error;
     return (
         <Container data-testid={name ? `form-field:${name}` : 'form-field'} {...props}>
-            {label && <FieldLabel htmlFor={htmlFor}>{label}</FieldLabel>}
+            {label && (
+                <FieldLabel htmlFor={htmlFor} variant={variant}>
+                    {label}
+                </FieldLabel>
+            )}
             {tip && tipLocation === 'above' && <FieldTip tipLocation={tipLocation}>{tip}</FieldTip>}
             {children}
             {!isError && tip && tipLocation === 'below' && (
                 <FieldTip tipLocation={tipLocation}>{tip}</FieldTip>
             )}
-            {isError && typeof error === 'string' && <FieldError>{error}</FieldError>}
+            {isError && withErrorMsg && typeof error === 'string' && (
+                <FieldError>{error}</FieldError>
+            )}
         </Container>
     );
 };
@@ -70,6 +85,8 @@ FieldContainer.propTypes = {
     tipLocation: PropTypes.string,
     touched: PropTypes.bool,
     error: PropTypes.string,
+    withErrorMsg: PropTypes.bool,
+    variant: PropTypes.string,
 };
 
 FieldContainer.defaultProps = {
@@ -83,6 +100,8 @@ FieldContainer.defaultProps = {
     tipLocation: undefined,
     touched: undefined,
     error: undefined,
+    variant: undefined,
+    withErrorMsg: true,
 };
 
 export default FieldContainer;

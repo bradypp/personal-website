@@ -67,6 +67,7 @@ Button.propTypes = {
     iconLocation: PropTypes.string,
     disabled: PropTypes.bool,
     isWorking: PropTypes.bool,
+    size: PropTypes.oneOf(['medium', 'big']),
 };
 
 Button.defaultProps = {
@@ -80,6 +81,7 @@ Button.defaultProps = {
     iconLocation: 'left',
     disabled: false,
     isWorking: false,
+    size: 'medium',
 };
 
 export default Button;

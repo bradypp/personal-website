@@ -20,6 +20,8 @@ const generateField = FormComponent => {
         margin,
         tipLocation,
         customOnChange,
+        withErrorMsg,
+        variant,
         ...props
     }) => (
         <Field name={name} type={type}>
@@ -30,6 +32,8 @@ const generateField = FormComponent => {
 
                 return (
                     <FieldContainer
+                        withErrorMsg={withErrorMsg}
+                        variant={variant}
                         className={className}
                         data-testid={name ? `form-field:${name}` : 'form-field'}
                         width={width}
@@ -45,6 +49,7 @@ const generateField = FormComponent => {
                         <FormComponent
                             {...field}
                             {...props}
+                            variant={variant}
                             type={type}
                             id={fieldId}
                             invalid={error && touched}
@@ -72,6 +77,8 @@ const generateField = FormComponent => {
         margin: PropTypes.string,
         tipLocation: PropTypes.oneOf(['above', 'below']),
         customOnChange: PropTypes.func,
+        withErrorMsg: PropTypes.bool,
+        variant: PropTypes.oneOf(['default', 'newsletter']),
     };
 
     FieldComponent.defaultProps = {
@@ -86,6 +93,8 @@ const generateField = FormComponent => {
         margin: undefined,
         tipLocation: 'below',
         customOnChange: undefined,
+        withErrorMsg: true,
+        variant: 'default',
     };
 
     return FieldComponent;

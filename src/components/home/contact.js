@@ -111,7 +111,7 @@ const Contact = ({ data }) => {
                             try {
                                 form.setSubmitting(true);
                                 await axios.post(
-                                    '/.netlify/functions/sendEmail',
+                                    '/.netlify/functions/send-email',
                                     JSON.stringify(values),
                                 );
                                 form.setSubmitting(false);
@@ -125,6 +125,9 @@ const Contact = ({ data }) => {
                                 setTimeout(() => {
                                     setSubmitText('Send Message');
                                 }, 3000);
+                                if (process.env.NODE_ENV === 'development') {
+                                    console.error(err.message);
+                                }
                             }
                         }}>
                         {({ isSubmitting }) => (

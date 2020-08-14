@@ -248,6 +248,13 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
+                name: `newsletter`,
+                path: `${__dirname}/src/content/newsletter`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
                 name: `tags`,
                 path: `${__dirname}/src/content/tags`,
             },

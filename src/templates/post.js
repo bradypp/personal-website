@@ -9,9 +9,9 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { useInView } from 'react-intersection-observer';
 
 import { PostContext } from '@context';
-import { Layout, Tag, Date, TableOfContents } from '@components';
+import { Layout, Tag, Date, TableOfContents, NewsletterForm } from '@components';
 import * as PostDesign from '@components/blog/post-design';
-// import { media } from '@styles';
+import { mixins } from '@styles';
 
 const PostHeader = styled.header`
     margin-bottom: 2rem;
@@ -52,12 +52,22 @@ const PostContent = styled.article`
     width: 760px;
     ${PostDesign.PostStyles}
 `;
+const NewsletterOuterContainer = styled.div`
+    width: 120%;
+    background-color: var(--color-background-secondary-1);
+    margin-bottom: 8rem;
+`;
+const NewsletterInnerContainer = styled.div`
+    ${mixins.containAndCenter}
+    width: 800px;
+    padding: 10rem 0;
+`;
 
 // TODO: add link to dev.to & tags list to bottom of post
 // TODO: add newsletter box, twitter share, keep reading links, & contents
 const PostTemplate = ({ data }) => {
     const headerRef = useRef();
-    const { postLocation, setPostLocation } = useContext(PostContext);
+    const { setPostLocation } = useContext(PostContext);
     const { frontmatter, body, fields, tableOfContents } = data.mdx;
     const { title, subtitle, description, date, tags, ogImage, withContents = true } = frontmatter;
     const { slug } = fields;
@@ -86,7 +96,7 @@ const PostTemplate = ({ data }) => {
 
     useEffect(() => {
         if (inView) {
-            setPostLocation('Introduction');
+            setPostLocation('');
         }
     }, [inView, setPostLocation]);
 
@@ -123,6 +133,11 @@ const PostTemplate = ({ data }) => {
                     <TableOfContents slug={slug} tableOfContents={tableOfContents} />
                 )}
             </PostContainer>
+            <NewsletterOuterContainer>
+                <NewsletterInnerContainer>
+                    <NewsletterForm />
+                </NewsletterInnerContainer>
+            </NewsletterOuterContainer>
         </Layout>
     );
 };

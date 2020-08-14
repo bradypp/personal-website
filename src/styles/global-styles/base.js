@@ -16,7 +16,6 @@ const base = css`
     body {
         width: 100%;
         max-width: 100%;
-        ${'' /* overflow-x: hidden; */}
     }
 
     html {
@@ -46,7 +45,7 @@ const base = css`
 
     ${mixins.customScrollbar({
         color: 'var(--color-scrollbar)',
-        width: '12px',
+        width: '10px',
         activeColor: 'var(--color-scrollbar-active)',
     })}
 
@@ -78,13 +77,13 @@ const base = css`
         line-height: 1.4;
     }
     h4 {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-2xl);
     }
     h5 {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-xl);
     }
     h6 {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-lg);
     }
 
     img {

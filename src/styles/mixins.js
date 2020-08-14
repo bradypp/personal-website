@@ -5,7 +5,7 @@ import media from './media';
 const mixins = {
     customScrollbar: (config = {}) => css`
         &::-webkit-scrollbar {
-            width: ${config.width || '8px'};
+            width: ${config.width || '10px'};
         }
         &::-webkit-scrollbar-track {
             background: var(--color-background-secondary-1);

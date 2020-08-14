@@ -9,6 +9,7 @@ const Content = styled.div`
     ${mixins.containAndCenter};
     ${mixins.flexColumnCenter};
     padding-top: ${props => (!props.isHome ? '180px' : '0')};
+    overflow: visible;
 
     ${media.bp1040`
         padding-top: ${props => (!props.isHome ? '150px' : '0')};

@@ -13,6 +13,7 @@ const theme = css`
         --color-blue: #c5dcf1;
         --color-blue-light: #dfebf6;
         --color-blue-light-alt: #d2e4f6;
+        --color-blue-lighter: #e6f0f8;
         --color-green: #64ffda;
         --color-green-light: #78ffee;
         --color-green-dark: #27c29d;
@@ -73,6 +74,9 @@ const theme = css`
         --color-field-border: var(--color-white-3);
         --color-field-border-hover: var(--color-white-4);
         --color-field-border-active: var(--color-primary);
+        --color-newsletter-field-background: var(--color-blue-lighter);
+        --color-newsletter-field-border: var(--color-text-primary-2);
+        --color-newsletter-field-border-active: var(--color-primary);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-indigo);
@@ -99,6 +103,7 @@ const theme = css`
             --color-background-secondary-2: var(--color-navy-3-alt);
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-slate-3);
+            --color-text-primary-3: var(--color-slate-5);
             --color-text-secondary-1: var(--color-background-primary-1);
             --color-border-primary: var(--color-navy-6);
             --color-socials: var(--color-text-primary-2);
@@ -111,6 +116,9 @@ const theme = css`
             --color-field-background-active: var(--color-navy-6);
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
+            --color-newsletter-field-background: var(--color-navy-5);
+            --color-newsletter-field-border: var(--color-text-primary-3);
+            --color-newsletter-field-border-active: var(--color-secondary);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
             --color-logo-hover: rgba(255, 167, 196, 0.05);

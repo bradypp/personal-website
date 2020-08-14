@@ -13,8 +13,8 @@ const ContentsContainer = styled.aside`
     justify-content: flex-start;
     width: 100%;
     position: sticky;
-    top: 148px;
-    max-height: calc(100vh - 148px);
+    top: 120px;
+    max-height: calc(100vh - 120px);
     overflow: auto;
 
     h2 {
@@ -62,9 +62,7 @@ const TableOfContents = ({ tableOfContents, slug }) => {
                     return (
                         <React.Fragment key={uuidv4()}>
                             <ContentsLinkH2
-                                currentLocation={
-                                    `#${postLocation}` === url || postLocation === title
-                                }
+                                currentLocation={`#${postLocation}` === url}
                                 to={`${slug}${url}`}>
                                 {title}
                             </ContentsLinkH2>

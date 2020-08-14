@@ -5,7 +5,9 @@ import { mixins } from '@styles';
 const commonStyles = css`
     ${mixins.clickable}
     border-radius: var(--border-radius);
-    font-size: var(--font-size-sm);
+    font-size: ${props =>
+        (props.size === 'medium' && 'var(--font-size-sm)') ||
+        (props.size === 'big' && 'var(--font-size-md)')};
     font-family: var(--fonts-primary);
     letter-spacing: 0.06em;
     font-weight: 500;
@@ -20,7 +22,9 @@ const buttonStyles = {
         ${commonStyles}
         color: var(--color-text-secondary-1);
         background-color: var(--color-primary);
-        padding: 1.5rem 2.3rem;
+        padding: ${props =>
+            (props.size === 'medium' && '1.5rem 2.3rem') ||
+            (props.size === 'big' && '1.8rem 2.8rem')};
         box-shadow: 0 0.4rem var(--color-primary-darker);
         margin-bottom: 0.25em;
 
