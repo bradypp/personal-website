@@ -65,7 +65,7 @@ export const pageQuery = graphql`
             limit: 20
             filter: {
                 fileAbsolutePath: { regex: "/content/posts/" }
-                frontmatter: { draft: { ne: false } }
+                frontmatter: { draft: { ne: true } }
             }
             sort: { fields: [frontmatter___date], order: DESC }
         ) {

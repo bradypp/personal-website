@@ -52,19 +52,7 @@ const PostContent = styled.article`
     width: 760px;
     ${PostDesign.PostStyles}
 `;
-const NewsletterOuterContainer = styled.div`
-    width: 120%;
-    background-color: var(--color-background-secondary-1);
-    margin-bottom: 8rem;
-`;
-const NewsletterInnerContainer = styled.div`
-    ${mixins.containAndCenter}
-    width: 800px;
-    padding: 10rem 0;
-`;
 
-// TODO: add link to dev.to & tags list to bottom of post
-// TODO: add newsletter box, twitter share, keep reading links, & contents
 const PostTemplate = ({ data }) => {
     const headerRef = useRef();
     const { setPostLocation } = useContext(PostContext);
@@ -133,11 +121,7 @@ const PostTemplate = ({ data }) => {
                     <TableOfContents slug={slug} tableOfContents={tableOfContents} />
                 )}
             </PostContainer>
-            <NewsletterOuterContainer>
-                <NewsletterInnerContainer>
-                    <NewsletterForm />
-                </NewsletterInnerContainer>
-            </NewsletterOuterContainer>
+            <NewsletterForm />
         </Layout>
     );
 };

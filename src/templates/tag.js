@@ -53,7 +53,7 @@ export const pageQuery = graphql`
             limit: 20
             filter: {
                 fileAbsolutePath: { regex: "/content/posts/" }
-                frontmatter: { draft: { ne: false }, tags: { in: [$tag] } }
+                frontmatter: { draft: { ne: true }, tags: { in: [$tag] } }
             }
             sort: { fields: [frontmatter___date], order: DESC }
         ) {

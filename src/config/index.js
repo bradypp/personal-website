@@ -14,6 +14,7 @@ module.exports = {
     twitter: 'https://twitter.com/bradypp',
     twitterHandle: '@bradypp',
     mainThemeColor: '#fff',
+    rssRoute: '/rss.xml',
     socialMedia: [
         {
             name: 'GitHub',

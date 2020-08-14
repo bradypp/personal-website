@@ -156,6 +156,7 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
+        `gatsby-plugin-feed`,
         `gatsby-plugin-netlify`,
         {
             resolve: `gatsby-plugin-mdx`,

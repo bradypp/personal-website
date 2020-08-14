@@ -87,7 +87,7 @@ const ReadMoreLink = styled(Link)`
 const Posts = ({ posts }) => {
     return (
         <PostsContainer>
-            {[...posts, ...posts].map(post => {
+            {posts.map(post => {
                 const { excerpt, fields, frontmatter } = post.node;
                 const { title, subtitle, date, tags } = frontmatter;
                 const { slug } = fields;

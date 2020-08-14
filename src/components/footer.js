@@ -7,6 +7,7 @@ import { socialMedia, email, repo } from '@config';
 import { Icon, CustomLink } from '@components';
 
 const FooterContainer = styled.footer`
+    height: 200px;
     padding: 3.2rem var(--side-padding) 2.4rem;
     width: 100%;
 `;

@@ -163,7 +163,7 @@ const Contact = ({ data }) => {
 };
 
 Contact.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default Contact;

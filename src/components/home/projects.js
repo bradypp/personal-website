@@ -115,7 +115,7 @@ const TechList = styled.ul`
     }
 
     ${media.bp800`
-        margin-bottom: -0.6rem;
+        margin-bottom: 0;
     `}
 `;
 const LinksContainer = styled.div`

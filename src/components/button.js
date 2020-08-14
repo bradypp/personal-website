@@ -33,7 +33,17 @@ const ButtonSpinner = styled(props => <Spinner {...props} />).attrs({
     border-top-color: #666;
 `;
 
-const Button = ({ children, disabled, isWorking, icon, iconLocation, type, onClick, ...props }) => {
+const Button = ({
+    children,
+    disabled,
+    isWorking,
+    icon,
+    iconLocation,
+    type,
+    onClick,
+    size,
+    ...props
+}) => {
     const renderedIcon = (
         <>{!isWorking && icon && typeof icon === 'string' ? <Icon name={icon} /> : icon}</>
     );
@@ -45,7 +55,12 @@ const Button = ({ children, disabled, isWorking, icon, iconLocation, type, onCli
     };
 
     return (
-        <StyledButton onClick={handleClick} type={type} disabled={disabled || isWorking} {...props}>
+        <StyledButton
+            size={size}
+            onClick={handleClick}
+            type={type}
+            disabled={disabled || isWorking}
+            {...props}>
             {isWorking && <ButtonSpinner />}
             {iconLocation === 'left' && renderedIcon}
             <ButtonText withPadding={icon || isWorking} iconLocation={iconLocation}>

@@ -1,17 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useMemo } from 'react';
 
 export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
     const [postLocation, setPostLocation] = useState('');
-
-    return (
-        <PostContext.Provider
-            value={{
-                postLocation,
-                setPostLocation,
-            }}>
-            {children}
-        </PostContext.Provider>
+    const contextValue = useMemo(
+        () => ({
+            postLocation,
+            setPostLocation,
+        }),
+        [postLocation],
     );
+
+    return <PostContext.Provider value={contextValue}>{children}</PostContext.Provider>;
 };

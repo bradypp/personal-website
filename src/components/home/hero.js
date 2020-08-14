@@ -19,7 +19,7 @@ const HeroContainer = styled.section`
     padding: 0 var(--side-padding);
     width: 100vw;
     height: 100vh;
-    background: var(--color-background-secondary-1);
+    /* background: var(--color-background-secondary-1); */
     background-image: linear-gradient(
         var(--color-background-secondary-1),
         var(--color-background-primary-1)
@@ -208,7 +208,7 @@ const Hero = ({ data }) => {
 };
 
 Hero.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default Hero;
