@@ -44,7 +44,7 @@ const theme = css`
         --color-navy-6: #354863;
         --color-grey-dark-1: #333;
         --color-grey-dark-2: #525252;
-        --color-grey-dark-3: #777;
+        --color-grey-dark-3: #676767;
         --color-grey-light-1: #e7e4e4;
         --color-grey-light-2: #ddd;
         --color-grey-light-3: #ccc;
@@ -63,6 +63,7 @@ const theme = css`
         --color-background-secondary-2: var(--color-blue-light-alt);
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
+        --color-text-primary-3: var(--color-grey-dark-3);
         --color-text-secondary-1: var(--color-background-primary-1);
         --color-text-link: var(--color-primary);
         --color-danger: var(--color-red);
@@ -87,6 +88,7 @@ const theme = css`
         --color-menu-background: rgba(9, 22, 42, 0.95);
         --color-box-shadow: rgba(0, 0, 0, 0.25);
         --color-logo-hover: rgba(68, 51, 255, 0.05);
+        --color-contents-border: var(--color-white-4);
 
         &.dark-mode {
             --color-primary: var(--color-soft-pink);
@@ -103,7 +105,7 @@ const theme = css`
             --color-background-secondary-2: var(--color-navy-3-alt);
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-slate-3);
-            --color-text-primary-3: var(--color-slate-5);
+            --color-text-primary-3: var(--color-slate-4);
             --color-text-secondary-1: var(--color-background-primary-1);
             --color-border-primary: var(--color-navy-6);
             --color-socials: var(--color-text-primary-2);
@@ -122,6 +124,7 @@ const theme = css`
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
             --color-logo-hover: rgba(255, 167, 196, 0.05);
+            --color-contents-border: var(--color-navy-3);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
@@ -158,6 +161,8 @@ const theme = css`
         ${media.bp800`--side-padding: 45px;`}
         ${media.bp600`--side-padding: 25px;`}
         ${media.bp440`--side-padding: 20px;`}
+
+        --footer-height: 200px;
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

@@ -12,9 +12,10 @@ module.exports = {
     repo: 'https://github.com/bradypp/personal-website',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
+    linkedin: 'https://linkedin.com/in/bradypp',
     twitterHandle: '@bradypp',
     mainThemeColor: '#fff',
-    rssRoute: '/rss.xml',
+    rss: '/rss.xml',
     socialMedia: [
         {
             name: 'GitHub',
@@ -47,8 +48,22 @@ module.exports = {
             url: '/#portfolio',
         },
         {
+            name: 'Blog',
+            url: '/blog',
+        },
+        {
             name: 'Contact',
             url: '/#contact',
+        },
+    ],
+    otherLinks: [
+        {
+            name: 'Newsletter',
+            url: '/newsletter',
+        },
+        {
+            name: 'RSS',
+            url: '/rss.xml',
         },
     ],
     scrollRevealConfig: (delay = 200) => ({
