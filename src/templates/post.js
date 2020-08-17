@@ -1,17 +1,14 @@
-import React, { useEffect, useContext, useCallback, useRef } from 'react';
-import { graphql } from 'gatsby';
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { useInView } from 'react-intersection-observer';
 
-import { PostContext } from '@context';
-import { Layout, Tag, Date, TableOfContents, NewsletterForm } from '@components';
+import { Layout, Tag, Date, TableOfContents, NewsletterForm, CustomList } from '@components';
 import * as PostDesign from '@components/blog/post-design';
-import { mixins } from '@styles';
 
 const PostHeader = styled.header`
     margin-bottom: 2rem;
@@ -45,48 +42,76 @@ const PostContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    margin-bottom: 3rem;
 `;
 const PostContent = styled.article`
-    margin-bottom: 10rem;
+    ${PostDesign.PostStyles}
     margin-right: 10rem;
     width: 760px;
-    ${PostDesign.PostStyles}
+`;
+const BottomTagsContainer = styled.div`
+    font-size: var(--font-size-xs);
+    font-family: var(--fonts-mono);
+    font-weight: normal;
+    line-height: 1.5;
+`;
+const MorePostsContainer = styled.div`
+    width: 100%;
+`;
+const MorePostsTitle = styled.h2`
+    font-size: var(--font-size-4xl);
+`;
+const MorePostsLink = styled(Link)`
+    color: var(--color-text-primary-1);
+    font-size: var(--font-size-lg);
+
+    &:hover {
+        color: var(--color-primary);
+    }
 `;
 
+// TODO: add posts in a series/collection to the subtitle with a link to a series/collection page & recommended posts
+// TODO: make an aside component for info, success & danger
 const PostTemplate = ({ data }) => {
-    const headerRef = useRef();
-    const { setPostLocation } = useContext(PostContext);
-    const { frontmatter, body, fields, tableOfContents } = data.mdx;
+    const { frontmatter, body, fields, tableOfContents } = data.postData;
     const { title, subtitle, description, date, tags, ogImage, withContents = true } = frontmatter;
     const { slug } = fields;
 
-    const shortCodes = {
-        h2: PostDesign.H2,
-        h3: PostDesign.H3,
-    };
-
     const alignCenter = tableOfContents.items.length === 0 || !withContents;
 
-    const [inViewRef, inView] = useInView({
-        /* Optional options */
-        threshold: 0,
-        triggerOnce: false,
-    });
+    const tagsArray =
+        tags?.length > 0 &&
+        tags.map(tag => (
+            <>
+                <Tag key={uuidv4()} to={`/blog/tags/${kebabCase(tag)}/`}>
+                    #{tag}
+                </Tag>{' '}
+            </>
+        ));
 
-    const setRef = useCallback(
-        node => {
-            // eslint-disable-next-line no-param-reassign
-            headerRef.current = node;
-            inViewRef(node);
-        },
-        [inViewRef, headerRef],
+    const recommendedPosts = data?.recommendedPostsMdx?.edges;
+    const latestPosts = data?.latestPostsMdx?.edges;
+
+    const recommendedPostsIds = recommendedPosts?.map(el => el.node.id);
+    const latestPostsIds = latestPosts?.map(el => el.node.id);
+
+    const filteredLatestPostsIds = latestPostsIds?.filter(el => !recommendedPostsIds.includes(el));
+    const filteredLatestPosts = latestPosts?.filter(el =>
+        filteredLatestPostsIds.includes(el.node.id),
     );
 
-    useEffect(() => {
-        if (inView) {
-            setPostLocation('');
-        }
-    }, [inView, setPostLocation]);
+    const morePosts = [...recommendedPosts, ...filteredLatestPosts].slice(0, 3).map(post => {
+        const {
+            fields: { slug },
+            frontmatter: { title },
+        } = post.node;
+        return <MorePostsLink to={slug}>{title}</MorePostsLink>;
+    });
+
+    const shortCodes = {
+        h2: PostDesign.h2,
+        h3: PostDesign.h3,
+    };
 
     return (
         <Layout
@@ -96,19 +121,12 @@ const PostTemplate = ({ data }) => {
                 ogImage: ogImage.childImageSharp.fluid.src,
                 relativeUrl: slug,
             }}>
-            <PostHeader ref={setRef} alignCenter={alignCenter}>
+            <PostHeader alignCenter={alignCenter}>
                 <Title>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <DateTagsContainer>
                     <Date date={date} />
-                    <span>&nbsp;&mdash;&nbsp;</span>
-                    {tags &&
-                        tags.length > 0 &&
-                        tags.map(tag => (
-                            <Tag key={uuidv4()} to={`/blog/tags/${kebabCase(tag)}/`}>
-                                #{tag}
-                            </Tag>
-                        ))}
+                    {tags?.length > 0 && [<span>&nbsp;&mdash;&nbsp;</span>, tagsArray]}
                 </DateTagsContainer>
             </PostHeader>
             <PostContainer>
@@ -121,6 +139,12 @@ const PostTemplate = ({ data }) => {
                     <TableOfContents slug={slug} tableOfContents={tableOfContents} />
                 )}
             </PostContainer>
+            {morePosts?.length > 0 && (
+                <MorePostsContainer>
+                    <MorePostsTitle>Continue reading...</MorePostsTitle>
+                    <CustomList items={morePosts} />
+                </MorePostsContainer>
+            )}
             <NewsletterForm />
         </Layout>
     );
@@ -132,9 +156,10 @@ PostTemplate.propTypes = {
 
 export default PostTemplate;
 
+// TODO: test queries
 export const pageQuery = graphql`
-    query PostQuery($id: String!) {
-        mdx(id: { eq: $id }) {
+    query PostQuery($id: String!, $tags: [String]) {
+        postData: mdx(id: { eq: $id }) {
             body
             tableOfContents
             fields {
@@ -152,6 +177,48 @@ export const pageQuery = graphql`
                         fluid(maxWidth: 800, quality: 90) {
                             ...GatsbyImageSharpFluid
                         }
+                    }
+                }
+            }
+        }
+        recommendedPostsMdx: allMdx(
+            limit: 3
+            filter: {
+                fileAbsolutePath: { regex: "/content/posts/" }
+                frontmatter: { draft: { ne: true }, tags: { in: $tags } }
+                id: { ne: $id }
+            }
+            sort: { fields: [frontmatter___date], order: DESC }
+        ) {
+            edges {
+                node {
+                    id
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
+                    }
+                }
+            }
+        }
+        latestPostsMdx: allMdx(
+            limit: 3
+            filter: {
+                fileAbsolutePath: { regex: "/content/posts/" }
+                frontmatter: { draft: { ne: true } }
+                id: { ne: $id }
+            }
+            sort: { fields: [frontmatter___date], order: DESC }
+        ) {
+            edges {
+                node {
+                    id
+                    fields {
+                        slug
+                    }
+                    frontmatter {
+                        title
                     }
                 }
             }

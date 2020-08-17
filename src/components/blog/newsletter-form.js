@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -8,24 +9,24 @@ import { Form } from '@components';
 import { mixins } from '@styles';
 
 const NewsletterOuterContainer = styled.div`
-    width: 120%;
+    width: 100vw;
     background-color: var(--color-background-secondary-1);
-    margin-bottom: 8rem;
     border-radius: var(--border-radius);
+    margin-top: ${props => (props.isPost ? '10rem' : 0)};
 `;
 
 const NewsletterInnerContainer = styled.div`
     ${mixins.containAndCenter}
     width: 800px;
-    padding: 10rem 0;
+    padding: 12rem 0;
 
     h2 {
         font-size: var(--font-size-h3);
-        margin-bottom: 2.8rem;
+        margin-bottom: 3rem;
     }
 
     p {
-        margin-bottom: 2.8rem;
+        margin-bottom: 3rem;
         font-size: var(--font-size-xl);
         font-weight: 500;
     }
@@ -42,9 +43,7 @@ const NewsletterInnerContainer = styled.div`
     }
 `;
 
-const Heading = styled.h2``;
-
-const NewsletterForm = () => {
+const NewsletterForm = ({ isPost }) => {
     const {
         markdownRemark: {
             frontmatter: { title },
@@ -74,9 +73,9 @@ const NewsletterForm = () => {
     });
 
     return (
-        <NewsletterOuterContainer>
+        <NewsletterOuterContainer isPost={isPost}>
             <NewsletterInnerContainer>
-                <Heading>{title}</Heading>
+                <h2>{title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: html }} />
                 <Form
                     initialValues={{
@@ -135,6 +134,13 @@ const NewsletterForm = () => {
             </NewsletterInnerContainer>
         </NewsletterOuterContainer>
     );
+};
+
+NewsletterForm.propTypes = {
+    isPost: PropTypes.bool,
+};
+NewsletterForm.defaultProps = {
+    isPost: true,
 };
 
 export default NewsletterForm;

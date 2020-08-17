@@ -30,23 +30,10 @@ const remarkPlugins = [
     {
         resolve: `gatsby-remark-autolink-headers`,
         options: {
-            offsetY: 100,
             className: `header-autolink`,
-            icon: `<svg
-            fill="none"
-            height="24"
-            width="24"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-        </svg>`,
+            icon: ``,
             maintainCase: false,
             removeAccents: true,
-            isIconAfterHeader: false,
             elements: [`h2`, `h3`],
         },
     },
@@ -156,7 +143,85 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
-        `gatsby-plugin-feed`,
+        {
+            resolve: `gatsby-plugin-feed`,
+            options: {
+                query: `
+                    {
+                      site {
+                        siteMetadata {
+                            siteUrl,
+                            description,
+                            keywords,
+                            language,
+                        }
+                      }
+                    }
+                  `,
+                feeds: [
+                    {
+                        serialize: ({ query: { site, allMdx } }) => {
+                            const data = allMdx.edges.map(edge => {
+                                const { siteUrl } = site.siteMetadata;
+                                const { slug } = edge.node.fields;
+
+                                const postUrl = `${siteUrl}${slug}`;
+
+                                let html;
+                                const disclaimer = `<div style="margin-top: 50px; font-style: italic;"><strong><a href="${postUrl}">View the original post</a>.</strong></div><br /><br />`;
+
+                                html = edge.node.html
+                                    .replace(/href="\//g, `href="${siteUrl}/`)
+                                    .replace(/src="\//g, `src="${siteUrl}/`)
+                                    .replace(/"\/static\//g, `"${siteUrl}/static/`)
+                                    .replace(/,\s*\/static\//g, `,${siteUrl}/static/`);
+
+                                html = disclaimer + html;
+
+                                return {
+                                    ...edge.node.frontmatter,
+                                    description: edge.node.excerpt,
+                                    date: edge.node.frontmatter.date,
+                                    url: postUrl,
+                                    guid: postUrl,
+                                    custom_elements: [{ 'content:encoded': html }],
+                                };
+                            });
+
+                            return data;
+                        },
+                        query: `
+                    {
+                      allMdx(
+                        limit: 1000,
+                        filter: {
+                            fileAbsolutePath: { regex: "/content/posts/" }
+                            frontmatter: { draft: { ne: true } }
+                        }
+                        sort: { fields: [frontmatter___date], order: DESC }
+                      ) {
+                        edges {
+                            node {
+                                html
+                                excerpt(pruneLength: 200, truncate: true)
+                                fields {
+                                    slug
+                                }
+                                frontmatter {
+                                    title
+                                    date(formatString: "MMMM Do, YYYY")
+                                }
+                            }
+                        }
+                      }
+                    }
+                  `,
+                        output: '/rss.xml',
+                        title: "Paul Brady's blog",
+                    },
+                ],
+            },
+        },
         `gatsby-plugin-netlify`,
         {
             resolve: `gatsby-plugin-mdx`,

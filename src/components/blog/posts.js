@@ -12,7 +12,6 @@ const PostsContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 50%);
     grid-gap: 2rem;
-    margin-bottom: 8rem;
 
     ${media.bp800`
         grid-template-columns: 100%;

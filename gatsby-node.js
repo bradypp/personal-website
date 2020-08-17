@@ -44,6 +44,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                         fields {
                             slug
                         }
+                        frontmatter {
+                            tags
+                        }
                     }
                 }
             }
@@ -74,6 +77,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             path: node.fields.slug,
             context: {
                 id: node.id,
+                tags: node.frontmatter.tags,
             },
         });
     });

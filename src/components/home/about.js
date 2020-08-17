@@ -3,10 +3,8 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Media from 'react-media';
 
 import scrollReveal from '@utils/scrollReveal';
-import { BREAKPOINTS } from '@utils/constants';
 import { scrollRevealConfig, github } from '@config';
 import { SectionHeading, CustomLink, CustomList } from '@components';
 import { mixins, media } from '@styles';
@@ -92,7 +90,7 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
-                    <CustomList items={skills} columns={3} />
+                    <CustomList items={skills} columns={3} fontSize="xs" rowGap="1.6rem" />
                 </ContentContainer>
                 <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
                     <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />

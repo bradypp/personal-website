@@ -32,7 +32,7 @@ const InputContainer = styled.div`
             (props.variant === 'default' && mixins.formField) ||
             (props.variant === 'newsletter' &&
                 css`
-                    background-color: var(--color-background-secondary-1);
+                    background-color: transparent;
                     border-bottom: 3px solid var(--color-newsletter-field-border);
                     font-size: var(--font-size-xl);
                     color: var(--color-text-primary-1);

@@ -11,11 +11,13 @@ const FooterContainer = styled.footer`
     display: flex;
     align-items: flex-end;
     height: var(--footer-height);
-    padding: 0 var(--side-padding) 2.5rem;
+    padding: 0 var(--side-padding) 3.5rem;
     width: 100%;
+    font-size: var(--font-size-xs);
 
     ${media.bp600`
         align-items:flex-end;
+        padding-bottom: 4rem;
     `}
 `;
 const FooterContentContainer = styled.div`
@@ -23,7 +25,6 @@ const FooterContentContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: var(--font-size-sm);
 
     ${media.bp600`
         flex-direction:column-reverse;
@@ -53,7 +54,8 @@ const FooterRightContainer = styled.div`
 
     ${media.bp600`
         align-items:center;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        font-size: var(--font-size-sm);
     `}
 `;
 const SocialMediaContainer = styled.ul`
@@ -61,7 +63,7 @@ const SocialMediaContainer = styled.ul`
     justify-content: flex-start;
     align-items: flex-end;
     margin-left: -1rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
 
     & > li:not(:last-child) {
         margin-right: 0.6rem;
@@ -81,7 +83,7 @@ const SocialMediaContainer = styled.ul`
     }
 
     ${media.bp600`
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     `}
 `;
 const LinksContainer = styled.ul`
@@ -94,12 +96,13 @@ const LinksContainer = styled.ul`
     }
 
     li {
-        margin-top: 0.8rem;
+        margin-top: 1.2rem;
     }
 `;
 const NavLink = styled(Link)`
     color: var(--color-text-primary-2);
     transition: var(--transition);
+    font-weight: 400;
 
     &:hover {
         color: var(--color-primary);
@@ -130,7 +133,7 @@ const Footer = () => {
                                 </li>
                             ))}
                     </SocialMediaContainer>
-                    <span>&copy; Designed & developed by Paul Brady</span>
+                    <span>&copy; 2020 Designed & developed by Paul Brady.</span>
                 </FooterLeftContainer>
                 <FooterRightContainer>
                     <LinksContainer>
@@ -138,7 +141,7 @@ const Footer = () => {
                             otherLinks.map(({ url, name }) => (
                                 // eslint-disable-next-line react/no-array-index-key
                                 <li key={uuidv4()}>
-                                    <NavLink href={url}>{name}</NavLink>
+                                    <NavLink to={url}>{name}</NavLink>
                                 </li>
                             ))}
                     </LinksContainer>
@@ -147,7 +150,7 @@ const Footer = () => {
                             navLinks.map(({ url, name }) => (
                                 // eslint-disable-next-line react/no-array-index-key
                                 <li key={uuidv4()}>
-                                    <NavLink href={url}>{name}</NavLink>
+                                    <NavLink to={url}>{name}</NavLink>
                                 </li>
                             ))}
                     </LinksContainer>

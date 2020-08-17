@@ -162,7 +162,8 @@ const theme = css`
         ${media.bp600`--side-padding: 25px;`}
         ${media.bp440`--side-padding: 20px;`}
 
-        --footer-height: 200px;
+        --footer-height: 280px;
+        --base-line-height: 1.5;
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

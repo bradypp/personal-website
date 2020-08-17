@@ -1,8 +1,8 @@
-import React, { useEffect, useContext, useCallback, useRef } from 'react';
-import { css } from 'styled-components';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
 
-import { PostContext } from '@context';
+import { Icon } from '@components';
 
 export const PostStyles = css`
     h1,
@@ -61,48 +61,52 @@ export const PostStyles = css`
             font-size: var(--font-size-xl);
         }
     }
+
+    h2,
+    h3 {
+        &:hover {
+            a {
+                opacity: 1;
+            }
+        }
+    }
 `;
 
-const generateHeading = heading => ({ children, ...props }) => {
-    const { setPostLocation } = useContext(PostContext);
+const AnchorLink = styled(Link)`
+    position: absolute;
+    transform: translateX(-115%);
+    opacity: 0;
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+`;
+const Anchor = styled.div`
+    position: absolute;
+    margin-top: -100px;
+`;
+
+const generateHeading = Heading => ({ children, ...props }) => {
+    const [id, setId] = useState();
     const ref = useRef();
 
-    const [inViewRef, inView] = useInView({
-        /* Optional options */
-        threshold: 0,
-        triggerOnce: false,
-    });
-
-    const setRef = useCallback(
-        node => {
-            // eslint-disable-next-line no-param-reassign
-            ref.current = node;
-            inViewRef(node);
-        },
-        [inViewRef, ref],
-    );
-
     useEffect(() => {
-        if (inView) {
-            setPostLocation(ref.current.id);
+        if (!id && ref.current) {
+            setId(ref.current.id);
+            ref.current.removeAttribute('id');
         }
-    }, [inView, setPostLocation]);
+    }, [id]);
 
-    if (heading === 'H2') {
-        return (
-            <h2 ref={setRef} {...props}>
-                {children}
-            </h2>
-        );
-    }
-    if (heading === 'H3') {
-        return (
-            <h3 ref={setRef} {...props}>
-                {children}
-            </h3>
-        );
-    }
+    return (
+        <Heading ref={ref} style={{ position: 'relative' }} {...props}>
+            <Anchor id={id} />
+            <AnchorLink to={`#${id}`} aria-label={`${children[1].toLowerCase()} anchor link`}>
+                <Icon name="anchor" />
+            </AnchorLink>
+            {children}
+        </Heading>
+    );
 };
 
-export const H2 = generateHeading('H2');
-export const H3 = generateHeading('H3');
+export const h2 = generateHeading('h2');
+export const h3 = generateHeading('h3');

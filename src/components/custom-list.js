@@ -10,11 +10,12 @@ const ListContainer = styled.ul`
     display: grid;
     grid-template-columns: repeat(${props => props.columns || 1}, 1fr);
     grid-column-gap: 1.6rem;
-    grid-row-gap: 1.8rem;
+    grid-row-gap: ${props => props.rowGap};
     margin: 0;
     padding: 0;
     overflow: visible;
     list-style: none;
+    font-size: ${props => `var(--font-size-${props.fontSize})`};
 
     ${media.bp800`
         ${props =>
@@ -33,35 +34,31 @@ const ListContainer = styled.ul`
 
     li {
         display: flex;
-        align-items: flex-start;
-        min-width: 1.6rem;
-        min-height: 1.6rem;
+        align-items: baseline;
 
         svg {
             color: var(--color-secondary);
-            min-width: 1.6rem;
-            min-height: 1.6rem;
-            width: 1.6rem;
-            height: 1.6rem;
-            margin: 0 1.6rem 0 0;
-        }
-
-        span {
-            height: min-content;
-            line-height: 1;
-            font-size: var(--font-size-xs);
+            width: 1.05em;
+            height: 1.05em;
         }
     }
 `;
 
-const CustomList = ({ items, icon, ...props }) => {
+const IconWrapper = styled.span`
+    margin: 0 1.6rem 0 0;
+    transform: translateY(-1px);
+`;
+
+const CustomList = ({ className, items, icon, columns, rowGap, fontSize }) => {
     return (
-        <ListContainer {...props}>
+        <ListContainer className={className} columns={columns} rowGap={rowGap} fontSize={fontSize}>
             {items &&
                 items.map(item => (
                     <li key={uuidv4()}>
-                        <Icon name={icon} />
-                        <span>{item}</span>
+                        <IconWrapper>
+                            <Icon name={icon} />
+                        </IconWrapper>
+                        {typeof item === 'string' ? <span>{item}</span> : item}
                     </li>
                 ))}
         </ListContainer>
@@ -73,12 +70,16 @@ CustomList.propTypes = {
     icon: PropTypes.string,
     className: PropTypes.string,
     columns: PropTypes.number,
+    rowGap: PropTypes.string,
+    fontSize: PropTypes.string,
 };
 
 CustomList.defaultProps = {
     className: undefined,
     columns: 1,
     icon: 'arrow-right',
+    rowGap: '1rem',
+    fontSize: 'md',
 };
 
 export default CustomList;

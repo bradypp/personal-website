@@ -36,11 +36,12 @@ const base = css`
         font-family: var(--fonts-primary);
         font-size: var(--font-size-md);
         font-weight: 400;
-        line-height: 1.5;
+        line-height: var(--base-line-height);
         color: var(--color-text-primary-1);
         background: var(--color-background-primary-1);
         min-height: 100vh;
         transition: var(--transition);
+        overflow-x: hidden;
     }
 
     ${mixins.customScrollbar({
@@ -61,7 +62,7 @@ const base = css`
     h5,
     h6 {
         font-weight: 600;
-        margin: 0 0 1rem 0;
+        margin: 0 0 1.6rem 0;
     }
 
     h1 {
@@ -178,7 +179,7 @@ const base = css`
     }
 
     p {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.6rem 0;
 
         & > a {
             ${mixins.primaryLink};
@@ -209,11 +210,7 @@ const base = css`
     }
 
     .header-autolink {
-        transform: translateX(-105%) !important;
-        svg {
-            height: 20px;
-            width: 20px;
-        }
+        display: none;
     }
 `;
 

@@ -3,7 +3,7 @@ module.exports = {
     siteDescription:
         "Paul Brady's personal website showcases his work and expertise in web development.",
     siteKeywords:
-        'Paul Brady, software engineer, bradypp, front-end, web developer, CSS,JavaScript, React, Manchester',
+        'Paul Brady, software engineer, bradypp, front-end, full-stack, web developer, CSS, JavaScript, React, Manchester',
     siteUrl: 'https://paulbrady.dev',
     siteLanguage: 'en',
     name: 'Paul Brady',

@@ -136,10 +136,10 @@ const LinksList = styled.ul`
         margin-right: 2rem;
     }
 `;
-const StyledLink = styled(Link)`
+const NavLink = styled(Link)`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-xs);
-    padding: 1.2rem 1rem;
+    padding: 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
 
@@ -148,7 +148,6 @@ const StyledLink = styled(Link)`
         color: var(--color-primary);
     }
 `;
-
 class Header extends Component {
     state = {
         // eslint-disable-next-line react/destructuring-assignment
@@ -260,9 +259,9 @@ class Header extends Component {
                                     <LinksList>
                                         {navLinks.map(({ url, name }) => (
                                             <li key={uuidv4()}>
-                                                <StyledLink to={url} aria-label={name}>
+                                                <NavLink to={url} aria-label={name}>
                                                     {name}
-                                                </StyledLink>
+                                                </NavLink>
                                             </li>
                                         ))}
                                     </LinksList>
