@@ -9,7 +9,7 @@ import Media from 'react-media';
 import { throttle } from '@utils/javascript';
 import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle } from '@components';
+import { Menu, ThemeToggle, ClientOnly } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -252,38 +252,40 @@ class Header extends Component {
                     initial={isHome ? 'hidden' : 'visible'}
                     animate="visible"
                     variants={variants}>
-                    <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
-                        {matches => (
-                            <NavContainer>
-                                {matches.large && (
-                                    <LinksList>
-                                        {navLinks.map(({ url, name }) => (
-                                            <li key={uuidv4()}>
-                                                <NavLink to={url} aria-label={name}>
-                                                    {name}
-                                                </NavLink>
-                                            </li>
-                                        ))}
-                                    </LinksList>
-                                )}
-                                <ThemeToggle />
-                                {!matches.large && (
-                                    <>
-                                        <Hamburger onClick={this.toggleMenu}>
-                                            <HamburgerBox>
-                                                <HamburgerContent isMenuOpen={isMenuOpen} />
-                                            </HamburgerBox>
-                                        </Hamburger>
-                                        <Menu
-                                            isMenuOpen={isMenuOpen}
-                                            toggleMenu={this.toggleMenu}
-                                            aria-label="Menu Toggle"
-                                        />
-                                    </>
-                                )}
-                            </NavContainer>
-                        )}
-                    </Media>
+                    <ClientOnly>
+                        <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
+                            {matches => (
+                                <NavContainer>
+                                    {matches.large && (
+                                        <LinksList>
+                                            {navLinks.map(({ url, name }) => (
+                                                <li key={uuidv4()}>
+                                                    <NavLink to={url} aria-label={name}>
+                                                        {name}
+                                                    </NavLink>
+                                                </li>
+                                            ))}
+                                        </LinksList>
+                                    )}
+                                    <ThemeToggle />
+                                    {!matches.large && (
+                                        <>
+                                            <Hamburger onClick={this.toggleMenu}>
+                                                <HamburgerBox>
+                                                    <HamburgerContent isMenuOpen={isMenuOpen} />
+                                                </HamburgerBox>
+                                            </Hamburger>
+                                            <Menu
+                                                isMenuOpen={isMenuOpen}
+                                                toggleMenu={this.toggleMenu}
+                                                aria-label="Menu Toggle"
+                                            />
+                                        </>
+                                    )}
+                                </NavContainer>
+                            )}
+                        </Media>
+                    </ClientOnly>
                 </HeaderContainer>
             )
         );

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { motion, useAnimation } from 'framer-motion';
 
-import { Icon, CustomLink, Logo } from '@components';
+import { Icon, CustomLink } from '@components';
 import { navLinks, socialMedia, email } from '@config';
 import { mixins, media } from '@styles';
 
@@ -36,11 +36,13 @@ const SidebarContainer = styled.aside`
         width: 75vw;
         padding: 2.5rem;
     `};
-    ${media.bp440`width: 80vw;`};
+    ${media.bp440`
+        width: 80vw;
+    `};
 `;
 const ContentContainer = styled.div`
     ${mixins.flexColumnCenter};
-    padding-top: 2rem;
+    padding-top: 5rem;
     justify-content: space-between;
     height: 100%;
 `;
