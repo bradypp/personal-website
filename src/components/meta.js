@@ -63,6 +63,7 @@ const Meta = ({ meta }) => {
             <meta itemProp="image" content={metaOgImage} />
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={keywords} />
+
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />

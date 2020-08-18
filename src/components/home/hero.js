@@ -98,7 +98,6 @@ const ButtonContainer = styled(motion.div)`
 `;
 const WaveEmojiContainer = styled.div`
     width: 4.4rem;
-    height: 100%;
     margin: 0 0 0 2.4rem;
     ${mixins.clickable}
 

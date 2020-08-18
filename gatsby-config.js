@@ -31,7 +31,7 @@ const remarkPlugins = [
         resolve: `gatsby-remark-autolink-headers`,
         options: {
             className: `header-autolink`,
-            icon: ``,
+            icon: `<span>i</span>`,
             maintainCase: false,
             removeAccents: true,
             elements: [`h2`, `h3`],

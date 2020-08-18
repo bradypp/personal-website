@@ -156,8 +156,8 @@ const theme = css`
 
         --max-width: 1200px;
         --side-padding: 150px;
-        ${media.bp1280`--side-padding: 125px;`}
-        ${media.bp1040`--side-padding: 80px;`}
+        ${media.bp1280`--side-padding: 100px;`}
+        ${media.bp1040`--side-padding: 75px;`}
         ${media.bp800`--side-padding: 45px;`}
         ${media.bp600`--side-padding: 25px;`}
         ${media.bp440`--side-padding: 20px;`}

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'gatsby';
 
@@ -91,15 +91,16 @@ const LinksContainer = styled.ul`
     justify-content: flex-end;
     align-items: flex-end;
 
-    & > li:not(:first-child) {
+    & > *:not(:first-child) {
         margin-left: 2.4rem;
     }
 
-    li {
+    li,
+    button {
         margin-top: 1.2rem;
     }
 `;
-const NavLink = styled(Link)`
+const sharedLinkStyles = css`
     color: var(--color-text-primary-2);
     transition: var(--transition);
     font-weight: 400;
@@ -107,6 +108,14 @@ const NavLink = styled(Link)`
     &:hover {
         color: var(--color-primary);
     }
+`;
+const NavLink = styled(Link)`
+    ${sharedLinkStyles}
+`;
+const ToTopButton = styled.button`
+    ${sharedLinkStyles}
+    display:inline;
+    vertical-align: baseline;
 `;
 
 const Footer = () => {
@@ -144,6 +153,15 @@ const Footer = () => {
                                     <NavLink to={url}>{name}</NavLink>
                                 </li>
                             ))}
+                        <li key={uuidv4()}>
+                            <ToTopButton
+                                type="button"
+                                onClick={() => {
+                                    window.scrollTo(0, 0);
+                                }}>
+                                To Top
+                            </ToTopButton>
+                        </li>
                     </LinksContainer>
                     <LinksContainer>
                         {navLinks &&

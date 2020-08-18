@@ -1,24 +1,52 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as Yup from 'yup';
 import axios from 'axios';
 
 import { Form } from '@components';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 
 const NewsletterOuterContainer = styled.div`
-    width: 100vw;
     background-color: var(--color-background-secondary-1);
     border-radius: var(--border-radius);
-    margin-top: ${props => (props.isPost ? '10rem' : 0)};
+    padding: 12rem 18rem;
+
+    ${media.bp1280`
+        padding: 12rem 14rem;
+    `}
+    ${media.bp1040`
+        padding: 12rem 10rem;
+    `}
+    ${media.bp800`
+        width: 100vw;
+
+    `}
+    ${media.bp600`
+        padding: 10rem 6rem;
+    `}
+    ${media.bp440`
+        padding: 6rem 4rem;
+    `}
+    ${media.bp384`
+        padding: 6rem 3rem;
+    `}
+
+    ${props =>
+        props.isPost &&
+        css`
+            width: 100vw;
+            margin-top: 10rem;
+            padding: 12rem 0;
+        `}
 `;
 
 const NewsletterInnerContainer = styled.div`
     ${mixins.containAndCenter}
-    width: 800px;
-    padding: 12rem 0;
+    /* max-width: 800px; */
+
+    
 
     h2 {
         font-size: var(--font-size-h3);
@@ -34,12 +62,31 @@ const NewsletterInnerContainer = styled.div`
     form {
         display: flex;
         margin-top: 4rem;
-        & > *:not(:last-child) {
-            margin-right: 2.8rem;
+
+        & > * {
+            margin-bottom: 0 !important;
         }
+
+        & > *:not(:last-child) {
+            margin-right: 3rem;
+        }
+
         & > *:first-child {
             width: 60%;
         }
+
+        ${media.bp800`
+            flex-direction: column;
+
+            & > *:not(:last-child) {
+                margin-right: 0;
+                margin-bottom: 4rem !important;
+            }
+
+            & > *:first-child {
+                width: 100%;
+            }
+        `}
     }
 `;
 
@@ -140,7 +187,7 @@ NewsletterForm.propTypes = {
     isPost: PropTypes.bool,
 };
 NewsletterForm.defaultProps = {
-    isPost: true,
+    isPost: false,
 };
 
 export default NewsletterForm;

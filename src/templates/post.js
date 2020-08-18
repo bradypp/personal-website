@@ -8,6 +8,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { Layout, Tag, Date, TableOfContents, NewsletterForm, CustomList } from '@components';
+import { media } from '@styles';
 import * as PostDesign from '@components/blog/post-design';
 
 const PostHeader = styled.header`
@@ -46,8 +47,18 @@ const PostContainer = styled.div`
 `;
 const PostContent = styled.article`
     ${PostDesign.PostStyles}
-    margin-right: 10rem;
+    margin-right: 9rem;
     width: 760px;
+
+    ${media.bp1280` 
+        margin-right: 7rem;
+        width: 720px;
+    `}
+    ${media.bp1040` 
+        margin-right: 0;
+        width: 100%;
+        max-width: 800px;
+    `}
 `;
 const BottomTagsContainer = styled.div`
     font-size: var(--font-size-xs);
@@ -82,11 +93,9 @@ const PostTemplate = ({ data }) => {
     const tagsArray =
         tags?.length > 0 &&
         tags.map(tag => (
-            <>
-                <Tag key={uuidv4()} to={`/blog/tags/${kebabCase(tag)}/`}>
-                    #{tag}
-                </Tag>{' '}
-            </>
+            <React.Fragment key={uuidv4()}>
+                <Tag to={`/blog/tags/${kebabCase(tag)}/`}>#{tag}</Tag>{' '}
+            </React.Fragment>
         ));
 
     const recommendedPosts = data?.recommendedPostsMdx?.edges;
@@ -126,7 +135,10 @@ const PostTemplate = ({ data }) => {
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <DateTagsContainer>
                     <Date date={date} />
-                    {tags?.length > 0 && [<span>&nbsp;&mdash;&nbsp;</span>, tagsArray]}
+                    {tags?.length > 0 && [
+                        <span key={uuidv4()}>&nbsp;&mdash;&nbsp;</span>,
+                        tagsArray,
+                    ]}
                 </DateTagsContainer>
             </PostHeader>
             <PostContainer>
@@ -145,7 +157,7 @@ const PostTemplate = ({ data }) => {
                     <CustomList items={morePosts} />
                 </MorePostsContainer>
             )}
-            <NewsletterForm />
+            <NewsletterForm isPost />
         </Layout>
     );
 };
@@ -156,7 +168,6 @@ PostTemplate.propTypes = {
 
 export default PostTemplate;
 
-// TODO: test queries
 export const pageQuery = graphql`
     query PostQuery($id: String!, $tags: [String]) {
         postData: mdx(id: { eq: $id }) {

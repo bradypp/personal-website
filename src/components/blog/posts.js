@@ -15,7 +15,6 @@ const PostsContainer = styled.section`
 
     ${media.bp800`
         grid-template-columns: 100%;
-        margin-bottom: 4rem;
     `}
 `;
 const PostContainer = styled.div`

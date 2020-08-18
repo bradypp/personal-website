@@ -72,13 +72,14 @@ export const PostStyles = css`
     }
 `;
 
-const AnchorLink = styled(Link)`
+const AnchorLink = styled.a`
     position: absolute;
-    transform: translateX(-115%);
+    transform: translateX(-100%);
     opacity: 0;
+    padding-right: 5px;
     svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
 `;
 const Anchor = styled.div`
@@ -100,7 +101,7 @@ const generateHeading = Heading => ({ children, ...props }) => {
     return (
         <Heading ref={ref} style={{ position: 'relative' }} {...props}>
             <Anchor id={id} />
-            <AnchorLink to={`#${id}`} aria-label={`${children[1].toLowerCase()} anchor link`}>
+            <AnchorLink href={`#${id}`} aria-label={`${children[1].toLowerCase()} anchor link`}>
                 <Icon name="anchor" />
             </AnchorLink>
             {children}
