@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
-import { Layout, Posts } from '@components';
+import { Layout, Posts, CustomLink } from '@components';
 import { media } from '@styles';
 
 const Heading = styled.h1`
@@ -18,6 +18,16 @@ const Subtitle = styled.p`
     ${media.bp800`
         margin-bottom: 4rem;
     `};
+`;
+const NoPostsMessage = styled.div`
+    p {
+        margin-bottom: 1rem;
+        text-align: center;
+
+        &:last-child {
+            font-size: var(--font-size-xs);
+        }
+    }
 `;
 // const TagsContainer = styled.section`
 //     flex: 1;
@@ -48,7 +58,16 @@ const BlogPage = ({ data }) => {
             }}>
             <Heading>{title}</Heading>
             <Subtitle>{subtitle}</Subtitle>
-            <Posts posts={postsMdx.edges} />
+            {postsMdx.edges.length > 0 ? (
+                <Posts posts={postsMdx.edges} />
+            ) : (
+                <NoPostsMessage>
+                    <p>Stay tuned! My first post will arrive imminently.</p>
+                    <p>
+                        (Check out a demo post <CustomLink to="/blog/post-demo">here</CustomLink>)
+                    </p>
+                </NoPostsMessage>
+            )}
         </Layout>
     );
 };
