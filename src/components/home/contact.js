@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import scrollReveal from '@utils/scrollReveal';
 import { scrollRevealConfig, email } from '@config';
-import { Heading, CustomLink, Form } from '@components';
+import { SectionHeading, CustomLink, Form } from '@components';
 import { mixins, media } from '@styles';
 
 const ContactContainer = styled.section`
@@ -73,7 +73,7 @@ const MiddleText = styled.span`
 
 const Contact = ({ data }) => {
     const [submitText, setSubmitText] = useState('Send Message');
-    const { frontmatter, html } = data[0].node;
+    const { frontmatter, html } = data;
     const { title, emailText } = frontmatter;
 
     const contactRef = useRef();
@@ -94,7 +94,7 @@ const Contact = ({ data }) => {
 
     return (
         <ContactContainer ref={contactRef}>
-            <Heading id="contact">{title}</Heading>
+            <SectionHeading id="contact">{title}</SectionHeading>
             <HTMLContainer dangerouslySetInnerHTML={{ __html: html }} />
             <FlexContainer>
                 <FormContainer>
@@ -111,7 +111,7 @@ const Contact = ({ data }) => {
                             try {
                                 form.setSubmitting(true);
                                 await axios.post(
-                                    '/.netlify/functions/sendEmail',
+                                    '/.netlify/functions/send-email',
                                     JSON.stringify(values),
                                 );
                                 form.setSubmitting(false);
@@ -125,6 +125,9 @@ const Contact = ({ data }) => {
                                 setTimeout(() => {
                                     setSubmitText('Send Message');
                                 }, 3000);
+                                if (process.env.NODE_ENV === 'development') {
+                                    console.error(err.message);
+                                }
                             }
                         }}>
                         {({ isSubmitting }) => (
@@ -160,7 +163,7 @@ const Contact = ({ data }) => {
 };
 
 Contact.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default Contact;

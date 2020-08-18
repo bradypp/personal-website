@@ -12,7 +12,8 @@ const theme = css`
         --color-blue-dark: #aacdee;
         --color-blue: #c5dcf1;
         --color-blue-light: #dfebf6;
-        --color-blue-light-alt: #c8d3dd;
+        --color-blue-light-alt: #d2e4f6;
+        --color-blue-lighter: #e6f0f8;
         --color-green: #64ffda;
         --color-green-light: #78ffee;
         --color-green-dark: #27c29d;
@@ -43,7 +44,7 @@ const theme = css`
         --color-navy-6: #354863;
         --color-grey-dark-1: #333;
         --color-grey-dark-2: #525252;
-        --color-grey-dark-3: #777;
+        --color-grey-dark-3: #676767;
         --color-grey-light-1: #e7e4e4;
         --color-grey-light-2: #ddd;
         --color-grey-light-3: #ccc;
@@ -62,6 +63,7 @@ const theme = css`
         --color-background-secondary-2: var(--color-blue-light-alt);
         --color-text-primary-1: var(--color-grey-dark-1);
         --color-text-primary-2: var(--color-grey-dark-2);
+        --color-text-primary-3: var(--color-grey-dark-3);
         --color-text-secondary-1: var(--color-background-primary-1);
         --color-text-link: var(--color-primary);
         --color-danger: var(--color-red);
@@ -73,6 +75,9 @@ const theme = css`
         --color-field-border: var(--color-white-3);
         --color-field-border-hover: var(--color-white-4);
         --color-field-border-active: var(--color-primary);
+        --color-newsletter-field-background: var(--color-blue-lighter);
+        --color-newsletter-field-border: var(--color-text-primary-2);
+        --color-newsletter-field-border-active: var(--color-primary);
         --color-border-primary: var(--color-white-5);
         --color-socials: var(--color-text-primary-2);
         --color-socials-hover: var(--color-indigo);
@@ -83,6 +88,7 @@ const theme = css`
         --color-menu-background: rgba(9, 22, 42, 0.95);
         --color-box-shadow: rgba(0, 0, 0, 0.25);
         --color-logo-hover: rgba(68, 51, 255, 0.05);
+        --color-contents-border: var(--color-white-4);
 
         &.dark-mode {
             --color-primary: var(--color-soft-pink);
@@ -99,6 +105,7 @@ const theme = css`
             --color-background-secondary-2: var(--color-navy-3-alt);
             --color-text-primary-1: var(--color-white-1);
             --color-text-primary-2: var(--color-slate-3);
+            --color-text-primary-3: var(--color-slate-4);
             --color-text-secondary-1: var(--color-background-primary-1);
             --color-border-primary: var(--color-navy-6);
             --color-socials: var(--color-text-primary-2);
@@ -111,9 +118,13 @@ const theme = css`
             --color-field-background-active: var(--color-navy-6);
             --color-field-border: var(--color-navy-4);
             --color-field-border-hover: var(--color-navy-3);
+            --color-newsletter-field-background: var(--color-navy-5);
+            --color-newsletter-field-border: var(--color-text-primary-3);
+            --color-newsletter-field-border-active: var(--color-secondary);
             --color-box-shadow: rgba(7, 18, 34, 0.25);
             --color-theme-toggle: var(--color-soft-pink);
-        --color-logo-hover: rgba(255, 167, 196, 0.05);
+            --color-logo-hover: rgba(255, 167, 196, 0.05);
+            --color-contents-border: var(--color-navy-3);
         }
 
         --fonts-primary: Inter, -apple-system, system-ui, Lato, Segoe UI, Roboto, Arial, sans-serif,
@@ -127,14 +138,16 @@ const theme = css`
         --font-size-xs: 1.4rem;
         --font-size-sm: 1.5rem;
         --font-size-md: 1.6rem;
-        --font-size-lg: 1.8rem;
-        --font-size-xl: 2.0rem;
-        --font-size-2xl: 2.2rem;
-        --font-size-3xl: 2.4rem;
-        --font-size-4xl: 2.6rem;
+        --font-size-lg: 1.7rem;
+        --font-size-xl: 1.8rem;
+        --font-size-2xl: 2.0rem;
+        --font-size-3xl: 2.2rem;
+        --font-size-4xl: 2.4rem;
+        --font-size-5xl: 2.6rem;
         --font-size-h3: 3.2rem;
         --font-size-h2: 3.8rem;
-        --font-size-h1: 4.4rem;
+        --font-size-post-title: 4.8rem;
+        --font-size-page-title: 6rem;
 
         --z-index-side: 25;
         --z-index-header: 50;
@@ -143,11 +156,14 @@ const theme = css`
 
         --max-width: 1200px;
         --side-padding: 150px;
-        ${media.bp1280`--side-padding: 125px;`}
-        ${media.bp1040`--side-padding: 80px;`}
+        ${media.bp1280`--side-padding: 100px;`}
+        ${media.bp1040`--side-padding: 75px;`}
         ${media.bp800`--side-padding: 45px;`}
         ${media.bp600`--side-padding: 25px;`}
         ${media.bp440`--side-padding: 20px;`}
+
+        --footer-height: 280px;
+        --base-line-height: 1.5;
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

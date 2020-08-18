@@ -3,12 +3,10 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Media from 'react-media';
 
 import scrollReveal from '@utils/scrollReveal';
-import { BREAKPOINTS } from '@utils/constants';
 import { scrollRevealConfig, github } from '@config';
-import { Heading, CustomLink, CustomList } from '@components';
+import { SectionHeading, CustomLink, CustomList } from '@components';
 import { mixins, media } from '@styles';
 
 const AboutContainer = styled.section`
@@ -79,7 +77,7 @@ const Avatar = styled(Img)`
 
 const About = ({ data }) => {
     const aboutRef = useRef();
-    const { frontmatter, html } = data[0].node;
+    const { frontmatter, html } = data;
     const { title, avatar, skills } = frontmatter;
 
     useEffect(() => {
@@ -88,13 +86,11 @@ const About = ({ data }) => {
 
     return (
         <AboutContainer ref={aboutRef}>
-            <Heading id="about">{title}</Heading>
+            <SectionHeading id="about">{title}</SectionHeading>
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
-                    <Media queries={{ small: `(max-width: ${BREAKPOINTS.bp440}px)` }}>
-                        {matches => <CustomList items={skills} columns={matches.small ? 2 : 3} />}
-                    </Media>
+                    <CustomList items={skills} columns={3} fontSize="xs" rowGap="1.6rem" />
                 </ContentContainer>
                 <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
                     <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />
@@ -105,7 +101,7 @@ const About = ({ data }) => {
 };
 
 About.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default About;

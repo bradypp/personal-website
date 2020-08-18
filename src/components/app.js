@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { ThemeProvider } from '@context';
+import { ThemeProvider, PostProvider } from '@context';
 import { GlobalStyles } from '@styles';
 
 const App = ({ children }) => {
     return (
         <ThemeProvider>
-            <GlobalStyles />
-            {children}
+            <PostProvider>
+                <GlobalStyles />
+                {children}
+            </PostProvider>
         </ThemeProvider>
     );
 };

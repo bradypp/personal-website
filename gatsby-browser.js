@@ -8,10 +8,14 @@ import React from 'react';
 
 import { App } from '@components';
 
-if (typeof window !== 'undefined') {
-    // eslint-disable-next-line global-require
-    require('smooth-scroll')('a[href*="#"]');
-}
+// if (typeof window !== 'undefined') {
+//     // eslint-disable-next-line global-require
+//     require('smooth-scroll')('a[href*="#"]', {
+//         speed: 1500,
+//         speedAsDuration: true,
+//         easing: 'easeInOutCubic',
+//     });
+// }
 
 export const wrapRootElement = ({ element }) => {
     return <App>{element}</App>;

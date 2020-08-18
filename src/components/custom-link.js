@@ -63,6 +63,7 @@ CustomLink.propTypes = {
     rel: PropTypes.string,
     variant: PropTypes.oneOf(['primary', 'secondary', 'button-primary']),
     to: PropTypes.string,
+    size: PropTypes.oneOf(['medium', 'big']),
 };
 
 CustomLink.defaultProps = {
@@ -72,6 +73,7 @@ CustomLink.defaultProps = {
     variant: 'primary',
     href: undefined,
     to: undefined,
+    size: 'medium',
 };
 
 export default CustomLink;

@@ -18,8 +18,11 @@ const ButtonsContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-    font-size: var(--font-size-xs);
-    padding: 1.3rem 1.6rem;
+    font-size: ${props =>
+        (props.size === 'medium' && 'var(--font-size-xs)') ||
+        (props.size === 'big' && 'var(--font-size-md)')};
+    padding: ${props =>
+        (props.size === 'medium' && '1.3rem 1.6rem') || (props.size === 'big' && '1.7rem 2.2rem')};
 `;
 
 const FormButtons = ({
@@ -32,21 +35,26 @@ const FormButtons = ({
     resetText,
     cancelText,
     isSubmitting,
+    size,
     ...props
 }) => (
     <ButtonsContainer {...props}>
         {withSubmit && (
-            <StyledButton type="submit" variant="primary" isWorking={isSubmitting}>
+            <StyledButton size={size} type="submit" variant="primary" isWorking={isSubmitting}>
                 {submitText}
             </StyledButton>
         )}
         {withReset && (
-            <StyledButton type="reset" variant="empty">
+            <StyledButton size={size} type="reset" variant="empty">
                 {resetText}
             </StyledButton>
         )}
         {customButtons && customButtons}
-        {withCancel && <StyledButton type="button">{cancelText}</StyledButton>}
+        {withCancel && (
+            <StyledButton size={size} type="button">
+                {cancelText}
+            </StyledButton>
+        )}
     </ButtonsContainer>
 );
 
@@ -62,6 +70,7 @@ FormButtons.propTypes = {
     cancelText: PropTypes.string,
     align: PropTypes.string,
     isSubmitting: PropTypes.bool,
+    size: PropTypes.string,
 };
 
 FormButtons.defaultProps = {
@@ -76,6 +85,7 @@ FormButtons.defaultProps = {
     cancelText: 'Cancel',
     align: 'left',
     isSubmitting: false,
+    size: 'medium',
 };
 
 export default FormButtons;

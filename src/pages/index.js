@@ -5,14 +5,14 @@ import { graphql } from 'gatsby';
 import { Layout, Hero, About, Projects, Contact } from '@components';
 
 const IndexPage = ({ data: propsData }) => {
-    const data = useMemo(() => propsData, [propsData]);
+    const { hero, about, projects, contact } = useMemo(() => propsData, [propsData]);
 
     return (
         <Layout isHome>
-            <Hero data={data.hero.edges} />
-            <About data={data.about.edges} />
-            <Projects data={data.projects.edges} />
-            <Contact data={data.contact.edges} />
+            <Hero data={hero} />
+            <About data={about} />
+            <Projects data={projects.edges} />
+            <Contact data={contact} />
         </Layout>
     );
 };
@@ -25,38 +25,30 @@ export default IndexPage;
 
 export const pageQuery = graphql`
     {
-        hero: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/hero/" } }) {
-            edges {
-                node {
-                    frontmatter {
-                        title
-                        name
-                        subtitle
-                        buttonText
-                    }
-                }
+        hero: markdownRemark(fileAbsolutePath: { regex: "/content/home/hero/" }) {
+            frontmatter {
+                title
+                name
+                subtitle
+                buttonText
             }
         }
-        about: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about/" } }) {
-            edges {
-                node {
-                    frontmatter {
-                        title
-                        skills
-                        avatar {
-                            childImageSharp {
-                                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#09162a" }) {
-                                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                                }
-                            }
+        about: markdownRemark(fileAbsolutePath: { regex: "/content/home/about/" }) {
+            frontmatter {
+                title
+                skills
+                avatar {
+                    childImageSharp {
+                        fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#09162a" }) {
+                            ...GatsbyImageSharpFluid_withWebp_tracedSVG
                         }
                     }
-                    html
                 }
             }
+            html
         }
         projects: allMarkdownRemark(
-            filter: { fileAbsolutePath: { regex: "/projects/" } }
+            filter: { fileAbsolutePath: { regex: "/content/home/projects/" } }
             sort: { fields: [frontmatter___sort], order: ASC }
         ) {
             edges {
@@ -86,16 +78,12 @@ export const pageQuery = graphql`
                 }
             }
         }
-        contact: allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/contact/" } }) {
-            edges {
-                node {
-                    frontmatter {
-                        title
-                        emailText
-                    }
-                    html
-                }
+        contact: markdownRemark(fileAbsolutePath: { regex: "/content/home/contact/" }) {
+            frontmatter {
+                title
+                emailText
             }
+            html
         }
     }
 `;

@@ -23,7 +23,18 @@ const remarkPlugins = [
             maxWidth: 1200,
             quality: 90,
             withWebp: true,
+            linkImagesToOriginal: false,
             tracedSVG: { color: '#09162a' },
+        },
+    },
+    {
+        resolve: `gatsby-remark-autolink-headers`,
+        options: {
+            className: `header-autolink`,
+            icon: `<span>i</span>`,
+            maintainCase: false,
+            removeAccents: true,
+            elements: [`h2`, `h3`],
         },
     },
     {
@@ -132,6 +143,85 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sitemap`,
         `gatsby-plugin-robots-txt`,
+        {
+            resolve: `gatsby-plugin-feed`,
+            options: {
+                query: `
+                    {
+                      site {
+                        siteMetadata {
+                            siteUrl,
+                            description,
+                            keywords,
+                            language,
+                        }
+                      }
+                    }
+                  `,
+                feeds: [
+                    {
+                        serialize: ({ query: { site, allMdx } }) => {
+                            const data = allMdx.edges.map(edge => {
+                                const { siteUrl } = site.siteMetadata;
+                                const { slug } = edge.node.fields;
+
+                                const postUrl = `${siteUrl}${slug}`;
+
+                                let html;
+                                const disclaimer = `<div style="margin-top: 50px; font-style: italic;"><strong><a href="${postUrl}">View the original post</a>.</strong></div><br /><br />`;
+
+                                html = edge.node.html
+                                    .replace(/href="\//g, `href="${siteUrl}/`)
+                                    .replace(/src="\//g, `src="${siteUrl}/`)
+                                    .replace(/"\/static\//g, `"${siteUrl}/static/`)
+                                    .replace(/,\s*\/static\//g, `,${siteUrl}/static/`);
+
+                                html = disclaimer + html;
+
+                                return {
+                                    ...edge.node.frontmatter,
+                                    description: edge.node.excerpt,
+                                    date: edge.node.frontmatter.date,
+                                    url: postUrl,
+                                    guid: postUrl,
+                                    custom_elements: [{ 'content:encoded': html }],
+                                };
+                            });
+
+                            return data;
+                        },
+                        query: `
+                    {
+                      allMdx(
+                        limit: 1000,
+                        filter: {
+                            fileAbsolutePath: { regex: "/content/posts/" }
+                            frontmatter: { draft: { ne: true } }
+                        }
+                        sort: { fields: [frontmatter___date], order: DESC }
+                      ) {
+                        edges {
+                            node {
+                                html
+                                excerpt(pruneLength: 200, truncate: true)
+                                fields {
+                                    slug
+                                }
+                                frontmatter {
+                                    title
+                                    date(formatString: "MMMM Do, YYYY")
+                                }
+                            }
+                        }
+                      }
+                    }
+                  `,
+                        output: '/rss.xml',
+                        title: "Paul Brady's blog",
+                    },
+                ],
+            },
+        },
         `gatsby-plugin-netlify`,
         {
             resolve: `gatsby-plugin-mdx`,
@@ -190,28 +280,49 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `hero`,
-                path: `${__dirname}/src/content/hero`,
+                path: `${__dirname}/src/content/home/hero`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `about`,
-                path: `${__dirname}/src/content/about`,
+                path: `${__dirname}/src/content/home/about`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `projects`,
-                path: `${__dirname}/src/content/projects`,
+                path: `${__dirname}/src/content/home/projects`,
             },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `contact`,
-                path: `${__dirname}/src/content/contact`,
+                path: `${__dirname}/src/content/home/contact`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `blog`,
+                path: `${__dirname}/src/content/blog`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `newsletter`,
+                path: `${__dirname}/src/content/newsletter`,
+            },
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `tags`,
+                path: `${__dirname}/src/content/tags`,
             },
         },
         {

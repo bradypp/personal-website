@@ -6,7 +6,7 @@
 
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-// const { kebabCase } = require('lodash');
+const { kebabCase } = require('lodash');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions;
@@ -29,12 +29,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions;
     const postTemplate = path.resolve(`src/templates/post.js`);
-    // const tagTemplate = path.resolve('src/templates/tag.js');
+    const tagTemplate = path.resolve('src/templates/tag.js');
 
     const result = await graphql(`
         {
-            postsRemark: allMdx(
-                filter: { fileAbsolutePath: { regex: "/posts/" } }
+            postsMdx: allMdx(
+                filter: { fileAbsolutePath: { regex: "/content/posts/" } }
                 sort: { order: DESC, fields: [frontmatter___date] }
                 limit: 1000
             ) {
@@ -44,20 +44,24 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                         fields {
                             slug
                         }
+                        frontmatter {
+                            tags
+                        }
                     }
+                }
+            }
+            tagsGroup: allMdx(
+                filter: {
+                    fileAbsolutePath: { regex: "/content/posts/" }
+                    frontmatter: { draft: { ne: false } }
+                }
+            ) {
+                group(field: frontmatter___tags) {
+                    fieldValue
                 }
             }
         }
     `);
-    // const result = await graphql(`
-    //     {
-    //         tagsGroup: allMdx(limit: 2000) {
-    //             group(field: frontmatter___tags) {
-    //                 fieldValue
-    //             }
-    //         }
-    //     }
-    // `);
 
     // Handle errors
     if (result.errors) {
@@ -65,30 +69,31 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         return;
     }
 
-    // Create post detail pages
-    const posts = result.data.postsRemark.edges;
-
+    // Create post pages
+    const posts = result.data.postsMdx.edges;
     posts.forEach(({ node }) => {
         createPage({
             component: postTemplate,
             path: node.fields.slug,
-            context: { id: node.id },
+            context: {
+                id: node.id,
+                tags: node.frontmatter.tags,
+            },
         });
     });
 
-    // // Extract tag data from query
-    // const tags = result.data.tagsGroup.group;
-    // // Make tag pages
-    // tags.forEach(tag => {
-    //     createPage({
-    //         component: tagTemplate,
-    //         path: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
-    //         context: {
-    //             tag: tag.fieldValue,
-    //             slug: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
-    //         },
-    //     });
-    // });
+    // Create tags pages
+    const tags = result.data.tagsGroup.group;
+    tags.forEach(tag => {
+        createPage({
+            component: tagTemplate,
+            path: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
+            context: {
+                tag: tag.fieldValue,
+                relativeUrl: `/blog/tags/${kebabCase(tag.fieldValue)}/`,
+            },
+        });
+    });
 };
 
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig

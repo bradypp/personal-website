@@ -4,7 +4,8 @@ subtitle: Testing posts with markdown
 description: SEO description
 date: '2020-05-31'
 draft: true
-og_image: './image.jpg'
+withContents: true
+ogImage: './image.jpg'
 tags:
     - Demo
 ---
@@ -16,10 +17,10 @@ Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringill
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
 ```jsx
-class FlavorForm extends React.Component { // highlight-line
+class Form extends React.Component { // highlight-line
   constructor(props) {
     super(props);
-    this.state = {value: 'coconut'};
+    this.state = {value: '1'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,7 +33,7 @@ class FlavorForm extends React.Component { // highlight-line
 
   // highlight-start
   handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
+    alert('Value is: ' + this.state.value);
     event.preventDefault();
   }
   // highlight-end
@@ -42,12 +43,12 @@ class FlavorForm extends React.Component { // highlight-line
       { /* highlight-range{1,4-9,12} */ }
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your favorite flavor:
+          Pick a value:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
         </label>
         <input type="submit" value="Submit" />
@@ -86,8 +87,6 @@ export $initHighlight;
 This is a paragraph.
 
     This is a paragraph.
-
-# Header 1
 
 ## Header 2
 
@@ -204,50 +203,21 @@ you can write text [with links](http://example.com) inline or [link references][
 2. two thing `i can write code`, and `more` wipee!
 ```
 
-# Header 1
-
 ## Header 2
 
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1
     ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
-
-# Header 1
-
-## Header 2
 
 ### Header 3
 
-#### Header 4
+### Header 3
 
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
     ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
+    ### Header 3 ###
 
 > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
     > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
 
-> ## This is a header
->
 > 1. This is the first list item.
 > 2. This is the second list item.
 >
@@ -328,6 +298,17 @@ Paragraph:
     - - -
 
     ---------------------------------------
+
+## Header 2
+
+    ## Header 2
+
+### Header 3
+
+### Header 3
+
+    ### Header 3 ###
+    ### Header 3 ###
 
 This is [an example](http://example.com 'Example') link.
 

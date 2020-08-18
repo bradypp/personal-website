@@ -46,7 +46,7 @@ const Meta = ({ meta }) => {
 
     const { title, description, siteUrl, keywords, language } = site.siteMetadata;
 
-    const metaTitle = meta.title || title;
+    const metaTitle = meta.title ? `${meta.title} | Paul Brady` : title;
     const metaDescription = meta.description || description;
     const metaOgImage = meta.ogImage || ogImage;
     const metaPageUrl = `${siteUrl}${meta.relativeUrl || ''}`;
@@ -63,6 +63,7 @@ const Meta = ({ meta }) => {
             <meta itemProp="image" content={metaOgImage} />
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={keywords} />
+
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />

@@ -9,7 +9,7 @@ import Media from 'react-media';
 import { throttle } from '@utils/javascript';
 import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, ClientOnly } from '@components';
+import { Menu, ThemeToggle } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -136,10 +136,10 @@ const LinksList = styled.ul`
         margin-right: 2rem;
     }
 `;
-const StyledLink = styled(Link)`
+const NavLink = styled(Link)`
     font-family: var(--fonts-primary);
     font-size: var(--font-size-xs);
-    padding: 1.2rem 1rem;
+    padding: 1rem;
     font-weight: 600;
     color: var(--color-text-primary-1);
 
@@ -148,7 +148,6 @@ const StyledLink = styled(Link)`
         color: var(--color-primary);
     }
 `;
-
 class Header extends Component {
     state = {
         // eslint-disable-next-line react/destructuring-assignment
@@ -175,8 +174,8 @@ class Header extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', throttle(this.handleScroll));
-        window.removeEventListener('resize', throttle(this.handleResize));
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
         window.removeEventListener('keydown', e => this.handleKeydown(e));
     }
 
@@ -235,17 +234,11 @@ class Header extends Component {
             hidden: {
                 opacity: 0,
             },
-            'visible-home': {
-                opacity: 1,
-                transition: {
-                    delay: 0.2,
-                    duration: 0.8,
-                },
-            },
             visible: {
                 opacity: 1,
                 transition: {
-                    duration: 0.5,
+                    delay: isHome ? 0.2 : 0,
+                    duration: isHome ? 0.8 : 0.5,
                 },
             },
         };
@@ -256,43 +249,41 @@ class Header extends Component {
                     scrollDirection={scrollDirection}
                     isHome={isHome}
                     aria-hidden={scrollDirection === 'down'}
-                    initial="hidden"
-                    animate={isHome ? 'visible-home' : 'visible'}
+                    initial={isHome ? 'hidden' : 'visible'}
+                    animate="visible"
                     variants={variants}>
-                    <ClientOnly>
-                        <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
-                            {matches => (
-                                <NavContainer>
-                                    {matches.large && (
-                                        <LinksList>
-                                            {navLinks.map(({ url, name }) => (
-                                                <li key={uuidv4()}>
-                                                    <StyledLink to={url} aria-label={name}>
-                                                        {name}
-                                                    </StyledLink>
-                                                </li>
-                                            ))}
-                                        </LinksList>
-                                    )}
-                                    <ThemeToggle />
-                                    {!matches.large && (
-                                        <>
-                                            <Hamburger onClick={this.toggleMenu}>
-                                                <HamburgerBox>
-                                                    <HamburgerContent isMenuOpen={isMenuOpen} />
-                                                </HamburgerBox>
-                                            </Hamburger>
-                                            <Menu
-                                                isMenuOpen={isMenuOpen}
-                                                toggleMenu={this.toggleMenu}
-                                                aria-label="Menu Toggle"
-                                            />
-                                        </>
-                                    )}
-                                </NavContainer>
-                            )}
-                        </Media>
-                    </ClientOnly>
+                    <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
+                        {matches => (
+                            <NavContainer>
+                                {matches.large && (
+                                    <LinksList>
+                                        {navLinks.map(({ url, name }) => (
+                                            <li key={uuidv4()}>
+                                                <NavLink to={url} aria-label={name}>
+                                                    {name}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </LinksList>
+                                )}
+                                <ThemeToggle />
+                                {!matches.large && (
+                                    <>
+                                        <Hamburger onClick={this.toggleMenu}>
+                                            <HamburgerBox>
+                                                <HamburgerContent isMenuOpen={isMenuOpen} />
+                                            </HamburgerBox>
+                                        </Hamburger>
+                                        <Menu
+                                            isMenuOpen={isMenuOpen}
+                                            toggleMenu={this.toggleMenu}
+                                            aria-label="Menu Toggle"
+                                        />
+                                    </>
+                                )}
+                            </NavContainer>
+                        )}
+                    </Media>
                 </HeaderContainer>
             )
         );

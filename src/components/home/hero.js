@@ -19,7 +19,7 @@ const HeroContainer = styled.section`
     padding: 0 var(--side-padding);
     width: 100vw;
     height: 100vh;
-    background: var(--color-background-secondary-1);
+    /* background: var(--color-background-secondary-1); */
     background-image: linear-gradient(
         var(--color-background-secondary-1),
         var(--color-background-primary-1)
@@ -34,8 +34,17 @@ const ContentContainer = styled.div`
     flex-direction: column;
     padding-top: 4vh;
 
+    ${media.bp1440`
+        padding-top: 5vh;
+    `}
     ${media.bp800`
         margin-top: 0;
+    `}
+    ${media.bp440`
+        padding-top: 6vh;
+    `}
+    ${media.bp384`
+        padding-top: 7vh;
     `}
 `;
 const TitleContainer = styled(motion.div)`
@@ -89,7 +98,6 @@ const ButtonContainer = styled(motion.div)`
 `;
 const WaveEmojiContainer = styled.div`
     width: 4.4rem;
-    height: 100%;
     margin: 0 0 0 2.4rem;
     ${mixins.clickable}
 
@@ -132,7 +140,7 @@ const Hero = ({ data }) => {
     const isMounted = useIsMounted(1000);
     const [isWaveAnimated, setIsWaveAnimated] = useState(false);
 
-    const { frontmatter } = data[0].node;
+    const { frontmatter } = data;
     const { title, name, subtitle, buttonText } = frontmatter;
 
     const handleWaveAnimation = () => {
@@ -199,7 +207,7 @@ const Hero = ({ data }) => {
 };
 
 Hero.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.object.isRequired,
 };
 
 export default Hero;

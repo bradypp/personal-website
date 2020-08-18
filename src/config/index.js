@@ -3,7 +3,7 @@ module.exports = {
     siteDescription:
         "Paul Brady's personal website showcases his work and expertise in web development.",
     siteKeywords:
-        'Paul Brady, software engineer, bradypp, front-end, web developer, CSS,JavaScript, React, Manchester',
+        'Paul Brady, software engineer, bradypp, front-end, full-stack, web developer, CSS, JavaScript, React, Manchester',
     siteUrl: 'https://paulbrady.dev',
     siteLanguage: 'en',
     name: 'Paul Brady',
@@ -12,8 +12,10 @@ module.exports = {
     repo: 'https://github.com/bradypp/personal-website',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
+    linkedin: 'https://linkedin.com/in/bradypp',
     twitterHandle: '@bradypp',
     mainThemeColor: '#fff',
+    rss: '/rss.xml',
     socialMedia: [
         {
             name: 'GitHub',
@@ -46,8 +48,22 @@ module.exports = {
             url: '/#portfolio',
         },
         {
+            name: 'Blog',
+            url: '/blog',
+        },
+        {
             name: 'Contact',
             url: '/#contact',
+        },
+    ],
+    otherLinks: [
+        {
+            name: 'Newsletter',
+            url: '/newsletter',
+        },
+        {
+            name: 'RSS',
+            url: '/rss.xml',
         },
     ],
     scrollRevealConfig: (delay = 200) => ({

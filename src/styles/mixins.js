@@ -5,7 +5,7 @@ import media from './media';
 const mixins = {
     customScrollbar: (config = {}) => css`
         &::-webkit-scrollbar {
-            width: ${config.width || '8px'};
+            width: ${config.width || '10px'};
         }
         &::-webkit-scrollbar-track {
             background: var(--color-background-secondary-1);
@@ -223,6 +223,16 @@ const mixins = {
         pointer-events: none;
         visibility: hidden;
         opacity: 0;
+    `,
+    customList: css`
+        display: grid;
+        grid-template-columns: repeat(${props => props.columns || 1}, 1fr);
+        grid-column-gap: 1.6rem;
+        grid-row-gap: 1.8rem;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        list-style: none;
     `,
 };
 

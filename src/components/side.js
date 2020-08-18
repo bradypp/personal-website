@@ -16,8 +16,8 @@ const SideContainer = styled.div`
     color: var(--color-text-primary-2);
 
     ${media.bp1280`
-        left: ${props => (props.orientation === 'left' ? '25px' : 'auto')};
-        right: ${props => (props.orientation === 'left' ? 'auto' : '25px')};
+        left: ${props => (props.orientation === 'left' ? '20px' : 'auto')};
+        right: ${props => (props.orientation === 'left' ? 'auto' : '20px')};
     `};
 
     ${media.bp1040`

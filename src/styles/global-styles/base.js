@@ -16,7 +16,6 @@ const base = css`
     body {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
     }
 
     html {
@@ -37,16 +36,17 @@ const base = css`
         font-family: var(--fonts-primary);
         font-size: var(--font-size-md);
         font-weight: 400;
-        line-height: 1.5;
+        line-height: var(--base-line-height);
         color: var(--color-text-primary-1);
         background: var(--color-background-primary-1);
         min-height: 100vh;
         transition: var(--transition);
+        overflow-x: hidden;
     }
 
     ${mixins.customScrollbar({
         color: 'var(--color-scrollbar)',
-        width: '12px',
+        width: '10px',
         activeColor: 'var(--color-scrollbar-active)',
     })}
 
@@ -62,11 +62,11 @@ const base = css`
     h5,
     h6 {
         font-weight: 600;
-        margin: 0 0 1rem 0;
+        margin: 0 0 1.6rem 0;
     }
 
     h1 {
-        font-size: var(--font-size-h1);
+        font-size: var(--font-size-page-title);
         line-height: 1.2;
     }
     h2 {
@@ -78,13 +78,13 @@ const base = css`
         line-height: 1.4;
     }
     h4 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-2xl);
     }
     h5 {
-        font-size: var(--font-size-md);
+        font-size: var(--font-size-xl);
     }
     h6 {
-        font-size: var(--font-size-sm);
+        font-size: var(--font-size-lg);
     }
 
     img {
@@ -179,7 +179,7 @@ const base = css`
     }
 
     p {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.6rem 0;
 
         & > a {
             ${mixins.primaryLink};
@@ -207,6 +207,10 @@ const base = css`
 
     .gatsby-image-outer-wrapper {
         height: 100%;
+    }
+
+    .header-autolink {
+        display: none;
     }
 `;
 
