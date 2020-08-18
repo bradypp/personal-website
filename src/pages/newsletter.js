@@ -6,7 +6,6 @@ import { mixins } from '@styles';
 
 const Container = styled.div`
     ${mixins.flexCenter}
-    /* width:100%; */
     min-height: inherit;
 `;
 

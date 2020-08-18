@@ -62,7 +62,7 @@ const BlogPage = ({ data }) => {
                 <Posts posts={postsMdx.edges} />
             ) : (
                 <NoPostsMessage>
-                    <p>Stay tuned! My first post will arrive imminently.</p>
+                    <p>Stay tuned! My first post will arrive very soon.</p>
                     <p>
                         (Check out a demo post <CustomLink to="/blog/post-demo">here</CustomLink>)
                     </p>

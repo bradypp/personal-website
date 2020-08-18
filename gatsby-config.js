@@ -218,6 +218,8 @@ module.exports = {
                   `,
                         output: '/rss.xml',
                         title: "Paul Brady's blog",
+                        description:
+                            "Check out Paul Brady's blog which covers all things web dev related including JavaScript, CSS, React and more!",
                     },
                 ],
             },

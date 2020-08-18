@@ -44,9 +44,7 @@ const NewsletterOuterContainer = styled.div`
 
 const NewsletterInnerContainer = styled.div`
     ${mixins.containAndCenter}
-    /* max-width: 800px; */
-
-    
+    max-width: 850px;
 
     h2 {
         font-size: var(--font-size-h3);
