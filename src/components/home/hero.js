@@ -19,7 +19,6 @@ const HeroContainer = styled.section`
     padding: 0 var(--side-padding);
     width: 100vw;
     height: 100vh;
-    /* background: var(--color-background-secondary-1); */
     background-image: linear-gradient(
         var(--color-background-secondary-1),
         var(--color-background-primary-1)
@@ -42,9 +41,6 @@ const ContentContainer = styled.div`
     `}
     ${media.bp440`
         padding-top: 6vh;
-    `}
-    ${media.bp384`
-        padding-top: 7vh;
     `}
 `;
 const TitleContainer = styled(motion.div)`
