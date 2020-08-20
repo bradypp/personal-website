@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';
-import Media from 'react-media';
 
 import { throttle } from '@utils/javascript';
-import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
+import { KEY_CODES } from '@utils/constants';
 import { navLinks } from '@config';
-import { Menu, ThemeToggle, ClientOnly } from '@components';
+import { Menu, ThemeToggle } from '@components';
 import { mixins, media } from '@styles';
 
 const navHeight = 100;
@@ -52,6 +51,10 @@ const NavContainer = styled.nav`
     ${mixins.flexBetween};
     position: relative;
     width: 100%;
+
+    ${media.bp800`
+        justify-content: flex-end;
+    `}
 `;
 const Hamburger = styled.div`
     ${mixins.flexCenter};
@@ -67,9 +70,11 @@ const Hamburger = styled.div`
     border: 0;
     background-color: transparent;
     z-index: calc(var(--z-index-header) + 1);
+    display: none;
 
     ${media.bp800`
         margin-left: 10%;
+        display: block;
     `}
 `;
 const HamburgerBox = styled.div`
@@ -135,6 +140,10 @@ const LinksList = styled.ul`
     li {
         margin-right: 2rem;
     }
+
+    ${media.bp800`
+        display:none;
+    `}
 `;
 const NavLink = styled(Link)`
     font-family: var(--fonts-primary);
@@ -151,7 +160,7 @@ const NavLink = styled(Link)`
 class Header extends Component {
     state = {
         // eslint-disable-next-line react/destructuring-assignment
-        isMounted: !this.props.isHome,
+        isMounted: false,
         isMenuOpen: false,
         scrollDirection: 'none',
         lastDistanceFromTop: 10,
@@ -227,7 +236,7 @@ class Header extends Component {
     };
 
     render() {
-        const { isMounted, isMenuOpen, scrollDirection } = this.state;
+        const { isMenuOpen, scrollDirection } = this.state;
         const { isHome } = this.props;
 
         const variants = {
@@ -237,57 +246,43 @@ class Header extends Component {
             visible: {
                 opacity: 1,
                 transition: {
-                    delay: isHome ? 0.2 : 0,
-                    duration: isHome ? 0.8 : 0.5,
+                    delay: 0.2,
+                    duration: 0.8,
                 },
             },
         };
 
         return (
-            isMounted && (
-                <HeaderContainer
-                    scrollDirection={scrollDirection}
-                    isHome={isHome}
-                    aria-hidden={scrollDirection === 'down'}
-                    initial={isHome ? 'hidden' : 'visible'}
-                    animate="visible"
-                    variants={variants}>
-                    <ClientOnly>
-                        <Media queries={{ large: `(min-width: ${BREAKPOINTS.bp800 + 1}px)` }}>
-                            {matches => (
-                                <NavContainer>
-                                    {matches.large && (
-                                        <LinksList>
-                                            {navLinks.map(({ url, name }) => (
-                                                <li key={uuidv4()}>
-                                                    <NavLink to={url} aria-label={name}>
-                                                        {name}
-                                                    </NavLink>
-                                                </li>
-                                            ))}
-                                        </LinksList>
-                                    )}
-                                    <ThemeToggle />
-                                    {!matches.large && (
-                                        <>
-                                            <Hamburger onClick={this.toggleMenu}>
-                                                <HamburgerBox>
-                                                    <HamburgerContent isMenuOpen={isMenuOpen} />
-                                                </HamburgerBox>
-                                            </Hamburger>
-                                            <Menu
-                                                isMenuOpen={isMenuOpen}
-                                                toggleMenu={this.toggleMenu}
-                                                aria-label="Menu Toggle"
-                                            />
-                                        </>
-                                    )}
-                                </NavContainer>
-                            )}
-                        </Media>
-                    </ClientOnly>
-                </HeaderContainer>
-            )
+            <HeaderContainer
+                scrollDirection={scrollDirection}
+                isHome={isHome}
+                aria-hidden={scrollDirection === 'down'}
+                initial={isHome ? 'hidden' : 'visible'}
+                animate="visible"
+                variants={variants}>
+                <NavContainer>
+                    <LinksList>
+                        {navLinks.map(({ url, name }) => (
+                            <li key={uuidv4()}>
+                                <NavLink to={url} aria-label={name}>
+                                    {name}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </LinksList>
+                    <ThemeToggle />
+                    <Hamburger onClick={this.toggleMenu}>
+                        <HamburgerBox>
+                            <HamburgerContent isMenuOpen={isMenuOpen} />
+                        </HamburgerBox>
+                    </Hamburger>
+                    <Menu
+                        isMenuOpen={isMenuOpen}
+                        toggleMenu={this.toggleMenu}
+                        aria-label="Menu Toggle"
+                    />
+                </NavContainer>
+            </HeaderContainer>
         );
     }
 }

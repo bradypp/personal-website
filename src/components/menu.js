@@ -21,6 +21,12 @@ const MenuContainer = styled.div`
     transition: var(--transition);
     visibility: ${props => (props.isMenuOpen ? 'visible' : 'hidden')};
     opacity: ${props => (props.isMenuOpen ? 1 : 0)};
+
+    display: none;
+
+    ${media.bp800`
+        display: block;
+    `}
 `;
 const SidebarContainer = styled.aside`
     background-color: var(--color-menu-background);
