@@ -7,13 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 import Media from 'react-media';
 
 import { throttle } from '@utils/javascript';
-import { KEY_CODES, BREAKPOINTS } from '@utils/constants';
+import { KEY_CODES, BREAKPOINTS, HEADER } from '@utils/constants';
 import { navLinks } from '@config';
 import { Menu, ThemeToggle, ClientOnly } from '@components';
 import { mixins, media } from '@styles';
 
-const navHeight = 100;
-const navScrollHeight = 70;
 const hamburgerWidth = '3rem';
 
 const HeaderContainer = styled(motion.header)`
@@ -37,11 +35,11 @@ const HeaderContainer = styled(motion.header)`
     padding: 0 3.2rem;
     width: 100%;
     height: ${props =>
-        props.scrollDirection === 'none' ? `${navHeight}px` : `${navScrollHeight}px`};
+        props.scrollDirection === 'none' ? `${HEADER.TOP_HEIGHT}px` : `${HEADER.SCROLL_HEIGHT}px`};
     box-shadow: ${props =>
         props.scrollDirection === 'up' ? `0 1rem 3rem -1rem var(--header-shadow)` : 'none'};
     transform: translateY(
-        ${props => (props.scrollDirection === 'down' ? `-${navScrollHeight}px` : '0px')}
+        ${props => (props.scrollDirection === 'down' ? `-${HEADER.SCROLL_HEIGHT}px` : '0px')}
     );
 
     ${media.bp600`
@@ -199,7 +197,7 @@ class Header extends Component {
 
         if (distanceFromTop <= distanceFromTopRequired) {
             this.setState({ scrollDirection: 'none' });
-        } else if (distanceFromTop > lastDistanceFromTop && distanceFromTop > navHeight) {
+        } else if (distanceFromTop > lastDistanceFromTop && distanceFromTop > HEADER.TOP_HEIGHT) {
             if (scrollDirection !== 'down') {
                 this.setState({ scrollDirection: 'down' });
             }

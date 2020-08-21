@@ -27,11 +27,16 @@ const PostContainer = styled.div`
     color: var(--color-text-primary-1);
     min-height: 300px;
     width: 100%;
+
+    ${media.bp440`
+        width: 100vw;
+        padding: var(--side-padding);
+    `}
 `;
 const PostTitle = styled.h3`
     font-size: var(--font-size-5xl);
     transition: var(--transition);
-    margin: 0;
+    margin-bottom: 0.5rem;
     color: var(--color-text-primary-1);
     &:hover {
         color: var(--color-primary);
@@ -47,7 +52,7 @@ const PostSubtitle = styled.p`
 const PostDateTags = styled.div`
     color: var(--color-text-primary-1);
     margin: 0 0 2rem 0;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-2xs);
     font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
@@ -89,6 +94,15 @@ const Posts = ({ posts }) => {
                 const { excerpt, fields, frontmatter } = post.node;
                 const { title, subtitle, date, tags } = frontmatter;
                 const { slug } = fields;
+
+                const tagsArray =
+                    tags?.length > 0 &&
+                    tags.map(tag => (
+                        <React.Fragment key={uuidv4()}>
+                            <Tag to={`/blog/tags/${kebabCase(tag)}/`}>#{tag}</Tag>{' '}
+                        </React.Fragment>
+                    ));
+
                 return (
                     <PostContainer key={uuidv4()}>
                         <Link to={slug}>
@@ -97,12 +111,13 @@ const Posts = ({ posts }) => {
                         {subtitle && <PostSubtitle>{subtitle}</PostSubtitle>}
                         <PostDateTags>
                             <Date date={date} />
-                            <span> &ndash; </span>
-                            {tags.map(tag => (
+                            <span> &mdash; </span>
+                            {tagsArray?.length > 0 && tagsArray}
+                            {/* {tags.map(tag => (
                                 <Tag
                                     to={`/tags/${kebabCase(tag)}/`}
                                     key={uuidv4()}>{`#${tag}`}</Tag>
-                            ))}
+                            ))} */}
                         </PostDateTags>
                         <PostExcerpt>{excerpt}</PostExcerpt>
                         <ReadMoreLink to={slug}>

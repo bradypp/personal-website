@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
 
-import { Icon } from '@components';
+import { Icon, CustomList } from '@components';
+import { media } from '@styles';
 
 export const PostStyles = css`
     h1,
@@ -11,7 +11,7 @@ export const PostStyles = css`
     h4,
     h5,
     h6 {
-        margin: 1.5em 0 0.5em;
+        margin: 1.5em 0 0.6em;
     }
 
     p,
@@ -28,7 +28,6 @@ export const PostStyles = css`
     ol,
     ul {
         display: block;
-        list-style-type: decimal;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0;
@@ -37,6 +36,7 @@ export const PostStyles = css`
 
         li {
             padding-left: 0.3em;
+            padding-bottom: 0.3em;
         }
     }
 
@@ -76,11 +76,16 @@ const AnchorLink = styled.a`
     position: absolute;
     transform: translateX(-100%);
     opacity: 0;
-    padding-right: 5px;
+    padding-right: 8px;
     svg {
         width: 22px;
         height: 22px;
+        margin-bottom: 2px;
     }
+
+    ${media.bp600`
+        display: none;
+    `}
 `;
 const Anchor = styled.div`
     position: absolute;
@@ -111,3 +116,8 @@ const generateHeading = Heading => ({ children, ...props }) => {
 
 export const h2 = generateHeading('h2');
 export const h3 = generateHeading('h3');
+
+export const StyledCustomList = props => {
+    const { items, fontSize } = props;
+    return <CustomList isPost fontSize={fontSize || 'lg'} items={items} rowGap="1em" />;
+};

@@ -42,7 +42,7 @@ const theme = css`
         --color-navy-4: #21344f;
         --color-navy-5: #2b3e59;
         --color-navy-6: #354863;
-        --color-grey-dark-1: #333;
+        --color-grey-dark-1: #303030;
         --color-grey-dark-2: #525252;
         --color-grey-dark-3: #676767;
         --color-grey-light-1: #e7e4e4;
@@ -144,8 +144,8 @@ const theme = css`
         --font-size-3xl: 2.2rem;
         --font-size-4xl: 2.4rem;
         --font-size-5xl: 2.6rem;
-        --font-size-h3: 3.2rem;
-        --font-size-h2: 3.8rem;
+        --font-size-h3: 3rem;
+        --font-size-h2: 3.6rem;
         --font-size-post-title: 4.8rem;
         --font-size-page-title: 6rem;
 
@@ -164,6 +164,10 @@ const theme = css`
 
         --footer-height: 280px;
         --base-line-height: 1.5;
+
+        --post-max-width: 760px;
+        ${media.bp1280`--post-max-width: 720px;`}
+        ${media.bp1040`--post-max-width: 800px;`}
 
         --ease: cubic-bezier(0.3, 0, 0.4, 1);
         --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);

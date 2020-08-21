@@ -27,3 +27,8 @@ export const BREAKPOINTS = {
     bp440: 440, // Normal phone
     bp384: 384, // Small phone
 };
+
+export const HEADER = {
+    TOP_HEIGHT: 100,
+    SCROLL_HEIGHT: 70,
+};

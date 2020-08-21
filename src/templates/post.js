@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
@@ -12,17 +12,24 @@ import { media } from '@styles';
 import * as PostDesign from '@components/blog/post-design';
 
 const PostHeader = styled.header`
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     display: flex;
     flex-direction: column;
-    align-items: ${props => (props.alignCenter ? 'center' : 'flex-start')};
+    align-items: flex-start;
     justify-content: flex-start;
-    align-self: ${props => (props.alignCenter ? 'center' : 'flex-start')};
+    align-self: flex-start;
+
+    ${props =>
+        !props.withSidebar &&
+        css`
+            max-width: var(--post-max-width);
+            align-self: center;
+        `}
 `;
 const Title = styled.h1`
     font-size: var(--font-size-post-title);
-    margin-bottom: 0.5rem;
     line-height: 1.25;
+    margin-bottom: 1.5rem;
 `;
 const DateTagsContainer = styled.div`
     color: var(--color-text-primary-1);
@@ -37,44 +44,59 @@ const Subtitle = styled.p`
     font-size: var(--font-size-3xl);
     line-height: 1.4;
     font-weight: 300;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 `;
 const PostContainer = styled.div`
     display: flex;
-    justify-content: flex-start;
+    justify-content: ${props => (props.withSidebar ? 'flex-start' : 'center')};
     width: 100%;
     margin-bottom: 3rem;
 `;
 const PostContent = styled.article`
     ${PostDesign.PostStyles}
+
     margin-right: 9rem;
-    width: 760px;
+    max-width: var(--post-max-width);
+    width: 100%;
+
+    & > *:first-child {
+        margin-top:0;
+    }
 
     ${media.bp1280` 
         margin-right: 7rem;
-        width: 720px;
     `}
     ${media.bp1040` 
         margin-right: 0;
-        width: 100%;
-        max-width: 800px;
     `}
+
+    ${props =>
+        !props.withSidebar &&
+        css`
+            margin-right: 0;
+        `}
 `;
-const BottomTagsContainer = styled.div`
-    font-size: var(--font-size-xs);
-    font-family: var(--fonts-mono);
-    font-weight: normal;
-    line-height: 1.5;
-`;
+// const BottomTagsContainer = styled.div`
+//     font-size: var(--font-size-xs);
+//     font-family: var(--fonts-mono);
+//     font-weight: normal;
+//     line-height: 1.5;
+// `;
 const MorePostsContainer = styled.div`
     width: 100%;
+
+    ${props =>
+        !props.withSidebar &&
+        css`
+            max-width: var(--post-max-width);
+            align-self: center;
+        `}
 `;
 const MorePostsTitle = styled.h2`
     font-size: var(--font-size-4xl);
 `;
 const MorePostsLink = styled(Link)`
     color: var(--color-text-primary-1);
-    font-size: var(--font-size-lg);
 
     &:hover {
         color: var(--color-primary);
@@ -85,10 +107,18 @@ const MorePostsLink = styled(Link)`
 // TODO: make an aside component for info, success & danger
 const PostTemplate = ({ data }) => {
     const { frontmatter, body, fields, tableOfContents } = data.postData;
-    const { title, subtitle, description, date, tags, ogImage, withContents = true } = frontmatter;
+    const {
+        title,
+        subtitle,
+        description,
+        date,
+        tags,
+        ogImage,
+        withContents: frontmatterWithContents = true,
+    } = frontmatter;
     const { slug } = fields;
 
-    const alignCenter = tableOfContents.items.length === 0 || !withContents;
+    const withContents = tableOfContents?.items?.length > 0 && frontmatterWithContents;
 
     const tagsArray =
         tags?.length > 0 &&
@@ -120,6 +150,7 @@ const PostTemplate = ({ data }) => {
     const shortCodes = {
         h2: PostDesign.h2,
         h3: PostDesign.h3,
+        CustomList: PostDesign.StyledCustomList,
     };
 
     return (
@@ -127,34 +158,30 @@ const PostTemplate = ({ data }) => {
             meta={{
                 title,
                 description,
-                ogImage: ogImage.childImageSharp.fluid.src,
+                ogImage: ogImage?.childImageSharp?.fluid?.src,
                 relativeUrl: slug,
             }}>
-            <PostHeader alignCenter={alignCenter}>
+            <PostHeader withSidebar={withContents}>
                 <Title>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <DateTagsContainer>
                     <Date date={date} />
-                    {tags?.length > 0 && [
-                        <span key={uuidv4()}>&nbsp;&mdash;&nbsp;</span>,
-                        tagsArray,
-                    ]}
+                    <span> &mdash; </span>
+                    {tagsArray?.length > 0 && tagsArray}
                 </DateTagsContainer>
             </PostHeader>
-            <PostContainer>
-                <PostContent>
+            <PostContainer withSidebar={withContents}>
+                <PostContent withSidebar={withContents}>
                     <MDXProvider components={shortCodes}>
                         <MDXRenderer>{body}</MDXRenderer>
                     </MDXProvider>
                 </PostContent>
-                {!alignCenter && tableOfContents && (
-                    <TableOfContents slug={slug} tableOfContents={tableOfContents} />
-                )}
+                {withContents && <TableOfContents slug={slug} tableOfContents={tableOfContents} />}
             </PostContainer>
             {morePosts?.length > 0 && (
-                <MorePostsContainer>
+                <MorePostsContainer withSidebar={withContents}>
                     <MorePostsTitle>Continue reading...</MorePostsTitle>
-                    <CustomList items={morePosts} />
+                    <CustomList items={morePosts} isPost fontSize="lg" />
                 </MorePostsContainer>
             )}
             <NewsletterForm isPost />
