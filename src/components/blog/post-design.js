@@ -11,18 +11,32 @@ export const PostStyles = css`
     h4,
     h5,
     h6 {
-        margin: 1.5em 0 0.6em;
+        margin: 1.6em 0 0.65em;
+    }
+
+    h2 {
+        font-weight: 400;
+    }
+
+    h2,
+    h3,
+    h4 {
+        &:hover {
+            a {
+                opacity: 1;
+            }
+        }
     }
 
     p,
     ul,
     ol {
         font-size: var(--font-size-lg);
+        line-height: 1.55em;
     }
 
     p {
-        margin: 1em 0;
-        line-height: 1.5;
+        margin: 1.1em 0;
     }
 
     ol,
@@ -55,20 +69,8 @@ export const PostStyles = css`
         margin-left: 0;
         margin-right: 0;
         padding-left: 2.4rem;
-
-        p {
-            font-style: italic;
-            font-size: var(--font-size-xl);
-        }
-    }
-
-    h2,
-    h3 {
-        &:hover {
-            a {
-                opacity: 1;
-            }
-        }
+        font-style: italic;
+        font-size: var(--font-size-xl);
     }
 `;
 
@@ -116,6 +118,7 @@ const generateHeading = Heading => ({ children, ...props }) => {
 
 export const h2 = generateHeading('h2');
 export const h3 = generateHeading('h3');
+export const h4 = generateHeading('h4');
 
 export const StyledCustomList = props => {
     const { items, fontSize } = props;

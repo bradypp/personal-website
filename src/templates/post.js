@@ -7,7 +7,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
-import { Layout, Tag, Date, TableOfContents, NewsletterForm, CustomList } from '@components';
+import {
+    Layout,
+    Tag,
+    Date,
+    TableOfContents,
+    NewsletterForm,
+    CustomList,
+    CustomLink,
+} from '@components';
 import { media } from '@styles';
 import * as PostDesign from '@components/blog/post-design';
 
@@ -18,11 +26,11 @@ const PostHeader = styled.header`
     align-items: flex-start;
     justify-content: flex-start;
     align-self: flex-start;
+    max-width: var(--post-max-width);
 
     ${props =>
         !props.withSidebar &&
         css`
-            max-width: var(--post-max-width);
             align-self: center;
         `}
 `;
@@ -33,7 +41,7 @@ const Title = styled.h1`
 `;
 const DateTagsContainer = styled.div`
     color: var(--color-text-primary-1);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-md);
     font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
@@ -115,6 +123,7 @@ const PostTemplate = ({ data }) => {
         tags,
         ogImage,
         withContents: frontmatterWithContents = true,
+        contentsDepth,
     } = frontmatter;
     const { slug } = fields;
 
@@ -150,7 +159,9 @@ const PostTemplate = ({ data }) => {
     const shortCodes = {
         h2: PostDesign.h2,
         h3: PostDesign.h3,
+        h4: PostDesign.h4,
         CustomList: PostDesign.StyledCustomList,
+        a: CustomLink,
     };
 
     return (
@@ -176,7 +187,13 @@ const PostTemplate = ({ data }) => {
                         <MDXRenderer>{body}</MDXRenderer>
                     </MDXProvider>
                 </PostContent>
-                {withContents && <TableOfContents slug={slug} tableOfContents={tableOfContents} />}
+                {withContents && (
+                    <TableOfContents
+                        slug={slug}
+                        tableOfContents={tableOfContents}
+                        contentsDepth={contentsDepth}
+                    />
+                )}
             </PostContainer>
             {morePosts?.length > 0 && (
                 <MorePostsContainer withSidebar={withContents}>
@@ -210,6 +227,7 @@ export const pageQuery = graphql`
                 date(formatString: "MMMM Do, YYYY")
                 tags
                 withContents
+                contentsDepth
                 ogImage {
                     childImageSharp {
                         fluid(maxWidth: 800, quality: 90) {

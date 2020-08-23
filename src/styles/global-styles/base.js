@@ -78,13 +78,13 @@ const base = css`
         line-height: 1.4;
     }
     h4 {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-4xl);
     }
     h5 {
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-3xl);
     }
     h6 {
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-2xl);
     }
 
     img {

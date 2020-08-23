@@ -42,9 +42,9 @@ const commonContentsLinkStyles = css`
 `;
 const ContentsLinkH2 = styled(Link)`
     ${commonContentsLinkStyles}
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
 `;
-const H3LinksContainer = styled.div`
+const commonContentsContainerStyles = css`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,13 +56,21 @@ const H3LinksContainer = styled.div`
         margin: 0;
     }
 `;
+const H3LinksContainer = styled.div`
+    ${commonContentsContainerStyles}
+`;
 const ContentsLinkH3 = styled(Link)`
     ${commonContentsLinkStyles}
     margin-top: 0.4rem;
-    padding: 1px 0 1px 1rem;
+    padding: 1px 0 1px 1.2rem;
+`;
+const H4LinksContainer = styled.div`
+    ${commonContentsContainerStyles}
+    margin-left: 1.2rem;
 `;
 
-const TableOfContents = ({ tableOfContents, slug }) => {
+const TableOfContents = ({ tableOfContents, contentsDepth: propsContentsDepth, slug }) => {
+    const contentsDepth = propsContentsDepth || 2;
     return (
         <SideBarContainer>
             <ContentsContainer>
@@ -73,14 +81,31 @@ const TableOfContents = ({ tableOfContents, slug }) => {
                         return (
                             <React.Fragment key={uuidv4()}>
                                 <ContentsLinkH2 to={`${slug}${url}`}>{title}</ContentsLinkH2>
-                                {items && (
+                                {items && contentsDepth > 1 && (
                                     <H3LinksContainer>
                                         {items.map(el => {
-                                            const { url, title } = el;
+                                            const { url, title, items } = el;
                                             return (
-                                                <ContentsLinkH3 key={uuidv4()} to={`${slug}${url}`}>
-                                                    {title}
-                                                </ContentsLinkH3>
+                                                <React.Fragment key={uuidv4()}>
+                                                    <ContentsLinkH3 to={`${slug}${url}`}>
+                                                        {title}
+                                                    </ContentsLinkH3>
+                                                    {items && contentsDepth > 2 && (
+                                                        <H4LinksContainer>
+                                                            {items.map(el => {
+                                                                const { url, title } = el;
+                                                                return (
+                                                                    <React.Fragment key={uuidv4()}>
+                                                                        <ContentsLinkH3
+                                                                            to={`${slug}${url}`}>
+                                                                            {title}
+                                                                        </ContentsLinkH3>
+                                                                    </React.Fragment>
+                                                                );
+                                                            })}
+                                                        </H4LinksContainer>
+                                                    )}
+                                                </React.Fragment>
                                             );
                                         })}
                                     </H3LinksContainer>
@@ -96,9 +121,11 @@ const TableOfContents = ({ tableOfContents, slug }) => {
 TableOfContents.propTypes = {
     slug: PropTypes.string.isRequired,
     tableOfContents: PropTypes.object,
+    contentsDepth: PropTypes.number,
 };
 TableOfContents.defaultProps = {
     tableOfContents: undefined,
+    contentsDepth: undefined,
 };
 
 export default TableOfContents;

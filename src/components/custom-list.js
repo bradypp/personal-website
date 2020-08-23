@@ -49,7 +49,22 @@ const ListContainer = styled.ul`
 
 const IconWrapper = styled.span`
     margin: 0 1.5rem 0 0;
-    transform: translateY(-0.1em);
+    transform: ${props => {
+        switch (props.fontSize) {
+            case '2xs':
+            case 'xs':
+            case 'sm':
+                return `translateY(-2px)`;
+            case 'md':
+            case 'lg':
+            case 'xl':
+            case '2xl':
+            case '3xl':
+                return `translateY(-1px)`;
+            default:
+                return `none`;
+        }
+    }};
 `;
 
 const CustomList = ({ className, items, icon, columns, rowGap, fontSize, isPost }) => {
@@ -63,7 +78,7 @@ const CustomList = ({ className, items, icon, columns, rowGap, fontSize, isPost 
             {items &&
                 items.map(item => (
                     <li key={uuidv4()}>
-                        <IconWrapper>
+                        <IconWrapper fontSize={fontSize}>
                             <Icon name={icon} />
                         </IconWrapper>
                         {typeof item === 'string' ? <span>{item}</span> : item}

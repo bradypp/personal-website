@@ -144,7 +144,7 @@ const theme = css`
         --font-size-3xl: 2.2rem;
         --font-size-4xl: 2.4rem;
         --font-size-5xl: 2.6rem;
-        --font-size-h3: 3rem;
+        --font-size-h3: 2.8rem;
         --font-size-h2: 3.6rem;
         --font-size-post-title: 4.8rem;
         --font-size-page-title: 6rem;

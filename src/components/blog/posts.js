@@ -53,7 +53,7 @@ const PostSubtitle = styled.p`
 const PostDateTags = styled.div`
     color: var(--color-text-primary-1);
     margin: 0 0 2rem 0;
-    font-size: var(--font-size-2xs);
+    font-size: var(--font-size-xs);
     font-family: var(--fonts-mono);
     font-weight: normal;
     line-height: 1.5;
