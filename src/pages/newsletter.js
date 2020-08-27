@@ -10,17 +10,19 @@ const Container = styled.div`
     min-height: inherit;
 `;
 
-const NewsletterPage = ({ pageData }) => {
+const NewsletterPage = ({ data }) => {
     const {
-        frontmatter: { ogImage },
-    } = pageData;
+        pageData: {
+            frontmatter: { ogImage },
+        },
+    } = data;
     return (
         <Layout
             meta={{
                 title: 'Newsletter',
                 description: "Sign Up to Paul's newsletter",
                 relativeUrl: '/newsletter',
-                ogImage,
+                ogImage: ogImage?.childImageSharp?.fixed?.src,
             }}>
             <Container>
                 <NewsletterForm />
