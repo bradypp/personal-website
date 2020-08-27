@@ -28,7 +28,7 @@ import ogImage from '@assets/images/og-image.png';
 import { twitterHandle, mainThemeColor } from '@config';
 
 const Meta = ({ meta }) => {
-    const { site, file } = useStaticQuery(
+    const { site } = useStaticQuery(
         graphql`
             query {
                 site {
