@@ -35,7 +35,13 @@ export const pageQuery = graphql`
     {
         pageData: markdownRemark(fileAbsolutePath: { regex: "/content/newsletter/" }) {
             frontmatter {
-                ogImage
+                ogImage {
+                    childImageSharp {
+                        fixed(width: 1200, height: 630) {
+                            src
+                        }
+                    }
+                }
             }
         }
     }
