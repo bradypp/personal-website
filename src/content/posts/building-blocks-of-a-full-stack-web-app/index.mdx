@@ -1,20 +1,21 @@
 ---
 title: Building Blocks of a Full Stack Web-App
 subtitle: 'What goes into building a full stack web-app from scratch?'
-description: ''
-date: '2020-08-21'
+description: 'Find out what goes into building a full stack web-app from scratch, what you need to learn to do it, and what resources should you use to learn.'
+date: '2020-08-27'
 draft: false
 withContents: true
-contentsDepth: 3
-# ogImage:
+contentsDepth: 2
+ogImage: './og-image.png'
 tags:
     - webdev
     - beginners
+    - fullstack
 ---
 
-As a beginner developer, it can be hard to figure out what you need to learn and how to fit it all together to produce a complete, polished product.
+As a beginner developer, it can be hard to figure out what you need to learn and how to fit it all together to produce a production ready full stack web-app.
 
-What exactly is an API and how does it relate to the frontend? What languages and frameworks should I be using?
+What exactly is an API and how does it relate to the frontend? What languages and frameworks should I be using? What resources should I use to learn what I need?
 
 These are the types of questions I'll be answering down below.
 
@@ -22,11 +23,11 @@ These are the types of questions I'll be answering down below.
 
 Put simply, a full stack web-app is an application built with both a frontend (client side) and a backend (server side).
 
-The frontend is the visible part of the application which the user can see and interact with in the browser. It's responsible for your users experience and should run smoothly, provide the expected information and works without visible bugs or problems.
+The frontend is the visible part of the application which the user can see and interact with in the browser. It's responsible for your users experience and should run smoothly, provide the expected information and work without visible bugs or problems.
 
 The backend refers to the server side of the application that can't be accessed by the user. It's responsible for any complex logic, making queries for data from a database or an external API and securely dealing with sensitive information (such as emails and passwords) away from the view of the user.
 
-The frontend and backend will frequently communicate with each other as the user navigates the app. For example, an E-Commerce store might ask the backend for a list of products and all relevant information such as prices and reviews etc. The backend would then query the database to get the required data then send it back to the frontend. The frontend would then to provide up to date and relevant information to the user.
+The frontend and backend will frequently communicate with each other as the user navigates the app. For example, an E-Commerce store might ask the backend for a list of products and all relevant information such as prices and reviews etc. The backend would then query the database to get the required data then send it back to the frontend so that up to date and relevant information is provided to the user.
 
 Examples of full stack web applications:
 
@@ -34,7 +35,7 @@ Examples of full stack web applications:
 
 ## Frontend
 
-Frontend development refers to the "client-side" where the main priority is providing the best possible user experience.
+Frontend development refers to the "client-side" where the main priority is providing the user with the best possible experience and all required information.
 
 These are the 3 components to building the frontend:
 
@@ -70,7 +71,7 @@ For example, below is a basic numbered list:
     <li>List Item 4</li>
 </ol>
 
-And below is the HTML code responsible for that list. The `ol` tag represents an ordered list, the `li` tag respresents a list item.
+And below is the HTML code responsible for that list. The `ol` tag represents an ordered (numbered) list, the `li` tag respresents a list item.
 
 ```html
 <ol>
@@ -121,6 +122,10 @@ Recommended learning resources:
         <span>
             Modern HTML & CSS From The Beginning (Including Sass) by Brad Traversy{' '}
             <a href="https://www.udemy.com/course/modern-html-css-from-the-beginning/">(Udemy)</a>
+        </span>,
+        <span>
+            Advanced CSS and Sass: Flexbox, Grid, Animations and More! by Jonas Schmedtmann{' '}
+            <a href="https://www.udemy.com/course/advanced-css-and-sass/">(Udemy)</a>
         </span>,
     ]}
 />
@@ -212,7 +217,9 @@ There are many frameworks and libraries with different pros and cons to each. Ri
 
 #### React
 
-Created and maintained by Facebook, React is by far the most popular frontend framework (technically a library).
+Created and maintained by Facebook, React is by far the most popular frontend framework.
+
+React encourages modularity and scalability in your frontend making it perfect for web-apps of all sizes.
 
 Features include:
 
@@ -254,7 +261,7 @@ Recommended learning resources:
 <CustomList
     items={[
         <span>
-            Learn React JS - Full Course for Beginners - Tutorial 2019 by Free Code Camp{' '}
+            Learn React JS - Full Course for Beginners by Free Code Camp{' '}
             <a href="https://www.youtube.com/watch?v=DLX62G4lc44">(YouTube)</a>
         </span>,
         <span>
@@ -274,7 +281,7 @@ Recommended learning resources:
 
 Angular is an opinionated framework released by Google in 2016 in answer to the massive success of React in 2016.
 
-It was built to target web-apps that require a more rigid and structured approach on the frontend and is suitable for large applications. This is especially the case due to it's heavy recommendation for using TypeScript.
+It was built to target web-apps that require a more rigid and structured approach on the frontend and is suitable for large applications. This is especially the case due to it's suitability for using TypeScript.
 
 Features include:
 
@@ -283,7 +290,7 @@ Features include:
         <span>
             <strong>Opinionated Framework</strong> - Angular is an opinionated framework meaning
             that it has out of the box support for developing large applications and you need to
-            follow certain design patterns. This which means less flexibility but less problems.
+            follow certain design patterns. This means less flexibility but less problems.
         </span>,
         <span>
             <strong>Deals With Complexities</strong> - Angular takes care of many JavaScript
@@ -366,7 +373,7 @@ Features include:
         </span>,
         <span>
             <strong>Easy To Learn</strong> - Vue is also quite easy to learn since most of it's
-            features are optional cand can be learned incrementally as you build your app. The
+            features are optional and can be learned incrementally as you build your app. The
             documentation is also excellent.
         </span>,
     ]}
@@ -593,7 +600,7 @@ As well as these languages and frameworks, you can also use Golang, Java, Ruby a
 
 Databases are the brains of the backend and is the main component that makes a web-app dynamic.
 
-This is where all the data is stored and is where data is retrieved from or saved to with every request to the backend. Using the E-Commerce store example again, every product and all of it's details will come from a database as will the users account and order information.
+This is where all the data is stored and is where data is retrieved from or saved to with every request to the backend. Using the E-Commerce store example, every product and all of it's details will come from a database as will the users account and order information.
 
 There are two main types of databases: SQL & NoSQL (or relational and non-relational) databases.
 
@@ -668,7 +675,7 @@ When to use a NoSQL database:
 <CustomList
     items={[
         <span>
-            You're constantly adding new featuresand data types and it’s difficult to predict how
+            You're constantly adding new features and data types and it’s difficult to predict how
             the web-app will grow over time. NoSQL is much more flexible when it comes to changes.
         </span>,
         <span>
@@ -718,11 +725,9 @@ Recommended learning resources:
 
 ## Where should I go from here?
 
-You now have the knowledge of everything you need to learn in order to build your first full stack web-app from scratch.
+You now know everything you need to learn in order to build a full stack web-app from scratch.
 
-I recommend you get a decent understanding of the basics in each of development above but feel free to dive in and have a go whenever you're ready!
-
-If you want some more direction with building a full stack web-app from scratch, here are some great learning resources which use a variety of technologies and languages:
+If you want some more direction, here are some great learning resources which use a variety of technologies and languages:
 
 <CustomList
     items={[

@@ -168,7 +168,7 @@ const PostTemplate = ({ data }) => {
             meta={{
                 title,
                 description,
-                ogImage: ogImage?.childImageSharp?.fluid?.src,
+                ogImage,
                 relativeUrl: slug,
             }}>
             <PostHeader withSidebar={withContents}>
@@ -229,8 +229,8 @@ export const pageQuery = graphql`
                 contentsDepth
                 ogImage {
                     childImageSharp {
-                        fluid(maxWidth: 800, quality: 90) {
-                            ...GatsbyImageSharpFluid
+                        fixed(width: 1200, height: 630) {
+                            src
                         }
                     }
                 }

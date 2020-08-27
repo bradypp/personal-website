@@ -24,11 +24,10 @@ import appleIcon114x114 from '@assets/images/favicons/apple-touch-icon-114x114.p
 import appleIcon120x120 from '@assets/images/favicons/apple-touch-icon-120x120.png';
 import appleIcon144x144 from '@assets/images/favicons/apple-touch-icon-144x144.png';
 import appleIcon152x152 from '@assets/images/favicons/apple-touch-icon-152x152.png';
-import ogImage from '@assets/images/og-image.png';
 import { twitterHandle, mainThemeColor } from '@config';
 
 const Meta = ({ meta }) => {
-    const { site } = useStaticQuery(
+    const { site, file } = useStaticQuery(
         graphql`
             query {
                 site {
@@ -40,6 +39,13 @@ const Meta = ({ meta }) => {
                         language
                     }
                 }
+                file(relativePath: { eq: "og-image.png" }, dir: { regex: "/assets/images/" }) {
+                    childImageSharp {
+                        fixed(width: 1200, height: 630) {
+                            src
+                        }
+                    }
+                }
             }
         `,
     );
@@ -48,7 +54,9 @@ const Meta = ({ meta }) => {
 
     const metaTitle = meta.title ? `${meta.title} | Paul Brady` : title;
     const metaDescription = meta.description || description;
-    const metaOgImage = meta.ogImage || ogImage;
+    const metaOgImage = `${siteUrl}${
+        meta.ogImage?.childImageSharp?.fixed?.src || file?.childImageSharp?.fixed?.src
+    }`;
     const metaPageUrl = `${siteUrl}${meta.relativeUrl || ''}`;
 
     return (

@@ -48,7 +48,7 @@ const NoPostsMessage = styled.div`
 // TODO: Add load more button
 const BlogPage = ({ data }) => {
     const { postsMdx, pageData } = data;
-    const { title, description, relativeUrl } = pageData.frontmatter;
+    const { title, description, relativeUrl, ogImage } = pageData.frontmatter;
 
     return (
         <Layout
@@ -56,6 +56,7 @@ const BlogPage = ({ data }) => {
                 title,
                 description,
                 relativeUrl,
+                ogImage,
             }}>
             <Heading>{title}</Heading>
             {postsMdx.edges.length > 0 ? (
@@ -99,6 +100,13 @@ export const pageQuery = graphql`
                         subtitle
                         date(formatString: "MMMM Do, YYYY")
                         tags
+                        ogImage {
+                            childImageSharp {
+                                fixed(width: 1200, height: 630) {
+                                    src
+                                }
+                            }
+                        }
                     }
                 }
             }

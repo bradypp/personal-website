@@ -72,13 +72,14 @@ const TagsList = styled.ul`
 
 const TagsPage = ({ data }) => {
     const { tagsMdx, pageData } = data;
-    const { title, description, relativeUrl } = pageData.frontmatter;
+    const { title, description, relativeUrl, ogImage } = pageData.frontmatter;
     return (
         <Layout
             meta={{
                 title,
                 description,
                 relativeUrl,
+                ogImage,
             }}>
             <Heading>Tags</Heading>
             <TagsList>
@@ -119,6 +120,13 @@ export const pageQuery = graphql`
                 title
                 description
                 relativeUrl
+                ogImage {
+                    childImageSharp {
+                        fixed(width: 1200, height: 630) {
+                            src
+                        }
+                    }
+                }
             }
         }
     }
