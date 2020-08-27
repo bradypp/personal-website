@@ -48,7 +48,7 @@ const Meta = ({ meta }) => {
 
     const metaTitle = meta.title ? `${meta.title} | Paul Brady` : title;
     const metaDescription = meta.description || description;
-    const metaOgImage = `${siteUrl}${meta.ogImage?.childImageSharp?.fixed?.src || ogImage}`;
+    const metaOgImage = `${siteUrl}${meta.ogImage || ogImage}`;
     const metaPageUrl = `${siteUrl}${meta.relativeUrl || ''}`;
 
     return (
@@ -63,7 +63,6 @@ const Meta = ({ meta }) => {
             <meta itemProp="image" content={metaOgImage} />
             <meta name="description" content={metaDescription} />
             <meta name="keywords" content={keywords} />
-
             <meta property="og:title" content={metaTitle} />
             <meta property="og:description" content={metaDescription} />
             <meta property="og:type" content="website" />

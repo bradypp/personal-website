@@ -168,7 +168,7 @@ const PostTemplate = ({ data }) => {
             meta={{
                 title,
                 description,
-                ogImage,
+                ogImage: ogImage?.childImageSharp?.fixed?.src,
                 relativeUrl: slug,
             }}>
             <PostHeader withSidebar={withContents}>
