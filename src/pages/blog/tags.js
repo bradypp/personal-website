@@ -79,7 +79,7 @@ const TagsPage = ({ data }) => {
                 title,
                 description,
                 relativeUrl,
-                ogImage,
+                ogImage: ogImage?.childImageSharp?.fixed?.src,
             }}>
             <Heading>Tags</Heading>
             <TagsList>

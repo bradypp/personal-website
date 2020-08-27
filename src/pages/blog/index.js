@@ -56,7 +56,7 @@ const BlogPage = ({ data }) => {
                 title,
                 description,
                 relativeUrl,
-                ogImage,
+                ogImage: ogImage?.childImageSharp?.fixed?.src,
             }}>
             <Heading>{title}</Heading>
             {postsMdx.edges.length > 0 ? (

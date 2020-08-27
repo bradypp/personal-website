@@ -1,5 +1,6 @@
 ---
 title: 'A newsletter for all developers to enjoy!'
+ogImage: './og-image.png'
 ---
 
 With this newsletter you'll receive a monthly assortment of web dev goodness.
