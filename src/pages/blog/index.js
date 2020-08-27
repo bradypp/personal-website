@@ -100,13 +100,6 @@ export const pageQuery = graphql`
                         subtitle
                         date(formatString: "MMMM Do, YYYY")
                         tags
-                        ogImage {
-                            childImageSharp {
-                                fixed(width: 1200, height: 630) {
-                                    src
-                                }
-                            }
-                        }
                     }
                 }
             }
@@ -116,6 +109,13 @@ export const pageQuery = graphql`
                 title
                 description
                 relativeUrl
+                ogImage {
+                    childImageSharp {
+                        fixed(width: 1200, height: 630) {
+                            src
+                        }
+                    }
+                }
             }
         }
     }
