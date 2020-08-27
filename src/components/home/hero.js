@@ -8,7 +8,7 @@ import { twitter } from '@config';
 import { mixins, media } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
-import { BREAKPOINTS } from '@utils/constants';
+import { BREAKPOINTS, HEADER } from '@utils/constants';
 import wave from '@assets/images/wave.png';
 
 const margin = '12vh';
@@ -31,17 +31,7 @@ const ContentContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding-top: 4vh;
-
-    ${media.bp1440`
-        padding-top: 5vh;
-    `}
-    ${media.bp800`
-        margin-top: 0;
-    `}
-    ${media.bp440`
-        padding-top: 6vh;
-    `}
+    padding-top: ${HEADER.TOP_HEIGHT / 2}px;
 `;
 const TitleContainer = styled(motion.div)`
     ${mixins.flexCenter};

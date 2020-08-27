@@ -17,7 +17,6 @@ const HeadingContainer = styled.div`
     }
 
     h1 {
-        font-size: var(--font-size-post-title);
         margin: 0;
     }
 `;

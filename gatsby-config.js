@@ -34,7 +34,7 @@ const remarkPlugins = [
             icon: `<span>i</span>`,
             maintainCase: false,
             removeAccents: true,
-            elements: [`h2`, `h3`],
+            elements: [`h2`, `h3`, `h4`],
         },
     },
     {

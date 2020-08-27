@@ -11,7 +11,7 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: ${props => (!props.isHome ? '180px' : '0')};
+    padding-top: ${props => (!props.isHome ? '170px' : '0')};
     min-height: inherit;
 
     ${media.bp1040`

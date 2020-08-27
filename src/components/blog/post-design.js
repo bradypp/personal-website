@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
 
-import { Icon } from '@components';
+import { Icon, CustomList } from '@components';
+import { media } from '@styles';
 
 export const PostStyles = css`
     h1,
@@ -11,32 +11,48 @@ export const PostStyles = css`
     h4,
     h5,
     h6 {
-        margin: 1.5em 0 0.5em;
+        margin: 1.6em 0 0.65em;
+    }
+
+    h2 {
+        font-weight: 400;
+    }
+
+    h2,
+    h3,
+    h4 {
+        &:hover {
+            a {
+                opacity: 1;
+            }
+        }
     }
 
     p,
     ul,
     ol {
         font-size: var(--font-size-lg);
+        line-height: 1.55em;
     }
 
     p {
-        margin: 1em 0;
-        line-height: 1.5;
+        margin: 1.1em 0;
     }
 
     ol,
     ul {
         display: block;
-        list-style-type: decimal;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0;
         margin-inline-end: 0;
         padding-inline-start: 4rem;
+        margin-top: 1.1em;
+        margin-bottom: 1.1em;
 
         li {
             padding-left: 0.3em;
+            padding-bottom: 0.3em;
         }
     }
 
@@ -55,20 +71,8 @@ export const PostStyles = css`
         margin-left: 0;
         margin-right: 0;
         padding-left: 2.4rem;
-
-        p {
-            font-style: italic;
-            font-size: var(--font-size-xl);
-        }
-    }
-
-    h2,
-    h3 {
-        &:hover {
-            a {
-                opacity: 1;
-            }
-        }
+        font-style: italic;
+        font-size: var(--font-size-xl);
     }
 `;
 
@@ -76,11 +80,16 @@ const AnchorLink = styled.a`
     position: absolute;
     transform: translateX(-100%);
     opacity: 0;
-    padding-right: 5px;
+    padding-right: 8px;
     svg {
         width: 22px;
         height: 22px;
+        margin-bottom: 2px;
     }
+
+    ${media.bp600`
+        display: none;
+    `}
 `;
 const Anchor = styled.div`
     position: absolute;
@@ -111,3 +120,17 @@ const generateHeading = Heading => ({ children, ...props }) => {
 
 export const h2 = generateHeading('h2');
 export const h3 = generateHeading('h3');
+export const h4 = generateHeading('h4');
+
+export const StyledCustomList = props => {
+    const { items, fontSize, rowGap, columns } = props;
+    return (
+        <CustomList
+            isPost
+            fontSize={fontSize || 'lg'}
+            items={items}
+            rowGap={rowGap}
+            columns={columns || 1}
+        />
+    );
+};
