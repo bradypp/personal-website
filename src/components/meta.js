@@ -74,13 +74,8 @@ const Meta = ({ meta }) => {
             <meta property="og:image:type" content="image/png" />
             <meta property="og:locale" content={language} />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:url" content={siteUrl} />
             <meta name="twitter:site" content={twitterHandle} />
             <meta name="twitter:creator" content={twitterHandle} />
-            <meta name="twitter:title" content={metaTitle} />
-            <meta name="twitter:description" content={metaDescription} />
-            <meta name="twitter:image" content={metaOgImage} />
-            <meta name="twitter:image:alt" content={metaTitle} />
             <link rel="icon" type="image/png" sizes="192x192" href={androidIcon192x192} />
             <link rel="icon" type="image/png" sizes="512x512" href={androidIcon512x512} />
             <link rel="icon" type="image/png" sizes="32x32" href={favicon32x32} />

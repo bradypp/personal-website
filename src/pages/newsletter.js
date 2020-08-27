@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
 import { Layout, NewsletterForm } from '@components';
-import ogImage from '@assets/images/newsletter-og-image.png';
 import { mixins } from '@styles';
 
 const Container = styled.div`
@@ -10,7 +10,10 @@ const Container = styled.div`
     min-height: inherit;
 `;
 
-const NewsletterPage = () => {
+const NewsletterPage = ({ pageData }) => {
+    const {
+        frontmatter: { ogImage },
+    } = pageData;
     return (
         <Layout
             meta={{
@@ -27,3 +30,13 @@ const NewsletterPage = () => {
 };
 
 export default NewsletterPage;
+
+export const pageQuery = graphql`
+    {
+        pageData: markdownRemark(fileAbsolutePath: { regex: "/content/newsletter/" }) {
+            frontmatter {
+                ogImage
+            }
+        }
+    }
+`;
