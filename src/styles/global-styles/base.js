@@ -66,7 +66,7 @@ const base = css`
     }
 
     h1 {
-        font-size: var(--font-size-page-title);
+        font-size: var(--font-size-title);
         line-height: 1.2;
     }
     h2 {

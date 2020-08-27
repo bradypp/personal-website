@@ -12,7 +12,7 @@ const ListContainer = styled.ul`
         grid-template-columns: repeat(${props => props.columns || 1}, 1fr);
         grid-column-gap: 1.6rem;
         grid-row-gap: ${props => props.rowGap};
-        margin: ${props => (props.isPost ? '1em 0' : 0)};
+        margin: ${props => (props.isPost ? '1.1em 0' : 0)};
         padding: ${props => (props.isPost ? '0 0 0 3rem' : 0)};
         overflow: visible;
         list-style: none;
@@ -42,6 +42,15 @@ const ListContainer = styled.ul`
                 color: var(--color-secondary);
                 width: 1.05em;
                 height: 1.05em;
+            }
+
+            p {
+                margin-top: 1.1em;
+                margin-bottom: 0;
+            }
+
+            p:first-of-type {
+                margin: 0;
             }
         }
     }

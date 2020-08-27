@@ -10,7 +10,6 @@ import { media } from '@styles';
 
 const Heading = styled.h1`
     margin-bottom: 4rem;
-    font-size: var(--font-size-post-title);
     width: 100%;
 `;
 const TagsList = styled.ul`

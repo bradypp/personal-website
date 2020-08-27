@@ -35,7 +35,6 @@ const PostHeader = styled.header`
         `}
 `;
 const Title = styled.h1`
-    font-size: var(--font-size-post-title);
     line-height: 1.25;
     margin-bottom: 1.5rem;
 `;

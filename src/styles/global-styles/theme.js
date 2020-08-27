@@ -68,7 +68,7 @@ const theme = css`
         --color-text-link: var(--color-primary);
         --color-danger: var(--color-red);
         --color-code-text: var(--color-text-primary-2);
-        --color-code-background: var(--color-background-primary-2);
+        --color-code-background: var(--color-white-3);
         --color-field-background: var(--color-white-2);
         --color-field-background-hover: var(--color-white-2);
         --color-field-background-active: var(--color-white-1);
@@ -111,6 +111,7 @@ const theme = css`
             --color-socials: var(--color-text-primary-2);
             --color-socials-hover: var(--color-green);
             --color-danger: var(--color-red-light);
+            --color-code-background: var(--color-background-primary-2);
             --color-scrollbar: var(--color-navy-6);
             --color-scrollbar-active: var(--color-navy-5);
             --color-field-background: var(--color-navy-5);
@@ -146,8 +147,7 @@ const theme = css`
         --font-size-5xl: 2.6rem;
         --font-size-h3: 2.8rem;
         --font-size-h2: 3.6rem;
-        --font-size-post-title: 4.8rem;
-        --font-size-page-title: 6rem;
+        --font-size-title: 4.8rem;
 
         --z-index-side: 25;
         --z-index-header: 50;

@@ -1,75 +1,403 @@
 ---
 title: Building Blocks of a Full Stack Web-App
-subtitle: 'What goes into building a full stack web application from scratch?'
+subtitle: 'What goes into building a full stack web-app from scratch?'
 description: ''
 date: '2020-08-21'
-draft: true
+draft: false
 withContents: true
-contentsDepth: 2
+contentsDepth: 3
 # ogImage:
 tags:
     - webdev
-    - fullstack
     - beginners
 ---
 
 As a beginner developer, it can be hard to figure out what you need to learn and how to fit it all together to produce a complete, polished product.
 
-What exactly is a RESTful API and how does it relate to the frontend? What languages and frameworks should I be using?
+What exactly is an API and how does it relate to the frontend? What languages and frameworks should I be using?
 
 These are the types of questions I'll be answering down below.
 
 ## What is a full stack web-app?
 
-<!-- What is a full stack web app -->
-
 Put simply, a full stack web-app is an application built with both a frontend (client side) and a backend (server side).
 
-<!-- TODO: examples: twitter, amazon, shopify -->
+The frontend is the visible part of the application which the user can see and interact with in the browser. It's responsible for your users experience and should run smoothly, provide the expected information and works without visible bugs or problems.
 
-The frontend is the visible layer of the application which the user interacts with in the browser. It's responsible for how your user experiences your app so it's important that the frontend runs smoothly and works as expected.
+The backend refers to the server side of the application that can't be accessed by the user. It's responsible for any complex logic, making queries for data from a database or an external API and securely dealing with sensitive information (such as emails and passwords) away from the view of the user.
 
-The backend refers to the server side of the application that can't be accessed by the user. It's responsible for any complex logic, making queries for data from a database or external API and securely dealing with sensitive information (such as emails and passwords) away from the view of the user.
+The frontend and backend will frequently communicate with each other as the user navigates the app. For example, an E-Commerce store might ask the backend for a list of products and all relevant information such as prices and reviews etc. The backend would then query the database to get the required data then send it back to the frontend. The frontend would then to provide up to date and relevant information to the user.
 
-The frontend and backend will frequently communicate with each other as the user navigates the app. For example, an E-Commerce store might ask the backend for a list of products and all relevant information such as prices and reviews etc. The backend would then query the database, get and manipulate the data into the required format and send it to the frontend. The frontend would then generate the UI using that data and present it to the user.
+Examples of full stack web applications:
+
+<CustomList items={['Twitter', 'Amazon', 'Spotify', 'YouTube', 'Trello', 'Figma']} columns={3} />
 
 ## Frontend
 
-<!--
-What is it?
--->
+Frontend development refers to the "client-side" where the main priority is providing the best possible user experience.
+
+These are the 3 components to building the frontend:
+
+<CustomList
+    items={[
+        <span>
+            <strong>HTML</strong> - HTML provides the overall basic structure and content at the
+            core of each page.
+        </span>,
+        <span>
+            <strong>CSS</strong> - This controls how the HTML elements are styled and presented to
+            the user.
+        </span>,
+        <span>
+            <strong>JavaScript</strong> - JavaScript is used to add interactivity to the web-app by
+            making HTML elements and content behave in different ways depending on user actions.
+        </span>,
+    ]}
+/>
 
 ### HTML & CSS
 
-<!--
-what are they
-more details
-learning resources
--->
+HTML is the foundation of any web page and is where all frontend development starts.
+
+It is a markup language which uses tags to identify different types of content and the purposes they each serve to the page.
+
+For example, below is a basic numbered list:
+
+<ol>
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+    <li>List Item 4</li>
+</ol>
+
+And below is the HTML code responsible for that list. The `ol` tag represents an ordered list, the `li` tag respresents a list item.
+
+```html
+<ol>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+    <li>List Item 4</li>
+    <li>List Item 1</li>
+</ol>
+```
+
+CSS is responsible for giving a page it's entire style including layouts, colors, fonts and more. Not only that, if you want to change the style on different screen sizes (responsiveness), CSS is responsible for that too.
+
+Basically, you can think of CSS as a list of rules for how the different HTML elements in a page should look.
+
+Check out the list below which is the same one from above but with CSS applied.
+
+<ol style="color:#0f7cd0;font-weight:800;font-style:italic;">
+    <li value="1">List Item 1</li>
+    <li value="2">List Item 2</li>
+    <li value="3">List Item 3</li>
+    <li value="4">List Item 4</li>
+</ol>
+
+And below is the CSS responsible for the styling changes. You can see that 3 different rules are applied to each `li` list item.
+
+```css
+li {
+    color: #0f7cd0;
+    font-weight: 800;
+    font-style: italic;
+}
+```
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            Learn HTML5 and CSS3 From Scratch - Full Course by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=mU6anWqZJcc">(YouTube)</a>
+        </span>,
+        <span>
+            Build Responsive Real World Websites with HTML5 and CSS3 by Jonas Schmedtmann{' '}
+            <a href="https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/">
+                (Udemy)
+            </a>
+        </span>,
+        <span>
+            Modern HTML & CSS From The Beginning (Including Sass) by Brad Traversy{' '}
+            <a href="https://www.udemy.com/course/modern-html-css-from-the-beginning/">(Udemy)</a>
+        </span>,
+    ]}
+/>
+
+#### CSS Preprocessors
+
+A CSS preprocessor is a program that lets you generate CSS using its own unique syntax.
+
+There are many preprocessors to choose from and each add different features that don't exist in pure CSS such as mixins, nesting, and functions. They are especially useful for large full stack web-apps since they offer more flexibility and maintainability.
+
+Some of the most popular ones today:
+
+<CustomList
+    items={[
+        <a href="https://sass-lang.com/">Sass</a>,
+        <a href="http://lesscss.org/">Less</a>,
+        <a href="https://stylus-lang.com/">Stylus</a>,
+    ]}
+/>
+
+#### CSS Frameworks
+
+CSS frameworks provide a basic structure and generic functionality for styling a web app and deals with common and repetitive problems.
+
+They're extremely useful for quickly building a frontend without having to start from scratch and can usually be overidden with your own CSS at any time.
+
+Some of the most popular ones today:
+
+<CustomList
+    items={[
+        <a href="https://getbootstrap.com/">Bootstrap</a>,
+        <a href="https://tailwindcss.com/">Tailwind CSS</a>,
+        <a href="https://semantic-ui.com/">Semantic UI</a>,
+        <a href="https://getuikit.com/">UI kit</a>,
+        <a href="https://bulma.io/">Bulma</a>,
+        <a href="https://materializecss.com/">Materialize</a>,
+    ]}
+    columns={2}
+/>
 
 ### JavaScript
 
-<!--
-what is it
-more details
-jquery
-learning resources
--->
+JavaScript is at the heart of frontend development and is what's used to modify content and make the web app behave differently depending on a user's actions.
+
+Common uses for JavaScript include confirmation boxes, buttons and handling form inputs.
+
+For example, JavaScript can be used to make an alert popup when a button is pressed.
+
+```js
+const button = document.getElementById('button');
+
+button.onclick = function () {
+    alert('Hi! This is an alert!');
+};
+```
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            Learn JavaScript From Scratch{' '}
+            <a href="https://www.freecodecamp.org/">(Free Code Camp)</a>
+        </span>,
+        <span>
+            Learn JavaScript - Full Course for Beginners by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=PkZNo7MFNFg">(YouTube)</a>
+        </span>,
+        <span>
+            The Complete JavaScript Course 2020: Build Real Projects! by Jonas Schmedtmann{' '}
+            <a href="https://www.udemy.com/course/the-complete-javascript-course/">(Udemy)</a>
+        </span>,
+        <span>
+            JavaScript: Understanding the Weird Parts by Anthony Alicea{' '}
+            <a href="https://www.udemy.com/course/understand-javascript/">(Udemy)</a>
+        </span>,
+    ]}
+/>
 
 ### Frameworks
 
-<!--
-angular, react, vue, svelte
-what are frameworks
-list of frameworks and details of benefits
-learning resources for each
--->
+When building a full stack web-app, it's likely that you're going to want to use a JavaScript framework (or library).
+
+A JavaScript framework provides developers with a collection of pre-written code that solves many of the recurring problems that consistently pop up in frontend development. Although more complex than any other area of frontend development, it's worth learning to use at least one since it makes life as a full-stack developer much easier.
+
+You will often see the words framework and library used interchangably but there are slight differences. Libraries (React) offer code that you can plug into your web app when needed whereas frameworks (Angular) provide a more rigid structure (or framework) for you to build your frontend on.
+
+There are many frameworks and libraries with different pros and cons to each. Right now the most popular frameworks are React, Angular and Vue.
+
+#### React
+
+Created and maintained by Facebook, React is by far the most popular frontend framework (technically a library).
+
+Features include:
+
+<CustomList
+    items={[
+        <span>
+            <strong>Component Based</strong> - Every section of the frontend is wrapped inside a
+            self-contained modular component which makes code reuse and debugging much easier.
+        </span>,
+        <span>
+            <strong>JSX</strong> - It uses a markup syntax that closely resembles HTML which allows
+            you to easily create elements within a React component.
+        </span>,
+        <span>
+            <strong>Performance</strong> - React has its own event system and virtual DOM which
+            makes DOM interaction and event handling more performant. JavaScript and CSS is also
+            automatically optimized.
+        </span>,
+        <span>
+            <strong>Easy To Learn</strong> - It's easy to learn due to the plethora of online
+            resources and a large, vibrant community. The fact that it's technically a library also
+            helps (you only need to learn the parts you use).
+        </span>,
+        <span>
+            <strong>Community Support</strong> - Since it's so popular and is backed by Facebook,
+            it's regularly updated and improved. There are also many community packages and React
+            frameworks such as <a href="https://nextjs.org/">Next.js</a> or{' '}
+            <a href="https://www.gatsbyjs.com/">Gatsby.js</a>.
+        </span>,
+        <span>
+            <strong>In Demand</strong> - Due to it's large popularity, React is in high demand in
+            the job market.
+        </span>,
+    ]}
+/>
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            Learn React JS - Full Course for Beginners - Tutorial 2019 by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=DLX62G4lc44">(YouTube)</a>
+        </span>,
+        <span>
+            Modern React with Redux by Stephen Grider{' '}
+            <a href="https://www.udemy.com/course/react-redux/">(Udemy)</a>
+        </span>,
+        <span>
+            Complete React Developer in 2020 (w/ Redux, Hooks, GraphQL) by Andrei Neagoie{' '}
+            <a href="https://www.udemy.com/course/complete-react-developer-zero-to-mastery/">
+                (Udemy)
+            </a>
+        </span>,
+    ]}
+/>
+
+#### Angular
+
+Angular is an opinionated framework released by Google in 2016 in answer to the massive success of React in 2016.
+
+It was built to target web-apps that require a more rigid and structured approach on the frontend and is suitable for large applications. This is especially the case due to it's heavy recommendation for using TypeScript.
+
+Features include:
+
+<CustomList
+    items={[
+        <span>
+            <strong>Opinionated Framework</strong> - Angular is an opinionated framework meaning
+            that it has out of the box support for developing large applications and you need to
+            follow certain design patterns. This which means less flexibility but less problems.
+        </span>,
+        <span>
+            <strong>Deals With Complexities</strong> - Angular takes care of many JavaScript
+            complexities such as decorators, dependency injection and TypeScript allowing the
+            developer to focus on other areas of development. It will feel familiar to those
+            experienced with backend frameworks such as ASP.NET.
+        </span>,
+        <span>
+            <strong>Well Supported</strong> - Since it's backed by Google and is popular, Angular is
+            consistenly getting updates and improvements.
+        </span>,
+        <span>
+            <strong>TypeScript Support</strong> - Angular is built using TypeScript and recommends
+            the use of TypeScript making it a great choice for big applications where problems and
+            errors are more likely.
+        </span>,
+        <span>
+            <strong>Secure</strong> - Angular is by far the most secure JavScript framework with
+            built in security features such as data sanitization.
+        </span>,
+        <span>
+            <strong>Tough To Learn</strong> - Since it's so complex and full of advanced features,
+            the barrier to entry into Angular is high, especially when compared to React and Vue.
+        </span>,
+    ]}
+/>
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            Learn Angular - Full Tutorial Course by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=2OHbjep_WjQ">(YouTube)</a>
+        </span>,
+        <span>
+            Angular - The Complete Guide (2020 Edition) by Maximilian Schwarzmuller{' '}
+            <a href="https://www.udemy.com/course/the-complete-guide-to-angular-2/">(Udemy)</a>
+        </span>,
+        <span>
+            Pluralsight Angular Path{' '}
+            <a href="https://www.pluralsight.com/paths/angular">(Pluralsight)</a>
+        </span>,
+    ]}
+/>
+
+#### Vue
+
+Vue was created with the aim of combining the best of Angular (the view layer) and the best of React (the virtual DOM) and it's fair to say that they succeeded.
+
+It offers a nice middle ground between the two with the option of a simple view layer like React and the option to build a full end-to-end framework with routing and data-binding like Angular.
+
+Features include:
+
+<CustomList
+    items={[
+        <span>
+            <strong>Component Based</strong> - Like React, the view layer is component based with
+            external data flow and state management.
+        </span>,
+        <span>
+            <strong>Incrementally Adoptable</strong> - Vue is designed from the ground up to be
+            incrementally adoptable meaning it's easy to gradually implement into an existing
+            codebase.
+        </span>,
+        <span>
+            <strong>Community Support</strong> - Being the only one of the big 3 that isn't
+            maintained by a big tech corporation, Vue has massive support in the community. It also
+            has a vast library of packages and frameworks such as Vuex for state managemant and
+            Nuxt.js.
+        </span>,
+        <span>
+            <strong>Growing Fast</strong> - With lots of innovation and support over the years, Vue
+            has only continued to grow and who knows how far it can go. Many people think that Vue
+            is the future of frontend web development.
+        </span>,
+        <span>
+            <strong>TypeScript Support</strong> - The core library was recently completely
+            re-written using TypeScript and is equally suited to both JavaScript and TypeScript.
+        </span>,
+        <span>
+            <strong>Easy To Learn</strong> - Vue is also quite easy to learn since most of it's
+            features are optional cand can be learned incrementally as you build your app. The
+            documentation is also excellent.
+        </span>,
+    ]}
+/>
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            Learn Vue.js - Full Course for Beginners by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=4deVCNJq3qc">(YouTube)</a>
+        </span>,
+        <span>
+            Vue JS - The Complete Guide (incl. Vue Router & Vuex) by Maximilian Schwarzmuller{' '}
+            <a href="https://www.udemy.com/course/vuejs-2-the-complete-guide/">(Udemy)</a>
+        </span>,
+        <span>
+            Build Web Apps with Vue JS 2 & Firebase by The Net Ninja{' '}
+            <a href="https://www.udemy.com/course/build-web-apps-with-vuejs-firebase/">(Udemy)</a>
+        </span>,
+    ]}
+/>
+
+Although not as popular as the top 3 frameworks right now, it's also worth checking out other rising frameworks such as Svelte and Ember.
 
 ## Backend
 
 The backend is the foundations that the rest of the app is built on.
 
-There are 4 main components to the backend:
+These are the 4 main components to the backend:
 
 <CustomList
     items={[
@@ -78,29 +406,71 @@ There are 4 main components to the backend:
             storage space, processing power, security and other web services that the backend needs.
         </span>,
         <span>
+            <strong>API</strong> - The API is how the frontend interacts with the backend. The
+            frontend sends requests through url routes (endpoints) to the backend which takes the
+            request, calls middleware functions (functions that act on the request before sending
+            the response) and sends a response with any required data.
+        </span>,
+        <span>
             <strong>Language/Framework</strong> - Every backend is obviously written using a
             programming language and makes use of a framework which makes development much easier.
         </span>,
         <span>
-            <strong>API Routes</strong> - The API is how the frontend interacts with the backend.
-            The frontend sends requests through routes (endpoints) to the backend which takes the
-            request and returns any required data.
-        </span>,
-        <span>
-            <strong>Database</strong> - The database is the brains of any full stack web-app. It
-            takes queries and fetches any data needed by the frontend. E.g. checking the username
-            and password provided matches the pair in the database.
+            <strong>Database</strong> - The brains of any full stack web-app, the database takes
+            queries and fetches any data needed by the frontend. E.g. checking the username and
+            password provided matches the pair in the database.
         </span>,
     ]}
 />
 
 Although you can build the frontend and backend in any order (or at the same time), I think it makes sense to start building out the backend first. It's much easier to develop the frontend when you've already planned out what data you're going to need and how you're going to access that data.
 
+### API
+
+API stands for _Application Programming Interface_ and is the method any application interacts (interfaces) with the backend.
+
+The most widely used type of API is a RESTful API which basically just means that there's a set of standardised rules about how communication with the backend should take place.
+
+In a web-app, the frontend would make HTTP requests to the backend through specific api routes (urls) and the backend would return a response with data.
+
+There are 4 parts to a RESTful API:
+
+<CustomList
+    items={[
+        <p>
+            <strong>Endpoints</strong> - Every API has a root endpoint (e.g.{' '}
+            <i>https://api.github.com</i>) which is the starting point for every request. The path
+            after this endpoint corresponds with the request we want to make and the response we
+            want in return. For example, to return the repos of a particular user on GitHub, the
+            endpoint would look something like: <i>https://api.github.com/users/:username/repos</i>.
+        </p>,
+        <p>
+            <strong>Methods (CRUD)</strong> - Each request will have a CRUD (Create Read Update
+            Delete) method which describes the request type. A <code>GET</code> request is used to
+            request data from the database. A <code>POST</code> request is used to create and insert
+            new data into the database. A <code>PUT</code> or <code>PATCH</code> request is used to
+            update already existing data in the database. A <code>DELETE</code> request is used to
+            remove data from the database.
+        </p>,
+        <p>
+            <strong>Headers</strong> - Headers are used to provide information with each request &
+            response such as authentication credentials.
+        </p>,
+        <p>
+            <strong>Body</strong> - The body is where we store the data we want to send to the
+            server with the request and where the data that's returned to the frontend with is
+            stored.
+        </p>,
+    ]}
+/>
+
+Learn more about API's with [this](https://www.youtube.com/watch?v=GZvSYJDk-us4) great video by Free Code Camp.
+
 ### Languages & Frameworks
 
 Since the backend runs on a server (instead of in the browser), it can be built using a variety of languages and frameworks.
 
-Some of the most popular choices right now:
+Learn about some of the most popular backend frameworks below.
 
 #### JavaScript & Node.js
 
@@ -221,41 +591,174 @@ As well as these languages and frameworks, you can also use Golang, Java, Ruby a
 
 ### Databases
 
-<!--
-What are databases (storing data)
-Types of databases
-List of SQL databases & noSQL databases
--->
+Databases are the brains of the backend and is the main component that makes a web-app dynamic.
 
-### API's
+This is where all the data is stored and is where data is retrieved from or saved to with every request to the backend. Using the E-Commerce store example again, every product and all of it's details will come from a database as will the users account and order information.
 
-<!--
-What are api's
-Types of API's (restful & graphql)
-axios
--->
+There are two main types of databases: SQL & NoSQL (or relational and non-relational) databases.
 
-### Security
+The difference is in how they’re built, the type of information they store, and how they store it.
 
-<!--
-Security - Authentication, verifying permissions, payments should be done safely on the backend (also validation)
--->
+#### SQL
 
-## Popular Stacks
+SQL databases use SQL (structured query language) to query for data and are structured in rigid tables, like phone books that store phone numbers and addresses.
 
-<!--
-    Popular Stacks:
+When to use an SQL database:
 
-    MEAN Stack: MongoDB, Express, AngularJS and Node.js.
-    MERN Stack: MongoDB, Express, ReactJS and Node.js
-    Django Stack: Django, python and MySQL as Database.
-    Rails or Ruby on Rails: Uses Ruby, PHP and MySQL.
-    LAMP Stack: Linux, Apache, MySQL and PHP.
-    More with Vue
- -->
+<CustomList
+    items={[
+        <span>
+            You want you data organized in a very organized way with little room for error.
+        </span>,
+        <span>
+            You're working with complex queries and reports that require relationships between data
+            types.
+        </span>,
+        <span>
+            You're web-app has a heavy volume of queries. SQL is safer, more stable and ensures data
+            integrity.
+        </span>,
+        <span>
+            You don't anticipate large changes or large volumes of data. SQL databases are quite
+            rigid and time consuming to change.
+        </span>,
+    ]}
+/>
 
-## Useful Tools
+Popular SQL databases:
 
-<!--
-Useful tools for both frontend and backend dev
- -->
+<CustomList
+    columns={3}
+    items={['MySQL', 'Oracle', 'PostgreSQL', 'MariaDB', 'Microsoft Azure', 'MS SQL Server']}
+/>
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            SQL Tutorial - Full Database Course for Beginners by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=HXV3zeQKqGY">(YouTube)</a>
+        </span>,
+        <span>
+            The Complete SQL Bootcamp 2020: Go from Zero to Hero by Jose Portilla{' '}
+            <a href="https://www.udemy.com/course/the-complete-sql-bootcamp/">(Udemy)</a>
+        </span>,
+        <span>
+            The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert by Colt Steele{' '}
+            <a href="https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/">
+                (Udemy)
+            </a>
+        </span>,
+        <span>
+            The Complete Oracle SQL Certification Course by Imtiaz Ahmad{' '}
+            <a href="https://www.udemy.com/course/the-complete-oracle-sql-certification-course/">
+                (Udemy)
+            </a>
+        </span>,
+    ]}
+/>
+
+#### NoSQL
+
+NoSQL databases use JSON documents to store data with key-value pairs. Seperate documents will hold specific data like a users account details, product review information or profile information.
+
+When to use a NoSQL database:
+
+<CustomList
+    items={[
+        <span>
+            You're constantly adding new featuresand data types and it’s difficult to predict how
+            the web-app will grow over time. NoSQL is much more flexible when it comes to changes.
+        </span>,
+        <span>
+            You are not concerned about data consistency and having perfect data integrity isn't a
+            priority. E.g. Twitter probably won't care if everyone sees a new post at the exact same
+            time meaning data consistency isn't important.
+        </span>,
+        <span>
+            You have a lot of data, many different data types, and your data needs will only grow
+            over time. NoSQL databases provide much more flexibility when it comes to storing large
+            amounts of data.
+        </span>,
+    ]}
+/>
+
+Popular NoSQL databases:
+
+<CustomList
+    columns={3}
+    items={['MongoDB', 'Firebase', 'Redis', 'Amazon DynamoDB', 'Cassandra', 'Couchbase']}
+/>
+
+Recommended learning resources:
+
+<CustomList
+    items={[
+        <span>
+            An Introduction To NoSQL Databases by Traversy Media{' '}
+            <a href="https://www.youtube.com/watch?v=uD3p_rZPBUQ">(YouTube)</a>
+        </span>,
+        <span>
+            MongoDB Crash Course by Traversy Media{' '}
+            <a href="https://www.youtube.com/watch?v=-56x56UppqQ">(YouTube)</a>
+        </span>,
+        <span>
+            Firebase Firestore Tutorial Series by The Net Ninja{' '}
+            <a href="https://www.youtube.com/watch?v=4d-gIPGzmK4&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB&index=2&t=0s">
+                (YouTube)
+            </a>
+        </span>,
+        <span>
+            Redis Crash Course by Traversy Media{' '}
+            <a href="https://www.youtube.com/watch?v=Hbt56gFj998">(YouTube)</a>
+        </span>,
+    ]}
+/>
+
+## Where should I go from here?
+
+You now have the knowledge of everything you need to learn in order to build your first full stack web-app from scratch.
+
+I recommend you get a decent understanding of the basics in each of development above but feel free to dive in and have a go whenever you're ready!
+
+If you want some more direction with building a full stack web-app from scratch, here are some great learning resources which use a variety of technologies and languages:
+
+<CustomList
+    items={[
+        <span>
+            Full Stack Web App using Vue.js & Express.js by Free Code Camp{' '}
+            <a href="https://www.youtube.com/watch?v=Fa4cRMaTDUI&list=PLWKjhJtqVAbnadueQ-C5keMQQiQau_i0D">
+                (YouTube)
+            </a>
+        </span>,
+        <span>
+            Python and Django Full Stack Web Developer Bootcamp by Jose Portilla{' '}
+            <a href="https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/">
+                (Udemy)
+            </a>
+        </span>,
+        <span>
+            MERN Stack Front To Back: Full Stack React, Redux & Node.js by Brad Traversy{' '}
+            <a href="https://www.udemy.com/course/mern-stack-front-to-back/">(Udemy)</a>
+        </span>,
+        <span>
+            Build an app with ASPNET Core and Angular from scratch by Neil Cummings{' '}
+            <a href="https://www.udemy.com/course/build-an-app-with-aspnet-core-and-angular-from-scratch/">
+                (Udemy)
+            </a>
+        </span>,
+        <span>
+            Node with React: Fullstack Web Development by Stephen Grider{' '}
+            <a href="https://www.udemy.com/course/node-with-react-fullstack-web-development/">
+                (Udemy)
+            </a>
+        </span>,
+        <span>
+            Build Web Apps with Vue JS 2 & Firebase by The Net Ninja{' '}
+            <a href="https://www.udemy.com/course/build-web-apps-with-vuejs-firebase/">(Udemy)</a>
+        </span>,
+    ]}
+/>
+
+Be sure to also check out [this](https://github.com/florinpop17/app-ideas) list of fullstack web-app ideas if you're struggling to get an idea of what to build.

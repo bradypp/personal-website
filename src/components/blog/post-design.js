@@ -47,6 +47,8 @@ export const PostStyles = css`
         margin-inline-start: 0;
         margin-inline-end: 0;
         padding-inline-start: 4rem;
+        margin-top: 1.1em;
+        margin-bottom: 1.1em;
 
         li {
             padding-left: 0.3em;
@@ -121,6 +123,14 @@ export const h3 = generateHeading('h3');
 export const h4 = generateHeading('h4');
 
 export const StyledCustomList = props => {
-    const { items, fontSize } = props;
-    return <CustomList isPost fontSize={fontSize || 'lg'} items={items} rowGap="1em" />;
+    const { items, fontSize, rowGap, columns } = props;
+    return (
+        <CustomList
+            isPost
+            fontSize={fontSize || 'lg'}
+            items={items}
+            rowGap={rowGap}
+            columns={columns || 1}
+        />
+    );
 };

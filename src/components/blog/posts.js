@@ -11,6 +11,8 @@ import { mixins, media } from '@styles';
 const PostsContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 50%);
+    justify-items: center;
+    align-items: center;
     grid-gap: 2rem;
     width: 100%;
 
@@ -26,7 +28,7 @@ const PostContainer = styled.div`
     padding: 3rem;
     border-radius: var(--border-radius);
     color: var(--color-text-primary-1);
-    min-height: 300px;
+    min-height: 330px;
     width: 100%;
 
     ${media.bp440`
@@ -114,11 +116,6 @@ const Posts = ({ posts }) => {
                             <Date date={date} />
                             <span> &mdash; </span>
                             {tagsArray?.length > 0 && tagsArray}
-                            {/* {tags.map(tag => (
-                                <Tag
-                                    to={`/tags/${kebabCase(tag)}/`}
-                                    key={uuidv4()}>{`#${tag}`}</Tag>
-                            ))} */}
                         </PostDateTags>
                         <PostExcerpt>{excerpt}</PostExcerpt>
                         <ReadMoreLink to={slug}>
