@@ -53,7 +53,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             tagsGroup: allMdx(
                 filter: {
                     fileAbsolutePath: { regex: "/content/posts/" }
-                    frontmatter: { draft: { ne: false } }
+                    frontmatter: { draft: { ne: true } }
                 }
             ) {
                 group(field: frontmatter___tags) {

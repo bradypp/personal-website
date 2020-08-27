@@ -78,7 +78,7 @@ const base = css`
         line-height: 1.4;
     }
     h4 {
-        font-size: var(--font-size-4xl);
+        font-size: var(--font-size-5xl);
     }
     h5 {
         font-size: var(--font-size-3xl);
