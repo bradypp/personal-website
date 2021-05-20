@@ -8,7 +8,7 @@ module.exports = {
     siteLanguage: 'en',
     name: 'Paul Brady',
     location: 'Manchester, UK',
-    email: 'paul@paulbrady.dev',
+    email: 'bradypp44@gmail.com',
     repo: 'https://github.com/bradypp/personal-website',
     github: 'https://github.com/bradypp',
     twitter: 'https://twitter.com/bradypp',
@@ -33,7 +33,7 @@ module.exports = {
             name: 'DevTo',
             url: 'https://dev.to/bradypp',
         },
-    ],
+    ], 
     navLinks: [
         {
             name: 'Home',
