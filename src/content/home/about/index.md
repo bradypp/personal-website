@@ -6,12 +6,12 @@ skills:
     - JavaScript (ES6+)
     - React & Redux
     - Node.js & Express.js
+    - TypeScript
+    - Vue
     - SQL & MySQL
     - MongoDB / Firebase
     - Gatsby.js / Next.js
     - GraphQL
-    - jQuery
-    - Tailwind CSS
     - Gulp / Webpack
     - Git & GitHub
 ---

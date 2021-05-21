@@ -142,7 +142,7 @@ const Footer = () => {
                                 </li>
                             ))}
                     </SocialMediaContainer>
-                    <span>&copy; 2020 Designed & developed by Paul Brady.</span>
+                    <span>&copy; 2021 Designed & developed by Paul Brady.</span>
                 </FooterLeftContainer>
                 <FooterRightContainer>
                     <LinksContainer>
