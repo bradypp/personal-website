@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 1
 overline: 'Full-Stack Web-App'
 title: 'Dev Link'
 images:
