@@ -40,7 +40,7 @@ const base = css`
         color: var(--color-text-primary-1);
         background: var(--color-background-primary-1);
         min-height: 100vh;
-        transition: var(--transition);
+        ${'' /* transition: var(--transition); */}
         overflow-x: hidden;
     }
 
