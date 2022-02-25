@@ -1,5 +1,5 @@
 ---
-sort: 3
+sort: 2
 overline: 'Front-End Web-App'
 title: 'GitHub Analyzer'
 images:

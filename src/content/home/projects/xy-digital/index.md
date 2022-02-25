@@ -1,5 +1,5 @@
 ---
-sort: 2
+sort: 3
 overline: 'Modern SSG Web-App'
 title: 'XY Digital'
 images:
