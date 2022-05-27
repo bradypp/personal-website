@@ -4,14 +4,14 @@ avatar: './me.png'
 skills:
     - JavaScript (ES6+)
     - React & Redux
-    - Node.js & Express.js
     - TypeScript
+    - Next.js / Gatsby.js
+    - Node.js & Express.js
     - Vue.js
+    - GraphQL & Apollo
     - MongoDB / Firebase
-    - HTML5 & (S)CSS3
-    - Gatsby.js / Next.js
-    - GraphQL
-    - SQL & MySQL
+    - Docker & Kubernetes
+    - HTML & (S)CSS
     - Gulp / Webpack
     - Git & GitHub
 ---

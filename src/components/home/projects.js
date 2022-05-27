@@ -114,6 +114,10 @@ const TechList = styled.ul`
         `}
     }
 
+    ${media.bp1040`
+        margin-bottom: 0;
+    `}
+
     ${media.bp800`
         margin-bottom: 0.2rem;
     `}
