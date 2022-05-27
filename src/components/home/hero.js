@@ -7,7 +7,6 @@ import { twitter } from '@config';
 import { mixins, media } from '@styles';
 import { CustomLink } from '@components';
 import { useIsMounted } from '@hooks';
-import { HEADER } from '@utils/constants';
 import wave from '@assets/images/wave.png';
 
 const margin = '12vh';
