@@ -122,10 +122,6 @@ const TechList = styled.ul`
     ${media.bp1040`
         margin-bottom: 0;
     `}
-
-    ${media.bp800`
-        margin-bottom: 0.1rem;
-    `}
 `;
 const LinksContainer = styled.div`
     display: flex;
@@ -145,13 +141,15 @@ const IconLink = styled(props => <CustomLink variant="secondary" {...props} />)`
     }
 
     ${media.bp800`
+        && {
+            padding: 1.3rem;
+        }
         &&:first-of-type {
-            padding: 1.1rem;
             margin-right: 0.8rem;
         }
         && svg {
-            width: 24px;
-            height: 24px;
+            width: 25px;
+            height: 25px;
         }
     `}
 `;

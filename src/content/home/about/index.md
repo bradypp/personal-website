@@ -16,7 +16,7 @@ skills:
     - Git & GitHub
 ---
 
-Hello! I'm Paul, a full-stack web developer based in Manchester, UK.
+Hello! I'm Paul, a full-stack developer based in Manchester, UK.
 
 I take great satisfaction in successfully building, deploying and maintaining quality websites and applications and love the constant learning and problem solving that comes with it. My main goal as a developer is to build pixel-perfect products that feel smooth and are scalable and efficient under the hood.
 

@@ -22,7 +22,7 @@ const StyledButton = styled(Button)`
         (props.size === 'medium' && 'var(--font-size-xs)') ||
         (props.size === 'big' && 'var(--font-size-md)')};
     padding: ${props =>
-        (props.size === 'medium' && '1.3rem 1.6rem') || (props.size === 'big' && '1.7rem 2.2rem')};
+        (props.size === 'medium' && '1.3rem 1.6rem') || (props.size === 'big' && '1.5rem 2.3rem')};
 `;
 
 const FormButtons = ({
