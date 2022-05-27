@@ -16,6 +16,4 @@ tech:
 
 A stylish web-app that analyzes your GitHub profile and repos.
 
-Charts are generated using Chart.js with profile data fetched from the GitHub API making it easy to see stats such as your most starred repos.
-
-You can also easily sort your repos based on different criteria.
+Profile data fetched from the GitHub API is used to generate charts using Chart.js which makes it easy to see stats such as your most starred repos.
