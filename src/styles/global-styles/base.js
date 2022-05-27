@@ -160,7 +160,7 @@ const base = css`
         text-decoration-skip-ink: auto;
         color: var(--color-text-link);
         position: relative;
-        font-weight: 500;
+        font-weight: 400;
     }
 
     input,

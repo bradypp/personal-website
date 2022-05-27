@@ -32,7 +32,6 @@ const PostContainer = styled.div`
     width: 100%;
 
     ${media.bp440`
-        width: 100vw;
         padding: var(--side-padding);
     `}
 `;

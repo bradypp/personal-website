@@ -25,7 +25,7 @@ export const BREAKPOINTS = {
     bp800: 800, // Tablet portrait
     bp600: 600, // Large phone
     bp440: 440, // Normal phone
-    bp384: 384, // Small phone
+    bp388: 388, // Small phone
 };
 
 export const HEADER = {

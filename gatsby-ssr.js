@@ -13,8 +13,8 @@ const setColorTheme = () => {
     const colorModeKey = 'color-mode';
     const colorModeCssProp = '--initial-color-mode';
 
-    const mql = window.matchMedia('(prefers-color-scheme: light)');
-    const prefersLightFromMQ = mql.matches;
+    // const mql = window.matchMedia('(prefers-color-scheme: light)');
+    // const prefersLightFromMQ = mql.matches;
     const persistedPreference = localStorage.getItem(colorModeKey);
 
     let colorMode = 'dark-mode';
@@ -22,9 +22,10 @@ const setColorTheme = () => {
 
     if (hasUsedToggle) {
         colorMode = persistedPreference;
-    } else {
-        colorMode = prefersLightFromMQ ? 'light-mode' : 'dark-mode';
     }
+    // else {
+    //     colorMode = prefersLightFromMQ ? 'light-mode' : 'dark-mode';
+    // }
 
     const root = document.documentElement;
     root.style.setProperty(colorModeCssProp, colorMode);

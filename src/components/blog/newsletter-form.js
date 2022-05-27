@@ -29,7 +29,7 @@ const NewsletterOuterContainer = styled.div`
     ${media.bp440`
         padding: 6rem 4rem;
     `}
-    ${media.bp384`
+    ${media.bp388`
         padding: 6rem 3rem;
     `}
 

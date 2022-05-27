@@ -71,7 +71,7 @@ const NavListItem = styled(motion.li)`
     ${media.bp440`
       margin: 0 auto 2.4rem;
     `};
-    ${media.bp384`
+    ${media.bp388`
       margin: 0 auto 1.8rem;
     `};
 `;
@@ -107,7 +107,7 @@ const SocialsLink = styled(CustomLink)`
         }
     }
 
-    ${media.bp384`
+    ${media.bp388`
         padding: 1.6rem;
         svg{
             width: 20px;

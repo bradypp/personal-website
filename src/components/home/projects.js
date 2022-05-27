@@ -76,7 +76,7 @@ const Description = styled.div`
 
     ${media.bp1040`
         padding: 2.2rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
     `}
     ${media.bp800`
         padding: 1.6rem;
@@ -115,7 +115,7 @@ const TechList = styled.ul`
     }
 
     ${media.bp800`
-        margin-bottom: 0;
+        margin-bottom: 0.2rem;
     `}
 `;
 const LinksContainer = styled.div`
@@ -168,7 +168,7 @@ const ImgLinkContainer = styled(props => <CustomLink {...props} />)`
     `}
     ${media.bp800`
         width: calc(100vw - 2 * var(--side-padding));
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
     `}
 `;
 const StyledImg = styled(Img)`

@@ -33,7 +33,7 @@ module.exports = {
             name: 'DevTo',
             url: 'https://dev.to/bradypp',
         },
-    ], 
+    ],
     navLinks: [
         {
             name: 'Home',
@@ -66,7 +66,7 @@ module.exports = {
             url: '/rss.xml',
         },
     ],
-    scrollRevealConfig: (delay = 200) => ({
+    scrollRevealConfig: (delay = 300) => ({
         origin: 'bottom',
         distance: '25px',
         duration: 500,

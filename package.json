@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Paul Brady",
   "scripts": {
-    "develop": "env-cmd -f ./.env.development gatsby develop -p 3000",
+    "dev": "env-cmd -f ./.env.development gatsby develop -p 3000",
     "start": "run-p start:**",
     "start:app": "yarn develop",
     "start:lambda": "env-cmd -f ./.env.development netlify-lambda serve src/functions",
