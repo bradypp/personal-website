@@ -47,6 +47,9 @@ const Title = styled.h2`
     ${media.bp440`
         font-size: 3.8rem;
     `}
+    ${media.bp388`
+        font-size: 3.5rem;
+    `}
 `;
 const Name = styled.div`
     position: relative;
@@ -68,6 +71,9 @@ const Subtitle = styled(motion.h3)`
     `}
     ${media.bp440`
         font-size: 2.6rem;
+    `}
+    ${media.bp388`
+        font-size: 2.5rem;
     `}
 `;
 const ButtonContainer = styled(motion.div)`
