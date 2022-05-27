@@ -26,8 +26,8 @@ const base = css`
 
         ${'' /* 1rem = 9px */}
         ${media.bp800`
-        font-size: 56.25%; 
-    `}
+            font-size: 56.25%; 
+        `}
     }
 
     body {

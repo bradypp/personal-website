@@ -30,7 +30,6 @@ const ContentContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    padding-top: ${HEADER.TOP_HEIGHT / 2}px;
 `;
 const TitleContainer = styled(motion.div)`
     ${mixins.flexCenter};

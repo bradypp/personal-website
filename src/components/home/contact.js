@@ -153,6 +153,7 @@ const Contact = ({ data }) => {
                 </FormContainer>
                 <MiddleText>or</MiddleText>
                 <Socials>
+                    {/* TODO: add socials */}
                     <CustomLink href={`mailto:${email}`} variant="button-primary">
                         {emailText}
                     </CustomLink>
