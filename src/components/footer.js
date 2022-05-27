@@ -66,7 +66,7 @@ const SocialMediaContainer = styled.ul`
     margin-bottom: 0.8rem;
 
     & > li:not(:last-child) {
-        margin-right: 0.6rem;
+        margin-right: 0.8rem;
     }
 
     a {
@@ -81,6 +81,16 @@ const SocialMediaContainer = styled.ul`
         width: 20px;
         height: 20px;
     }
+
+    ${media.bp440`
+        & > li:not(:last-child) {
+            margin-right: 1rem;
+        }
+        svg {
+            width: 22px;
+            height: 22px;
+        }
+    `}
 
     ${media.bp600`
         margin-bottom: 3rem;

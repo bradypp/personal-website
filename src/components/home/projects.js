@@ -12,6 +12,7 @@ import { Icon, CustomLink, SectionHeading } from '@components';
 import { mixins, media } from '@styles';
 
 const tagMargin = '1.7rem';
+const tagMarginMobile = '1.8rem';
 const contentMobile = css`
     display: flex;
     justify-content: center;
@@ -112,6 +113,9 @@ const TechList = styled.ul`
             font-size: var(--font-size-xs);
             margin-bottom: 0.6rem;
         `}
+        ${media.bp440`
+            margin-right: ${tagMarginMobile};
+        `}
     }
 
     ${media.bp1040`
@@ -119,7 +123,7 @@ const TechList = styled.ul`
     `}
 
     ${media.bp800`
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.1rem;
     `}
 `;
 const LinksContainer = styled.div`
@@ -140,6 +144,10 @@ const IconLink = styled(props => <CustomLink variant="secondary" {...props} />)`
     }
 
     ${media.bp800`
+        &&:first-of-type {
+            padding: 1.1rem;
+            margin-right: 0.8rem;
+        }
         && svg {
             width: 24px;
             height: 24px;
@@ -238,6 +246,11 @@ const ProjectContainer = styled.div`
                 li {
                     margin-left: 0;
                     margin-right: ${tagMargin};
+                }
+            `}
+            ${media.bp440`
+                li {
+                    margin-right: ${tagMarginMobile};
                 }
             `}
         }
