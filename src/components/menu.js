@@ -92,11 +92,11 @@ const SocialsContainer = styled(motion.ul)`
     bottom: 2rem;
 `;
 const SocialsLink = styled(CustomLink)`
-    padding: 2rem;
+    padding: 2.2rem;
 
     svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         color: var(--color-white-1);
     }
 
@@ -108,10 +108,10 @@ const SocialsLink = styled(CustomLink)`
     }
 
     ${media.bp388`
-        padding: 1.6rem;
+        padding: 2rem;
         svg{
-            width: 20px;
-            height: 20px;
+            width: 21px;
+            height: 21px;
         }
     `}
 `;

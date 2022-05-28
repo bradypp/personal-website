@@ -133,12 +133,12 @@ const Contact = ({ data }) => {
                         {({ isSubmitting }) => (
                             <>
                                 <Form.Element>
-                                    <Form.Field.Input label="Name*" name="name" />
-                                    <Form.Field.Input label="Email*" name="email" />
+                                    <Form.Field.Input label="Name" name="name" />
+                                    <Form.Field.Input label="Email" name="email" />
                                     <Form.Field.Input label="Subject" name="subject" />
                                     <Form.Field.TextArea
                                         height={20}
-                                        label="Message*"
+                                        label="Message"
                                         name="message"
                                     />
                                     <Form.Buttons

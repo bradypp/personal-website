@@ -24,6 +24,8 @@ const ListContainer = styled.ul`
                 css`
                     grid-template-columns: repeat(3, 1fr);
                 `}
+                
+        padding: ${props => (props.isPost ? '0 0 0 2.5rem' : 0)};
         `}
         ${media.bp440`
             ${props =>
@@ -31,6 +33,8 @@ const ListContainer = styled.ul`
                 css`
                     grid-template-columns: repeat(2, 1fr);
                 `}
+                
+        padding: ${props => (props.isPost ? '0 0 0 2rem' : 0)};
         `}
 
         li {

@@ -2,15 +2,15 @@
 title: About Me
 avatar: './me.png'
 skills:
-    - JavaScript (ES6+)
     - React & Redux
+    - JavaScript (ES6+)
     - TypeScript
     - Next.js / Gatsby.js
     - Node.js & Express.js
-    - Vue.js
     - GraphQL & Apollo
-    - MongoDB / Firebase
     - Docker & Kubernetes
+    - MongoDB / Firebase
+    - Vue.js
     - HTML & (S)CSS
     - Gulp / Webpack
     - Git & GitHub
