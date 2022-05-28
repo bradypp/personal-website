@@ -90,7 +90,7 @@ const About = ({ data }) => {
             <FlexContainer>
                 <ContentContainer>
                     <Description dangerouslySetInnerHTML={{ __html: html }} />
-                    <CustomList items={skills} columns={3} fontSize="xs" rowGap="1.6rem" />
+                    <CustomList items={skills} columns={3} isHome rowGap="1.6rem" />
                 </ContentContainer>
                 <AvatarLinkContainer href={github} variant={null} style={{ width: '100%' }}>
                     <Avatar fluid={avatar.childImageSharp.fluid} alt="Avatar" />

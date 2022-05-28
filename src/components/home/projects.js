@@ -120,7 +120,7 @@ const TechList = styled.ul`
     }
 
     ${media.bp1040`
-        margin-bottom: 0;
+        margin-bottom: 0.1rem;
     `}
 `;
 const LinksContainer = styled.div`
