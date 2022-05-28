@@ -13,10 +13,10 @@ const ListContainer = styled.ul`
         grid-column-gap: 1.6rem;
         grid-row-gap: ${props => props.rowGap};
         margin: ${props => (props.isPost ? '1.1em 0' : 0)};
-        padding: ${props => (props.isPost ? '0 0 0 3rem' : 0)};
+        padding: ${props => (props.isPost ? '0 0 0 2.8rem' : 0)};
         overflow: visible;
         list-style: none;
-        font-size: ${props => `var(--font-size-${props.fontSize})`};
+        font-size: ${props => `var(--font-size-${props.isHome ? 'xs' : 'md'})`};
 
         ${media.bp800`
             ${props =>
@@ -25,7 +25,7 @@ const ListContainer = styled.ul`
                     grid-template-columns: repeat(3, 1fr);
                 `}
                 
-        padding: ${props => (props.isPost ? '0 0 0 2.5rem' : 0)};
+            padding: ${props => (props.isPost ? '0 0 0 2.2rem' : 0)};
         `}
         ${media.bp440`
             ${props =>
@@ -34,7 +34,7 @@ const ListContainer = styled.ul`
                     grid-template-columns: repeat(2, 1fr);
                 `}
                 
-        padding: ${props => (props.isPost ? '0 0 0 2rem' : 0)};
+            padding: ${props => (props.isPost ? '0 0 0 1.6rem' : 0)};
         `}
 
         li {
@@ -80,18 +80,18 @@ const IconWrapper = styled.span`
     }};
 `;
 
-const CustomList = ({ className, items, icon, columns, rowGap, fontSize, isPost }) => {
+const CustomList = ({ className, items, icon, columns, rowGap, isHome, isPost }) => {
     return (
         <ListContainer
             className={className}
             columns={columns}
             rowGap={rowGap}
-            fontSize={fontSize}
+            isHome={isHome}
             isPost={isPost}>
             {items &&
                 items.map(item => (
                     <li key={uuidv4()}>
-                        <IconWrapper fontSize={fontSize}>
+                        <IconWrapper isHome={isHome}>
                             <Icon name={icon} />
                         </IconWrapper>
                         {typeof item === 'string' ? <span>{item}</span> : item}
@@ -107,7 +107,7 @@ CustomList.propTypes = {
     className: PropTypes.string,
     columns: PropTypes.number,
     rowGap: PropTypes.string,
-    fontSize: PropTypes.string,
+    isHome: PropTypes.bool,
     isPost: PropTypes.bool,
 };
 
@@ -116,7 +116,7 @@ CustomList.defaultProps = {
     columns: 1,
     icon: 'arrow-right',
     rowGap: '1rem',
-    fontSize: 'md',
+    isHome: false,
     isPost: false,
 };
 

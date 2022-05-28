@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { Icon } from '@components';
 import { ThemeContext } from '@context';
-import { mixins } from '@styles';
+import { mixins, media } from '@styles';
 import { useOnOutsideClick } from '@hooks';
 
 const ToggleContainer = styled.div`
@@ -12,6 +12,10 @@ const ToggleContainer = styled.div`
     height: 28px;
     margin-top: 6px;
     margin-left: auto;
+
+    ${media.bp800`
+        margin-top: 0;
+    `}
 `;
 const StyledInput = styled.input`
     ${mixins.hideElement}
