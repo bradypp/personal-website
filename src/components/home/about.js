@@ -56,10 +56,10 @@ const AvatarLinkContainer = styled(props => <CustomLink {...props} />)`
     width: 40%;
     max-width: 36rem;
     border-radius: 50%;
-    margin: 4rem 80px 0 0;
+    margin: 0 8rem 0 0;
 
     ${media.bp1440`
-        margin-right: 0; 
+    margin: 4rem 0 0 0;
     `}
     ${media.bp800`
         width: 90%;
