@@ -47,10 +47,10 @@ module.exports = {
             name: 'Portfolio',
             url: '/#portfolio',
         },
-        {
-            name: 'Blog',
-            url: '/blog',
-        },
+        // {
+        //     name: 'Blog',
+        //     url: '/blog',
+        // },
         {
             name: 'Contact',
             url: '/#contact',
