@@ -99,6 +99,7 @@ export const pageQuery = graphql`
                         title
                         subtitle
                         date(formatString: "MMMM Do, YYYY")
+                        withDate
                         tags
                     }
                 }

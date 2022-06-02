@@ -94,7 +94,7 @@ const Posts = ({ posts }) => {
         <PostsContainer>
             {posts.map(post => {
                 const { excerpt, fields, frontmatter } = post.node;
-                const { title, subtitle, date, tags } = frontmatter;
+                const { title, subtitle, date, tags, withDate = true } = frontmatter;
                 const { slug } = fields;
 
                 const tagsArray =
@@ -112,8 +112,12 @@ const Posts = ({ posts }) => {
                         </Link>
                         {subtitle && <PostSubtitle>{subtitle}</PostSubtitle>}
                         <PostDateTags>
-                            <Date date={date} />
-                            <span> &mdash; </span>
+                            {withDate && (
+                                <>
+                                    <Date date={date} />
+                                    <span> &mdash; </span>
+                                </>
+                            )}
                             {tagsArray?.length > 0 && tagsArray}
                         </PostDateTags>
                         <PostExcerpt>{excerpt}</PostExcerpt>

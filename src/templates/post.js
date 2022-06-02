@@ -123,9 +123,10 @@ const PostTemplate = ({ data }) => {
         ogImage,
         withContents: frontmatterWithContents = true,
         contentsDepth,
+        withDate = true,
     } = frontmatter;
     const { slug } = fields;
-
+    console.log(withDate);
     const withContents = tableOfContents?.items?.length > 0 && frontmatterWithContents;
 
     const tagsArray =
@@ -175,8 +176,12 @@ const PostTemplate = ({ data }) => {
                 <Title>{title}</Title>
                 {subtitle && <Subtitle>{subtitle}</Subtitle>}
                 <DateTagsContainer>
-                    <Date date={date} />
-                    <span> &mdash; </span>
+                    {withDate && (
+                        <>
+                            <Date date={date} />
+                            <span> &mdash; </span>
+                        </>
+                    )}
                     {tagsArray?.length > 0 && tagsArray}
                 </DateTagsContainer>
             </PostHeader>
@@ -226,6 +231,7 @@ export const pageQuery = graphql`
                 date(formatString: "MMMM Do, YYYY")
                 tags
                 withContents
+                withDate
                 contentsDepth
                 ogImage {
                     childImageSharp {
