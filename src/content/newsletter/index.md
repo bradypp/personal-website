@@ -3,8 +3,6 @@ title: 'A newsletter for all developers to enjoy!'
 ogImage: './og-image.png'
 ---
 
-With this newsletter you'll receive a monthly assortment of web dev goodness.
+With this newsletter I'll keep you in the loop on all things web dev. This includes exciting new projects & platforms, useful resources, interesting news and anything else I think you'll find cool and useful.
 
-I'll keep you in the loop on exciting new tools & platforms, useful dev resources, interesting news, my latest articles and anything else I think you'll find cool and useful.
-
-Stay updated on all things web dev! No spam, easily unsubscribe at any time.
+Stay up to date! No spam, easily unsubscribe at any time.

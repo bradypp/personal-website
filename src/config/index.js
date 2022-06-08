@@ -29,10 +29,6 @@ module.exports = {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com/in/bradypp/',
         },
-        {
-            name: 'DevTo',
-            url: 'https://dev.to/bradypp',
-        },
     ],
     navLinks: [
         {
