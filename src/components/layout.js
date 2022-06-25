@@ -30,7 +30,7 @@ const Main = styled.main`
 const Layout = ({ children, isHome, meta }) => {
     return (
         <div id="root">
-            {/* <Social isHome={isHome} orientation="left" /> */}
+            <Social isHome={isHome} orientation="left" />
             <Meta isHome={isHome} meta={meta} />
             <Header isHome={isHome} />
             <Main>

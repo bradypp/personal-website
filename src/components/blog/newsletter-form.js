@@ -155,7 +155,7 @@ const NewsletterForm = ({ isPost }) => {
                     {({ isSubmitting }) => (
                         <Form.Element>
                             <Form.Field.Input
-                                label="First Name"
+                                label="Name"
                                 name="first_name"
                                 height={4}
                                 variant="newsletter"

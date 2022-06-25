@@ -87,7 +87,7 @@ const TagsPage = ({ data }) => {
                     <li key={uuidv4()}>
                         <Icon name="arrow-right" />
                         <Link to={`/blog/tags/${kebabCase(tag.fieldValue)}/`}>
-                            {tag.fieldValue} <span>({tag.totalCount})</span>
+                            #{tag.fieldValue} <span>({tag.totalCount})</span>
                         </Link>
                     </li>
                 ))}

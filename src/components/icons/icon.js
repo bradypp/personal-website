@@ -5,6 +5,7 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { FaDev } from 'react-icons/fa';
 import { IoMdArrowRoundForward, IoMdArrowBack } from 'react-icons/io';
 import { FiMoon } from 'react-icons/fi';
+import { SiDiscord } from 'react-icons/si';
 
 import IconCodePen from './codepen';
 import IconExternal from './external';
@@ -31,6 +32,7 @@ const Icon = ({ name }) => {
         CodePen: IconCodePen,
         LinkedIn: IconLinkedIn,
         Twitter: IconTwitter,
+        Discord: SiDiscord,
     };
     const Component = icons[name];
 

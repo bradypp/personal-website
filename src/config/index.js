@@ -18,16 +18,20 @@ module.exports = {
     rss: '/rss.xml',
     socialMedia: [
         {
-            name: 'GitHub',
-            url: 'https://github.com/bradypp',
-        },
-        {
             name: 'Twitter',
             url: 'https://twitter.com/bradypp',
         },
         {
+            name: 'GitHub',
+            url: 'https://github.com/bradypp',
+        },
+        {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com/in/bradypp/',
+        },
+        {
+            name: 'Discord',
+            url: 'https://discord.com/users/358253719483187202',
         },
     ],
     navLinks: [

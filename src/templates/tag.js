@@ -32,7 +32,7 @@ const Tag = ({ pageContext, data }) => {
                 relativeUrl,
             }}>
             <HeadingContainer>
-                <h1>{pageContext.tag}</h1>
+                <h1>#{pageContext.tag}</h1>
                 <CustomLink to="/blog/tags">View all tags</CustomLink>
             </HeadingContainer>
             <Posts posts={posts} />

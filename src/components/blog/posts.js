@@ -16,7 +16,7 @@ const PostsContainer = styled.section`
     grid-gap: 2rem;
     width: 100%;
 
-    ${media.bp800`
+    ${media.bp1040`
         grid-template-columns: 100%;
     `}
 `;
@@ -31,6 +31,9 @@ const PostContainer = styled.div`
     min-height: 330px;
     width: 100%;
 
+    ${media.bp1040`
+        min-height: auto;
+    `}
     ${media.bp440`
         padding: var(--side-padding);
     `}
@@ -40,6 +43,7 @@ const PostTitle = styled.h3`
     transition: var(--transition);
     margin-bottom: 0.5rem;
     color: var(--color-text-primary-1);
+
     &:hover {
         color: var(--color-primary);
     }
