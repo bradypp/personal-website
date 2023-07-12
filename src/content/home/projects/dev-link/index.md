@@ -6,7 +6,7 @@ images:
     - image: './image-1.png'
       alt: 'Dev-link home page'
 github: 'https://github.com/bradypp/dev-link'
-external: 'https://d-link.herokuapp.com'
+external: 'https://dev-link-7f7h.onrender.com/'
 tech:
     - React
     - Redux
