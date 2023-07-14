@@ -11,9 +11,9 @@ skills:
     - Docker & Kubernetes
     - MongoDB / Firebase
     - Vue.js & Nuxt.js
+    - React Native
     - HTML & (S)CSS
     - Git & GitHub
-    - Webpack
 ---
 
 Hello! I'm Paul, a software engineer based in Manchester, UK.
