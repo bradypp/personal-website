@@ -19,4 +19,4 @@ tech:
 
 A full-stack web-app which allows developers to create a profile, showcase their abilities and quickly search & filter for other developers.
 
-I used modern React with Redux & Reselect to efficiently manage global state and especially enjoyed creating a large, secure RESTful API.
+I used modern React with Redux & Reselect to efficiently manage global state and created a large, secure RESTful API to handle data.

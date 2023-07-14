@@ -135,8 +135,7 @@ const mixins = {
             bottom: 2px;
             right: 50%;
             background-color: var(--color-text-link);
-            transition: var(--transition);
-            opacity: 0;
+            transition: 0.2s;
         }
 
         &:hover {
@@ -144,7 +143,6 @@ const mixins = {
             outline: 0;
 
             &:after {
-                opacity: 1;
                 right: 0;
                 width: 100%;
                 height: 1px;
@@ -152,7 +150,7 @@ const mixins = {
 
             & > * {
                 color: var(--color-text-link) !important;
-                transition: var(--transition);
+                transition: 0.2s;
             }
         }
     `,

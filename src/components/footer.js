@@ -155,7 +155,7 @@ const Footer = () => {
                                 </li>
                             ))}
                     </SocialMediaContainer>
-                    <span>&copy; 2022 Designed & developed by Paul Brady.</span>
+                    <span>{new Date().getFullYear()} Designed & developed by Paul Brady</span>
                 </FooterLeftContainer>
                 <FooterRightContainer>
                     <LinksContainer>
