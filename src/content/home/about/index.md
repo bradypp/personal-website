@@ -2,18 +2,18 @@
 title: About Me
 avatar: './me.png'
 skills:
-    - React & Redux
-    - JavaScript (ES6+)
+    - React / Next.js
+    - JavaScript
     - TypeScript
-    - Next.js / Gatsby.js
+    - SQL & PostgreSQL
     - Node.js & Express.js
     - GraphQL & Apollo
     - Docker & Kubernetes
     - MongoDB / Firebase
     - Vue.js & Nuxt.js
     - React Native
-    - HTML & (S)CSS
-    - Git & GitHub
+    - Playwright & Jest
+    - GitHub Actions
 ---
 
 Hello! I'm Paul, a software engineer based in Manchester, UK.
