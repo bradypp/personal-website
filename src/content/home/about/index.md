@@ -5,15 +5,15 @@ skills:
     - React / Next.js
     - JavaScript
     - TypeScript
-    - SQL & PostgreSQL
     - Node.js & Express.js
     - GraphQL & Apollo
     - Docker & Kubernetes
-    - MongoDB / Firebase
-    - Vue.js & Nuxt.js
     - React Native
     - Playwright & Jest
     - GitHub Actions
+    - MongoDB / Firebase
+    - SQL & PostgreSQL
+    - Vue.js & Nuxt.js
 ---
 
 Hello! I'm Paul, a software engineer based in Manchester, UK.
